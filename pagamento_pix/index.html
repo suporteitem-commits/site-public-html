@@ -1,0 +1,4497 @@
+<!DOCTYPE html>
+<!-- saved from url=(0043)https://gov.portal.anvisa.org/pagamento_pix -->
+<html lang="pt-br">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Solicitação de Pagamento via PIX - ANVISA</title>
+
+  <!-- UTMify Pixel -->
+  <script>
+    window.pixelId = "691e4e1d6076486a2bdde991";
+    var a = document.createElement("script");
+    a.setAttribute("async", "");
+    a.setAttribute("defer", "");
+    a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+    document.head.appendChild(a);
+  </script>
+
+  <link rel="stylesheet" href="./index_files/rawline-fonts.css">
+  <script src="./index_files/saved_resource"></script>
+  <link href="./index_files/all.min.css" rel="stylesheet">
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      console.log('[PIX] Página de pagamento PIX carregada');
+
+      // Recuperar dosagem selecionada do localStorage
+      const selectedDosage = localStorage.getItem('selected_dosage') || '5mg';
+      console.log(`[PIX] Dosagem recuperada do localStorage: ${selectedDosage}`);
+
+      // Atualizar elementos com a dosagem correta
+      updateDosageDisplayElements(selectedDosage);
+
+      // NOTA: Função sendEmail() removida - endpoint /send-mail não está implementado
+      // Para implementar envio de emails, configure um backend adequado com serviço de email
+    });
+
+    // Função para atualizar todos os elementos que exibem dosagem
+    function updateDosageDisplayElements(dosage) {
+      try {
+        // Atualizar o cabeçalho principal do medicamento
+        const medicamentoHeader = document.querySelector('.payment-header h3');
+        if (medicamentoHeader) {
+          medicamentoHeader.textContent = `Medicamento Regulamentado: Mounjaro® (tirzepatida) ${dosage}`;
+        }
+
+        // Atualizar o resumo da solicitação
+        const medicamentoSummary = document.querySelector('.summary-item .summary-value');
+        if (medicamentoSummary && medicamentoSummary.textContent.includes('Mounjaro®')) {
+          medicamentoSummary.textContent = `Mounjaro® (tirzepatida) ${dosage}`;
+        }
+
+        console.log(`[PIX] Elementos de dosagem atualizados para: ${dosage}`);
+      } catch (error) {
+        console.error('[PIX] Erro ao atualizar elementos de dosagem:', error);
+      }
+    }
+  </script>
+
+  <style>
+    .gov-header {
+      background-color: #222222;
+    }
+
+    .inep-header {
+      background-color: #044785;
+    }
+
+    .encceja-color {
+      color: #3b5998;
+    }
+
+    .encceja-light {
+      color: #a0a0a0;
+    }
+
+    .form-header {
+      background-color: #2c5985;
+      color: white;
+    }
+
+    .form-footer {
+      background-color: #5d85ab;
+      color: white;
+    }
+
+    button#submit-button {
+      transition: all 0.2s ease;
+      background-color: #5d85ab;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    button#submit-button:not([disabled]) {
+      color: white;
+      cursor: pointer;
+    }
+
+    button#submit-button:not([disabled]):hover {
+      background-color: #4d7396;
+    }
+
+    .required-star {
+      color: #ff0000;
+    }
+
+    .footer-bg {
+      background-color: #1c2b39;
+    }
+
+    input::placeholder {
+      font-family: 'Rawline', Arial, sans-serif;
+    }
+
+    .transparent {
+      opacity: 0.5;
+    }
+
+    <style>@font-face {
+      font-family: 'Rawline';
+      src: url("/static/fonts/rawline-400.woff2") format('woff2');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Rawline';
+      src: url("/static/fonts/rawline-400i.woff2") format('woff2');
+      font-weight: 400;
+      font-style: italic;
+    }
+
+    @font-face {
+      font-family: 'Rawline';
+      src: url("/static/fonts/rawline-500.woff2") format('woff2');
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Rawline';
+      src: url("/static/fonts/rawline-600.woff2") format('woff2');
+      font-weight: 600;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Rawline';
+      src: url("/static/fonts/rawline-700.woff2") format('woff2');
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    body {
+      font-family: 'Rawline', sans-serif;
+    }
+
+    .monjauros-title {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #555;
+      line-height: normal;
+      text-transform: uppercase;
+      text-align: left;
+      margin-bottom: 1rem;
+    }
+
+    .main-title {
+      font-size: 1.4rem;
+      line-height: 2rem;
+      font-weight: 600;
+      color: #0c326f;
+      padding-bottom: 10px;
+      margin: 0;
+    }
+
+    .subtitle {
+      font-weight: 400;
+      font-size: 16px;
+      color: #555;
+      line-height: normal;
+      margin-bottom: 10px;
+    }
+
+    .secure-badge {
+      background-color: #e6f3e6;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 12px;
+      color: #2e7d32;
+      display: inline-block;
+      margin: 2px 4px;
+    }
+
+    .vlibras-icon {
+      position: fixed;
+      right: 10px;
+      top: 40%;
+      transform: translateY(-50%);
+      z-index: 1000;
+    }
+
+    /* Payment specific styles */
+    .payment-container {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin: 24px 0;
+    }
+
+    .payment-header {
+      background-color: #f0f7ff;
+      padding: 20px;
+      border-bottom: 1px solid #e0e7ff;
+    }
+
+    .payment-content {
+      padding: 30px;
+    }
+
+    .countdown-timer {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .countdown-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 8px;
+    }
+
+    .countdown-value {
+      width: 50px;
+      height: 50px;
+      background-color: #1451b4;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .countdown-label {
+      margin-top: 4px;
+      font-size: 12px;
+      color: #6b7280;
+    }
+
+    .qr-code-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .qr-code-image {
+      width: 220px;
+      height: 220px;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 8px;
+      background-color: white;
+    }
+
+    .pix-code-container {
+      background-color: #f9fafb;
+      border-radius: 8px;
+      padding: 16px;
+      margin: 20px 0;
+      border: 1px solid #e5e7eb;
+    }
+
+    .pix-code-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1451b4;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+    }
+
+    .pix-code-title i {
+      margin-right: 8px;
+      color: #1451b4;
+    }
+
+    .pix-code {
+      background-color: white;
+      border: 1px dashed #d1d5db;
+      border-radius: 4px;
+      padding: 12px;
+      font-family: monospace;
+      font-size: 14px;
+      color: #4b5563;
+      word-break: break-all;
+      max-height: 100px;
+      overflow-y: auto;
+      margin-bottom: 16px;
+    }
+
+    .copy-btn {
+      padding: 8px 16px;
+      background-color: #f3f4f6;
+      border: 1px solid #d1d5db;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #4b5563;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      transition: all 0.2s ease;
+    }
+
+    .copy-btn:hover {
+      background-color: #e5e7eb;
+    }
+
+    .copy-btn i {
+      margin-right: 6px;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .status-pending {
+      background-color: #fffbeb;
+      color: #d97706;
+    }
+
+    .status-confirmed {
+      background-color: #dcfce7;
+      color: #16a34a;
+    }
+
+    .instructions {
+      margin-top: 24px;
+      padding: 16px;
+      background-color: #f0f7ff;
+      border-radius: 8px;
+      border-left: 4px solid #1451b4;
+    }
+
+    .instructions-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1451b4;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+    }
+
+    .instructions-title i {
+      margin-right: 8px;
+      color: #1451b4;
+    }
+
+    .instructions-list {
+      margin-left: 16px;
+      margin-top: 8px;
+    }
+
+    .instructions-list li {
+      font-size: 14px;
+      color: #4b5563;
+      margin-bottom: 6px;
+      list-style-type: disc;
+    }
+
+    .order-summary {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .order-summary-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #1451b4;
+      margin-bottom: 16px;
+    }
+
+    .summary-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+
+    .summary-label {
+      font-size: 14px;
+      color: #6b7280;
+      min-width: 120px;
+    }
+
+    .summary-value {
+      font-size: 14px;
+      font-weight: 500;
+      color: #4b5563;
+      text-align: right;
+      flex: 1;
+    }
+
+    .summary-total {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px dashed #e5e7eb;
+    }
+
+    .total-label {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1f2937;
+    }
+
+    .total-value {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1451b4;
+    }
+
+    .btn {
+      padding: 12px 20px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 16px;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background-color: #1451b4;
+      color: white;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background-color: #0c3d8a;
+    }
+
+    .btn-secondary {
+      background-color: #f3f4f6;
+      color: #4b5563;
+      border: 1px solid #d1d5db;
+    }
+
+    .btn-secondary:hover {
+      background-color: #e5e7eb;
+    }
+
+    .btn i {
+      margin-right: 8px;
+    }
+
+    .shipping-option {
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 16px;
+      margin: 8px 0;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      background: white;
+    }
+
+    .shipping-option:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .shipping-option.border-green-500 {
+      border-width: 2px;
+      border-color: #22c55e;
+      background-color: #f0fdf4;
+    }
+
+    .shipping-summary {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 640px) {
+      .summary-item {
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .summary-label {
+        min-width: auto;
+      }
+
+      .summary-value {
+        text-align: left;
+      }
+
+      .countdown-item {
+        margin: 0 4px;
+      }
+
+      .countdown-value {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+      }
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* WhatsApp Profile Card */
+    .whatsapp-profile-card {
+      background: #f8fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 16px;
+      margin: 20px 0;
+      color: #374151;
+    }
+
+    .whatsapp-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .whatsapp-icon {
+      margin-right: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .whatsapp-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: #6b7280;
+    }
+
+    .whatsapp-profile-info {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .profile-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #f3f4f6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 12px;
+      border: 1px solid #e5e7eb;
+      overflow: hidden;
+    }
+
+    .profile-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .profile-initials {
+      font-size: 16px;
+      font-weight: 500;
+      color: #6b7280;
+    }
+
+    .profile-details {
+      flex: 1;
+    }
+
+    .profile-name {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 2px;
+      color: #111827;
+    }
+
+    .profile-phone {
+      font-size: 12px;
+      color: #6b7280;
+    }
+
+    .notification-status {
+      display: flex;
+      align-items: center;
+      font-size: 11px;
+      color: #059669;
+      background: #ecfdf5;
+      padding: 4px 8px;
+      border-radius: 6px;
+      border: 1px solid #d1fae5;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #059669;
+      margin-right: 4px;
+    }
+
+    .whatsapp-description {
+      font-size: 11px;
+      color: #6b7280;
+      line-height: 1.4;
+    }
+  </style>
+
+  <style>
+    *,
+    ::before,
+    ::after {
+      --tw-border-spacing-x: 0;
+      --tw-border-spacing-y: 0;
+      --tw-translate-x: 0;
+      --tw-translate-y: 0;
+      --tw-rotate: 0;
+      --tw-skew-x: 0;
+      --tw-skew-y: 0;
+      --tw-scale-x: 1;
+      --tw-scale-y: 1;
+      --tw-pan-x: ;
+      --tw-pan-y: ;
+      --tw-pinch-zoom: ;
+      --tw-scroll-snap-strictness: proximity;
+      --tw-gradient-from-position: ;
+      --tw-gradient-via-position: ;
+      --tw-gradient-to-position: ;
+      --tw-ordinal: ;
+      --tw-slashed-zero: ;
+      --tw-numeric-figure: ;
+      --tw-numeric-spacing: ;
+      --tw-numeric-fraction: ;
+      --tw-ring-inset: ;
+      --tw-ring-offset-width: 0px;
+      --tw-ring-offset-color: #fff;
+      --tw-ring-color: rgb(59 130 246 / 0.5);
+      --tw-ring-offset-shadow: 0 0 #0000;
+      --tw-ring-shadow: 0 0 #0000;
+      --tw-shadow: 0 0 #0000;
+      --tw-shadow-colored: 0 0 #0000;
+      --tw-blur: ;
+      --tw-brightness: ;
+      --tw-contrast: ;
+      --tw-grayscale: ;
+      --tw-hue-rotate: ;
+      --tw-invert: ;
+      --tw-saturate: ;
+      --tw-sepia: ;
+      --tw-drop-shadow: ;
+      --tw-backdrop-blur: ;
+      --tw-backdrop-brightness: ;
+      --tw-backdrop-contrast: ;
+      --tw-backdrop-grayscale: ;
+      --tw-backdrop-hue-rotate: ;
+      --tw-backdrop-invert: ;
+      --tw-backdrop-opacity: ;
+      --tw-backdrop-saturate: ;
+      --tw-backdrop-sepia: ;
+      --tw-contain-size: ;
+      --tw-contain-layout: ;
+      --tw-contain-paint: ;
+      --tw-contain-style:
+    }
+
+    ::backdrop {
+      --tw-border-spacing-x: 0;
+      --tw-border-spacing-y: 0;
+      --tw-translate-x: 0;
+      --tw-translate-y: 0;
+      --tw-rotate: 0;
+      --tw-skew-x: 0;
+      --tw-skew-y: 0;
+      --tw-scale-x: 1;
+      --tw-scale-y: 1;
+      --tw-pan-x: ;
+      --tw-pan-y: ;
+      --tw-pinch-zoom: ;
+      --tw-scroll-snap-strictness: proximity;
+      --tw-gradient-from-position: ;
+      --tw-gradient-via-position: ;
+      --tw-gradient-to-position: ;
+      --tw-ordinal: ;
+      --tw-slashed-zero: ;
+      --tw-numeric-figure: ;
+      --tw-numeric-spacing: ;
+      --tw-numeric-fraction: ;
+      --tw-ring-inset: ;
+      --tw-ring-offset-width: 0px;
+      --tw-ring-offset-color: #fff;
+      --tw-ring-color: rgb(59 130 246 / 0.5);
+      --tw-ring-offset-shadow: 0 0 #0000;
+      --tw-ring-shadow: 0 0 #0000;
+      --tw-shadow: 0 0 #0000;
+      --tw-shadow-colored: 0 0 #0000;
+      --tw-blur: ;
+      --tw-brightness: ;
+      --tw-contrast: ;
+      --tw-grayscale: ;
+      --tw-hue-rotate: ;
+      --tw-invert: ;
+      --tw-saturate: ;
+      --tw-sepia: ;
+      --tw-drop-shadow: ;
+      --tw-backdrop-blur: ;
+      --tw-backdrop-brightness: ;
+      --tw-backdrop-contrast: ;
+      --tw-backdrop-grayscale: ;
+      --tw-backdrop-hue-rotate: ;
+      --tw-backdrop-invert: ;
+      --tw-backdrop-opacity: ;
+      --tw-backdrop-saturate: ;
+      --tw-backdrop-sepia: ;
+      --tw-contain-size: ;
+      --tw-contain-layout: ;
+      --tw-contain-paint: ;
+      --tw-contain-style:
+    }
+
+    /* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */
+    *,
+    ::after,
+    ::before {
+      box-sizing: border-box;
+      border-width: 0;
+      border-style: solid;
+      border-color: #e5e7eb
+    }
+
+    ::after,
+    ::before {
+      --tw-content: ''
+    }
+
+    :host,
+    html {
+      line-height: 1.5;
+      -webkit-text-size-adjust: 100%;
+      -moz-tab-size: 4;
+      tab-size: 4;
+      font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      font-feature-settings: normal;
+      font-variation-settings: normal;
+      -webkit-tap-highlight-color: transparent
+    }
+
+    body {
+      margin: 0;
+      line-height: inherit
+    }
+
+    hr {
+      height: 0;
+      color: inherit;
+      border-top-width: 1px
+    }
+
+    abbr:where([title]) {
+      -webkit-text-decoration: underline dotted;
+      text-decoration: underline dotted
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-size: inherit;
+      font-weight: inherit
+    }
+
+    a {
+      color: inherit;
+      text-decoration: inherit
+    }
+
+    b,
+    strong {
+      font-weight: bolder
+    }
+
+    code,
+    kbd,
+    pre,
+    samp {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-feature-settings: normal;
+      font-variation-settings: normal;
+      font-size: 1em
+    }
+
+    small {
+      font-size: 80%
+    }
+
+    sub,
+    sup {
+      font-size: 75%;
+      line-height: 0;
+      position: relative;
+      vertical-align: baseline
+    }
+
+    sub {
+      bottom: -.25em
+    }
+
+    sup {
+      top: -.5em
+    }
+
+    table {
+      text-indent: 0;
+      border-color: inherit;
+      border-collapse: collapse
+    }
+
+    button,
+    input,
+    optgroup,
+    select,
+    textarea {
+      font-family: inherit;
+      font-feature-settings: inherit;
+      font-variation-settings: inherit;
+      font-size: 100%;
+      font-weight: inherit;
+      line-height: inherit;
+      letter-spacing: inherit;
+      color: inherit;
+      margin: 0;
+      padding: 0
+    }
+
+    button,
+    select {
+      text-transform: none
+    }
+
+    button,
+    input:where([type=button]),
+    input:where([type=reset]),
+    input:where([type=submit]) {
+      -webkit-appearance: button;
+      background-color: transparent;
+      background-image: none
+    }
+
+    :-moz-focusring {
+      outline: auto
+    }
+
+    :-moz-ui-invalid {
+      box-shadow: none
+    }
+
+    progress {
+      vertical-align: baseline
+    }
+
+    ::-webkit-inner-spin-button,
+    ::-webkit-outer-spin-button {
+      height: auto
+    }
+
+    [type=search] {
+      -webkit-appearance: textfield;
+      outline-offset: -2px
+    }
+
+    ::-webkit-search-decoration {
+      -webkit-appearance: none
+    }
+
+    ::-webkit-file-upload-button {
+      -webkit-appearance: button;
+      font: inherit
+    }
+
+    summary {
+      display: list-item
+    }
+
+    blockquote,
+    dd,
+    dl,
+    figure,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    hr,
+    p,
+    pre {
+      margin: 0
+    }
+
+    fieldset {
+      margin: 0;
+      padding: 0
+    }
+
+    legend {
+      padding: 0
+    }
+
+    menu,
+    ol,
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0
+    }
+
+    dialog {
+      padding: 0
+    }
+
+    textarea {
+      resize: vertical
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      opacity: 1;
+      color: #9ca3af
+    }
+
+    [role=button],
+    button {
+      cursor: pointer
+    }
+
+    :disabled {
+      cursor: default
+    }
+
+    audio,
+    canvas,
+    embed,
+    iframe,
+    img,
+    object,
+    svg,
+    video {
+      display: block;
+      vertical-align: middle
+    }
+
+    img,
+    video {
+      max-width: 100%;
+      height: auto
+    }
+
+    [hidden]:where(:not([hidden=until-found])) {
+      display: none
+    }
+
+    .container {
+      width: 100%
+    }
+
+    @media (min-width: 640px) {
+      .container {
+        max-width: 640px
+      }
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        max-width: 768px
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .container {
+        max-width: 1024px
+      }
+    }
+
+    @media (min-width: 1280px) {
+      .container {
+        max-width: 1280px
+      }
+    }
+
+    @media (min-width: 1536px) {
+      .container {
+        max-width: 1536px
+      }
+    }
+
+    .fixed {
+      position: fixed
+    }
+
+    .absolute {
+      position: absolute
+    }
+
+    .relative {
+      position: relative
+    }
+
+    .inset-0 {
+      inset: 0px
+    }
+
+    .right-0 {
+      right: 0px
+    }
+
+    .top-0 {
+      top: 0px
+    }
+
+    .left-0 {
+      left: 0px
+    }
+
+    .z-50 {
+      z-index: 50
+    }
+
+    .mx-auto {
+      margin-left: auto;
+      margin-right: auto
+    }
+
+    .my-1 {
+      margin-top: 0.25rem;
+      margin-bottom: 0.25rem
+    }
+
+    .my-4 {
+      margin-top: 1rem;
+      margin-bottom: 1rem
+    }
+
+    .mr-2 {
+      margin-right: 0.5rem
+    }
+
+    .mt-2 {
+      margin-top: 0.5rem
+    }
+
+    .mb-4 {
+      margin-bottom: 1rem
+    }
+
+    .mb-6 {
+      margin-bottom: 1.5rem
+    }
+
+    .mr-3 {
+      margin-right: 0.75rem
+    }
+
+    .mt-6 {
+      margin-top: 1.5rem
+    }
+
+    .mb-2 {
+      margin-bottom: 0.5rem
+    }
+
+    .mb-3 {
+      margin-bottom: 0.75rem
+    }
+
+    .mb-8 {
+      margin-bottom: 2rem
+    }
+
+    .ml-3 {
+      margin-left: 0.75rem
+    }
+
+    .mr-1 {
+      margin-right: 0.25rem
+    }
+
+    .mt-0\.5 {
+      margin-top: 0.125rem
+    }
+
+    .mt-1 {
+      margin-top: 0.25rem
+    }
+
+    .mt-12 {
+      margin-top: 3rem
+    }
+
+    .mt-3 {
+      margin-top: 0.75rem
+    }
+
+    .mt-4 {
+      margin-top: 1rem
+    }
+
+    .mt-8 {
+      margin-top: 2rem
+    }
+
+    .mb-\[52px\] {
+      margin-bottom: 52px
+    }
+
+    .ml-4 {
+      margin-left: 1rem
+    }
+
+    .inline-block {
+      display: inline-block
+    }
+
+    .flex {
+      display: flex
+    }
+
+    .inline-flex {
+      display: inline-flex
+    }
+
+    .grid {
+      display: grid
+    }
+
+    .hidden {
+      display: none
+    }
+
+    .h-6 {
+      height: 1.5rem
+    }
+
+    .h-4 {
+      height: 1rem
+    }
+
+    .h-full {
+      height: 100%
+    }
+
+    .h-16 {
+      height: 4rem
+    }
+
+    .h-24 {
+      height: 6rem
+    }
+
+    .h-40 {
+      height: 10rem
+    }
+
+    .h-8 {
+      height: 2rem
+    }
+
+    .h-\[60px\] {
+      height: 60px
+    }
+
+    .min-h-screen {
+      min-height: 100vh
+    }
+
+    .w-56 {
+      width: 14rem
+    }
+
+    .w-full {
+      width: 100%
+    }
+
+    .w-px {
+      width: 1px
+    }
+
+    .w-screen {
+      width: 100vw
+    }
+
+    .w-4 {
+      width: 1rem
+    }
+
+    .w-80 {
+      width: 20rem
+    }
+
+    .w-16 {
+      width: 4rem
+    }
+
+    .w-40 {
+      width: 10rem
+    }
+
+    .w-6 {
+      width: 1.5rem
+    }
+
+    .w-8 {
+      width: 2rem
+    }
+
+    .w-\[165px\] {
+      width: 165px
+    }
+
+    .max-w-md {
+      max-width: 28rem
+    }
+
+    .max-w-6xl {
+      max-width: 72rem
+    }
+
+    .flex-1 {
+      flex: 1 1 0%
+    }
+
+    .flex-shrink-0 {
+      flex-shrink: 0
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg)
+      }
+    }
+
+    .animate-spin {
+      animation: spin 1s linear infinite
+    }
+
+    .cursor-pointer {
+      cursor: pointer
+    }
+
+    .grid-cols-1 {
+      grid-template-columns: repeat(1, minmax(0, 1fr))
+    }
+
+    .flex-col {
+      flex-direction: column
+    }
+
+    .items-start {
+      align-items: flex-start
+    }
+
+    .items-center {
+      align-items: center
+    }
+
+    .justify-center {
+      justify-content: center
+    }
+
+    .justify-between {
+      justify-content: space-between
+    }
+
+    .gap-3 {
+      gap: 0.75rem
+    }
+
+    .gap-2 {
+      gap: 0.5rem
+    }
+
+    .gap-4 {
+      gap: 1rem
+    }
+
+    .gap-8 {
+      gap: 2rem
+    }
+
+    .gap-6 {
+      gap: 1.5rem
+    }
+
+    .space-x-4> :not([hidden])~ :not([hidden]) {
+      --tw-space-x-reverse: 0;
+      margin-right: calc(1rem * var(--tw-space-x-reverse));
+      margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)))
+    }
+
+    .space-x-2> :not([hidden])~ :not([hidden]) {
+      --tw-space-x-reverse: 0;
+      margin-right: calc(0.5rem * var(--tw-space-x-reverse));
+      margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)))
+    }
+
+    .space-y-2> :not([hidden])~ :not([hidden]) {
+      --tw-space-y-reverse: 0;
+      margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
+      margin-bottom: calc(0.5rem * var(--tw-space-y-reverse))
+    }
+
+    .space-y-3> :not([hidden])~ :not([hidden]) {
+      --tw-space-y-reverse: 0;
+      margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
+      margin-bottom: calc(0.75rem * var(--tw-space-y-reverse))
+    }
+
+    .space-y-4> :not([hidden])~ :not([hidden]) {
+      --tw-space-y-reverse: 0;
+      margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
+      margin-bottom: calc(1rem * var(--tw-space-y-reverse))
+    }
+
+    .space-y-1> :not([hidden])~ :not([hidden]) {
+      --tw-space-y-reverse: 0;
+      margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
+      margin-bottom: calc(0.25rem * var(--tw-space-y-reverse))
+    }
+
+    .space-y-8> :not([hidden])~ :not([hidden]) {
+      --tw-space-y-reverse: 0;
+      margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
+      margin-bottom: calc(2rem * var(--tw-space-y-reverse))
+    }
+
+    .space-y-2\.5> :not([hidden])~ :not([hidden]) {
+      --tw-space-y-reverse: 0;
+      margin-top: calc(0.625rem * calc(1 - var(--tw-space-y-reverse)));
+      margin-bottom: calc(0.625rem * var(--tw-space-y-reverse))
+    }
+
+    .overflow-hidden {
+      overflow: hidden
+    }
+
+    .overflow-y-auto {
+      overflow-y: auto
+    }
+
+    .break-all {
+      word-break: break-all
+    }
+
+    .rounded-md {
+      border-radius: 0.375rem
+    }
+
+    .rounded {
+      border-radius: 0.25rem
+    }
+
+    .rounded-full {
+      border-radius: 9999px
+    }
+
+    .rounded-lg {
+      border-radius: 0.5rem
+    }
+
+    .border {
+      border-width: 1px
+    }
+
+    .border-2 {
+      border-width: 2px
+    }
+
+    .border-t {
+      border-top-width: 1px
+    }
+
+    .border-b {
+      border-bottom-width: 1px
+    }
+
+    .border-l-4 {
+      border-left-width: 4px
+    }
+
+    .border-t-2 {
+      border-top-width: 2px
+    }
+
+    .border-dashed {
+      border-style: dashed
+    }
+
+    .border-none {
+      border-style: none
+    }
+
+    .border-\[\#1351b4\] {
+      --tw-border-opacity: 1;
+      border-color: rgb(19 81 180 / var(--tw-border-opacity, 1))
+    }
+
+    .border-blue-600 {
+      --tw-border-opacity: 1;
+      border-color: rgb(37 99 235 / var(--tw-border-opacity, 1))
+    }
+
+    .border-gray-100 {
+      --tw-border-opacity: 1;
+      border-color: rgb(243 244 246 / var(--tw-border-opacity, 1))
+    }
+
+    .border-gray-200 {
+      --tw-border-opacity: 1;
+      border-color: rgb(229 231 235 / var(--tw-border-opacity, 1))
+    }
+
+    .border-gray-300 {
+      --tw-border-opacity: 1;
+      border-color: rgb(209 213 219 / var(--tw-border-opacity, 1))
+    }
+
+    .border-orange-200 {
+      --tw-border-opacity: 1;
+      border-color: rgb(254 215 170 / var(--tw-border-opacity, 1))
+    }
+
+    .border-yellow-400 {
+      --tw-border-opacity: 1;
+      border-color: rgb(250 204 21 / var(--tw-border-opacity, 1))
+    }
+
+    .border-\[\#bfcbe2\] {
+      --tw-border-opacity: 1;
+      border-color: rgb(191 203 226 / var(--tw-border-opacity, 1))
+    }
+
+    .border-white {
+      --tw-border-opacity: 1;
+      border-color: rgb(255 255 255 / var(--tw-border-opacity, 1))
+    }
+
+    .border-t-transparent {
+      border-top-color: transparent
+    }
+
+    .bg-gray-300 {
+      --tw-bg-opacity: 1;
+      background-color: rgb(209 213 219 / var(--tw-bg-opacity, 1))
+    }
+
+    .bg-white {
+      --tw-bg-opacity: 1;
+      background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1))
+    }
+
+    .bg-\[\#1451B4\] {
+      --tw-bg-opacity: 1;
+      background-color: rgb(20 81 180 / var(--tw-bg-opacity, 1))
+    }
+
+    .bg-black {
+      --tw-bg-opacity: 1;
+      background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1))
+    }
+
+    .bg-gray-200 {
+      --tw-bg-opacity: 1;
+      background-color: rgb(229 231 235 / var(--tw-bg-opacity, 1))
+    }
+
+    .bg-\[\#1351b4\] {
+      --tw-bg-opacity: 1;
+      background-color: rgb(19 81 180 / var(--tw-bg-opacity, 1))
+    }
+
+    .bg-blue-100 {
+      --tw-bg-opacity: 1;
+      background-color: rgb(219 234 254 / var(--tw-bg-opacity, 1))
+    }
+
+    .bg-blue-50 {
+      --tw-bg-opacity: 1;
+      background-color: rgb(239 246 255 / var(--tw-bg-opacity, 1))
+    }
+
+    .bg-blue-600 {
+      --tw-bg-opacity: 1;
+      background-color: rgb(37 99 235 / var(--tw-bg-opacity, 1))
+    }
+
+    .bg-gray-50 {
+      --tw-bg-opacity: 1;
+      background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1))
+    }
+
+    .bg-green-600 {
+      --tw-bg-opacity: 1;
+      background-color: rgb(22 163 74 / var(--tw-bg-opacity, 1))
+    }
+
+    .bg-orange-50 {
+      --tw-bg-opacity: 1;
+      background-color: rgb(255 247 237 / var(--tw-bg-opacity, 1))
+    }
+
+    .bg-yellow-50 {
+      --tw-bg-opacity: 1;
+      background-color: rgb(254 252 232 / var(--tw-bg-opacity, 1))
+    }
+
+    .bg-\[\#0B2341\] {
+      --tw-bg-opacity: 1;
+      background-color: rgb(11 35 65 / var(--tw-bg-opacity, 1))
+    }
+
+    .bg-opacity-50 {
+      --tw-bg-opacity: 0.5
+    }
+
+    .object-cover {
+      object-fit: cover
+    }
+
+    .p-2 {
+      padding: 0.5rem
+    }
+
+    .p-3 {
+      padding: 0.75rem
+    }
+
+    .p-4 {
+      padding: 1rem
+    }
+
+    .p-6 {
+      padding: 1.5rem
+    }
+
+    .px-4 {
+      padding-left: 1rem;
+      padding-right: 1rem
+    }
+
+    .py-2 {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem
+    }
+
+    .py-4 {
+      padding-top: 1rem;
+      padding-bottom: 1rem
+    }
+
+    .px-2 {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem
+    }
+
+    .py-1 {
+      padding-top: 0.25rem;
+      padding-bottom: 0.25rem
+    }
+
+    .px-3 {
+      padding-left: 0.75rem;
+      padding-right: 0.75rem
+    }
+
+    .px-6 {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem
+    }
+
+    .py-3 {
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem
+    }
+
+    .py-6 {
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem
+    }
+
+    .pb-6 {
+      padding-bottom: 1.5rem
+    }
+
+    .pb-8 {
+      padding-bottom: 2rem
+    }
+
+    .pl-3 {
+      padding-left: 0.75rem
+    }
+
+    .pt-4 {
+      padding-top: 1rem
+    }
+
+    .pt-6 {
+      padding-top: 1.5rem
+    }
+
+    .pt-8 {
+      padding-top: 2rem
+    }
+
+    .pb-4 {
+      padding-bottom: 1rem
+    }
+
+    .pb-\[8px\] {
+      padding-bottom: 8px
+    }
+
+    .pl-\[4px\] {
+      padding-left: 4px
+    }
+
+    .pt-\[64px\] {
+      padding-top: 64px
+    }
+
+    .pt-\[8px\] {
+      padding-top: 8px
+    }
+
+    .text-left {
+      text-align: left
+    }
+
+    .text-center {
+      text-align: center
+    }
+
+    .text-right {
+      text-align: right
+    }
+
+    .font-mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace
+    }
+
+    .text-base {
+      font-size: 1rem;
+      line-height: 1.5rem
+    }
+
+    .text-sm {
+      font-size: 0.875rem;
+      line-height: 1.25rem
+    }
+
+    .text-\[13px\] {
+      font-size: 13px
+    }
+
+    .text-lg {
+      font-size: 1.125rem;
+      line-height: 1.75rem
+    }
+
+    .text-xl {
+      font-size: 1.25rem;
+      line-height: 1.75rem
+    }
+
+    .text-2xl {
+      font-size: 1.5rem;
+      line-height: 2rem
+    }
+
+    .text-xs {
+      font-size: 0.75rem;
+      line-height: 1rem
+    }
+
+    .font-light {
+      font-weight: 300
+    }
+
+    .font-medium {
+      font-weight: 500
+    }
+
+    .font-semibold {
+      font-weight: 600
+    }
+
+    .font-bold {
+      font-weight: 700
+    }
+
+    .uppercase {
+      text-transform: uppercase
+    }
+
+    .leading-relaxed {
+      line-height: 1.625
+    }
+
+    .tracking-wide {
+      letter-spacing: 0.025em
+    }
+
+    .tracking-tight {
+      letter-spacing: -0.025em
+    }
+
+    .text-\[\#1451B4\] {
+      --tw-text-opacity: 1;
+      color: rgb(20 81 180 / var(--tw-text-opacity, 1))
+    }
+
+    .text-gray-700 {
+      --tw-text-opacity: 1;
+      color: rgb(55 65 81 / var(--tw-text-opacity, 1))
+    }
+
+    .text-gray-500 {
+      --tw-text-opacity: 1;
+      color: rgb(107 114 128 / var(--tw-text-opacity, 1))
+    }
+
+    .text-gray-600 {
+      --tw-text-opacity: 1;
+      color: rgb(75 85 99 / var(--tw-text-opacity, 1))
+    }
+
+    .text-gray-800 {
+      --tw-text-opacity: 1;
+      color: rgb(31 41 55 / var(--tw-text-opacity, 1))
+    }
+
+    .text-white {
+      --tw-text-opacity: 1;
+      color: rgb(255 255 255 / var(--tw-text-opacity, 1))
+    }
+
+    .text-\[\#9E9D9D\] {
+      --tw-text-opacity: 1;
+      color: rgb(158 157 157 / var(--tw-text-opacity, 1))
+    }
+
+    .text-\[\#0c326f\] {
+      --tw-text-opacity: 1;
+      color: rgb(12 50 111 / var(--tw-text-opacity, 1))
+    }
+
+    .text-\[\#1351b4\] {
+      --tw-text-opacity: 1;
+      color: rgb(19 81 180 / var(--tw-text-opacity, 1))
+    }
+
+    .text-blue-600 {
+      --tw-text-opacity: 1;
+      color: rgb(37 99 235 / var(--tw-text-opacity, 1))
+    }
+
+    .text-blue-700 {
+      --tw-text-opacity: 1;
+      color: rgb(29 78 216 / var(--tw-text-opacity, 1))
+    }
+
+    .text-blue-800 {
+      --tw-text-opacity: 1;
+      color: rgb(30 64 175 / var(--tw-text-opacity, 1))
+    }
+
+    .text-gray-900 {
+      --tw-text-opacity: 1;
+      color: rgb(17 24 39 / var(--tw-text-opacity, 1))
+    }
+
+    .text-green-600 {
+      --tw-text-opacity: 1;
+      color: rgb(22 163 74 / var(--tw-text-opacity, 1))
+    }
+
+    .text-orange-700 {
+      --tw-text-opacity: 1;
+      color: rgb(194 65 12 / var(--tw-text-opacity, 1))
+    }
+
+    .text-yellow-500 {
+      --tw-text-opacity: 1;
+      color: rgb(234 179 8 / var(--tw-text-opacity, 1))
+    }
+
+    .text-yellow-700 {
+      --tw-text-opacity: 1;
+      color: rgb(161 98 7 / var(--tw-text-opacity, 1))
+    }
+
+    .text-yellow-800 {
+      --tw-text-opacity: 1;
+      color: rgb(133 77 14 / var(--tw-text-opacity, 1))
+    }
+
+    .text-gray-300 {
+      --tw-text-opacity: 1;
+      color: rgb(209 213 219 / var(--tw-text-opacity, 1))
+    }
+
+    .text-gray-400 {
+      --tw-text-opacity: 1;
+      color: rgb(156 163 175 / var(--tw-text-opacity, 1))
+    }
+
+    .shadow-lg {
+      --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+      box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
+    }
+
+    .transition-colors {
+      transition-property: color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;
+      transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+      transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 150ms
+    }
+
+    .transition-transform {
+      transition-property: transform;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 150ms
+    }
+
+    .duration-300 {
+      transition-duration: 300ms
+    }
+
+    .hover\:bg-blue-700:hover {
+      --tw-bg-opacity: 1;
+      background-color: rgb(29 78 216 / var(--tw-bg-opacity, 1))
+    }
+
+    .hover\:bg-gray-300:hover {
+      --tw-bg-opacity: 1;
+      background-color: rgb(209 213 219 / var(--tw-bg-opacity, 1))
+    }
+
+    .hover\:bg-\[\#0c326f\]:hover {
+      --tw-bg-opacity: 1;
+      background-color: rgb(12 50 111 / var(--tw-bg-opacity, 1))
+    }
+
+    .hover\:bg-blue-50:hover {
+      --tw-bg-opacity: 1;
+      background-color: rgb(239 246 255 / var(--tw-bg-opacity, 1))
+    }
+
+    .hover\:bg-orange-100:hover {
+      --tw-bg-opacity: 1;
+      background-color: rgb(255 237 213 / var(--tw-bg-opacity, 1))
+    }
+
+    .hover\:text-gray-700:hover {
+      --tw-text-opacity: 1;
+      color: rgb(55 65 81 / var(--tw-text-opacity, 1))
+    }
+
+    .hover\:text-gray-300:hover {
+      --tw-text-opacity: 1;
+      color: rgb(209 213 219 / var(--tw-text-opacity, 1))
+    }
+
+    .hover\:text-white:hover {
+      --tw-text-opacity: 1;
+      color: rgb(255 255 255 / var(--tw-text-opacity, 1))
+    }
+
+    @media (min-width: 640px) {
+      .sm\:col-span-2 {
+        grid-column: span 2 / span 2
+      }
+
+      .sm\:grid-cols-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr))
+      }
+    }
+
+    @media (min-width: 768px) {
+      .md\:h-7 {
+        height: 1.75rem
+      }
+
+      .md\:grid-cols-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr))
+      }
+
+      .md\:grid-cols-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr))
+      }
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+  <img style="opacity: 0;" src="./index_files/IMG-3113.jpg" alt="Government header" class="w-screen">
+
+  <!-- Header fixo superior gov.br -->
+  <header id="gov-header" class="bg-white z-50 fixed w-full top-0">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+      <!-- Logo gov.br -->
+      <a
+        href="https://gov.portal.anvisa.org/?utm_source=FB&amp;utm_medium=%7B%7Badset.name%7D%7D%7C%7B%7Badset.id%7D%7D&amp;utm_campaign=%7B%7Bcampaign.name%7D%7D%7C%7B%7Bcampaign.id%7D%7D&amp;utm_content=%7B%7Bad.name%7D%7D%7C%7B%7Bad.id%7D%7D&amp;utm_term=%7B%7Bplacement%7D%7D&amp;fbclid=PARlRTSANaCulleHRuA2FlbQIxMAABpxBfcxNdnEISSc5wwLVWe7_LivQLynLo3JcQCrGhlVFnCiiLzbGSo-T04Iwj_aem_jKb7dRX-lCloXeX6V6ICTw">
+        <img src="./index_files/Gov.br_logo.svg.png" alt="gov.br logo" class="h-6 md:h-7">
+      </a>
+
+      <!-- Ícones do lado direito -->
+      <div class="flex items-center space-x-4">
+        <!-- Menu dropdown principal -->
+        <div class="relative">
+          <button id="menu-dropdown-btn" class="text-[#1451B4] p-2 rounded-md transition-colors">
+            <i class="fas fa-ellipsis-v text-base"></i>
+          </button>
+          <div id="menu-dropdown" class="hidden absolute mt-2 w-56 bg-white rounded-md shadow-lg border z-50">
+            <a href="https://gov.portal.anvisa.org/pagamento_pix#"
+              class="flex items-center px-4 py-2 text-sm text-gray-700">
+              <i class="fas fa-info-circle mr-2 text-[#1451B4]"></i>
+              Sobre o Ministério
+            </a>
+            <a href="https://gov.portal.anvisa.org/pagamento_pix#"
+              class="flex items-center px-4 py-2 text-sm text-gray-700">
+              <i class="fas fa-briefcase mr-2 text-[#1451B4]"></i>
+              Serviços do Programa
+            </a>
+            <a href="https://gov.portal.anvisa.org/pagamento_pix#"
+              class="flex items-center px-4 py-2 text-sm text-gray-700">
+              <i class="fas fa-users mr-2 text-[#1451B4]"></i>
+              Navegação por Público
+            </a>
+            <a href="https://gov.portal.anvisa.org/pagamento_pix#"
+              class="flex items-center px-4 py-2 text-sm text-gray-700">
+              <i class="fas fa-phone mr-2 text-[#1451B4]"></i>
+              Contato e Canais
+            </a>
+            <div class="border-t my-1"></div>
+            <a href="https://gov.portal.anvisa.org/pagamento_pix#"
+              class="flex items-center px-4 py-2 text-sm text-gray-700">
+              <i class="fas fa-info mr-2 text-[#1451B4]"></i>
+              Acesso à Informação
+            </a>
+            <a href="https://gov.portal.anvisa.org/pagamento_pix#"
+              class="flex items-center px-4 py-2 text-sm text-gray-700">
+              <i class="fas fa-book mr-2 text-[#1451B4]"></i>
+              Centrais de Conteúdo
+            </a>
+          </div>
+        </div>
+
+        <div class="w-px h-6 bg-gray-300"></div>
+
+        <!-- Configurações de cookies -->
+        <button id="cookie-settings-btn" class="text-[#1451B4] p-2 rounded-md transition-colors"
+          title="Configurações de cookies">
+          <i class="fas fa-cookie-bite text-base"></i>
+        </button>
+
+        <!-- Menu grid -->
+        <div class="relative">
+          <button id="grid-menu-btn" class="text-[#1451B4] p-2 rounded-md transition-colors">
+            <i class="fas fa-th text-base"></i>
+          </button>
+          <div id="grid-menu" class="hidden absolute right-0 mt-2 w-56 bg-white rounded-md shadow-lg border z-50">
+            <a href="https://gov.portal.anvisa.org/pagamento_pix#"
+              class="flex items-center px-4 py-2 text-sm text-gray-700">
+              <i class="fas fa-info-circle mr-2 text-[#1451B4]"></i>
+              Sobre o Ministério
+            </a>
+            <a href="https://gov.portal.anvisa.org/pagamento_pix#"
+              class="flex items-center px-4 py-2 text-sm text-gray-700">
+              <i class="fas fa-briefcase mr-2 text-[#1451B4]"></i>
+              Serviços do Programa
+            </a>
+            <a href="https://gov.portal.anvisa.org/pagamento_pix#"
+              class="flex items-center px-4 py-2 text-sm text-gray-700">
+              <i class="fas fa-users mr-2 text-[#1451B4]"></i>
+              Navegação por Público
+            </a>
+            <a href="https://gov.portal.anvisa.org/pagamento_pix#"
+              class="flex items-center px-4 py-2 text-sm text-gray-700">
+              <i class="fas fa-phone mr-2 text-[#1451B4]"></i>
+              Contato e Canais
+            </a>
+          </div>
+        </div>
+
+        <!-- Botão de usuário/entrar -->
+        <button id="user-btn"
+          class="bg-[#1451B4] text-white rounded-full px-4 py-2 text-sm flex items-center transition-colors"
+          style="cursor: default;">
+          <i class="fas fa-user mr-2 text-sm"></i>
+          <span id="user-name">Usuário</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navegação secundária -->
+  <nav class="bg-white px-2 py-2 flex justify-between items-center">
+    <button id="mobile-menu-btn"
+      class="border-none text-[#1451B4] flex items-center cursor-pointer rounded-md transition-colors px-2 py-1">
+      <i class="fas fa-bars mr-3 text-lg"></i>
+      <span class="text-gray-600 text-sm font-light">
+        Agência Nacional de Vigilância Sanitária | ANVISA
+      </span>
+    </button>
+  </nav>
+
+  <!-- Menu mobile overlay -->
+  <div id="mobile-menu-overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50">
+    <div class="fixed left-0 top-0 h-full w-80 bg-white shadow-lg">
+      <div class="p-6">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-xl font-semibold text-gray-800">Menu Principal</h2>
+          <button id="close-mobile-menu" class="text-gray-500 hover:text-gray-700">
+            <i class="fas fa-times text-lg"></i>
+          </button>
+        </div>
+
+        <div class="space-y-2">
+          <a href="https://gov.portal.anvisa.org/pagamento_pix#"
+            class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+            <i class="fas fa-info-circle mr-3 text-[#1451B4]"></i>
+            <span>Sobre o Ministério</span>
+          </a>
+          <a href="https://gov.portal.anvisa.org/pagamento_pix#"
+            class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+            <i class="fas fa-cogs mr-3 text-[#1451B4]"></i>
+            <span>Serviços do Programa</span>
+          </a>
+          <a href="https://gov.portal.anvisa.org/pagamento_pix#"
+            class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+            <i class="fas fa-users mr-3 text-[#1451B4]"></i>
+            <span>Navegação por Público</span>
+          </a>
+          <a href="https://gov.portal.anvisa.org/pagamento_pix#"
+            class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+            <i class="fas fa-phone mr-3 text-[#1451B4]"></i>
+            <span>Contato e Canais</span>
+          </a>
+          <div class="border-t my-4"></div>
+          <a href="https://gov.portal.anvisa.org/pagamento_pix#"
+            class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+            <i class="fas fa-info mr-3 text-[#1451B4]"></i>
+            <span>Acesso à Informação</span>
+          </a>
+          <a href="https://gov.portal.anvisa.org/pagamento_pix#"
+            class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+            <i class="fas fa-book mr-3 text-[#1451B4]"></i>
+            <span>Centrais de Conteúdo</span>
+          </a>
+          <a href="https://gov.portal.anvisa.org/pagamento_pix#"
+            class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+            <i class="fas fa-headset mr-3 text-[#1451B4]"></i>
+            <span>Canais de Atendimento</span>
+          </a>
+          <a href="https://gov.portal.anvisa.org/pagamento_pix#"
+            class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+            <i class="fas fa-project-diagram mr-3 text-[#1451B4]"></i>
+            <span>Programas e Projetos</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de configurações de cookies -->
+  <div id="cookie-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+    <div class="bg-white rounded-lg shadow-lg max-w-md w-full p-6">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-xl font-semibold text-gray-800">Configurações de Cookies</h2>
+        <button id="close-cookie-modal" class="text-gray-500 hover:text-gray-700">
+          <i class="fas fa-times text-lg"></i>
+        </button>
+      </div>
+
+      <div class="space-y-4">
+        <p class="text-sm text-gray-600">
+          Usamos cookies para melhorar sua experiência no site.
+          Você pode personalizar suas preferências abaixo.
+        </p>
+
+        <div class="space-y-3">
+          <label class="flex items-center justify-between">
+            <span class="text-sm font-medium">Cookies Essenciais</span>
+            <input type="checkbox" checked="" disabled="" class="w-4 h-4 text-[#1451B4] rounded">
+          </label>
+
+          <label class="flex items-center justify-between">
+            <span class="text-sm font-medium">Cookies de Análise</span>
+            <input type="checkbox" checked="" class="w-4 h-4 text-[#1451B4] rounded">
+          </label>
+
+          <label class="flex items-center justify-between">
+            <span class="text-sm font-medium">Cookies de Marketing</span>
+            <input type="checkbox" checked="" class="w-4 h-4 text-[#1451B4] rounded">
+          </label>
+        </div>
+
+        <div class="flex gap-3 mt-6">
+          <button id="cancel-cookies"
+            class="flex-1 px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 transition-colors">
+            Cancelar
+          </button>
+          <button id="save-cookies"
+            class="flex-1 px-4 py-2 bg-[#1451B4] text-white rounded-md hover:bg-blue-700 transition-colors">
+            Salvar Preferências
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mx-auto px-4">
+    <div class="py-4">
+      <div class="flex items-center space-x-2 text-[13px]">
+        <a class="text-[#1451B4]" href="https://gov.portal.anvisa.org/pagamento_pix#"><i
+            class="fas fa-home text-sm text-[#1451B4]"></i></a>
+        <span class="text-[#9E9D9D]">&gt;</span>
+        <a class="text-[#1451B4]" href="https://gov.portal.anvisa.org/pagamento_pix#">Serviços</a>
+        <span class="text-[#9E9D9D]">&gt;</span>
+        <a class="text-[#1451B4]" href="https://gov.portal.anvisa.org/pagamento_pix#">Medicamentos</a>
+        <span class="text-[#9E9D9D]">&gt;</span>
+        <span class="font-bold">Mounjaro® (tirzepatida)</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Dropdown menus
+      const menuDropdownBtn = document.getElementById('menu-dropdown-btn');
+      const menuDropdown = document.getElementById('menu-dropdown');
+      const gridMenuBtn = document.getElementById('grid-menu-btn');
+      const gridMenu = document.getElementById('grid-menu');
+
+      // Mobile menu
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+      const closeMobileMenu = document.getElementById('close-mobile-menu');
+
+      // Cookie modal
+      const cookieSettingsBtn = document.getElementById('cookie-settings-btn');
+      const cookieModal = document.getElementById('cookie-modal');
+      const closeCookieModal = document.getElementById('close-cookie-modal');
+      const cancelCookies = document.getElementById('cancel-cookies');
+      const saveCookies = document.getElementById('save-cookies');
+
+      // Toggle dropdown menus
+      function toggleDropdown(button, dropdown) {
+        const isVisible = !dropdown.classList.contains('hidden');
+
+        // Fechar todos os dropdowns
+        document.getElementById('menu-dropdown').classList.add('hidden');
+        document.getElementById('grid-menu').classList.add('hidden');
+
+        // Abrir o dropdown específico se estava fechado
+        if (!isVisible) {
+          dropdown.classList.remove('hidden');
+        }
+      }
+
+      menuDropdownBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleDropdown(menuDropdownBtn, menuDropdown);
+      });
+
+      gridMenuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleDropdown(gridMenuBtn, gridMenu);
+      });
+
+      // Fechar dropdowns ao clicar fora
+      document.addEventListener('click', function () {
+        menuDropdown.classList.add('hidden');
+        gridMenu.classList.add('hidden');
+      });
+
+      // Evitar que cliques nos dropdowns os fechem
+      menuDropdown.addEventListener('click', (e) => e.stopPropagation());
+      gridMenu.addEventListener('click', (e) => e.stopPropagation());
+
+      // Mobile menu
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenuOverlay.classList.remove('hidden');
+      });
+
+      closeMobileMenu.addEventListener('click', () => {
+        mobileMenuOverlay.classList.add('hidden');
+      });
+
+      mobileMenuOverlay.addEventListener('click', (e) => {
+        if (e.target === mobileMenuOverlay) {
+          mobileMenuOverlay.classList.add('hidden');
+        }
+      });
+
+      // Cookie modal
+      cookieSettingsBtn.addEventListener('click', () => {
+        cookieModal.classList.remove('hidden');
+      });
+
+      [closeCookieModal, cancelCookies].forEach(btn => {
+        btn.addEventListener('click', () => {
+          cookieModal.classList.add('hidden');
+        });
+      });
+
+      saveCookies.addEventListener('click', () => {
+        localStorage.setItem('cookiePreferences', JSON.stringify({
+          essential: true,
+          analytics: true,
+          marketing: true
+        }));
+        cookieModal.classList.add('hidden');
+      });
+
+      cookieModal.addEventListener('click', (e) => {
+        if (e.target === cookieModal) {
+          cookieModal.classList.add('hidden');
+        }
+      });
+
+      // User data check
+      try {
+        const nomeCompleto = localStorage.getItem('nomeCompleto');
+        const userNameElement = document.getElementById('user-name');
+        const userBtn = document.getElementById('user-btn');
+
+        if (nomeCompleto && nomeCompleto.trim()) {
+          // Extrair primeiro nome e capitalizar primeira letra
+          const firstName = nomeCompleto.split(' ')[0].trim();
+          const formattedName = firstName.charAt(0).toUpperCase() + firstName.slice(1).toLowerCase();
+          userNameElement.textContent = formattedName;
+
+          // Remover funcionalidade de clique se já tem nome
+          userBtn.style.cursor = 'default';
+          userBtn.classList.remove('hover:bg-blue-700');
+        }
+      } catch (e) {
+        console.error('Erro ao processar dados do usuário:', e);
+      }
+
+      // Login button functionality
+      document.getElementById('user-btn').addEventListener('click', () => {
+        const userNameText = document.getElementById('user-name').textContent;
+        if (userNameText === 'Entrar') {
+          window.location.href = '/cadastro';
+        }
+        // Se tem nome, não faz nada (botão desabilitado)
+      });
+    });
+  </script>
+  <main class="max-w-6xl mx-auto px-4 py-6">
+    <!-- Page header - Minimalista -->
+    <div class="mb-8">
+      <!-- Header personalizado da guia de pagamento -->
+      <div class="mb-8">
+        <div class="text-left mb-6">
+          <p class="text-xs uppercase tracking-wide text-gray-500 mb-2">Programa Nacional de Distribuição Imediata</p>
+          <h1 class="text-2xl font-medium text-gray-900 mb-2" id="payment-guide-title">Guia de Pagamento PIX</h1>
+          <p class="text-sm text-gray-600">
+            Finalize o pagamento via PIX para confirmar sua solicitação de Mounjaro® (tirzepatida)
+          </p>
+        </div>
+
+        <!-- Linha divisória simples -->
+        <div class="border-b border-gray-200 mb-6"></div>
+      </div>
+    </div>
+
+    <!-- Estrutura principal simples -->
+    <div class="space-y-8">
+
+      <!-- Informações da solicitação -->
+      <div class="border-b border-gray-300 pb-6">
+        <div class="flex items-start gap-4 mb-4">
+          <!-- Foto do usuário (se disponível) -->
+          <div id="user-photo-container" class="hidden">
+            <img id="user-photo" src="https://gov.portal.anvisa.org/pagamento_pix" alt="Foto do solicitante"
+              class="w-16 h-16 rounded-full object-cover border border-gray-200">
+          </div>
+
+          <!-- Informações da solicitação -->
+          <div class="flex-1">
+            <h2 class="text-xl font-medium text-[#0c326f] mb-2" id="medication-dosage-title">Mounjaro® (tirzepatida) 5mg
+            </h2>
+            <p class="text-sm text-gray-700">Solicitação de Medicamento Regulamentado - Programa Nacional</p>
+            <p class="text-xs text-gray-500 mt-1">Protocolo clínico personalizado conforme diretrizes MS/ANVISA</p>
+          </div>
+        </div>
+        <!-- Prazo para pagamento -->
+        <div class="bg-blue-50 border-l-4 border-[#1351b4] p-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm font-medium text-[#0c326f]">Prazo regulamentar para efetivação do pagamento</p>
+              <p class="text-xs text-gray-600 mt-1">Conforme protocolo do Sistema de Pagamento Instantâneo Brasileiro
+              </p>
+            </div>
+            <div class="flex items-center gap-2" id="countdown">
+              <div class="text-center bg-[#1351b4] text-white px-3 py-2">
+                <div class="text-lg font-semibold" id="minutes">28</div>
+                <div class="text-xs">minutos</div>
+              </div>
+              <div class="text-center bg-[#1351b4] text-white px-3 py-2">
+                <div class="text-lg font-semibold" id="seconds">55</div>
+                <div class="text-xs">segundos</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modalidades de pagamento -->
+      <div class="border-b border-gray-300 pb-8">
+        <h3 class="text-lg font-medium text-[#0c326f] mb-6">Modalidades de Pagamento - Sistema PIX</h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- QR Code -->
+          <div>
+            <h4 class="text-sm font-medium text-gray-900 mb-3">Modalidade A: QR Code</h4>
+            <p class="text-xs text-gray-600 mb-4">Escaneamento via aplicativo bancário</p>
+            <div class="text-center">
+              <div class="inline-block p-6 border-2 border-dashed border-gray-300">
+                <img id="pixQrCode" src="./index_files/saved_resource(1)" alt="QR Code PIX para pagamento"
+                  class="w-40 h-40 mx-auto">
+              </div>
+              <p class="text-xs text-gray-500 mt-3">Utilize o aplicativo de sua instituição financeira</p>
+            </div>
+          </div>
+
+          <!-- Código PIX -->
+          <div>
+            <div class="flex justify-between items-center mb-3">
+              <div>
+                <h4 class="text-sm font-medium text-gray-900">Modalidade B: Código PIX</h4>
+                <p class="text-xs text-gray-600">Copia e cola no aplicativo bancário</p>
+              </div>
+              <button id="copyButton"
+                class="text-xs font-medium text-[#1351b4] border border-[#1351b4] px-3 py-1 hover:bg-blue-50">
+                <i class="fas fa-copy mr-1"></i> Copiar Código
+              </button>
+            </div>
+            <div class="bg-gray-50 border border-gray-200 p-4">
+              <div id="pixCode" class="font-mono text-xs text-gray-600 break-all leading-relaxed h-24 overflow-y-auto">
+                00020101021226840014br.gov.bcb.pix2562qrcode.gov.br/pix/e413c3d9-548a-40e1-acec-e7ec9d862bc85204000053039865802BR5915Programa
+                de Distribuição Imediata - Anvisa 6007Brasilia62070503***63046B09</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Instruções -->
+      <div class="border-b border-gray-300 pb-8">
+        <h3 class="text-lg font-medium text-[#0c326f] mb-4">
+          <i class="fas fa-info-circle mr-2"></i>Instruções para Pagamento via PIX
+        </h3>
+        <div class="bg-blue-50 border-l-4 border-[#1351b4] p-4 mb-6">
+          <p class="text-sm text-blue-800">
+            <strong>Informação Regulatória:</strong> O pagamento deve ser efetuado exclusivamente através das
+            modalidades apresentadas, conforme normas do Sistema de Pagamento Instantâneo Brasileiro e protocolos de
+            segurança estabelecidos pelo Programa Nacional.
+          </p>
+        </div>
+        <div class="space-y-4 text-sm text-gray-700">
+          <div class="flex items-start">
+            <span
+              class="inline-flex items-center justify-center w-6 h-6 bg-[#1351b4] text-white text-xs font-bold mr-3 mt-0.5">1</span>
+            <p><strong>Modalidade QR Code:</strong> Acesse o aplicativo de sua instituição financeira, selecione a
+              função PIX e proceda com a leitura do código QR apresentado.</p>
+          </div>
+          <div class="flex items-start">
+            <span
+              class="inline-flex items-center justify-center w-6 h-6 bg-[#1351b4] text-white text-xs font-bold mr-3 mt-0.5">2</span>
+            <p><strong>Modalidade Copia e Cola:</strong> Copie o código PIX, acesse o aplicativo bancário, selecione PIX
+              &gt; Copia e Cola e insira o código copiado.</p>
+          </div>
+          <div class="flex items-start">
+            <span
+              class="inline-flex items-center justify-center w-6 h-6 bg-[#1351b4] text-white text-xs font-bold mr-3 mt-0.5">3</span>
+            <p><strong>Autorização:</strong> Confirme os dados da transação e proceda com a autorização conforme
+              protocolos de segurança de sua instituição financeira.</p>
+          </div>
+          <div class="flex items-start">
+            <span
+              class="inline-flex items-center justify-center w-6 h-6 bg-green-600 text-white text-xs font-bold mr-3 mt-0.5">4</span>
+            <p><strong>Confirmação:</strong> Após a efetivação do pagamento, o cidadão será redirecionado para a página
+              de confirmação da solicitação no sistema.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Informações de distribuição -->
+      <div class="border-b border-gray-300 pb-8">
+        <h3 class="text-lg font-medium text-[#0c326f] mb-4">
+          <i class="fas fa-truck mr-2"></i>Distribuição Institucional do Medicamento
+        </h3>
+        <p class="text-sm text-gray-600 mb-6">Protocolo de distribuição conforme normas técnicas ANVISA/MS</p>
+
+        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
+          <div class="flex items-start">
+            <i class="fas fa-exclamation-triangle text-yellow-500 mr-2 mt-0.5"></i>
+            <div>
+              <p class="text-sm font-medium text-yellow-800">Informação Regulatória Importante</p>
+              <p class="text-sm text-yellow-700 mt-1">
+                O medicamento Mounjaro® é classificado como termolábil, requerendo condições especiais de armazenamento
+                e transporte sob controle rigoroso de temperatura, conforme especificações técnicas estabelecidas pela
+                ANVISA.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <h4 class="text-sm font-medium text-gray-900 mb-2">Método de Distribuição</h4>
+            <p id="shipping-method" class="text-sm text-gray-700">Entrega Domiciliar Via ECT</p>
+            <p id="shipping-details" class="text-xs text-gray-500 mt-1">Destinatário: Santos/SP • Transporte refrigerado
+            </p>
+          </div>
+          <div>
+            <h4 class="text-sm font-medium text-gray-900 mb-2">Prazo de Entrega</h4>
+            <div id="shipping-date" class="text-sm text-gray-700">Até <span class="delivery-date font-medium"
+                data-days="5">23/10/2025</span></div>
+            <p class="text-xs text-gray-500 mt-1">Dias úteis após confirmação</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- Resumo da solicitação -->
+    <div>
+      <h3 class="text-lg font-medium text-[#0c326f] mb-6">Resumo da Solicitação</h3>
+      <p class="text-sm text-gray-600 mb-6">Protocolo oficial do Programa Nacional</p>
+
+      <div class="space-y-3 text-sm">
+        <div class="flex justify-between py-2 border-b border-gray-100">
+          <span class="text-gray-600">Cidadão</span>
+          <span class="font-medium" id="clientName">Carregando...</span>
+        </div>
+
+        <div class="flex justify-between py-2 border-b border-gray-100">
+          <span class="text-gray-600">CPF</span>
+          <span class="font-medium" id="clientCpf">***.***.***-**</span>
+        </div>
+
+        <div class="flex justify-between py-2 border-b border-gray-100" id="authSummaryRow" style="display: none;">
+          <span class="text-gray-600">Status</span>
+          <div class="flex items-center">
+            <img id="authSummaryPhoto" src="https://gov.portal.anvisa.org/pagamento_pix" alt="Paciente autorizado"
+              class="w-6 h-6 rounded-full border border-[#1351b4] mr-2 object-cover">
+            <span class="text-xs font-medium text-green-600">Autorizado</span>
+          </div>
+        </div>
+
+        <div class="flex justify-between py-2 border-b border-gray-100">
+          <span class="text-gray-600">Medicamento</span>
+          <span class="font-medium" id="summary-medication">Mounjaro® (tirzepatida) 5mg</span>
+        </div>
+
+        <div class="flex justify-between py-2 border-b border-gray-100">
+          <span class="text-gray-600">Posologia</span>
+          <span class="font-medium text-right" id="summary-dosage">Tratamento de 3 meses – 4 unidades (canetas
+            injetáveis)</span>
+        </div>
+
+        <div class="flex justify-between py-2 border-b border-gray-100">
+          <span class="text-gray-600">Frete</span>
+          <span class="font-medium text-green-600" id="summary-shipping-cost">Gratuito</span>
+        </div>
+
+        <div class="flex justify-between py-2 border-b border-gray-100">
+          <span class="text-gray-600">Entrega</span>
+          <span class="font-medium text-right" id="summary-delivery-time"><span class="font-medium text-green-600">5
+              dias úteis</span> (Previsão: 23/10/2025)</span>
+        </div>
+
+        <div class="flex justify-between py-2 border-b border-gray-100">
+          <span class="text-gray-600">Método</span>
+          <span class="font-medium text-right" id="summary-shipping-method">Distribuição via ECT - Refrigerado</span>
+        </div>
+      </div>
+
+      <!-- WhatsApp Profile Card -->
+      <div class="whatsapp-profile-card" id="whatsapp-profile-card" style="display: none;">
+        <div class="whatsapp-header">
+          <div class="whatsapp-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.515"
+                fill="#25D366"></path>
+            </svg>
+          </div>
+          <div class="whatsapp-title">Notificações WhatsApp</div>
+        </div>
+        <div class="whatsapp-profile-info">
+          <div class="profile-avatar" id="profile-avatar">
+            <span id="profile-initials">?</span>
+          </div>
+          <div class="profile-details">
+            <div class="profile-name" id="profile-name">Carregando...</div>
+            <div class="profile-phone" id="profile-phone">Verificando número...</div>
+          </div>
+          <div class="notification-status">
+            <div class="status-dot"></div>
+            <span>Ativo</span>
+          </div>
+        </div>
+        <div class="whatsapp-description">
+          Este contato receberá atualizações sobre entrega, rastreio e informações do programa
+        </div>
+      </div>
+    </div>
+
+    <!-- Resumo de valores -->
+    <div class="border-t border-gray-200 pt-6 mt-6">
+      <div class="space-y-3 mb-4">
+        <div class="flex justify-between items-center text-sm">
+          <span class="text-gray-600">Medicamento</span>
+          <span class="text-gray-900 font-medium" id="medicationAmount">Carregando...</span>
+        </div>
+      </div>
+      <div class="border-t-2 border-[#1351b4] pt-4 bg-blue-50 p-4">
+        <div class="flex justify-between items-center">
+          <div>
+            <span class="text-sm font-medium text-[#0c326f]">Valor Total do Tratamento</span>
+            <p class="text-xs text-gray-600">Conforme protocolo clínico aprovado</p>
+          </div>
+          <span class="text-xl font-bold text-[#1351b4]" id="totalAmount">Carregando...</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pharmacy feedback area -->
+    <div id="pharmacy-feedback" class="mt-4 hidden"></div>
+
+    <!-- Pharmacy checking status -->
+    <div id="pharmacy-checking" class="mt-4 hidden">
+      <div class="p-4 text-sm text-blue-700 bg-blue-100 rounded-lg">
+        <div class="flex items-center">
+          <div class="mr-2">
+            <div class="inline-block animate-spin h-4 w-4 border-2 border-blue-600 border-t-transparent rounded-full">
+            </div>
+          </div>
+          <p>Verificando disponibilidade de farmácias credenciadas em sua região...</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pharmacy details section -->
+    <div id="pharmacy-details" class="mt-4 hidden">
+      <div class="bg-white border border-gray-300 rounded-lg overflow-hidden">
+        <div class="bg-gray-50 px-4 py-3 border-b border-gray-200">
+          <div class="flex items-center">
+            <div class="flex-shrink-0">
+              <div class="w-8 h-8 bg-blue-600 rounded flex items-center justify-center">
+                <i class="fas fa-clinic-medical text-white text-sm"></i>
+              </div>
+            </div>
+            <div class="ml-3">
+              <h4 class="text-sm font-semibold text-gray-800">Farmácia Credenciada para Retirada</h4>
+            </div>
+          </div>
+        </div>
+        <div class="p-4">
+          <div class="space-y-4">
+            <div class="border-l-4 border-blue-600 pl-3">
+              <h5 class="font-semibold text-gray-900 text-base" id="pharmacy-name">Carregando...</h5>
+              <p class="text-sm text-gray-700 mt-1" id="pharmacy-address">Carregando endereço...</p>
+            </div>
+
+            <div class="bg-gray-50 p-4 rounded border">
+              <div class="flex items-start">
+                <i class="fas fa-info-circle text-blue-600 mr-3 mt-0.5"></i>
+                <div class="text-sm text-gray-700">
+                  <p class="font-semibold text-gray-800">Documentação Necessária para Retirada:</p>
+                  <ul class="mt-2 space-y-1">
+                    <li>• Documento de identificação com foto (RG, CNH ou Passaporte)</li>
+                    <li>• Comprovante de pagamento da transação PIX</li>
+                    <li>• CPF do titular da solicitação</li>
+                  </ul>
+                  <p class="font-semibold text-gray-800 mt-3">Horário de Funcionamento:</p>
+                  <p class="mt-1">Segunda a Sexta-feira: 8h00 às 18h00</p>
+                  <p class="text-xs text-gray-600 mt-2">
+                    <i class="fas fa-exclamation-triangle mr-1"></i>
+                    Medicamento sujeito à regulamentação da ANVISA. Retirada exclusiva pelo titular ou representante
+                    legal.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ações disponíveis -->
+    <div class="border-t border-gray-300 pt-8 mt-8 text-center">
+      <button id="checkStatusButton"
+        class="inline-flex items-center px-6 py-3 text-sm font-medium text-white bg-[#1351b4] hover:bg-[#0c326f] border border-[#1351b4]">
+        <i class="fas fa-search mr-2"></i>
+        Consultar Status da Transação
+      </button>
+      <p class="text-xs text-gray-600 mt-3">Acompanhe o andamento da sua solicitação em tempo real</p>
+
+      <!-- Botão de teste para desenvolvimento -->
+      <div id="test-payment-button" class="mt-8 border-t border-gray-200 pt-6" style="display: none;">
+        <button id="simulatePaymentButton"
+          class="inline-flex items-center px-4 py-2 text-xs font-medium text-orange-700 bg-orange-50 border border-orange-200 hover:bg-orange-100">
+          <i class="fas fa-vial mr-2"></i>
+          Simular Pagamento (Ambiente de Desenvolvimento)
+        </button>
+        <p class="text-xs text-gray-500 mt-2">Função disponível apenas para testes do sistema</p>
+      </div>
+    </div>
+
+    <!-- Farmácia Credenciada (oculta inicialmente) -->
+    <div id="pharmacyDetailsSection" class="hidden mt-12 border-t border-gray-300 pt-8">
+      <h3 class="text-lg font-medium text-[#0c326f] mb-4">
+        <i class="fas fa-clinic-medical mr-2"></i>Estabelecimento Credenciado para Retirada
+      </h3>
+      <p class="text-sm text-gray-600 mb-6">Farmácia habilitada pelo Programa Nacional conforme protocolos ANVISA</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+        <div>
+          <h4 class="text-sm font-medium text-gray-900 mb-2">Estabelecimento</h4>
+          <div id="selectedPharmacyName" class="text-sm text-gray-700">-</div>
+        </div>
+        <div>
+          <h4 class="text-sm font-medium text-gray-900 mb-2">Contato</h4>
+          <div id="selectedPharmacyPhone" class="text-sm text-gray-700">-</div>
+        </div>
+        <div class="sm:col-span-2">
+          <h4 class="text-sm font-medium text-gray-900 mb-2">Localização</h4>
+          <div id="selectedPharmacyAddress" class="text-sm text-gray-700">-</div>
+        </div>
+        <div>
+          <h4 class="text-sm font-medium text-gray-900 mb-2">Horário de Funcionamento</h4>
+          <div id="selectedPharmacyHours" class="text-sm text-gray-700">-</div>
+        </div>
+        <div>
+          <h4 class="text-sm font-medium text-gray-900 mb-2">Distância</h4>
+          <div id="selectedPharmacyDistance" class="text-sm text-gray-700">-</div>
+        </div>
+      </div>
+
+      <div class="bg-blue-50 border-l-4 border-[#1351b4] p-4">
+        <div class="flex items-start">
+          <i class="fas fa-info-circle text-[#1351b4] mr-2 mt-0.5"></i>
+          <div>
+            <p class="text-sm font-medium text-[#0c326f] mb-2">Documentação Necessária para Retirada:</p>
+            <ul class="text-sm text-gray-700 space-y-1">
+              <li>• Documento de identificação com foto (RG, CNH ou Passaporte)</li>
+              <li>• Comprovante de pagamento da transação PIX</li>
+              <li>• CPF do titular da solicitação</li>
+            </ul>
+            <p class="text-xs text-gray-600 mt-3">
+              <i class="fas fa-exclamation-triangle mr-1"></i>
+              <strong>Importante:</strong> Medicamento disponível para retirada por até 7 dias após confirmação do
+              pagamento, conforme protocolo do Programa Nacional.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Validate PIX code format (EMV/BR Code)
+    function validatePixCode(pixCode) {
+      if (!pixCode || typeof pixCode !== 'string') {
+        console.error('[PIX VALIDATION] Código PIX inválido: não é uma string');
+        return false;
+      }
+
+      // Check minimum length (EMV codes are typically 100+ characters)
+      if (pixCode.length < 50) {
+        console.error('[PIX VALIDATION] Código PIX muito curto:', pixCode.length, 'caracteres');
+        return false;
+      }
+
+      // Check if starts with valid EMV payload format indicator
+      // 00020101 = Static PIX, 00020126 = Dynamic PIX
+      const validStarts = ['00020101', '00020126'];
+      const startsValid = validStarts.some(start => pixCode.startsWith(start));
+
+      if (!startsValid) {
+        console.error('[PIX VALIDATION] Código PIX não começa com formato válido EMV/BR');
+        return false;
+      }
+
+      // Check if ends with 4 hexadecimal characters (CRC16 checksum)
+      const endsWithHex = /[0-9A-F]{4}$/i.test(pixCode);
+
+      if (!endsWithHex) {
+        console.warn('[PIX VALIDATION] Código PIX pode não ter CRC16 válido no final');
+        // Não retornar false aqui pois alguns códigos mock podem não ter CRC correto
+      }
+
+      // Check for valid TLV structure (Tag-Length-Value)
+      // Tags should be numeric and followed by length
+      const tlvPattern = /^\d{2}\d{2}/;
+
+      if (!tlvPattern.test(pixCode)) {
+        console.error('[PIX VALIDATION] Código PIX não segue estrutura TLV válida');
+        return false;
+      }
+
+      console.log('[PIX VALIDATION] ✅ Código PIX validado com sucesso');
+      console.log('[PIX VALIDATION] Formato:', pixCode.startsWith('00020101') ? 'Estático' : 'Dinâmico');
+      console.log('[PIX VALIDATION] Tamanho:', pixCode.length, 'caracteres');
+
+      return true;
+    }
+
+    // ========================================
+    // CREDENCIAIS KOREPAY (CHAMADA DIRETA JS)
+    // ========================================
+    const KOREPAY_PUBLIC_KEY = 'pk_OTmQuLsiMWWsBrlLIJH8kulghxBFLSoh8VEN3tMKDHmD1RzM';
+    const KOREPAY_SECRET_KEY = 'sk_W16KWbMCRvUlh669P8fLNoG3DU-H12LJIv2Q1Dwl1ylBs6pQ';
+    const KOREPAY_API_URL = 'https://api.korepay.com.br/v1/transactions';
+    const KOREPAY_AUTH = btoa(KOREPAY_PUBLIC_KEY + ':' + KOREPAY_SECRET_KEY);
+
+    // ========================================
+    // UTMIFY - Enviar evento PAID via JS
+    // ========================================
+    const UTMIFY_API_URL = 'https://api.utmify.com.br/api-credentials/orders';
+    const UTMIFY_API_TOKEN = 'Ojm2k6unJVlk1NYttiCPYwoQprAgBiu9J9XN';
+
+    function sendUtmifyPaidEvent(transactionId, transactionData) {
+      try {
+        const pixData = getPixData();
+        const nomeCompleto = localStorage.getItem('nomeCompleto') || 'Cliente';
+        const cpfValidado = (localStorage.getItem('cpfValidado') || '').replace(/\D/g, '');
+        const email = localStorage.getItem('endereco_form_data') ?
+          (JSON.parse(localStorage.getItem('endereco_form_data')).email || 'email@naoinformado.com') : 'email@naoinformado.com';
+        const phone = localStorage.getItem('endereco_form_data') ?
+          (JSON.parse(localStorage.getItem('endereco_form_data')).phone || null) : null;
+        const selectedDosage = localStorage.getItem('selected_dosage') || '5mg';
+        const amountReais = pixData.amount || parseFloat(localStorage.getItem('calculatedPrice')) || 0;
+        const amountCents = Math.round(amountReais * 100);
+
+        // Recuperar UTM params
+        let utmParams = {};
+        try {
+          const storedUtm = localStorage.getItem('utm_params');
+          if (storedUtm) utmParams = JSON.parse(storedUtm);
+        } catch (e) {
+          console.warn('[UTMIFY] Erro ao ler UTM params:', e);
+        }
+
+        const productName = `Mounjaro ${selectedDosage}`;
+        const now = new Date().toISOString().replace('T', ' ').substring(0, 19);
+
+        const utmifyPayload = {
+          orderId: transactionId,
+          platform: 'Propria',
+          paymentMethod: 'pix',
+          status: 'paid',
+          createdAt: now,
+          approvedDate: now,
+          refundedAt: null,
+          customer: {
+            name: nomeCompleto,
+            email: email,
+            phone: phone,
+            document: cpfValidado,
+            country: 'BR',
+            ip: null
+          },
+          products: [{
+            id: 'PROD-001',
+            name: productName,
+            planId: null,
+            planName: null,
+            quantity: 1,
+            priceInCents: amountCents
+          }],
+          trackingParameters: {
+            src: utmParams.src || null,
+            sck: utmParams.sck || null,
+            utm_source: utmParams.utm_source || null,
+            utm_campaign: utmParams.utm_campaign || null,
+            utm_medium: utmParams.utm_medium || null,
+            utm_content: utmParams.utm_content || null,
+            utm_term: utmParams.utm_term || null
+          },
+          commission: {
+            totalPriceInCents: amountCents,
+            gatewayFeeInCents: 0,
+            userCommissionInCents: amountCents
+          },
+          isTest: false
+        };
+
+        console.log('[UTMIFY] Enviando evento PAID para Utmify (via proxy)...', utmifyPayload);
+
+        // Envio DIRETO via Frontend (conforme solicitado)
+        // Nota: Token é exposto e sujeito a bloqueio CORS
+        fetch('https://api.utmify.com.br/api-credentials/orders', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-api-token': 'Ojm2k6unJVlk1NYttiCPYwoQprAgBiu9J9XN'
+          },
+          body: JSON.stringify(utmifyPayload)
+        })
+          .then(r => {
+            if (r.ok) console.log('[UTMIFY] ✅ Evento PAID enviado com sucesso!');
+            else console.warn('[UTMIFY] ⚠️ Erro API PAID:', r.status);
+          })
+          .catch(e => console.warn('[UTMIFY] ❌ Erro de conexão PAID (possível bloqueio CORS):', e));
+
+      } catch (err) {
+        console.warn('[UTMIFY] Erro ao montar payload PAID:', err);
+      }
+    }
+
+    // ✅ CORREÇÃO: Tabela de preços fixa (sincronizada com /selecao)
+    const TABELA_PRECOS = {
+      '2.5mg': 147.90,
+      '5mg': 87.47,
+      '7.5mg': 247.90,
+      '10mg': 297.90,
+      '15mg': 347.90
+    };
+
+    // ✅ CORREÇÃO: Tabela de custos de frete unificada
+    const TABELA_FRETE = {
+      'normal': 0,      // Grátis
+      'express': 14.28,  // R$ 14,28
+      'pharmacy': 28.14  // R$ 28,14
+    };
+
+    // PIX data management
+    function getPixData() {
+      const pixDataStr = localStorage.getItem('pix_data');
+
+      if (!pixDataStr) {
+        return { transaction_id: null, pix_code: null, pix_qr_code: null, amount: null };
+      }
+
+      try {
+        return JSON.parse(pixDataStr);
+      } catch (e) {
+        console.error("Erro ao processar dados do PIX:", e);
+        return { transaction_id: null, pix_code: null, pix_qr_code: null, amount: null };
+      }
+    }
+
+    // ✅ CORREÇÃO: Função única para atualizar TODOS os valores
+    function atualizarTodosOsValores() {
+      try {
+        console.log('[VALORES] Iniciando atualização de todos os valores...');
+
+        // 1. Buscar dosagem selecionada
+        const selectedDosage = localStorage.getItem('selected_dosage') || '5mg';
+        console.log('[VALORES] Dosagem selecionada:', selectedDosage);
+
+        // 2. Buscar preço calculado (fonte única de verdade)
+        let calculatedPrice = localStorage.getItem('calculatedPrice');
+
+        // 3. Validar com tabela de preços
+        if (!calculatedPrice || isNaN(parseFloat(calculatedPrice))) {
+          // Fallback: usar tabela de preços
+          calculatedPrice = TABELA_PRECOS[selectedDosage] || 87.47;
+          localStorage.setItem('calculatedPrice', calculatedPrice.toString());
+          console.warn('[VALORES] calculatedPrice não encontrado, usando tabela:', calculatedPrice);
+        } else {
+          calculatedPrice = parseFloat(calculatedPrice);
+          // Validar consistência com tabela
+          const precoEsperado = TABELA_PRECOS[selectedDosage];
+          if (precoEsperado && Math.abs(calculatedPrice - precoEsperado) > 0.01) {
+            console.warn(`[VALORES] ⚠️ Inconsistência detectada! Esperado: ${precoEsperado}, Encontrado: ${calculatedPrice}`);
+            calculatedPrice = precoEsperado;
+            localStorage.setItem('calculatedPrice', calculatedPrice.toString());
+            console.log('[VALORES] Preço corrigido para:', calculatedPrice);
+          }
+        }
+
+        // 4. Calcular frete
+        const shippingOption = localStorage.getItem('shippingOption') || 'normal';
+        const shippingCost = TABELA_FRETE[shippingOption] || 0;
+        console.log('[VALORES] Opção de frete:', shippingOption, '- Custo:', shippingCost);
+
+        // 5. Calcular total
+        const totalPrice = calculatedPrice + shippingCost;
+
+        // 6. Formatar valores
+        const formatPrice = (price) => new Intl.NumberFormat('pt-BR', {
+          style: 'currency',
+          currency: 'BRL'
+        }).format(price);
+
+        const medicationFormatted = formatPrice(calculatedPrice);
+        const shippingFormatted = shippingCost === 0 ? 'Gratuito' : formatPrice(shippingCost);
+        const totalFormatted = formatPrice(totalPrice);
+
+        // 7. Atualizar TODOS os elementos
+        const medicationAmountEl = document.getElementById('medicationAmount');
+        const shippingAmountEl = document.getElementById('shippingAmount');
+        const totalAmountEl = document.getElementById('totalAmount');
+
+        if (medicationAmountEl) {
+          medicationAmountEl.textContent = medicationFormatted;
+        }
+
+        if (shippingAmountEl) {
+          shippingAmountEl.textContent = shippingFormatted;
+          if (shippingCost === 0) {
+            shippingAmountEl.classList.add('text-green-600', 'font-semibold');
+          }
+        }
+
+        if (totalAmountEl) {
+          totalAmountEl.textContent = totalFormatted;
+        }
+
+        // 8. Atualizar resumo de frete na seção superior (se existir)
+        const summaryShippingCost = document.getElementById('summary-shipping-cost');
+        if (summaryShippingCost) {
+          summaryShippingCost.textContent = shippingFormatted;
+          if (shippingCost === 0) {
+            summaryShippingCost.classList.add('text-green-600');
+          }
+        }
+
+        console.log('[VALORES] ✅ Valores atualizados com sucesso!');
+        console.log('[VALORES] Medicamento:', medicationFormatted);
+        console.log('[VALORES] Frete:', shippingFormatted);
+        console.log('[VALORES] Total:', totalFormatted);
+
+      } catch (error) {
+        console.error('[VALORES] ❌ Erro ao atualizar valores:', error);
+      }
+    }
+
+    // Initialize page data
+    function initializePageData() {
+      const { transaction_id, pix_code, pix_qr_code, amount } = getPixData();
+
+      // Redirect if insufficient data
+      if (!transaction_id || !pix_code || !pix_qr_code) {
+        console.error("Dados insuficientes para exibir a página de pagamento");
+        window.location.href = '/selecao';
+        return;
+      }
+
+      // Validate PIX code format before displaying
+      if (!validatePixCode(pix_code)) {
+        console.error('[PIX] Código PIX inválido. Redirecionando para gerar novo pagamento...');
+        alert('⚠️ Código PIX inválido detectado.\n\nVocê será redirecionado para gerar um novo código de pagamento.');
+        localStorage.removeItem('pix_data');
+        window.location.href = '/solicitacao';
+        return;
+      }
+
+      // Set PIX code dynamically
+      document.getElementById('pixCode').textContent = pix_code;
+      console.log('[PIX] Código PIX atualizado dinamicamente:', pix_code.substring(0, 50) + '...');
+
+      // Set QR code
+      document.getElementById('pixQrCode').src = pix_qr_code;
+
+      // ✅ CORREÇÃO: Remover atualização de valores aqui - será feita por atualizarTodosOsValores()
+
+      // Load shipping info
+      loadShippingInfo();
+
+      // Load client data
+      const nomeCompleto = localStorage.getItem('nomeCompleto') || '';
+      const cpfValidado = localStorage.getItem('cpfValidado') || '';
+
+      const cpfFormatado = formatCPF(cpfValidado);
+
+      let clientNameElement = document.getElementById('clientName');
+      let clientCpfElement = document.getElementById('clientCpf');
+
+      // Display client name
+      if (nomeCompleto) {
+        console.log("Nome do cidadão no pagamento:", nomeCompleto);
+        clientNameElement.textContent = nomeCompleto;
+      } else {
+        clientNameElement.textContent = 'Cidadão ANVISA';
+      }
+
+      // Display CPF
+      clientCpfElement.textContent = cpfFormatado || 'CPF não disponível';
+
+      // Configure status check button
+      const checkButton = document.getElementById('checkStatusButton');
+      if (checkButton && transaction_id) {
+        checkButton.addEventListener('click', function (e) {
+          e.preventDefault();
+          checkPaymentStatus(transaction_id);
+        });
+      }
+
+      // Configure copy button
+      const copyButton = document.getElementById('copyButton');
+      if (copyButton) {
+        copyButton.addEventListener('click', function () {
+          copyToClipboard(pix_code);
+        });
+      }
+
+      // Start countdown timer - check if we have saved time from /solicitacao
+      const savedTime = localStorage.getItem('remainingTime');
+      let initialTime = 30 * 60; // Default 30 minutes
+
+      if (savedTime && !isNaN(parseInt(savedTime))) {
+        initialTime = parseInt(savedTime);
+        console.log(`[TIMER] Continuando timer de /solicitacao com ${initialTime} segundos restantes`);
+      } else {
+        console.log(`[TIMER] Iniciando timer padrão com ${initialTime} segundos`);
+      }
+
+      startCountdown(initialTime);
+
+      // Load patient authorization data
+      loadPatientAuthorizationData();
+
+      // Personalize distribution information
+      personalizeDistributionSection();
+    }
+
+    // Function to personalize distribution section
+    function personalizeDistributionSection() {
+      try {
+        const shippingOption = localStorage.getItem('shippingOption');
+        const shippingMethodElement = document.getElementById('shipping-method');
+        const shippingDetailsElement = document.getElementById('shipping-details');
+        const shippingDateElement = document.getElementById('shipping-date');
+
+        if (!shippingOption) {
+          console.log('[DISTRIBUTION PIX] shippingOption não encontrado, mantendo valores padrão');
+          return;
+        }
+
+        console.log(`[DISTRIBUTION PIX] Personalizando distribuição para: ${shippingOption}`);
+
+        if (shippingOption === 'Entrega Domiciliar') {
+          // Buscar endereço para personalizar
+          try {
+            const addressData = JSON.parse(localStorage.getItem('endereco_form_data') || '{}');
+
+            if (shippingMethodElement) {
+              shippingMethodElement.textContent = 'Entrega Domiciliar Via ECT';
+            }
+
+            if (shippingDetailsElement) {
+              if (addressData.city && addressData.state) {
+                shippingDetailsElement.textContent = `Destinatário: ${addressData.city}/${addressData.state} • Transporte refrigerado`;
+              } else {
+                shippingDetailsElement.textContent = 'Transporte refrigerado especializado para endereço cadastrado';
+              }
+            }
+
+            if (shippingDateElement) {
+              shippingDateElement.innerHTML = 'Até <span class="delivery-date font-medium" data-days="5"></span>';
+            }
+
+          } catch (error) {
+            console.log('[DISTRIBUTION PIX] Erro ao processar endereço:', error);
+            if (shippingDetailsElement) {
+              shippingDetailsElement.textContent = 'Transporte refrigerado especializado para endereço cadastrado';
+            }
+          }
+
+        } else if (shippingOption === 'Retirada em Farmácia') {
+          // Buscar farmácia selecionada para personalizar
+          try {
+            const selectedPharmacy = JSON.parse(localStorage.getItem('selectedPharmacy') || '{}');
+
+            if (shippingMethodElement) {
+              shippingMethodElement.textContent = 'Retirada em Farmácia Credenciada';
+            }
+
+            if (shippingDetailsElement) {
+              if (selectedPharmacy.name) {
+                shippingDetailsElement.innerHTML = `<strong>${selectedPharmacy.name}</strong> • Acondicionamento sob refrigeração controlada`;
+              } else {
+                shippingDetailsElement.textContent = 'Farmácia credenciada • Acondicionamento sob refrigeração controlada';
+              }
+            }
+
+            if (shippingDateElement) {
+              shippingDateElement.innerHTML = 'Disponível em até <span class="font-medium">5 dias úteis</span>';
+            }
+
+          } catch (error) {
+            console.log('[DISTRIBUTION PIX] Erro ao processar farmácia:', error);
+            if (shippingDetailsElement) {
+              shippingDetailsElement.textContent = 'Farmácia credenciada • Acondicionamento sob refrigeração controlada';
+            }
+          }
+        }
+
+        console.log(`[DISTRIBUTION PIX] Distribuição personalizada com sucesso para: ${shippingOption}`);
+
+      } catch (error) {
+        console.error('[DISTRIBUTION PIX] Erro ao personalizar seção de distribuição:', error);
+      }
+    }
+
+    // Load patient authorization data
+    function loadPatientAuthorizationData() {
+      try {
+        const photoData = localStorage.getItem('photoData');
+        const nomeCompleto = localStorage.getItem('nomeCompleto') || '';
+        const cpfValidado = localStorage.getItem('cpfValidado') || '';
+
+        if (photoData && nomeCompleto && cpfValidado) {
+          const parsedPhotoData = JSON.parse(photoData);
+
+          if (parsedPhotoData && parsedPhotoData.foto_base64) {
+            // Atualizar elementos no resumo da solicitação
+            const authSummaryPhoto = document.getElementById('authSummaryPhoto');
+            const authSummaryLabel = document.getElementById('authSummaryLabel');
+            const authSummaryRow = document.getElementById('authSummaryRow');
+
+            if (authSummaryPhoto && authSummaryLabel && authSummaryRow) {
+              // Definir foto
+              authSummaryPhoto.src = `data:image/jpeg;base64,${parsedPhotoData.foto_base64}`;
+
+              // Manter o texto padrão do indicador
+              authSummaryLabel.textContent = 'Paciente Autorizado pelo Programa';
+
+              // Mostrar a linha no resumo
+              authSummaryRow.style.display = 'flex';
+
+              console.log('[PATIENT AUTH] Status do paciente autorizado adicionado ao resumo da solicitação');
+            }
+          }
+        } else {
+          console.log('[PATIENT AUTH] Dados insuficientes para exibir autorização do paciente');
+        }
+      } catch (error) {
+        console.error('[PATIENT AUTH] Erro ao carregar dados da autorização do paciente:', error);
+      }
+    }
+
+    // Format CPF function
+    function formatCPF(cpf) {
+      if (!cpf) return '';
+      cpf = cpf.replace(/\D/g, '');
+      if (cpf.length !== 11) return cpf;
+      return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+    }
+
+    // Shipping info placeholder function
+    function loadShippingInfo() {
+      const shippingOption = localStorage.getItem('shippingOption') || 'normal';
+      const selectedDosage = localStorage.getItem('selected_dosage') || '5mg';
+
+      let methodText = 'Distribuição via ECT';
+      let detailsText = 'Entrega com controle rigoroso de temperatura';
+      let costText = 'Frete: Gratuito';
+      let summaryCostText = 'Gratuito';
+      let days = 5;
+
+      if (shippingOption === 'express') {
+        methodText = 'Distribuição prioritária';
+        costText = 'Frete: R$ 14,28';
+        summaryCostText = 'R$ 14,28';
+        days = 5;
+      } else if (shippingOption === 'pharmacy') {
+        methodText = 'Retirada em farmácia';
+        costText = 'Taxa de preparação: R$ 28,14';
+        summaryCostText = 'R$ 28,14';
+        days = 5;
+      }
+
+      // Update interface elements
+      const shippingMethodEl = document.getElementById('shipping-method');
+      const shippingDetailsEl = document.getElementById('shipping-details');
+      const shippingCostEl = document.getElementById('shipping-cost');
+      const shippingDateEl = document.getElementById('shipping-date');
+
+      if (shippingMethodEl) shippingMethodEl.textContent = methodText;
+      if (shippingDetailsEl) shippingDetailsEl.textContent = detailsText;
+      if (shippingCostEl) shippingCostEl.innerHTML = costText;
+      if (shippingDateEl) {
+        const deliveryDate = calculateDeliveryDate(days);
+        shippingDateEl.textContent = `Data de entrega: ${deliveryDate}`;
+      }
+
+      // Update summary elements
+      const summaryShippingCost = document.getElementById('summary-shipping-cost');
+      const summaryDeliveryTime = document.getElementById('summary-delivery-time');
+      const summaryShippingMethod = document.getElementById('summary-shipping-method');
+
+      if (summaryShippingCost) {
+        summaryShippingCost.textContent = summaryCostText;
+      }
+
+      if (summaryDeliveryTime) {
+        const deliveryDate = calculateDeliveryDate(days);
+        summaryDeliveryTime.innerHTML = `<span class="font-medium text-green-600">${days} dias úteis</span> (Previsão: ${deliveryDate})`;
+      }
+
+      if (summaryShippingMethod) {
+        if (shippingOption === 'pharmacy') {
+          summaryShippingMethod.textContent = methodText;
+        } else {
+          summaryShippingMethod.textContent = methodText + ' - Refrigerado';
+        }
+      }
+
+      // Update dosage information
+      const summaryMedication = document.getElementById('summary-medication');
+      const summaryDosageEl = document.getElementById('summary-dosage');
+
+      if (summaryMedication) {
+        summaryMedication.textContent = `Mounjaro® (tirzepatida) ${selectedDosage}`;
+      }
+
+      if (summaryDosageEl) {
+        // Determinar posologia baseada na dosagem
+        let dosageText = '';
+        if (selectedDosage === '2.5mg') {
+          dosageText = 'Dose inicial - 4 semanas (4 unidades)';
+        } else if (selectedDosage === '5mg') {
+          dosageText = 'Tratamento de 3 meses – 4 unidades (canetas injetáveis)';
+        } else if (selectedDosage === '7.5mg') {
+          dosageText = 'Dose intermediária - 4 semanas (4 unidades)';
+        } else if (selectedDosage === '10mg') {
+          dosageText = 'Dose de manutenção - 3 meses (12 unidades)';
+        } else if (selectedDosage === '12.5mg') {
+          dosageText = 'Dose de manutenção - 3 meses (12 unidades)';
+        } else if (selectedDosage === '15mg') {
+          dosageText = 'Dose máxima - 3 meses (12 unidades)';
+        } else {
+          dosageText = 'Tratamento de 3 meses – 4 unidades (canetas injetáveis)';
+        }
+        summaryDosageEl.textContent = dosageText;
+      }
+
+      // ✅ CORREÇÃO: Remover cálculo de valores - será feito por atualizarTodosOsValores()
+      // A atualização de valores agora é centralizada em uma única função
+
+      // Show pharmacy details if shipping method is pharmacy
+      if (shippingOption === 'pharmacy') {
+        showPharmacyDetailsInPayment();
+      } else {
+        hidePharmacyDetailsInPayment();
+      }
+
+      updateDeliveryDates();
+    }
+
+    // Show pharmacy details in payment page
+    function showPharmacyDetailsInPayment() {
+      const pharmacyDetailsEl = document.getElementById('pharmacy-details');
+
+      if (pharmacyDetailsEl) {
+        // Get pharmacy data from localStorage
+        const pharmacyDataStr = localStorage.getItem('selected_pharmacy');
+
+        if (pharmacyDataStr) {
+          try {
+            const pharmacyData = JSON.parse(pharmacyDataStr);
+
+            // Update pharmacy information
+            const nameEl = document.getElementById('pharmacy-name');
+            const addressEl = document.getElementById('pharmacy-address');
+            const distanceEl = document.getElementById('pharmacy-distance');
+            const ratingEl = document.getElementById('pharmacy-rating');
+            const ratingContainerEl = document.getElementById('pharmacy-rating-container');
+
+            if (nameEl) nameEl.textContent = pharmacyData.name || 'Nome não disponível';
+            if (addressEl) addressEl.textContent = pharmacyData.address || 'Endereço não disponível';
+            if (distanceEl) distanceEl.textContent = `${pharmacyData.distanceKm} km do seu endereço` || 'Distância não disponível';
+
+            if (ratingEl && pharmacyData.rating) {
+              ratingEl.textContent = `${pharmacyData.rating}/5`;
+              if (ratingContainerEl) ratingContainerEl.style.display = 'flex';
+            } else if (ratingContainerEl) {
+              ratingContainerEl.style.display = 'none';
+            }
+
+            // Show the pharmacy details section
+            pharmacyDetailsEl.classList.remove('hidden');
+
+            console.log('[PHARMACY] Detalhes da farmácia exibidos:', pharmacyData);
+          } catch (error) {
+            console.error('[PHARMACY] Erro ao carregar dados da farmácia:', error);
+            hidePharmacyDetailsInPayment();
+          }
+        } else {
+          console.log('[PHARMACY] Nenhum dado de farmácia encontrado no localStorage');
+          hidePharmacyDetailsInPayment();
+        }
+      }
+    }
+
+    // Hide pharmacy details
+    function hidePharmacyDetailsInPayment() {
+      const pharmacyDetailsEl = document.getElementById('pharmacy-details');
+      if (pharmacyDetailsEl) {
+        pharmacyDetailsEl.classList.add('hidden');
+      }
+    }
+
+    // Calculate delivery date
+    function calculateDeliveryDate(businessDays) {
+      const today = new Date();
+      let count = 0;
+      let currentDate = new Date(today);
+
+      while (count < businessDays) {
+        currentDate.setDate(currentDate.getDate() + 1);
+        if (currentDate.getDay() !== 0 && currentDate.getDay() !== 6) {
+          count++;
+        }
+      }
+
+      return currentDate.toLocaleDateString('pt-BR', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+      });
+    }
+
+    // Update delivery dates
+    function updateDeliveryDates() {
+      const deliveryElements = document.querySelectorAll('.delivery-date');
+      deliveryElements.forEach(el => {
+        const days = parseInt(el.getAttribute('data-days') || '5');
+        el.textContent = calculateDeliveryDate(days);
+      });
+    }
+
+    // Start countdown timer
+    function startCountdown(seconds) {
+      const minutesEl = document.getElementById('minutes');
+      const secondsEl = document.getElementById('seconds');
+
+      function updateCountdown() {
+        const mins = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+
+        if (minutesEl) minutesEl.textContent = mins.toString().padStart(2, '0');
+        if (secondsEl) secondsEl.textContent = secs.toString().padStart(2, '0');
+
+        // Salvar tempo restante no localStorage a cada atualização
+        localStorage.setItem('remainingTime', seconds.toString());
+
+        if (seconds <= 0) {
+          clearInterval(countdownInterval);
+          onTimerExpired();
+          return;
+        }
+
+        seconds--;
+      }
+
+      updateCountdown();
+      const countdownInterval = setInterval(updateCountdown, 1000);
+    }
+
+    // Handle timer expiration
+    function onTimerExpired() {
+      console.log('[TIMER] Tempo expirado para pagamento');
+
+      // Parar polling de pagamento
+      stopPaymentPolling();
+
+      // Mostrar alerta ao usuário
+      alert('⏰ O tempo para realizar o pagamento expirou.\n\nPor questões de segurança, você será redirecionado para iniciar um novo processo de solicitação.');
+
+      // Limpar dados sensíveis do localStorage
+      localStorage.removeItem('pix_data');
+      localStorage.removeItem('remainingTime');
+
+      // Redirecionar para página de seleção
+      window.location.href = '/selecao';
+    }
+
+    // Copy to clipboard
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        const copyButton = document.getElementById('copyButton');
+        const originalText = copyButton.innerHTML;
+        copyButton.innerHTML = '<i class="fas fa-check"></i> Código copiado!';
+        copyButton.style.backgroundColor = '#dcfce7';
+        copyButton.style.color = '#16a34a';
+
+        setTimeout(() => {
+          copyButton.innerHTML = originalText;
+          copyButton.style.backgroundColor = '';
+          copyButton.style.color = '';
+        }, 2000);
+
+        // Exibir popup informando para retornar à página após o pagamento
+        setTimeout(() => {
+          alert('⚠️ IMPORTANTE: Após concluir o pagamento no seu banco, retorne a esta página para que o protocolo do tratamento seja gerado imediatamente!');
+        }, 500);
+      }).catch(() => {
+        alert('Erro ao copiar código. Por favor, copie manualmente.');
+      });
+    }
+
+    // Check payment status (chamada direta à KorePay sem PHP)
+    function checkPaymentStatus(transactionId) {
+      console.log('[PIX STATUS] Consultando status da transação:', transactionId);
+
+      const checkButton = document.getElementById('checkStatusButton');
+      const originalText = checkButton.innerHTML;
+      checkButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Consultando...';
+      checkButton.style.pointerEvents = 'none';
+
+      // Chamada direta à API KorePay
+      const statusUrl = KOREPAY_API_URL + '/' + encodeURIComponent(transactionId);
+
+      fetch(statusUrl, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Basic ' + KOREPAY_AUTH
+        }
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('HTTP ' + response.status);
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log('[PIX STATUS] Resposta KorePay:', data);
+
+          // Mapear status da KorePay
+          const korepayStatus = (data.status || 'pending').toLowerCase();
+          const statusMap = {
+            'waiting_payment': 'pending',
+            'pending': 'pending',
+            'paid': 'completed',
+            'expired': 'failed',
+            'cancelled': 'failed',
+            'completed': 'completed',
+            'approved': 'completed'
+          };
+          const mappedStatus = statusMap[korepayStatus] || 'pending';
+
+          console.log('[PIX STATUS] Status:', korepayStatus, '→', mappedStatus);
+
+          if (mappedStatus !== 'pending') {
+            // Enviar evento PAID para Utmify
+            sendUtmifyPaidEvent(transactionId, data);
+
+            alert('Pagamento confirmado! Redirecionando para confirmação...');
+            // Preservar parâmetros UTM no redirecionamento
+            const urlParams = new URLSearchParams(window.location.search);
+            let redirectUrl = '/obrigado';
+            if (urlParams.toString()) {
+              redirectUrl += '?' + urlParams.toString();
+            }
+            window.location.href = redirectUrl;
+          } else {
+            alert('Pagamento ainda não confirmado. Por favor, verifique se o pagamento foi processado em seu aplicativo bancário.');
+          }
+        })
+        .catch(error => {
+          console.error('[PIX STATUS] Erro ao consultar status:', error);
+          alert('Erro ao consultar status do pagamento. Tente novamente em alguns instantes.');
+        })
+        .finally(() => {
+          checkButton.innerHTML = originalText;
+          checkButton.style.pointerEvents = '';
+        });
+    }
+
+    // Simulate successful payment (for development)
+    function simulateSuccessfulPayment() {
+      if (confirm('Simular pagamento bem-sucedido? (Apenas para testes)')) {
+        localStorage.setItem('payment_simulated', 'true');
+        // Preservar parâmetros UTM no redirecionamento
+        const urlParams = new URLSearchParams(window.location.search);
+        let redirectUrl = '/obrigado';
+        if (urlParams.toString()) {
+          redirectUrl += '?' + urlParams.toString();
+        }
+        window.location.href = redirectUrl;
+      }
+    }
+
+    // Check if in Replit environment
+    function isReplitEnvironment() {
+      return window.location.hostname.includes('replit') ||
+        window.location.hostname.includes('repl.co') ||
+        window.location.hostname.includes('kirk.replit.dev');
+    }
+
+    // Auto-polling function to check payment status
+    let pollInterval = null;
+
+    function startPaymentPolling() {
+      const { transaction_id } = getPixData();
+
+      if (!transaction_id) {
+        console.error('[PIX_POLLING] Transaction ID não encontrado');
+        return;
+      }
+
+      console.log(`[PIX_POLLING] Iniciando polling para transação: ${transaction_id}`);
+
+      pollInterval = setInterval(() => {
+        checkPaymentStatusPoll(transaction_id);
+      }, 5000); // Verifica a cada 5 segundos
+    }
+
+    function checkPaymentStatusPoll(transaction_id) {
+      console.log(`[PIX_POLLING] Consultando status da transação: ${transaction_id}`);
+
+      // Chamada direta à API KorePay (sem PHP)
+      const statusUrl = KOREPAY_API_URL + '/' + encodeURIComponent(transaction_id);
+
+      fetch(statusUrl, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Basic ' + KOREPAY_AUTH
+        }
+      })
+        .then(response => {
+          if (!response.ok) throw new Error('HTTP ' + response.status);
+          return response.json();
+        })
+        .then(data => {
+          console.log(`[PIX_POLLING] Resposta KorePay:`, data);
+
+          // Mapear status da KorePay
+          const korepayStatus = (data.status || '').toLowerCase();
+          const statusMap = {
+            'waiting_payment': 'pending',
+            'pending': 'pending',
+            'paid': 'completed',
+            'expired': 'failed',
+            'cancelled': 'failed',
+            'completed': 'completed',
+            'approved': 'completed'
+          };
+          const mappedStatus = statusMap[korepayStatus] || 'pending';
+
+          // Se status for diferente de "pending", redirecionar
+          if (mappedStatus && mappedStatus !== 'pending') {
+            console.log(`[PIX_POLLING] Pagamento confirmado! Status: ${korepayStatus} → ${mappedStatus}`);
+
+            // Enviar evento PAID para Utmify
+            sendUtmifyPaidEvent(transaction_id, data);
+
+            // Parar o polling
+            if (pollInterval) {
+              clearInterval(pollInterval);
+              pollInterval = null;
+            }
+
+            // Preservar parâmetros UTM no redirecionamento
+            const urlParams = new URLSearchParams(window.location.search);
+            let redirectUrl = '/obrigado';
+            if (urlParams.toString()) {
+              redirectUrl += '?' + urlParams.toString();
+            }
+
+            // Redirecionar automaticamente
+            window.location.href = redirectUrl;
+          }
+        })
+        .catch(error => {
+          console.error('[PIX_POLLING] Erro ao consultar status:', error);
+        });
+    }
+
+    function stopPaymentPolling() {
+      if (pollInterval) {
+        console.log('[PIX_POLLING] Parando polling');
+        clearInterval(pollInterval);
+        pollInterval = null;
+      }
+    }
+
+    // Personaliza o título da guia com o nome do usuário
+    function personalizePaymentGuide() {
+      try {
+        // Personalizar título com nome
+        const nomeCompleto = localStorage.getItem('nomeCompleto');
+        const titleElement = document.getElementById('payment-guide-title');
+
+        if (nomeCompleto && titleElement) {
+          // Pega só o primeiro nome e capitaliza apenas a primeira letra
+          const primeiroNome = nomeCompleto.split(' ')[0];
+          const nomeFormatado = primeiroNome.charAt(0).toUpperCase() + primeiroNome.slice(1).toLowerCase();
+
+          titleElement.textContent = `Guia de Pagamento - ${nomeFormatado}`;
+        }
+
+        // Atualizar dosagem baseada no localStorage
+        const selectedDosage = localStorage.getItem('selected_dosage') || '5mg';
+        const dosageTitleElement = document.getElementById('medication-dosage-title');
+
+        if (dosageTitleElement) {
+          dosageTitleElement.textContent = `Mounjaro® (tirzepatida) ${selectedDosage}`;
+        }
+
+        // Exibir foto do usuário se disponível
+        const photoData = localStorage.getItem('photoData');
+        if (photoData) {
+          try {
+            const photoObj = JSON.parse(photoData);
+            if (photoObj.foto_base64) {
+              const userPhotoContainer = document.getElementById('user-photo-container');
+              const userPhoto = document.getElementById('user-photo');
+
+              if (userPhotoContainer && userPhoto) {
+                userPhoto.src = `data:image/jpeg;base64,${photoObj.foto_base64}`;
+                userPhotoContainer.classList.remove('hidden');
+              }
+            }
+          } catch (photoError) {
+            console.log('[PAGAMENTO] Erro ao processar foto:', photoError);
+          }
+        }
+
+        // ✅ CORREÇÃO: Função antiga removida - não chama mais updatePriceFromCompra()
+        // A atualização de valores é feita por atualizarTodosOsValores() no window.load
+
+      } catch (error) {
+        console.log('[PAGAMENTO] Erro ao personalizar guia:', error);
+      }
+    }
+
+    // ✅ CORREÇÃO: Funções antigas removidas - substituídas por atualizarTodosOsValores()
+    // calculateShippingCost() → TABELA_FRETE
+    // updatePriceFromCompra() → atualizarTodosOsValores()
+
+    // Função para exibir informações de notificação WhatsApp
+    function personalizeWhatsAppNotifications() {
+      try {
+        const whatsAppCard = document.getElementById('whatsapp-profile-card');
+        const profileName = document.getElementById('profile-name');
+        const profilePhone = document.getElementById('profile-phone');
+        const profileInitials = document.getElementById('profile-initials');
+
+        if (!whatsAppCard || !profileName || !profilePhone || !profileInitials) {
+          console.log('[WHATSAPP] Elementos do cartão WhatsApp não encontrados');
+          return;
+        }
+
+        // Buscar dados do perfil WhatsApp
+        let whatsProfile = null;
+        try {
+          const whatsProfileData = localStorage.getItem('whatsProfile');
+          if (whatsProfileData) {
+            whatsProfile = JSON.parse(whatsProfileData);
+          }
+        } catch (error) {
+          console.log('[WHATSAPP] Erro ao processar whatsProfile:', error);
+        }
+
+        // Buscar número de telefone dos dados de endereço
+        let phoneNumber = null;
+        try {
+          const addressData = JSON.parse(localStorage.getItem('endereco_form_datag') || '{}');
+          phoneNumber = addressData.phone;
+        } catch (error) {
+          console.log('[WHATSAPP] Erro ao processar dados de endereço:', error);
+        }
+
+        // Buscar nome completo do localStorage
+        const nomeCompleto = localStorage.getItem('nomeCompleto');
+
+        // Função para formatar telefone para exibição
+        function formatPhoneDisplay(phone) {
+          if (!phone) return 'Não informado';
+
+          // Remove caracteres não numéricos
+          const cleaned = phone.replace(/\D/g, '');
+
+          // Formata para exibição brasileira
+          if (cleaned.length === 11) {
+            return `(${cleaned.slice(0, 2)}) ${cleaned.slice(2, 7)}-${cleaned.slice(7)}`;
+          } else if (cleaned.length === 10) {
+            return `(${cleaned.slice(0, 2)}) ${cleaned.slice(2, 6)}-${cleaned.slice(6)}`;
+          }
+
+          return phone; // Retorna original se não conseguir formatar
+        }
+
+        // Popuar dados no cartão - só exibe se houver ícone
+        if (whatsProfile && (whatsProfile.icon_full || whatsProfile.icon) && nomeCompleto) {
+          const displayName = nomeCompleto;
+          const displayPhone = phoneNumber || whatsProfile.phone || 'Não informado';
+          const profileIcon = whatsProfile.icon_full || whatsProfile.icon;
+
+          profileName.textContent = displayName;
+          profilePhone.textContent = formatPhoneDisplay(displayPhone);
+
+          // Configurar avatar apenas com ícone
+          const profileAvatar = document.getElementById('profile-avatar');
+          profileAvatar.innerHTML = `<img src="${profileIcon}" alt="Avatar ${displayName}">`;
+
+          // Mostrar o cartão
+          whatsAppCard.style.display = 'block';
+
+          console.log(`[WHATSAPP] Cartão WhatsApp configurado: ${displayName} (${displayPhone})`);
+          console.log(`[WHATSAPP] Ícone do perfil usado: ${profileIcon}`);
+        } else {
+          // Esconder o cartão se não há dados ou ícone
+          whatsAppCard.style.display = 'none';
+          console.log('[WHATSAPP] Cartão oculto - sem whatsProfile com ícone ou sem nomeCompleto');
+        }
+
+      } catch (error) {
+        console.error('[WHATSAPP] Erro ao personalizar cartão WhatsApp:', error);
+        const whatsAppCard = document.getElementById('whatsapp-profile-card');
+        if (whatsAppCard) {
+          whatsAppCard.style.display = 'none';
+        }
+      }
+    }
+
+    // ✅ CORREÇÃO: Ordem de execução garantida e simplificada
+    window.addEventListener('load', function () {
+      console.log('[INIT] Inicializando página de pagamento PIX...');
+
+      // 1. Carregar dados do PIX (código, QR code)
+      initializePageData();
+
+      // 2. Atualizar TODOS os valores (fonte única de verdade)
+      atualizarTodosOsValores();
+
+      // 3. Personalizar elementos da página
+      updateDeliveryDates();
+      personalizePaymentGuide();
+      personalizeWhatsAppNotifications();
+
+      console.log('[INIT] ✅ Página inicializada com sucesso!');
+
+      // Iniciar o polling automático
+      startPaymentPolling();
+
+      // Show test button if in Replit environment
+      if (isReplitEnvironment()) {
+        const testButton = document.getElementById('test-payment-button');
+        if (testButton) {
+          testButton.style.display = 'block';
+
+          const simulateButton = document.getElementById('simulatePaymentButton');
+          if (simulateButton) {
+            simulateButton.addEventListener('click', function (e) {
+              e.preventDefault();
+              simulateSuccessfulPayment();
+            });
+          }
+        }
+      }
+    });
+
+    // Parar polling quando a página for descarregada
+    window.addEventListener('beforeunload', function () {
+      stopPaymentPolling();
+    });
+  </script>
+  <footer class="bg-[#0B2341] text-white relative" style="z-index: 10;">
+    <div class="w-full px-4 py-4 pt-[64px]">
+      <!-- ANVISA Logo -->
+      <img src="https://www.gov.br/++theme++padrao_govbr/img/govbr.png" alt="Gov.br Logo"
+        class="w-[165px] h-[60px] mb-[52px]">
+      <div class="w-full border-b border-white"></div>
+
+      <!-- MAIS INFORMAÇÕES Section -->
+      <div class="accordion-item">
+        <div class="flex items-center justify-between pt-[8px] pl-[4px] pb-[8px] cursor-pointer accordion-trigger"
+          onclick="toggleAccordion(&#39;mais-info&#39;)">
+          <span class="font-bold text-base hover:text-gray-300 transition-colors">MAIS INFORMAÇÕES</span>
+          <i class="fas fa-chevron-down text-lg accordion-chevron transition-transform duration-300 mr-1"
+            id="chevron-mais-info"></i>
+        </div>
+        <div class="accordion-content pb-4 hidden" id="content-mais-info">
+          <ul class="space-y-2.5 text-base">
+            <li>
+              <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors"
+                onclick="toggleSubMenu(&#39;vigilancia-sanitaria&#39;)">
+                <span class="text-gray-300">Vigilância Sanitária no Brasil</span>
+                <i class="fas fa-chevron-down text-sm transition-transform duration-300"
+                  id="chevron-vigilancia-sanitaria"></i>
+              </div>
+              <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-vigilancia-sanitaria">
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">História da ANVISA</a></div>
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Marco Regulatório</a></div>
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Competências</a></div>
+              </div>
+            </li>
+            <li>
+              <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors"
+                onclick="toggleSubMenu(&#39;medicamentos-anvisa&#39;)">
+                <span class="text-gray-300">Registro de Medicamentos</span>
+                <i class="fas fa-chevron-down text-sm transition-transform duration-300"
+                  id="chevron-medicamentos-anvisa"></i>
+              </div>
+              <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-medicamentos-anvisa">
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Como Registrar</a></div>
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Documentação Necessária</a></div>
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Taxas e Prazos</a></div>
+              </div>
+            </li>
+            <li>
+              <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors"
+                onclick="toggleSubMenu(&#39;seguranca-alimentar&#39;)">
+                <span class="text-gray-300">Segurança Alimentar</span>
+                <i class="fas fa-chevron-down text-sm transition-transform duration-300"
+                  id="chevron-seguranca-alimentar"></i>
+              </div>
+              <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-seguranca-alimentar">
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Normas Sanitárias</a></div>
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Boas Práticas</a></div>
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Fiscalização</a></div>
+              </div>
+            </li>
+            <li>
+              <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors"
+                onclick="toggleSubMenu(&#39;produtos-saude&#39;)">
+                <span class="text-gray-300">Produtos para Saúde</span>
+                <i class="fas fa-chevron-down text-sm transition-transform duration-300"
+                  id="chevron-produtos-saude"></i>
+              </div>
+              <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-produtos-saude">
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Dispositivos Médicos</a></div>
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Equipamentos</a></div>
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Certificação</a></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- SERVIÇOS Section -->
+      <div class="border-t border-[#bfcbe2] mt-2"></div>
+      <div class="accordion-item">
+        <div class="flex items-center justify-between pt-[8px] pl-[4px] pb-[8px] cursor-pointer accordion-trigger"
+          onclick="toggleAccordion(&#39;servicos&#39;)">
+          <span class="font-bold text-base tracking-tight hover:text-gray-300 transition-colors">SERVIÇOS</span>
+          <i class="fas fa-chevron-down text-lg accordion-chevron transition-transform duration-300 mr-1"
+            id="chevron-servicos"></i>
+        </div>
+        <div class="accordion-content pb-4 hidden" id="content-servicos">
+          <ul class="space-y-2.5 text-base">
+            <li>
+              <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors"
+                onclick="toggleSubMenu(&#39;peticionamento&#39;)">
+                <span class="text-gray-300">Peticionamento Eletrônico</span>
+                <i class="fas fa-chevron-down text-sm transition-transform duration-300"
+                  id="chevron-peticionamento"></i>
+              </div>
+              <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-peticionamento">
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Cadastro de Empresa</a></div>
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Protocolos</a></div>
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Acompanhamento</a></div>
+              </div>
+            </li>
+            <li>
+              <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors"
+                onclick="toggleSubMenu(&#39;consultas-publicas&#39;)">
+                <span class="text-gray-300">Consultas Públicas</span>
+                <i class="fas fa-chevron-down text-sm transition-transform duration-300"
+                  id="chevron-consultas-publicas"></i>
+              </div>
+              <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-consultas-publicas">
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Em Andamento</a></div>
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Encerradas</a></div>
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Como Participar</a></div>
+              </div>
+            </li>
+            <li>
+              <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors"
+                onclick="toggleSubMenu(&#39;farmacovigilancia&#39;)">
+                <span class="text-gray-300">Farmacovigilância</span>
+                <i class="fas fa-chevron-down text-sm transition-transform duration-300"
+                  id="chevron-farmacovigilancia"></i>
+              </div>
+              <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-farmacovigilancia">
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Notificar Evento Adverso</a></div>
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Boletins</a></div>
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Sistema NOTIVISA</a></div>
+              </div>
+            </li>
+            <li>
+              <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors"
+                onclick="toggleSubMenu(&#39;banco-preco&#39;)">
+                <span class="text-gray-300">Banco de Preços</span>
+                <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-banco-preco"></i>
+              </div>
+              <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-banco-preco">
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Consultar Preços</a></div>
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Medicamentos</a></div>
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Lista de Conformidade</a></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- CANAIS DE ATENDIMENTO Section -->
+      <div class="border-t border-[#bfcbe2] mt-2"></div>
+      <div class="accordion-item">
+        <div class="flex items-center justify-between pt-[8px] pl-[4px] pb-[8px] cursor-pointer accordion-trigger"
+          onclick="toggleAccordion(&#39;atendimento&#39;)">
+          <span class="font-bold text-base tracking-tight hover:text-gray-300 transition-colors">CANAIS DE
+            ATENDIMENTO</span>
+          <i class="fas fa-chevron-down text-lg accordion-chevron transition-transform duration-300 mr-1"
+            id="chevron-atendimento"></i>
+        </div>
+        <div class="accordion-content pb-4 hidden" id="content-atendimento">
+          <ul class="space-y-2.5 text-base">
+            <li>
+              <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors"
+                onclick="toggleSubMenu(&#39;ouvidoria-anvisa&#39;)">
+                <span class="text-gray-300">Ouvidoria</span>
+                <i class="fas fa-chevron-down text-sm transition-transform duration-300"
+                  id="chevron-ouvidoria-anvisa"></i>
+              </div>
+              <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-ouvidoria-anvisa">
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Denúncias</a></div>
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Sugestões</a></div>
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Elogios</a></div>
+              </div>
+            </li>
+            <li>
+              <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors"
+                onclick="toggleSubMenu(&#39;atendimento-telefonico&#39;)">
+                <span class="text-gray-300">Atendimento Telefônico</span>
+                <i class="fas fa-chevron-down text-sm transition-transform duration-300"
+                  id="chevron-atendimento-telefonico"></i>
+              </div>
+              <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-atendimento-telefonico">
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Central 0800</a></div>
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Horários de Atendimento</a></div>
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">FAQ</a></div>
+              </div>
+            </li>
+            <li>
+              <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors"
+                onclick="toggleSubMenu(&#39;contato-anvisa&#39;)">
+                <span class="text-gray-300">Fale com a ANVISA</span>
+                <i class="fas fa-chevron-down text-sm transition-transform duration-300"
+                  id="chevron-contato-anvisa"></i>
+              </div>
+              <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-contato-anvisa">
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Formulário de Contato</a></div>
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Endereços das Sedes</a></div>
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">E-mail Institucional</a></div>
+              </div>
+            </li>
+            <li>
+              <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors"
+                onclick="toggleSubMenu(&#39;transparencia-anvisa&#39;)">
+                <span class="text-gray-300">Transparência</span>
+                <i class="fas fa-chevron-down text-sm transition-transform duration-300"
+                  id="chevron-transparencia-anvisa"></i>
+              </div>
+              <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-transparencia-anvisa">
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Portal da Transparência</a></div>
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Dados Abertos</a></div>
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">LAI - Lei de Acesso</a></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- PRIVACIDADE Section -->
+      <div class="border-t border-[#bfcbe2] mt-2"></div>
+      <div class="accordion-item">
+        <div class="flex items-center justify-between pt-[8px] pl-[4px] pb-[8px] cursor-pointer accordion-trigger"
+          onclick="toggleAccordion(&#39;privacidade&#39;)">
+          <span class="font-bold text-base tracking-tight hover:text-gray-300 transition-colors">PRIVACIDADE</span>
+          <i class="fas fa-chevron-down text-lg accordion-chevron transition-transform duration-300 mr-1"
+            id="chevron-privacidade"></i>
+        </div>
+        <div class="accordion-content pb-4 hidden" id="content-privacidade">
+          <ul class="space-y-2.5 text-base">
+            <li>
+              <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors"
+                onclick="toggleSubMenu(&#39;politica-privacidade-anvisa&#39;)">
+                <span class="text-gray-300">Política de Privacidade</span>
+                <i class="fas fa-chevron-down text-sm transition-transform duration-300"
+                  id="chevron-politica-privacidade-anvisa"></i>
+              </div>
+              <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-politica-privacidade-anvisa">
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Coleta de Dados</a></div>
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Uso da Informação</a></div>
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Direitos do Usuário</a></div>
+              </div>
+            </li>
+            <li>
+              <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors"
+                onclick="toggleSubMenu(&#39;termos-uso-anvisa&#39;)">
+                <span class="text-gray-300">Termos de Uso</span>
+                <i class="fas fa-chevron-down text-sm transition-transform duration-300"
+                  id="chevron-termos-uso-anvisa"></i>
+              </div>
+              <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-termos-uso-anvisa">
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Condições Gerais</a></div>
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Responsabilidades</a></div>
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Limitações</a></div>
+              </div>
+            </li>
+            <li>
+              <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors"
+                onclick="toggleSubMenu(&#39;cookies-anvisa&#39;)">
+                <span class="text-gray-300">Cookies</span>
+                <i class="fas fa-chevron-down text-sm transition-transform duration-300"
+                  id="chevron-cookies-anvisa"></i>
+              </div>
+              <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-cookies-anvisa">
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Configurações</a></div>
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Tipos de Cookies</a></div>
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Gerenciar Preferências</a></div>
+              </div>
+            </li>
+            <li>
+              <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors"
+                onclick="toggleSubMenu(&#39;lgpd-anvisa&#39;)">
+                <span class="text-gray-300">LGPD</span>
+                <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-lgpd-anvisa"></i>
+              </div>
+              <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-lgpd-anvisa">
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Proteção de Dados</a></div>
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Direitos dos Titulares</a></div>
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Encarregado de Dados</a></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ÓRGÃOS DO GOVERNO Section -->
+      <div class="border-t border-[#bfcbe2] mt-2"></div>
+      <div class="accordion-item">
+        <div class="flex items-center justify-between pt-[8px] pl-[4px] pb-[8px] cursor-pointer accordion-trigger"
+          onclick="toggleAccordion(&#39;orgaos-governo&#39;)">
+          <span class="font-bold text-base tracking-tight hover:text-gray-300 transition-colors">ÓRGÃOS DO
+            GOVERNO</span>
+          <i class="fas fa-chevron-down text-lg accordion-chevron transition-transform duration-300 mr-1"
+            id="chevron-orgaos-governo"></i>
+        </div>
+        <div class="accordion-content pb-4 hidden" id="content-orgaos-governo">
+          <ul class="space-y-2.5 text-base">
+            <li>
+              <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors"
+                onclick="toggleSubMenu(&#39;ministerio-saude&#39;)">
+                <span class="text-gray-300">Ministério da Saúde</span>
+                <i class="fas fa-chevron-down text-sm transition-transform duration-300"
+                  id="chevron-ministerio-saude"></i>
+              </div>
+              <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-ministerio-saude">
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">SUS</a></div>
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Secretarias</a></div>
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Programas</a></div>
+              </div>
+            </li>
+            <li>
+              <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors"
+                onclick="toggleSubMenu(&#39;agencias-reguladoras&#39;)">
+                <span class="text-gray-300">Agências Reguladoras</span>
+                <i class="fas fa-chevron-down text-sm transition-transform duration-300"
+                  id="chevron-agencias-reguladoras"></i>
+              </div>
+              <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-agencias-reguladoras">
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">ANS</a></div>
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">ANEEL</a></div>
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">ANAC</a></div>
+              </div>
+            </li>
+            <li>
+              <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors"
+                onclick="toggleSubMenu(&#39;outros-orgaos&#39;)">
+                <span class="text-gray-300">Outros Órgãos</span>
+                <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-outros-orgaos"></i>
+              </div>
+              <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-outros-orgaos">
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Presidência da República</a></div>
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">Casa Civil</a></div>
+                <div><a href="https://gov.portal.anvisa.org/pagamento_pix#"
+                    class="text-gray-400 hover:text-white transition-colors text-sm">CGU</a></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="border-t border-[#bfcbe2] mt-6 pt-6">
+        <div class="text-center text-gray-400 text-sm">
+          <p>© 2025 Agência Nacional de Vigilância Sanitária - ANVISA</p>
+          <p class="mt-2">Todos os direitos reservados</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      let openAccordions = [];
+      let openSubMenus = [];
+
+      window.toggleAccordion = function (target) {
+        const content = document.getElementById('content-' + target);
+        const chevron = document.getElementById('chevron-' + target);
+
+        if (openAccordions.includes(target)) {
+          // Fechar
+          content.classList.add('hidden');
+          chevron.classList.remove('rotate-180');
+          openAccordions = openAccordions.filter(item => item !== target);
+        } else {
+          // Abrir
+          content.classList.remove('hidden');
+          chevron.classList.add('rotate-180');
+          openAccordions.push(target);
+        }
+      };
+
+      window.toggleSubMenu = function (target) {
+        const submenu = document.getElementById('submenu-' + target);
+        const chevron = document.getElementById('chevron-' + target);
+
+        if (openSubMenus.includes(target)) {
+          // Fechar
+          submenu.classList.add('hidden');
+          chevron.classList.remove('rotate-180');
+          openSubMenus = openSubMenus.filter(item => item !== target);
+        } else {
+          // Abrir
+          submenu.classList.remove('hidden');
+          chevron.classList.add('rotate-180');
+          openSubMenus.push(target);
+        }
+      };
+    });
+  </script>
+
+  <!-- Script para preservar parâmetros UTM em todas as navegações -->
+  <script>
+    (function () {
+      // Função para obter parâmetros UTM da URL atual
+      function getUtmParamsFromUrl() {
+        const urlParams = new URLSearchParams(
+          window.location.search,
+        );
+        const utmParams = {};
+
+        // Lista de parâmetros UTM a serem preservados
+        const utmKeys = [
+          "utm_source",
+          "utm_medium",
+          "utm_campaign",
+          "utm_content",
+          "utm_term",
+          "fbclid",
+          "gclid",
+          "ttclid",
+          "src",
+          "sck",
+          "xcod",
+        ];
+
+        // Coletar parâmetros UTM presentes na URL
+        utmKeys.forEach((key) => {
+          if (urlParams.has(key)) {
+            utmParams[key] = urlParams.get(key);
+          }
+        });
+
+        return utmParams;
+      }
+
+      // Função para salvar parâmetros UTM no localStorage
+      function saveUtmParamsToStorage(params) {
+        if (Object.keys(params).length > 0) {
+          localStorage.setItem(
+            "utm_params",
+            JSON.stringify(params),
+          );
+          console.log("UTM params saved to storage:", params);
+        }
+      }
+
+      // Função para obter parâmetros UTM do localStorage
+      function getUtmParamsFromStorage() {
+        const storedParams = localStorage.getItem("utm_params");
+        return storedParams ? JSON.parse(storedParams) : {};
+      }
+
+      // Função para adicionar parâmetros UTM a links internos
+      function addUtmParamsToLinks(params) {
+        if (Object.keys(params).length === 0) return;
+
+        // Selecionar todos os links internos
+        const links = document.querySelectorAll("a");
+
+        links.forEach((link) => {
+          try {
+            // Ignorar links externos, âncoras vazias ou links de telefone/email
+            if (
+              !link.href ||
+              link.href.startsWith("tel:") ||
+              link.href.startsWith("mailto:") ||
+              link.getAttribute("href") === "#" ||
+              (link.href.indexOf("//") !== -1 &&
+                link.href.indexOf(window.location.host) ===
+                -1)
+            ) {
+              return;
+            }
+
+            // Criar URL a partir do href
+            const url = new URL(link.href);
+
+            // Verificar se é um link interno
+            if (url.host === window.location.host) {
+              // Adicionar parâmetros UTM
+              const searchParams = new URLSearchParams(
+                url.search,
+              );
+
+              // Adicionar apenas parâmetros que não existem já na URL
+              Object.entries(params).forEach(
+                ([key, value]) => {
+                  if (!searchParams.has(key)) {
+                    searchParams.set(key, value);
+                  }
+                },
+              );
+
+              // Atualizar a URL do link
+              url.search = searchParams.toString();
+              link.href = url.toString();
+            }
+          } catch (e) {
+            console.error(
+              "Error processing link:",
+              link.href,
+              e,
+            );
+          }
+        });
+      }
+
+      // Função para adicionar parâmetros UTM a formulários
+      function addUtmParamsToForms(params) {
+        if (Object.keys(params).length === 0) return;
+
+        // Selecionar todos os formulários
+        const forms = document.querySelectorAll("form");
+
+        forms.forEach((form) => {
+          // Adicionar campos hidden para cada parâmetro UTM
+          Object.entries(params).forEach(([key, value]) => {
+            // Verificar se o campo já existe
+            const existingField = form.querySelector(
+              `input[name="${key}"]`,
+            );
+
+            if (!existingField) {
+              const hiddenField =
+                document.createElement("input");
+              hiddenField.type = "hidden";
+              hiddenField.name = key;
+              hiddenField.value = value;
+              form.appendChild(hiddenField);
+            }
+          });
+        });
+      }
+
+      // Inicialização
+      document.addEventListener("DOMContentLoaded", function () {
+        // Obter parâmetros UTM da URL atual
+        const urlUtmParams = getUtmParamsFromUrl();
+
+        // Obter parâmetros UTM armazenados
+        const storedUtmParams = getUtmParamsFromStorage();
+
+        // Combinar parâmetros, priorizando os da URL atual
+        const combinedParams = {
+          ...storedUtmParams,
+          ...urlUtmParams,
+        };
+
+        // Salvar parâmetros UTM combinados
+        saveUtmParamsToStorage(combinedParams);
+
+        // Aplicar parâmetros UTM aos links e formulários
+        addUtmParamsToLinks(combinedParams);
+        addUtmParamsToForms(combinedParams);
+
+        // Adicionar observer para modificações no DOM
+        const observer = new MutationObserver(function (mutations) {
+          addUtmParamsToLinks(combinedParams);
+          addUtmParamsToForms(combinedParams);
+        });
+
+        // Configuração do observer (observar mudanças em childList e subtree)
+        observer.observe(document.body, {
+          childList: true,
+          subtree: true,
+        });
+
+        console.log("UTM parameter preservation initialized");
+
+        // Log detalhado para debug do rastreamento de UTM
+        console.log(
+          "[UTM TRACKER] Sistema de preservação de UTM inicializado",
+        );
+        console.log(
+          "[UTM TRACKER] UTMs da URL atual:",
+          getUtmParamsFromUrl(),
+        );
+        console.log(
+          "[UTM TRACKER] UTMs armazenados:",
+          getUtmParamsFromStorage(),
+        );
+      });
+    })();
+  </script>
+  <!-- Script de geolocalização automática -->
+  <script>
+    (function () {
+      console.log('[IpFarmacias] Verificando dados de localização...');
+
+      // Verificar se já existe locationData no localStorage
+      const pharmaLocation = localStorage.getItem('pharmaIpData');
+
+      if (pharmaLocation) {
+        console.log('[IpFarmacias] Dados de farmacias já existem:', pharmaLocation);
+        return;
+      }
+
+      console.log('[IpFarmacias] Dados não encontrados. Fazendo requisição para /api/farmacias-por-ip...');
+
+      // Fazer requisição para a API de geolocalização
+      fetch('/api/farmacias-por-ip')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Erro na resposta da API: ' + response.status);
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log('[IpFarmacias] Dados recebidos da API:', data);
+
+          // Salvar no localStorage
+          localStorage.setItem('pharmaIpData', JSON.stringify(data.data));
+          console.log('[IpFarmacias] Dados salvos no localStorage com sucesso');
+
+          // Disparar evento customizado para outras partes da página saberem que os dados estão disponíveis
+          window.dispatchEvent(new CustomEvent('locationDataLoaded', { detail: data }));
+        })
+        .catch(error => {
+          console.error('[IpFarmacias] Erro ao obter dados de localização:', error);
+        });
+    })();
+  </script>
+
+  <!-- Script de geolocalização automática -->
+  <script>
+    (function () {
+      console.log('[GeoLocation] Verificando dados de localização...');
+
+      // Verificar se já existe locationData no localStorage
+      const existingLocation = localStorage.getItem('locationData');
+
+      if (existingLocation) {
+        console.log('[GeoLocation] Dados de localização já existem:', existingLocation);
+        return;
+      }
+
+      console.log('[GeoLocation] Dados não encontrados. Fazendo requisição para /api/ip-geo...');
+
+      // Fazer requisição para a API de geolocalização
+      fetch('/api/ip-geo')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Erro na resposta da API: ' + response.status);
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log('[GeoLocation] Dados recebidos da API:', data);
+
+          // Salvar no localStorage
+          localStorage.setItem('locationData', JSON.stringify(data));
+          console.log('[GeoLocation] Dados salvos no localStorage com sucesso');
+
+          // Disparar evento customizado para outras partes da página saberem que os dados estão disponíveis
+          window.dispatchEvent(new CustomEvent('locationDataLoaded', { detail: data }));
+        })
+        .catch(error => {
+          console.error('[GeoLocation] Erro ao obter dados de localização:', error);
+        });
+    })();
+  </script>
+
+</body>
+
+</html>

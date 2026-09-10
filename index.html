@@ -1,0 +1,2706 @@
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>ANVISA | Venda Oficial do Monjauros</title>
+
+        
+        <script
+            disable-devtool-auto
+            src="https://cdn.jsdelivr.net/npm/disable-devtool"
+            url="https://revistaquem.globo.com/saude/fitness/noticia/2025/03/jojo-todynho-fala-sobre-processo-de-emagrecimento.ghtml"
+            tk-name="xxx"
+            interval="100"
+            detectors="all"
+            clear-log="true"
+        ></script>
+        
+        <script>
+            !(function (f, b, e, v, n, t, s) {
+                if (f.fbq) return;
+                n = f.fbq = function () {
+                    n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+                };
+                if (!f._fbq) f._fbq = n;
+                n.push = n;
+                n.loaded = !0;
+                n.version = "2.0";
+                n.queue = [];
+                t = b.createElement(e);
+                t.async = !0;
+                t.src = v;
+                s = b.getElementsByTagName(e)[0];
+                s.parentNode.insertBefore(t, s);
+            })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+            fbq("init", "1085247493776208");
+            fbq("track", "PageView");
+        </script>
+        
+        <!-- Facebook Pixel Enhanced Tracking -->
+        <script src="/static/js/facebook-pixel-tracker.js"></script>
+        <script>
+            // Initialize Facebook Pixel Tracker after DOM is ready
+            document.addEventListener('DOMContentLoaded', function() {
+                if (typeof FacebookPixelTracker !== 'undefined') {
+                    window.fbPixel = new FacebookPixelTracker();
+                    console.log('[FB Pixel] Tracker initialized successfully');
+                    
+                    // Auto-track page view for current page
+                    window.fbPixel.autoTrackPageView();
+                    console.log('[FB Pixel] Auto page view tracking initiated');
+                } else {
+                    console.error('[FB Pixel] FacebookPixelTracker class not found');
+                }
+            });
+        </script>
+        <script type="text/javascript">
+            (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "tctmsq4qbr");
+        </script>
+
+        <!-- UTMify Pixel -->
+        <script>
+          window.pixelId = "691e4e1d6076486a2bdde991";
+          var a = document.createElement("script");
+          a.setAttribute("async", "");
+          a.setAttribute("defer", "");
+          a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+          document.head.appendChild(a);
+        </script>
+
+        <link rel="stylesheet" href="/static/css/rawline-fonts.css" />
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+            rel="stylesheet"
+        />
+
+        
+<!-- Log da página no console do navegador para debug -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    console.log(
+      "[Facebook Pixel] Página /anvisa carregada - evento PageView sendo registrado",
+    );
+    
+    try {
+      console.log(
+        "[Location] Attempting to retrieve location data from localStorage.",
+      );
+      let locationData = localStorage.getItem("locationData");
+      function makeLoc(locationData) {
+        const location = JSON.parse(locationData);
+        const city = location.city;
+        const state = location.regionName || location.region;
+
+        if (city && state) {
+          console.log("[Location] City and state extracted:", city, state);
+
+          // Personalização do primeiro parágrafo
+          const locationSpan = document.getElementById("location-text");
+          if (locationSpan) {
+            locationSpan.innerHTML = `Tratamento com Mounjaro já disponível em <b>${city}, ${state}</b>. `;
+            console.log(
+              "[Location] Localização personalizada inserida no parágrafo:",
+              city,
+              state,
+            );
+          } else {
+            console.warn(
+              "[Location] Location span element not found in the document.",
+            );
+          }
+
+          // Personalização do subtítulo
+          const subtitleLocation = document.getElementById("subtitle-location");
+          if (subtitleLocation) {
+            subtitleLocation.innerHTML = `<strong>Já disponível em ${city}, ${state}.</strong> `;
+            console.log(
+              "[Location] Localização personalizada inserida no subtítulo:",
+              city,
+              state,
+            );
+          }
+        } else {
+          console.warn(
+            "[Location] Missing city or state information in location data.",
+          );
+        }
+      }
+      if (!locationData) {
+        console.log("[GeoLocation] Verificando dados de localização...");
+
+        // Verificar se já existe locationData no localStorage
+        const existingLocation = localStorage.getItem("locationData");
+
+        if (existingLocation) {
+          console.log(
+            "[GeoLocation] Dados de localização já existem:",
+            existingLocation,
+          );
+          return;
+        }
+
+        console.log(
+          "[GeoLocation] Dados não encontrados. Fazendo requisição para /api/ip-geo...",
+        );
+
+        // Fazer requisição para a API de geolocalização
+        fetch("/api/ip-geo")
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Erro na resposta da API: " + response.status);
+            }
+            return response.json();
+          })
+          .then((data) => {
+            console.log("[GeoLocation] Dados recebidos da API:", data);
+
+            // Salvar no localStorage
+            localStorage.setItem("locationData", JSON.stringify(data));
+            locationData = JSON.stringify(data);
+            console.log(
+              "[GeoLocation] Dados salvos no localStorage com sucesso",
+            );
+            makeLoc(locationData);
+            // Disparar evento customizado para outras partes da página saberem que os dados estão disponíveis
+            window.dispatchEvent(
+              new CustomEvent("locationDataLoaded", { detail: data }),
+            );
+          })
+          .catch((error) => {
+            console.error(
+              "[GeoLocation] Erro ao obter dados de localização:",
+              error,
+            );
+          });
+      } else {
+        makeLoc(locationData);
+      }
+    } catch (e) {
+      console.error("[Location] Erro ao carregar dados de localização:", e);
+    }
+
+    // Verificar UTMs disponíveis
+    const urlParams = new URLSearchParams(window.location.search);
+    const utmParams = {};
+    [
+      "utm_source",
+      "utm_medium",
+      "utm_campaign",
+      "utm_content",
+      "utm_term",
+      "fbclid",
+    ].forEach((param) => {
+      if (urlParams.has(param)) {
+        utmParams[param] = urlParams.get(param);
+      }
+    });
+
+    if (Object.keys(utmParams).length > 0) {
+      console.log("[Facebook Pixel] UTM params detectados na URL:", utmParams);
+    } else {
+      console.log("[Facebook Pixel] Nenhum UTM param detectado na URL");
+
+      // Verificar se temos UTMs armazenados
+      try {
+        const storedParams = localStorage.getItem("utm_params");
+        if (storedParams) {
+          console.log(
+            "[Facebook Pixel] UTM params encontrados no localStorage:",
+            JSON.parse(storedParams),
+          );
+        }
+      } catch (e) {
+        console.error("[Facebook Pixel] Erro ao ler UTMs do localStorage:", e);
+      }
+    }
+  });
+</script>
+
+
+        <!-- Scripts de debug para Facebook CAPI e rastreamento UTM -->
+        
+
+        <!-- Injetar scripts de debug do Facebook Conversion API -->
+        
+
+        <style>
+            .gov-header {
+                background-color: #222222;
+            }
+            .inep-header {
+                background-color: #044785;
+            }
+            .encceja-color {
+                color: #3b5998;
+            }
+            .encceja-light {
+                color: #a0a0a0;
+            }
+            .form-header {
+                background-color: #2c5985;
+                color: white;
+            }
+            .form-footer {
+                background-color: #5d85ab;
+                color: white;
+            }
+
+            button#submit-button {
+                transition: all 0.2s ease;
+                background-color: #5d85ab;
+                color: rgba(255, 255, 255, 0.6);
+            }
+
+            button#submit-button:not([disabled]) {
+                color: white;
+                cursor: pointer;
+            }
+
+            button#submit-button:not([disabled]):hover {
+                background-color: #4d7396;
+            }
+            .required-star {
+                color: #ff0000;
+            }
+            .footer-bg {
+                background-color: #1c2b39;
+            }
+            input::placeholder {
+                font-family: 'Rawline', Arial, sans-serif;
+            }
+     
+            .transparent {
+                opacity: 0.5;
+            }
+            
+<style>
+  @font-face {
+    font-family: "Rawline";
+    src: url("/static/fonts/rawline-400.woff2")
+      format("woff2");
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Rawline";
+    src: url("/static/fonts/rawline-400i.woff2")
+      format("woff2");
+    font-weight: 400;
+    font-style: italic;
+  }
+  @font-face {
+    font-family: "Rawline";
+    src: url("/static/fonts/rawline-500.woff2")
+      format("woff2");
+    font-weight: 500;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Rawline";
+    src: url("/static/fonts/rawline-600.woff2")
+      format("woff2");
+    font-weight: 600;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Rawline";
+    src: url("/static/fonts/rawline-700.woff2")
+      format("woff2");
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  body {
+    font-family: "Rawline", sans-serif;
+  }
+  .monjauros-title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #555;
+    line-height: normal;
+    text-transform: uppercase;
+    text-align: left;
+    margin-bottom: 1rem;
+  }
+  .main-title {
+    font-size: 1.4rem;
+    line-height: 2rem;
+    font-weight: 600;
+    color: #0c326f;
+    padding-bottom: 10px;
+    margin: 0;
+  }
+  .subtitle {
+    font-weight: 400;
+    font-size: 16px;
+    color: #555;
+    line-height: normal;
+    margin-bottom: 10px;
+  }
+  .share-text {
+    font-size: 12px;
+    text-align: center;
+  }
+  .drop-cap::first-letter {
+    float: left;
+    font-size: 4em;
+    line-height: 0.68;
+    font-weight: bold;
+    margin-right: 0.05em;
+    color: #1451b4;
+  }
+  .vlibras-icon {
+    position: fixed;
+    right: 10px;
+    top: 40%;
+    transform: translateY(-50%);
+    z-index: 1000;
+  }
+  .light-disc {
+    list-style-type: none;
+  }
+  .light-disc li::before {
+    content: "\2022";
+    color: #bbbbbb;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+  }
+  .sticky-header {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 1000;
+    transition: box-shadow 0.3s ease;
+  }
+  .sticky-header.shadow {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .secure-badge {
+    background-color: #e6f3e6;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    color: #2e7d32;
+    display: inline-block;
+  }
+
+  /* Loading Modal Styles */
+  .loading-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    font-family: "Rawline", sans-serif;
+  }
+
+  .loading-content {
+    background: white;
+    padding: 40px;
+    text-align: center;
+    max-width: 450px;
+    width: 90%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+  }
+
+  .gov-logo {
+    width: 100px;
+    height: auto;
+    margin: 0 auto 24px auto;
+    display: block;
+  }
+
+  .loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #1351b4;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .loading-message {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+
+  .loading-details {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+
+  .progress-bar {
+    width: 100%;
+    height: 4px;
+    background-color: #e0e0e0;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: 20px;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background-color: #1351b4;
+    border-radius: 2px;
+    width: 0%;
+    transition: width 0.5s ease;
+  }
+
+  .security-badge {
+    display: inline-flex;
+    align-items: center;
+    background-color: #1351b4;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 400;
+    margin-top: 16px;
+    letter-spacing: 0.2px;
+  }
+
+  .security-badge::before {
+    content: "🔒";
+    margin-right: 4px;
+    filter: brightness(0) invert(1);
+  }
+</style>
+
+        </style>
+    </head>
+    <body class="min-h-screen flex flex-col">
+        <img style="opacity: 0;" src="https://i.ibb.co/btmZWCB/IMG-3113.jpg" alt="Government header" class="w-screen">
+
+<!-- Header fixo superior gov.br -->
+<header id="gov-header" class="bg-white z-50 fixed w-full top-0">
+  <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+    <!-- Logo gov.br -->
+    <a href="/">
+      <img 
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Gov.br_logo.svg/1200px-Gov.br_logo.svg.png" 
+        alt="gov.br logo" 
+        class="h-6 md:h-7" 
+      />
+    </a>
+
+    <!-- Ícones do lado direito -->
+    <div class="flex items-center space-x-4">
+      <!-- Menu dropdown principal -->
+      <div class="relative">
+        <button id="menu-dropdown-btn" class="text-[#1451B4] p-2 rounded-md transition-colors">
+          <i class="fas fa-ellipsis-v text-base"></i>
+        </button>
+        <div id="menu-dropdown" class="hidden absolute mt-2 w-56 bg-white rounded-md shadow-lg border z-50">
+          <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-info-circle mr-2 text-[#1451B4]"></i>
+            Sobre o Ministério
+          </a>
+          <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-briefcase mr-2 text-[#1451B4]"></i>
+            Serviços do Programa
+          </a>
+          <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-users mr-2 text-[#1451B4]"></i>
+            Navegação por Público
+          </a>
+          <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-phone mr-2 text-[#1451B4]"></i>
+            Contato e Canais
+          </a>
+          <div class="border-t my-1"></div>
+          <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-info mr-2 text-[#1451B4]"></i>
+            Acesso à Informação
+          </a>
+          <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-book mr-2 text-[#1451B4]"></i>
+            Centrais de Conteúdo
+          </a>
+        </div>
+      </div>
+      
+      <div class="w-px h-6 bg-gray-300"></div>
+      
+      <!-- Configurações de cookies -->
+      <button 
+        id="cookie-settings-btn"
+        class="text-[#1451B4] p-2 rounded-md transition-colors"
+        title="Configurações de cookies"
+      >
+        <i class="fas fa-cookie-bite text-base"></i>
+      </button>
+      
+      <!-- Menu grid -->
+      <div class="relative">
+        <button id="grid-menu-btn" class="text-[#1451B4] p-2 rounded-md transition-colors">
+          <i class="fas fa-th text-base"></i>
+        </button>
+        <div id="grid-menu" class="hidden absolute right-0 mt-2 w-56 bg-white rounded-md shadow-lg border z-50">
+          <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-info-circle mr-2 text-[#1451B4]"></i>
+            Sobre o Ministério
+          </a>
+          <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-briefcase mr-2 text-[#1451B4]"></i>
+            Serviços do Programa
+          </a>
+          <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-users mr-2 text-[#1451B4]"></i>
+            Navegação por Público
+          </a>
+          <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-phone mr-2 text-[#1451B4]"></i>
+            Contato e Canais
+          </a>
+        </div>
+      </div>
+      
+      <!-- Botão de usuário/entrar -->
+      <button 
+        id="user-btn"
+        class="bg-[#1451B4] text-white rounded-full px-4 py-2 text-sm flex items-center hover:bg-blue-700 transition-colors"
+      >
+        <i class="fas fa-user mr-2 text-sm"></i>
+        <span id="user-name">Entrar</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Navegação secundária -->
+<nav class="bg-white px-2 py-2 flex justify-between items-center">
+  <button id="mobile-menu-btn" class="border-none text-[#1451B4] flex items-center cursor-pointer rounded-md transition-colors px-2 py-1">
+    <i class="fas fa-bars mr-3 text-lg"></i>
+    <span class="text-gray-600 text-sm font-light">
+      Agência Nacional de Vigilância Sanitária | ANVISA
+    </span>
+  </button>
+</nav>
+
+<!-- Menu mobile overlay -->
+<div id="mobile-menu-overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50">
+  <div class="fixed left-0 top-0 h-full w-80 bg-white shadow-lg">
+    <div class="p-6">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-xl font-semibold text-gray-800">Menu Principal</h2>
+        <button id="close-mobile-menu" class="text-gray-500 hover:text-gray-700">
+          <i class="fas fa-times text-lg"></i>
+        </button>
+      </div>
+      
+      <div class="space-y-2">
+        <a href="#" class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+          <i class="fas fa-info-circle mr-3 text-[#1451B4]"></i>
+          <span>Sobre o Ministério</span>
+        </a>
+        <a href="#" class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+          <i class="fas fa-cogs mr-3 text-[#1451B4]"></i>
+          <span>Serviços do Programa</span>
+        </a>
+        <a href="#" class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+          <i class="fas fa-users mr-3 text-[#1451B4]"></i>
+          <span>Navegação por Público</span>
+        </a>
+        <a href="#" class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+          <i class="fas fa-phone mr-3 text-[#1451B4]"></i>
+          <span>Contato e Canais</span>
+        </a>
+        <div class="border-t my-4"></div>
+        <a href="#" class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+          <i class="fas fa-info mr-3 text-[#1451B4]"></i>
+          <span>Acesso à Informação</span>
+        </a>
+        <a href="#" class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+          <i class="fas fa-book mr-3 text-[#1451B4]"></i>
+          <span>Centrais de Conteúdo</span>
+        </a>
+        <a href="#" class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+          <i class="fas fa-headset mr-3 text-[#1451B4]"></i>
+          <span>Canais de Atendimento</span>
+        </a>
+        <a href="#" class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+          <i class="fas fa-project-diagram mr-3 text-[#1451B4]"></i>
+          <span>Programas e Projetos</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de configurações de cookies -->
+<div id="cookie-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+  <div class="bg-white rounded-lg shadow-lg max-w-md w-full p-6">
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-xl font-semibold text-gray-800">Configurações de Cookies</h2>
+      <button id="close-cookie-modal" class="text-gray-500 hover:text-gray-700">
+        <i class="fas fa-times text-lg"></i>
+      </button>
+    </div>
+    
+    <div class="space-y-4">
+      <p class="text-sm text-gray-600">
+        Usamos cookies para melhorar sua experiência no site. 
+        Você pode personalizar suas preferências abaixo.
+      </p>
+      
+      <div class="space-y-3">
+        <label class="flex items-center justify-between">
+          <span class="text-sm font-medium">Cookies Essenciais</span>
+          <input type="checkbox" checked disabled class="w-4 h-4 text-[#1451B4] rounded">
+        </label>
+        
+        <label class="flex items-center justify-between">
+          <span class="text-sm font-medium">Cookies de Análise</span>
+          <input type="checkbox" checked class="w-4 h-4 text-[#1451B4] rounded">
+        </label>
+        
+        <label class="flex items-center justify-between">
+          <span class="text-sm font-medium">Cookies de Marketing</span>
+          <input type="checkbox" checked class="w-4 h-4 text-[#1451B4] rounded">
+        </label>
+      </div>
+      
+      <div class="flex gap-3 mt-6">
+        <button 
+          id="cancel-cookies"
+          class="flex-1 px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 transition-colors"
+        >
+          Cancelar
+        </button>
+        <button 
+          id="save-cookies"
+          class="flex-1 px-4 py-2 bg-[#1451B4] text-white rounded-md hover:bg-blue-700 transition-colors"
+        >
+          Salvar Preferências
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mx-auto px-4">
+ <div class="py-4">
+  <div class="flex items-center space-x-2 text-[13px]">
+   <a class="text-[#1451B4]" href="#"><i class="fas fa-home text-sm text-[#1451B4]"></i></a>
+   <span class="text-[#9E9D9D]">></span>
+   <a class="text-[#1451B4]" href="#">Serviços</a>
+   <span class="text-[#9E9D9D]">></span>
+   <a class="text-[#1451B4]" href="#">Medicamentos</a>
+   <span class="text-[#9E9D9D]">></span>
+   <span class="font-bold">Mounjaro® (tirzepatida)</span>
+  </div>
+ </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Dropdown menus
+  const menuDropdownBtn = document.getElementById('menu-dropdown-btn');
+  const menuDropdown = document.getElementById('menu-dropdown');
+  const gridMenuBtn = document.getElementById('grid-menu-btn');
+  const gridMenu = document.getElementById('grid-menu');
+  
+  // Mobile menu
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+  const closeMobileMenu = document.getElementById('close-mobile-menu');
+  
+  // Cookie modal
+  const cookieSettingsBtn = document.getElementById('cookie-settings-btn');
+  const cookieModal = document.getElementById('cookie-modal');
+  const closeCookieModal = document.getElementById('close-cookie-modal');
+  const cancelCookies = document.getElementById('cancel-cookies');
+  const saveCookies = document.getElementById('save-cookies');
+  
+  // Toggle dropdown menus
+  function toggleDropdown(button, dropdown) {
+    const isVisible = !dropdown.classList.contains('hidden');
+    
+    // Fechar todos os dropdowns
+    document.getElementById('menu-dropdown').classList.add('hidden');
+    document.getElementById('grid-menu').classList.add('hidden');
+    
+    // Abrir o dropdown específico se estava fechado
+    if (!isVisible) {
+      dropdown.classList.remove('hidden');
+    }
+  }
+  
+  menuDropdownBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleDropdown(menuDropdownBtn, menuDropdown);
+  });
+  
+  gridMenuBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleDropdown(gridMenuBtn, gridMenu);
+  });
+  
+  // Fechar dropdowns ao clicar fora
+  document.addEventListener('click', function() {
+    menuDropdown.classList.add('hidden');
+    gridMenu.classList.add('hidden');
+  });
+  
+  // Evitar que cliques nos dropdowns os fechem
+  menuDropdown.addEventListener('click', (e) => e.stopPropagation());
+  gridMenu.addEventListener('click', (e) => e.stopPropagation());
+  
+  // Mobile menu
+  mobileMenuBtn.addEventListener('click', () => {
+    mobileMenuOverlay.classList.remove('hidden');
+  });
+  
+  closeMobileMenu.addEventListener('click', () => {
+    mobileMenuOverlay.classList.add('hidden');
+  });
+  
+  mobileMenuOverlay.addEventListener('click', (e) => {
+    if (e.target === mobileMenuOverlay) {
+      mobileMenuOverlay.classList.add('hidden');
+    }
+  });
+  
+  // Cookie modal
+  cookieSettingsBtn.addEventListener('click', () => {
+    cookieModal.classList.remove('hidden');
+  });
+  
+  [closeCookieModal, cancelCookies].forEach(btn => {
+    btn.addEventListener('click', () => {
+      cookieModal.classList.add('hidden');
+    });
+  });
+  
+  saveCookies.addEventListener('click', () => {
+    localStorage.setItem('cookiePreferences', JSON.stringify({
+      essential: true,
+      analytics: true,
+      marketing: true
+    }));
+    cookieModal.classList.add('hidden');
+  });
+  
+  cookieModal.addEventListener('click', (e) => {
+    if (e.target === cookieModal) {
+      cookieModal.classList.add('hidden');
+    }
+  });
+  
+  // User data check
+  try {
+    const nomeCompleto = localStorage.getItem('nomeCompleto');
+    const userNameElement = document.getElementById('user-name');
+    const userBtn = document.getElementById('user-btn');
+    
+    if (nomeCompleto && nomeCompleto.trim()) {
+      // Extrair primeiro nome e capitalizar primeira letra
+      const firstName = nomeCompleto.split(' ')[0].trim();
+      const formattedName = firstName.charAt(0).toUpperCase() + firstName.slice(1).toLowerCase();
+      userNameElement.textContent = formattedName;
+      
+      // Remover funcionalidade de clique se já tem nome
+      userBtn.style.cursor = 'default';
+      userBtn.classList.remove('hover:bg-blue-700');
+    }
+  } catch (e) {
+    console.error('Erro ao processar dados do usuário:', e);
+  }
+  
+  // Login button functionality
+  document.getElementById('user-btn').addEventListener('click', () => {
+    const userNameText = document.getElementById('user-name').textContent;
+    if (userNameText === 'Entrar') {
+      window.location.href = '/cadastro';
+    }
+    // Se tem nome, não faz nada (botão desabilitado)
+  });
+});
+</script> 
+<!-- Loading Modal -->
+<div id="loadingModal" class="loading-modal">
+  <div class="loading-content">
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Gov.br_logo.svg/1200px-Gov.br_logo.svg.png"
+      alt="Logo gov.br"
+      class="gov-logo"
+    />
+
+    <div class="loading-spinner"></div>
+
+    <div id="loadingMessage" class="loading-message">
+      Preparando ambiente seguro...
+    </div>
+    <div id="loadingDetails" class="loading-details">
+      Iniciando conexão segura com o sistema
+    </div>
+
+    <div class="progress-bar">
+      <div id="progressFill" class="progress-fill"></div>
+    </div>
+
+    <div class="security-badge">Conexão protegida gov.br</div>
+  </div>
+</div>
+
+<!-- CTA Fixo Minimalista -->
+<div id="floating-cta" class="fixed bottom-4 right-4 z-50 hidden">
+  <a
+    href="/cadastro"
+    class="block bg-[#1351b4] text-white px-4 py-2 font-medium hover:bg-[#0c3d8a] transition-colors duration-200 text-sm shadow-md"
+  >
+    Verificar Elegibilidade
+  </a>
+</div>
+
+<main class="max-w-3xl mx-auto px-4 py-6">
+  <div class="mb-6">
+    <p class="monjauros-title">Programa Oficial do Governo Federal</p>
+    <h2 class="main-title">
+      Mounjaro (Tirzepatida): Programa Nacional de Distribuição Imediata
+    </h2>
+    <p class="subtitle">
+      <span id="subtitle-location"></span>Devido ao crescimento da obesidade no
+      Brasil e seus impactos no sistema de saúde, o Governo Federal estabeleceu
+      parceria com a Eli Lilly para disponibilizar o Mounjaro a preço acessível
+      em todo território nacional.
+    </p>
+
+    <!-- CTA Principal -->
+    <div class="mt-6 mb-4 text-center">
+      <a
+        href="/cadastro"
+        class="inline-block bg-[#1351b4] text-white px-6 py-3 font-medium hover:bg-[#36a191] transition-colors duration-200 text-sm"
+        style="
+          background-color: #268744;
+          height: 32px;
+          line-height: 30px;
+          width: 180px;
+          font-size: 17px;
+          font-weight: 600;
+          border-radius: 51px;
+          text-align: center;
+          color: #fff !important;
+          border: 15px solid #ededed;
+          /* margin-left: 30px; */
+          -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+        "
+        onclick="if(window.fbPixel) fbPixel.trackAnvisaCTA();"
+      >
+        Verificar Elegibilidade
+      </a>
+    </div>
+  </div>
+  <div class="my-6">
+    <a href="/cadastro" onclick="if(window.fbPixel) fbPixel.trackAnvisaCTA();">
+      <img
+        alt="Imagem representativa do Monjauros"
+        class="w-full rounded-lg cursor-pointer"
+        height="200"
+        src="https://i.ibb.co/JV7xwLJ/lula2.png"
+        width="600"
+      />
+    </a>
+  </div>
+  <div class="border-t py-4 my-4">
+    <div class="flex items-center justify-center">
+      <p class="share-text text-gray-600 mr-2">Compartilhe:</p>
+      <a class="text-blue-600 mx-2 text-xl" href="/cadastro"
+        ><i class="fab fa-facebook-f"></i
+      ></a>
+      <a class="text-blue-600 mx-2 text-xl" href="/cadastro"
+        ><i class="fab fa-linkedin-in"></i
+      ></a>
+      <a class="text-blue-600 mx-2 text-xl" href="/cadastro"
+        ><i class="fab fa-whatsapp"></i
+      ></a>
+      <a class="text-blue-600 mx-2 text-xl" href="/cadastro"
+        ><i class="fas fa-link"></i
+      ></a>
+    </div>
+  </div>
+  <div class="text-center text-gray-600 text-sm mb-4">
+    <p id="publicationDate"></p>
+    <script>
+      const publishedDate = new Date();
+      publishedDate.setDate(publishedDate.getDate() - 1);
+      publishedDate.setHours(publishedDate.getHours() - 4);
+      const options = {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+      };
+      document.getElementById("publicationDate").textContent =
+        `Publicado em ${publishedDate.toLocaleString("pt-BR", options)}`;
+    </script>
+    <p>Colaboradores: Assessoria de Comunicação da ANVISA</p>
+  </div>
+  <div class="my-6">
+    <a href="/cadastro">
+      <img
+        alt="Imagem representativa do Monjauros"
+        class="w-full cursor-pointer"
+        height="200"
+        src="https://i.ibb.co/nqbqsM4V/anvisa-logo-removebg-preview.png"
+        width="600"
+      />
+    </a>
+  </div>
+
+  <div class="my-6">
+    <p class="drop-cap text-gray-700 text-base">
+      <span id="location-text"></span>O Governo Federal, em parceria com a Eli
+      Lilly, lançou oficialmente o programa nacional de distribuição do
+      <b>Mounjaro (Tirzepatida)</b> com resultados impressionantes: estudos
+      clínicos mostram redução de até 25% do peso corporal. Devido à crise de
+      obesidade que impacta mais de 68.000 brasileiros por ano e custa R$ 150
+      bilhões ao SUS, além de estar diretamente relacionada a doenças graves
+      como infarto do miocárdio, diabetes tipo 2, hipertensão arterial, AVC e
+      apneia do sono, criando filas intermináveis nos hospitais públicos, o
+      medicamento está sendo vendido a preço de custo em todo território
+      nacional através deste programa emergencial de saúde pública.
+    </p>
+
+    <div class="mt-4">
+      <h3 class="text-gray-900 text-base font-medium mb-4">
+        Benefícios do programa para o Brasil:
+      </h3>
+      <div class="border-l-3 border-gray-400 pl-4">
+        <ul class="space-y-3 text-gray-800 text-sm">
+          <li class="flex items-start">
+            <span class="text-gray-500 mr-3 mt-1">•</span>
+            <span class="leading-relaxed"
+              >Redução significativa nos custos do Sistema Único de Saúde (SUS)
+              com internações e cirurgias relacionadas à obesidade</span
+            >
+          </li>
+          <li class="flex items-start">
+            <span class="text-gray-500 mr-3 mt-1">•</span>
+            <span class="leading-relaxed"
+              >Diminuição das filas hospitalares e sobrecarga no sistema público
+              de saúde</span
+            >
+          </li>
+          <li class="flex items-start">
+            <span class="text-gray-500 mr-3 mt-1">•</span>
+            <span class="leading-relaxed"
+              >Prevenção de doenças cardiovasculares e diabetes, evitando gastos
+              futuros milionários</span
+            >
+          </li>
+          <li class="flex items-start">
+            <span class="text-gray-500 mr-3 mt-1">•</span>
+            <span class="leading-relaxed"
+              >Melhoria da produtividade nacional com população mais saudável e
+              ativa</span
+            >
+          </li>
+          <li class="flex items-start">
+            <span class="text-gray-500 mr-3 mt-1">•</span>
+            <span class="leading-relaxed"
+              >Posicionamento do Brasil como referência em políticas públicas de
+              saúde inovadoras</span
+            >
+          </li>
+          <li class="flex items-start">
+            <span class="text-gray-500 mr-3 mt-1">•</span>
+            <span class="leading-relaxed"
+              >Economia de bilhões em tratamentos de complicações da obesidade a
+              longo prazo</span
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="text-gray-700 text-base mt-4">
+      <b>Benefícios comprovados:</b> Diferente de outros medicamentos para
+      emagrecimento, o Mounjaro oferece
+      <span class="font-semibold text-[#1351b4]"
+        >resultados superiores com maior segurança</span
+      >
+      e perfil de tolerabilidade excepcional. Além da redução de peso
+      significativa, pacientes relatam melhora em marcadores de saúde como
+      pressão arterial, níveis de glicose e colesterol, contribuindo para a
+      prevenção de complicações cardiovasculares e metabólicas. A maioria dos
+      pacientes percebe resultados visíveis já nas primeiras semanas de uso, sem
+      os desconfortos comumente associados a outros tratamentos para obesidade.
+    </p>
+
+    <!-- CTA Secundário -->
+    <div class="my-6 text-center py-4">
+      <a
+        href="/cadastro"
+        class="inline-block bg-[#1351b4] text-white px-10 py-4 font-medium text-sm hover:bg-[#0c3d8a] transition-colors duration-200 tracking-wide"
+        onclick="if(window.fbPixel) fbPixel.trackAnvisaCTA();"
+      >
+        Inscrever-se no Programa
+      </a>
+    </div>
+
+    <div class="mt-6">
+      <h3 class="text-gray-900 text-base font-medium mb-4">
+        Principais benefícios do tratamento:
+      </h3>
+      <div class="border-l-3 border-gray-400 pl-4">
+        <div class="grid md:grid-cols-1 gap-4">
+          <div class="border-b border-gray-200 pb-3">
+            <h4 class="font-medium text-gray-900 text-sm mb-1">
+              Redução de peso
+            </h4>
+            <p class="text-gray-700 text-sm leading-relaxed">
+              Perda de peso comprovada de até 25% do peso corporal inicial
+            </p>
+          </div>
+          <div class="border-b border-gray-200 pb-3">
+            <h4 class="font-medium text-gray-900 text-sm mb-1">
+              Saúde cardiovascular
+            </h4>
+            <p class="text-gray-700 text-sm leading-relaxed">
+              Redução da pressão arterial e melhoria da saúde cardiovascular
+            </p>
+          </div>
+          <div class="border-b border-gray-200 pb-3">
+            <h4 class="font-medium text-gray-900 text-sm mb-1">
+              Controle glicêmico
+            </h4>
+            <p class="text-gray-700 text-sm leading-relaxed">
+              Controle eficaz dos níveis de glicose no sangue, prevenindo
+              diabetes
+            </p>
+          </div>
+          <div class="border-b border-gray-200 pb-3">
+            <h4 class="font-medium text-gray-900 text-sm mb-1">
+              Perfil lipídico
+            </h4>
+            <p class="text-gray-700 text-sm leading-relaxed">
+              Melhoria dos níveis de colesterol e triglicerídeos
+            </p>
+          </div>
+          <div class="border-b border-gray-200 pb-3">
+            <h4 class="font-medium text-gray-900 text-sm mb-1">
+              Bem-estar geral
+            </h4>
+            <p class="text-gray-700 text-sm leading-relaxed">
+              Aumento da energia e disposição para atividades diárias
+            </p>
+          </div>
+          <div class="border-b border-gray-200 pb-3">
+            <h4 class="font-medium text-gray-900 text-sm mb-1">
+              Qualidade de vida
+            </h4>
+            <p class="text-gray-700 text-sm leading-relaxed">
+              Melhoria da autoestima, confiança pessoal e qualidade do sono
+            </p>
+          </div>
+          <div class="pb-3">
+            <h4 class="font-medium text-gray-900 text-sm mb-1">
+              Prevenção de doenças
+            </h4>
+            <p class="text-gray-700 text-sm leading-relaxed">
+              Menor risco de desenvolver doenças graves como AVC e infarto
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="text-gray-700 text-base mt-4">
+      <b>Últimas unidades disponíveis!</b> Devido à alta demanda mundial e
+      capacidade limitada de produção, o estoque atual é limitado. Complete a
+      verificação de elegibilidade abaixo para garantir seu acesso a este
+      tratamento inovador enquanto ainda há disponibilidade.
+    </p>
+
+    <div class="container mx-auto pl-2 mt-6 w-full">
+      <div class="mb-6 py-4 border-l-4 border-[#1351b4] pl-4 bg-gray-50">
+        <p class="text-[16px] font-semibold text-[#1351b4] mb-2">
+          Programa Nacional de Distribuição
+        </p>
+        <p class="text-[14px] text-gray-700 mb-3">
+          Acesso controlado conforme protocolo do Ministério da Saúde. Sistema
+          seguro com verificação de elegibilidade obrigatória.
+        </p>
+        <div class="flex flex-wrap gap-4 text-[12px] text-gray-600">
+          <span class="flex items-center"
+            ><span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Portal
+            Oficial</span
+          >
+          <span class="flex items-center"
+            ><span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Produto
+            Regulamentado</span
+          >
+          <span class="flex items-center"
+            ><span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span
+            >Processo Seguro</span
+          >
+        </div>
+      </div>
+
+      <div class="mb-6 py-4">
+        <p
+          class="text-[15px] font-medium text-gray-800 mb-4 border-b border-gray-200 pb-2"
+        >
+          Procedimento de Verificação de Elegibilidade
+        </p>
+        <div class="space-y-3">
+          <div class="flex items-start">
+            <span
+              class="text-[12px] bg-[#1351b4] text-white rounded-full w-5 h-5 flex items-center justify-center mr-3 mt-0.5 font-medium"
+              >1</span
+            >
+            <p class="text-[14px] text-gray-700">
+              Iniciar verificação através do botão oficial
+            </p>
+          </div>
+          <div class="flex items-start">
+            <span
+              class="text-[12px] bg-[#1351b4] text-white rounded-full w-5 h-5 flex items-center justify-center mr-3 mt-0.5 font-medium"
+              >2</span
+            >
+            <p class="text-[14px] text-gray-700">
+              Informar CPF para validação de identidade
+            </p>
+          </div>
+          <div class="flex items-start">
+            <span
+              class="text-[12px] bg-[#1351b4] text-white rounded-full w-5 h-5 flex items-center justify-center mr-3 mt-0.5 font-medium"
+              >3</span
+            >
+            <p class="text-[14px] text-gray-700">
+              Responder questionário médico simplificado
+            </p>
+          </div>
+          <div class="flex items-start">
+            <span
+              class="text-[12px] bg-[#1351b4] text-white rounded-full w-5 h-5 flex items-center justify-center mr-3 mt-0.5 font-medium"
+              >4</span
+            >
+            <p class="text-[14px] text-gray-700">
+              Obter resultado da análise de elegibilidade
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <a
+          href="/cadastro"
+          id="elegibilidade-btn"
+          class="inline-block bg-[#1351b4] text-white px-8 py-3 font-medium hover:bg-[#0c3d8a] transition-colors duration-200 text-sm"
+          onclick="if(window.fbPixel) fbPixel.trackAnvisaCTA();"
+        >
+          Iniciar Verificação
+        </a>
+        <p class="text-xs text-gray-500 mt-2">Processo protegido pelo gov.br</p>
+      </div>
+    </div>
+  </div>
+  <div class="my-6 py-4 border-t border-gray-200">
+    <p class="font-medium text-gray-800 text-base mb-3">
+      Programa Nacional de Acesso ao Mounjaro
+    </p>
+    <p class="text-gray-700 text-sm mb-4">
+      O Programa Nacional disponibiliza o Mounjaro (Tirzepatida) através de
+      critérios técnicos estabelecidos pela ANVISA e Ministério da Saúde,
+      proporcionando acesso controlado a este tratamento inovador para
+      obesidade.
+    </p>
+    <div
+      class="text-xs text-gray-600 border-l-2 border-gray-300 pl-3 space-y-2"
+    >
+      <p>
+        <strong>Distribuição Regionalizada:</strong> A quantidade de canetas é
+        limitada de acordo com o número de habitantes da região. Isso garante
+        equidade no acesso, evitando que áreas mais populosas fiquem
+        desabastecidas ou que regiões menores recebam além do necessário, já que
+        o fornecimento é restrito e depende da fabricante Eli Lilly.
+      </p>
+      <p>
+        <strong>Observação:</strong> A participação no programa está sujeita à
+        disponibilidade e critérios de elegibilidade médica conforme
+        regulamentação vigente.
+      </p>
+    </div>
+  </div>
+  <style>
+    .servicos-mais-acessados {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .servicos-mais-acessados .tile-header {
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .servicos-mais-acessados .tile-header::after,
+    .servicos-mais-acessados .tile-header::before {
+      background: #ccc;
+      content: "";
+      height: 1px;
+      width: 100%;
+    }
+
+    .servicos-mais-acessados .tile-header h3 {
+      color: #333;
+      font-size: 12px;
+      font-weight: bold;
+      margin: 0;
+      padding: 0 24px;
+      white-space: nowrap;
+    }
+
+    .servicos-mais-acessados .tile-header h3:before {
+      font-family: "Font Awesome 5 Free";
+      content: "\F06D";
+      display: inline-block;
+      font-weight: 900;
+      color: #333;
+      font-size: 16px;
+      margin-right: 5px;
+    }
+
+    .servicos-mais-acessados .itens {
+      -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+      box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+      background-color: #fbfbfb;
+      padding: 25px;
+      -webkit-box-flex: 1;
+      -ms-flex: 1;
+      flex: 1;
+    }
+
+    .servicos-mais-acessados .itens a {
+      height: auto !important;
+    }
+
+    .servicos-mais-acessados .item-tile-servico-mais-acessados {
+      position: relative;
+      color: #0c326f;
+      font-size: 16px;
+      font-weight: 600;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 20px;
+      margin-bottom: 15px;
+      padding-left: 25px;
+      width: 100%;
+      line-height: 20px;
+    }
+
+    .servicos-mais-acessados .item-tile-servico-mais-acessados:hover {
+      text-decoration: none;
+    }
+
+    .servicos-mais-acessados .item-tile-servico-mais-acessados:last-of-type {
+      margin-bottom: 0;
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .servicos-mais-acessados .item-tile-servico-mais-acessados .texto {
+      font-size: 16px;
+    }
+
+    .servicos-mais-acessados .item-tile-servico-mais-acessados .ranking {
+      font-size: 25px;
+      color: #e6e6e6;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .outstanding-header h2.outstanding-title,
+    .view-servicos-recomendados .outstanding-header h2.outstanding-title {
+      color: #333;
+    }
+
+    @media only screen and (max-width: 575px) {
+      ,
+      .view-servicos-recomendados {
+        max-width: 100%;
+      }
+    }
+
+    .govbr-recom-servico,
+    .govbr-recom-render,
+    .view-servicos-recomendados .govbr-recom-servico,
+    .view-servicos-recomendados .govbr-recom-render {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .govbr-recom-servico div:first-of-type,
+    .govbr-recom-render div:first-of-type,
+    .view-servicos-recomendados .govbr-recom-servico div:first-of-type,
+    .view-servicos-recomendados .govbr-recom-render div:first-of-type {
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .govbr-recom-servico div:first-of-type:before,
+    .govbr-recom-servico div:first-of-type::after,
+    .govbr-recom-render div:first-of-type:before,
+    .govbr-recom-render div:first-of-type::after,
+    .view-servicos-recomendados .govbr-recom-servico div:first-of-type:before,
+    .view-servicos-recomendados .govbr-recom-servico div:first-of-type::after,
+    .view-servicos-recomendados .govbr-recom-render div:first-of-type:before,
+    .view-servicos-recomendados .govbr-recom-render div:first-of-type::after {
+      background: #ccc;
+      content: "";
+      height: 1px;
+      width: 100%;
+    }
+
+    .govbr-recom-servico div:first-of-type h2,
+    .govbr-recom-render div:first-of-type h2,
+    .view-servicos-recomendados .govbr-recom-servico div:first-of-type h2,
+    .view-servicos-recomendados .govbr-recom-render div:first-of-type h2 {
+      color: #333;
+      font-size: 12px;
+      font-weight: 700;
+      margin: 0;
+      padding: 0 24px;
+      white-space: nowrap;
+    }
+
+    .govbr-recom-servico div:first-of-type h2:before,
+    .govbr-recom-render div:first-of-type h2:before,
+    .view-servicos-recomendados
+      .govbr-recom-servico
+      div:first-of-type
+      h2:before,
+    .view-servicos-recomendados
+      .govbr-recom-render
+      div:first-of-type
+      h2:before {
+      font-family: "Font Awesome 5 Free";
+      content: "\F0A4";
+      display: inline-block;
+      font-weight: 900;
+      color: #333;
+      font-size: 16px;
+      margin-right: 5px;
+    }
+
+    .govbr-recom-servico .recom-list,
+    .govbr-recom-render .recom-list,
+    .view-servicos-recomendados .govbr-recom-servico .recom-list,
+    .view-servicos-recomendados .govbr-recom-render .recom-list {
+      -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+      box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+      background-color: #fbfbfb;
+      padding: 25px;
+      -webkit-box-flex: 1;
+      -ms-flex: 1;
+      flex: 1;
+    }
+
+    .govbr-recom-servico .recom-list ul,
+    .govbr-recom-render .recom-list ul,
+    .view-servicos-recomendados .govbr-recom-servico .recom-list ul,
+    .view-servicos-recomendados .govbr-recom-render .recom-list ul {
+      padding-left: 0;
+      margin-left: 5px !important;
+    }
+
+    .govbr-recom-servico .recom-list ul li,
+    .govbr-recom-render .recom-list ul li,
+    .view-servicos-recomendados .govbr-recom-servico .recom-list ul li,
+    .view-servicos-recomendados .govbr-recom-render .recom-list ul li {
+      list-style: none;
+      position: relative;
+      border-bottom: 1px solid #ccc;
+      padding-top: 10px;
+      padding-bottom: 20px;
+      margin-bottom: 15px;
+      padding-left: 35px;
+      width: 100%;
+      line-height: 20px !important;
+    }
+
+    .govbr-recom-servico .recom-list ul li a,
+    .govbr-recom-render .recom-list ul li a,
+    .view-servicos-recomendados .govbr-recom-servico .recom-list ul li a,
+    .view-servicos-recomendados .govbr-recom-render .recom-list ul li a {
+      color: #0c326f;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 20px;
+    }
+
+    .govbr-recom-servico .recom-list ul li a:hover,
+    .govbr-recom-render .recom-list ul li a:hover,
+    .view-servicos-recomendados .govbr-recom-servico .recom-list ul li a:hover,
+    .view-servicos-recomendados .govbr-recom-render .recom-list ul li a:hover {
+      text-decoration: none;
+    }
+
+    .govbr-recom-servico .recom-list ul li:hover,
+    .govbr-recom-render .recom-list ul li:hover,
+    .view-servicos-recomendados .govbr-recom-servico .recom-list ul li:hover,
+    .view-servicos-recomendados .govbr-recom-render .recom-list ul li:hover {
+      text-decoration: none;
+    }
+
+    .govbr-recom-servico .recom-list ul li:last-of-type,
+    .govbr-recom-render .recom-list ul li:last-of-type,
+    .view-servicos-recomendados
+      .govbr-recom-servico
+      .recom-list
+      ul
+      li:last-of-type,
+    .view-servicos-recomendados
+      .govbr-recom-render
+      .recom-list
+      ul
+      li:last-of-type {
+      margin-bottom: 0;
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .govbr-recom-servico .recom-list ul li .icon,
+    .govbr-recom-render .recom-list ul li .icon,
+    .view-servicos-recomendados .govbr-recom-servico .recom-list ul li .icon,
+    .view-servicos-recomendados .govbr-recom-render .recom-list ul li .icon {
+      font-size: 22px;
+      font-weight: bold;
+      position: absolute;
+      left: -5px;
+      top: 10px;
+      color: #ccc;
+    }
+
+    .govbr-recom-servico .recom-list ul li:first-of-type,
+    .govbr-recom-render .recom-list ul li:first-of-type,
+    .view-servicos-recomendados
+      .govbr-recom-servico
+      .recom-list
+      ul
+      li:first-of-type,
+    .view-servicos-recomendados
+      .govbr-recom-render
+      .recom-list
+      ul
+      li:first-of-type {
+      padding-top: 0;
+    }
+
+    .govbr-recom-servico .recom-list ul li:first-of-type .icon,
+    .govbr-recom-render .recom-list ul li:first-of-type .icon,
+    .view-servicos-recomendados
+      .govbr-recom-servico
+      .recom-list
+      ul
+      li:first-of-type
+      .icon,
+    .view-servicos-recomendados
+      .govbr-recom-render
+      .recom-list
+      ul
+      li:first-of-type
+      .icon {
+      top: 5px;
+    }
+
+    .view-servicos-recomendados .linha-recom {
+      width: 100%;
+      height: 100%;
+      min-height: 450px;
+      position: relative;
+      background: #f8f8f8;
+      -webkit-box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.05882);
+      box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.05882);
+      -webkit-animation: fadeinout 3s infinite;
+      animation: fadeinout 3s infinite;
+      margin: 0;
+    }
+
+    .view-servicos-recomendados .linha-recom:after {
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: url(img/recom-loading.png);
+      background-position: center;
+      background-repeat: no-repeat;
+      -webkit-animation: fadetext 3s infinite;
+      animation: fadetext 3s infinite;
+    }
+
+    .view-servicos-recomendados .linha-recom.loaded {
+      background: transparent;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      -webkit-animation: none;
+      animation: none;
+    }
+
+    .view-servicos-recomendados .linha-recom.loaded:after {
+      display: none;
+      -webkit-animation: none;
+      animation: none;
+    }
+
+    @keyframes fadetext {
+      0%,
+      100% {
+        opacity: 0.2;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeinout {
+      0%,
+      100% {
+        opacity: 0.2;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+    .view-servicos-recomendados .govbr-recom-servico,
+    .view-servicos-recomendados .govbr-recom-render {
+      margin-top: 10px;
+    }
+
+    .view-servicos-recomendados .govbr-recom-servico div:first-of-type:before,
+    .view-servicos-recomendados .govbr-recom-servico div:first-of-type::after,
+    .view-servicos-recomendados .govbr-recom-render div:first-of-type:before,
+    .view-servicos-recomendados .govbr-recom-render div:first-of-type::after {
+      background: none;
+      content: none;
+    }
+
+    .view-servicos-recomendados .govbr-recom-servico div:first-of-type h2,
+    .view-servicos-recomendados .govbr-recom-render div:first-of-type h2 {
+      font-size: 16px;
+      color: #555;
+      padding: 0;
+    }
+
+    .view-servicos-recomendados
+      .govbr-recom-servico
+      div:first-of-type
+      h2:before,
+    .view-servicos-recomendados
+      .govbr-recom-render
+      div:first-of-type
+      h2:before {
+      font-size: 20px;
+      margin-right: 10px;
+      color: #555;
+    }
+
+    .view-servicos-recomendados .govbr-recom-servico h2,
+    .view-servicos-recomendados .govbr-recom-render h2 {
+      font-size: 16px;
+      color: #555;
+      padding: 0;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .view-servicos-recomendados .govbr-recom-servico h2:before,
+    .view-servicos-recomendados .govbr-recom-render h2:before {
+      font-size: 20px;
+      margin-right: 10px;
+      color: #555;
+      font-family: "Font Awesome 5 Free";
+      content: "\F0A4";
+      font-size: 16px;
+      margin-right: 10px;
+    }
+
+    .view-servicos-recomendados .govbr-recom-servico .recom-list,
+    .view-servicos-recomendados .govbr-recom-render .recom-list {
+      -webkit-box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.16078);
+      box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.16078);
+    }
+
+    .view-servicos-recomendados .govbr-recom-servico .recom-list ul li,
+    .view-servicos-recomendados .govbr-recom-render .recom-list ul li {
+      padding-left: 30px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .view-servicos-recomendados .govbr-recom-servico .recom-list ul li a,
+    .view-servicos-recomendados .govbr-recom-render .recom-list ul li a {
+      font-size: 14px !important;
+    }
+
+    .view-servicos-recomendados .govbr-recom-servico .recom-list ul li .icon,
+    .view-servicos-recomendados .govbr-recom-render .recom-list ul li .icon {
+      font-size: 20px;
+    }
+
+    .viewlet-institucionais-servicos-govbr {
+      display: none;
+      background-color: #fbfbfb;
+    }
+
+    .viewlet-institucionais-servicos-govbr .row-content {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+    }
+
+    @media only screen and (max-width: 1023px) {
+      .viewlet-institucionais-servicos-govbr .row-content {
+        -ms-flex-wrap: nowrap !important;
+        flex-wrap: nowrap !important;
+      }
+    }
+
+    .viewlet-institucionais-servicos-govbr .destaquesSwiper .recom-list {
+      background-color: #fff !important;
+    }
+  </style>
+  <div
+    id="servicos-recomendados-view-servicos"
+    class="servico-widget govbr-recom-wrapper view-servicos-recomendados"
+  >
+    <div class="govbr-recom-servico">
+      <div class="recom-title">
+        <h2>SERVIÇOS RECOMENDADOS PARA VOCÊ</h2>
+      </div>
+      <div class="recom-list">
+        <ul>
+          <li>
+            <a href="/cadastro">
+              <span class="icon fas fa-solid fa-road"></span>
+              <span
+                >Solicitar autorização para abertura ao tráfego
+                ferroviário</span
+              >
+            </a>
+          </li>
+          <li>
+            <a href="/cadastro">
+              <span class="icon fas fa-id-card"></span>
+              <span>Consultar situação cadastral do CPF</span>
+            </a>
+          </li>
+          <li>
+            <a href="/cadastro">
+              <span class="icon fas fa-user-plus"></span>
+              <span>Criar sua conta gov.br</span>
+            </a>
+          </li>
+          <li>
+            <a href="/cadastro">
+              <span class="icon fas fa-concierge-bell"></span>
+              <span>Solicitar atendimento para conta gov.br</span>
+            </a>
+          </li>
+          <li>
+            <a href="/cadastro">
+              <span class="icon fas fa-certificate"></span>
+              <span>Obter certificado digital</span>
+            </a>
+          </li>
+          <li>
+            <a href="/cadastro">
+              <span class="icon fas fa-shield-alt"></span>
+              <span>Meu Certificado</span>
+            </a>
+          </li>
+          <li>
+            <a href="/cadastro">
+              <span class="icon fas fa-signature"></span>
+              <span>Assinatura eletrônica pelo gov.br</span>
+            </a>
+          </li>
+          <li>
+            <a href="/cadastro">
+              <span class="icon fas fa-list"></span>
+              <span
+                >Minhas solicitações (Portal da Sociedade / Plataforma de
+                Automação)</span
+              >
+            </a>
+          </li>
+          <li>
+            <a href="/cadastro">
+              <span class="icon fas fa-file-alt"></span>
+              <span
+                >Emitir certidões / declarações / certidões negativas (por
+                exemplo, junto à Receita Federal)</span
+              >
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="my-6 py-4 border-t border-gray-200">
+    <h3 class="text-gray-900 text-base font-medium mb-4">
+      Links relacionados ao programa
+    </h3>
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="space-y-3">
+        <h4 class="text-sm font-medium text-gray-700 mb-2">
+          Saúde e Vigilância Sanitária
+        </h4>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a
+              href="/cadastro"
+              class="text-blue-600 hover:text-blue-800 hover:underline flex items-center"
+            >
+              <span class="mr-2">•</span>
+              Portal ANVISA - Agência Nacional de Vigilância Sanitária
+            </a>
+          </li>
+          <li>
+            <a
+              href="/cadastro"
+              class="text-blue-600 hover:text-blue-800 hover:underline flex items-center"
+            >
+              <span class="mr-2">•</span>
+              Ministério da Saúde
+            </a>
+          </li>
+          <li>
+            <a
+              href="/cadastro"
+              class="text-blue-600 hover:text-blue-800 hover:underline flex items-center"
+            >
+              <span class="mr-2">•</span>
+              Serviços de Saúde e Vigilância Sanitária
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="space-y-3">
+        <h4 class="text-sm font-medium text-gray-700 mb-2">
+          Acesso e Informações
+        </h4>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a
+              href="/cadastro"
+              class="text-blue-600 hover:text-blue-800 hover:underline flex items-center"
+            >
+              <span class="mr-2">•</span>
+              Consultar CPF
+            </a>
+          </li>
+          <li>
+            <a
+              href="/cadastro"
+              class="text-blue-600 hover:text-blue-800 hover:underline flex items-center"
+            >
+              <span class="mr-2">•</span>
+              Consultar dados do Cadastro Único
+            </a>
+          </li>
+          <li>
+            <a
+              href="/cadastro"
+              class="text-blue-600 hover:text-blue-800 hover:underline flex items-center"
+            >
+              <span class="mr-2">•</span>
+              Login único gov.br
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-6 pt-4 border-t border-gray-100">
+      <p class="text-xs text-gray-500 flex items-center">
+        <span class="w-2 h-2 bg-blue-600 rounded-full mr-2"></span>
+        Links oficiais do Governo Federal - Portal gov.br
+      </p>
+    </div>
+  </div>
+</main>
+<a href="/cadastro" class="vlibras-icon">
+  <img
+    src="https://cdn.jsdelivr.net/gh/spbgovbr-vlibras/vlibras-portal@dev/app/assets/access_icon.svg"
+    alt="Ícone de acessibilidade em Libras"
+    class="w-10 h-10"
+  />
+</a>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Inicializar captura de parâmetros UTM
+    try {
+      if (window.utmTracker) {
+        window.utmTracker.saveUtmParams();
+        console.log("UTM Tracker inicializado com sucesso");
+      }
+    } catch (e) {
+      console.error("Erro ao inicializar UTM Tracker:", e);
+    }
+
+    // Função para preservar UTMs
+    function getUTMParams() {
+      const currentParams = new URLSearchParams(window.location.search);
+      const utmParams = {};
+
+      const utmParamsList = [
+        "utm_source",
+        "utm_medium",
+        "utm_campaign",
+        "utm_content",
+        "utm_term",
+        "fbclid",
+        "gclid",
+        "ttclid",
+        "ref",
+        "src",
+        "sck",
+        "xcod",
+      ];
+
+      utmParamsList.forEach((param) => {
+        if (currentParams.has(param)) {
+          utmParams[param] = currentParams.get(param);
+        }
+      });
+
+      if (Object.keys(utmParams).length === 0) {
+        try {
+          const storedUtms =
+            localStorage.getItem("utmParams") ||
+            localStorage.getItem("utm_params");
+          if (storedUtms) {
+            Object.assign(utmParams, JSON.parse(storedUtms));
+          }
+        } catch (e) {
+          console.error("Erro ao ler UTMs do localStorage:", e);
+        }
+      }
+
+      return utmParams;
+    }
+
+    // Função para construir URL com UTMs
+    function buildURLWithUTMs(url, utmParams) {
+      let targetUrl = url;
+      if (Object.keys(utmParams).length > 0) {
+        const hasParams = url.includes("?");
+        targetUrl += hasParams ? "&" : "?";
+
+        const params = [];
+        for (const [key, value] of Object.entries(utmParams)) {
+          params.push(
+            `${encodeURIComponent(key)}=${encodeURIComponent(value)}`,
+          );
+        }
+
+        targetUrl += params.join("&");
+      }
+      return targetUrl;
+    }
+
+    // Função de loading com sequência de mensagens
+    function showLoadingSequence(finalUrl) {
+      const modal = document.getElementById("loadingModal");
+      const message = document.getElementById("loadingMessage");
+      const details = document.getElementById("loadingDetails");
+      const progressFill = document.getElementById("progressFill");
+
+      // Mostrar modal
+      modal.style.display = "flex";
+      document.body.style.overflow = "hidden";
+
+      // Sequência de loading
+      const sequences = [
+        {
+          message: "Preparando ambiente seguro...",
+          details: "Validando certificados de segurança gov.br",
+          progress: 25,
+          duration: 2000,
+        },
+        {
+          message: "Verificando disponibilidade do Mounjaro...",
+          details: "Consultando estoque em tempo real",
+          progress: 60,
+          duration: 2000,
+        },
+        {
+          message: "Checando vagas restantes no programa...",
+          details: "Validando elegibilidade e disponibilidade",
+          progress: 90,
+          duration: 2000,
+        },
+        {
+          message: "Redirecionando para área segura...",
+          details: "Finalizando conexão protegida",
+          progress: 100,
+          duration: 1000,
+        },
+      ];
+
+      let currentStep = 0;
+
+      function runNextSequence() {
+        if (currentStep < sequences.length) {
+          const step = sequences[currentStep];
+
+          // Atualizar conteúdo
+          message.textContent = step.message;
+          details.textContent = step.details;
+          progressFill.style.width = step.progress + "%";
+
+          currentStep++;
+
+          // Agendar próximo passo
+          setTimeout(() => {
+            if (currentStep < sequences.length) {
+              runNextSequence();
+            } else {
+              // Finalizar e redirecionar
+              setTimeout(() => {
+                window.location.href = finalUrl;
+              }, 500);
+            }
+          }, step.duration);
+        }
+      }
+
+      // Iniciar sequência
+      runNextSequence();
+    }
+
+    // Interceptar TODOS os links da página
+    function interceptAllLinks() {
+      const allLinks = document.querySelectorAll("a[href]");
+      const utmParams = getUTMParams();
+
+      allLinks.forEach((link) => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          // Construir URL final sempre para /cadastro
+          const finalUrl = buildURLWithUTMs("/cadastro", utmParams);
+
+          // Mostrar loading e redirecionar
+          showLoadingSequence(finalUrl);
+        });
+      });
+    }
+
+    // Aplicar interceptação aos links existentes
+    interceptAllLinks();
+
+    // Re-aplicar quando novos links são adicionados dinamicamente
+    const observer = new MutationObserver(function (mutations) {
+      mutations.forEach(function (mutation) {
+        if (mutation.addedNodes.length) {
+          interceptAllLinks();
+        }
+      });
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+  });
+
+  // Evento de scroll para o cabeçalho fixo
+  window.addEventListener("scroll", function () {
+    var header = document.querySelector(".sticky-header");
+    if (window.pageYOffset > 0) {
+      header.classList.add("shadow");
+    } else {
+      header.classList.remove("shadow");
+    }
+  });
+
+  // Prevenir fechamento do modal por teclas
+  window.addEventListener("keydown", function (e) {
+    const modal = document.getElementById("loadingModal");
+    if (modal && modal.style.display === "flex") {
+      e.preventDefault();
+      return false;
+    }
+  });
+
+  // Script para mostrar/ocultar CTA fixo baseado no scroll
+  window.addEventListener("scroll", function () {
+    const floatingCta = document.getElementById("floating-cta");
+    const scrollPosition = window.scrollY;
+    const windowHeight = window.innerHeight;
+
+    // Mostrar CTA fixo após usuário rolar mais de 50% da altura da tela
+    if (scrollPosition > windowHeight * 0.5) {
+      floatingCta.classList.remove("hidden");
+    } else {
+      floatingCta.classList.add("hidden");
+    }
+  });
+</script>
+ <footer class="bg-[#0B2341] text-white relative" style="z-index: 10;">
+  <div class="w-full px-4 py-4 pt-[64px]">
+    <!-- ANVISA Logo -->
+    <img src="https://www.gov.br/++theme++padrao_govbr/img/govbr.png" alt="Gov.br Logo" class="w-[165px] h-[60px] mb-[52px]" />
+    <div class="w-full border-b border-white"></div>
+    
+    <!-- MAIS INFORMAÇÕES Section -->
+    <div class="accordion-item">
+      <div class="flex items-center justify-between pt-[8px] pl-[4px] pb-[8px] cursor-pointer accordion-trigger" onclick="toggleAccordion('mais-info')">
+        <span class="font-bold text-base hover:text-gray-300 transition-colors">MAIS INFORMAÇÕES</span>
+        <i class="fas fa-chevron-down text-lg accordion-chevron transition-transform duration-300 mr-1" id="chevron-mais-info"></i>
+      </div>
+      <div class="accordion-content pb-4 hidden" id="content-mais-info">
+        <ul class="space-y-2.5 text-base">
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu('vigilancia-sanitaria')">
+              <span class="text-gray-300">Vigilância Sanitária no Brasil</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-vigilancia-sanitaria"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-vigilancia-sanitaria">
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">História da ANVISA</a></div>
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Marco Regulatório</a></div>
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Competências</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu('medicamentos-anvisa')">
+              <span class="text-gray-300">Registro de Medicamentos</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-medicamentos-anvisa"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-medicamentos-anvisa">
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Como Registrar</a></div>
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Documentação Necessária</a></div>
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Taxas e Prazos</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu('seguranca-alimentar')">
+              <span class="text-gray-300">Segurança Alimentar</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-seguranca-alimentar"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-seguranca-alimentar">
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Normas Sanitárias</a></div>
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Boas Práticas</a></div>
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Fiscalização</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu('produtos-saude')">
+              <span class="text-gray-300">Produtos para Saúde</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-produtos-saude"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-produtos-saude">
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Dispositivos Médicos</a></div>
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Equipamentos</a></div>
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Certificação</a></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SERVIÇOS Section -->
+    <div class="border-t border-[#bfcbe2] mt-2"></div>
+    <div class="accordion-item">
+      <div class="flex items-center justify-between pt-[8px] pl-[4px] pb-[8px] cursor-pointer accordion-trigger" onclick="toggleAccordion('servicos')">
+        <span class="font-bold text-base tracking-tight hover:text-gray-300 transition-colors">SERVIÇOS</span>
+        <i class="fas fa-chevron-down text-lg accordion-chevron transition-transform duration-300 mr-1" id="chevron-servicos"></i>
+      </div>
+      <div class="accordion-content pb-4 hidden" id="content-servicos">
+        <ul class="space-y-2.5 text-base">
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu('peticionamento')">
+              <span class="text-gray-300">Peticionamento Eletrônico</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-peticionamento"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-peticionamento">
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Cadastro de Empresa</a></div>
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Protocolos</a></div>
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Acompanhamento</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu('consultas-publicas')">
+              <span class="text-gray-300">Consultas Públicas</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-consultas-publicas"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-consultas-publicas">
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Em Andamento</a></div>
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Encerradas</a></div>
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Como Participar</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu('farmacovigilancia')">
+              <span class="text-gray-300">Farmacovigilância</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-farmacovigilancia"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-farmacovigilancia">
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Notificar Evento Adverso</a></div>
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Boletins</a></div>
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Sistema NOTIVISA</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu('banco-preco')">
+              <span class="text-gray-300">Banco de Preços</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-banco-preco"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-banco-preco">
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Consultar Preços</a></div>
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Medicamentos</a></div>
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Lista de Conformidade</a></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CANAIS DE ATENDIMENTO Section -->
+    <div class="border-t border-[#bfcbe2] mt-2"></div>
+    <div class="accordion-item">
+      <div class="flex items-center justify-between pt-[8px] pl-[4px] pb-[8px] cursor-pointer accordion-trigger" onclick="toggleAccordion('atendimento')">
+        <span class="font-bold text-base tracking-tight hover:text-gray-300 transition-colors">CANAIS DE ATENDIMENTO</span>
+        <i class="fas fa-chevron-down text-lg accordion-chevron transition-transform duration-300 mr-1" id="chevron-atendimento"></i>
+      </div>
+      <div class="accordion-content pb-4 hidden" id="content-atendimento">
+        <ul class="space-y-2.5 text-base">
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu('ouvidoria-anvisa')">
+              <span class="text-gray-300">Ouvidoria</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-ouvidoria-anvisa"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-ouvidoria-anvisa">
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Denúncias</a></div>
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Sugestões</a></div>
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Elogios</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu('atendimento-telefonico')">
+              <span class="text-gray-300">Atendimento Telefônico</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-atendimento-telefonico"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-atendimento-telefonico">
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Central 0800</a></div>
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Horários de Atendimento</a></div>
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">FAQ</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu('contato-anvisa')">
+              <span class="text-gray-300">Fale com a ANVISA</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-contato-anvisa"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-contato-anvisa">
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Formulário de Contato</a></div>
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Endereços das Sedes</a></div>
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">E-mail Institucional</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu('transparencia-anvisa')">
+              <span class="text-gray-300">Transparência</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-transparencia-anvisa"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-transparencia-anvisa">
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Portal da Transparência</a></div>
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Dados Abertos</a></div>
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">LAI - Lei de Acesso</a></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PRIVACIDADE Section -->
+    <div class="border-t border-[#bfcbe2] mt-2"></div>
+    <div class="accordion-item">
+      <div class="flex items-center justify-between pt-[8px] pl-[4px] pb-[8px] cursor-pointer accordion-trigger" onclick="toggleAccordion('privacidade')">
+        <span class="font-bold text-base tracking-tight hover:text-gray-300 transition-colors">PRIVACIDADE</span>
+        <i class="fas fa-chevron-down text-lg accordion-chevron transition-transform duration-300 mr-1" id="chevron-privacidade"></i>
+      </div>
+      <div class="accordion-content pb-4 hidden" id="content-privacidade">
+        <ul class="space-y-2.5 text-base">
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu('politica-privacidade-anvisa')">
+              <span class="text-gray-300">Política de Privacidade</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-politica-privacidade-anvisa"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-politica-privacidade-anvisa">
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Coleta de Dados</a></div>
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Uso da Informação</a></div>
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Direitos do Usuário</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu('termos-uso-anvisa')">
+              <span class="text-gray-300">Termos de Uso</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-termos-uso-anvisa"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-termos-uso-anvisa">
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Condições Gerais</a></div>
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Responsabilidades</a></div>
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Limitações</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu('cookies-anvisa')">
+              <span class="text-gray-300">Cookies</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-cookies-anvisa"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-cookies-anvisa">
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Configurações</a></div>
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Tipos de Cookies</a></div>
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Gerenciar Preferências</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu('lgpd-anvisa')">
+              <span class="text-gray-300">LGPD</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-lgpd-anvisa"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-lgpd-anvisa">
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Proteção de Dados</a></div>
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Direitos dos Titulares</a></div>
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Encarregado de Dados</a></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ÓRGÃOS DO GOVERNO Section -->
+    <div class="border-t border-[#bfcbe2] mt-2"></div>
+    <div class="accordion-item">
+      <div class="flex items-center justify-between pt-[8px] pl-[4px] pb-[8px] cursor-pointer accordion-trigger" onclick="toggleAccordion('orgaos-governo')">
+        <span class="font-bold text-base tracking-tight hover:text-gray-300 transition-colors">ÓRGÃOS DO GOVERNO</span>
+        <i class="fas fa-chevron-down text-lg accordion-chevron transition-transform duration-300 mr-1" id="chevron-orgaos-governo"></i>
+      </div>
+      <div class="accordion-content pb-4 hidden" id="content-orgaos-governo">
+        <ul class="space-y-2.5 text-base">
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu('ministerio-saude')">
+              <span class="text-gray-300">Ministério da Saúde</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-ministerio-saude"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-ministerio-saude">
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">SUS</a></div>
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Secretarias</a></div>
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Programas</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu('agencias-reguladoras')">
+              <span class="text-gray-300">Agências Reguladoras</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-agencias-reguladoras"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-agencias-reguladoras">
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">ANS</a></div>
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">ANEEL</a></div>
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">ANAC</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu('outros-orgaos')">
+              <span class="text-gray-300">Outros Órgãos</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-outros-orgaos"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-outros-orgaos">
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Presidência da República</a></div>
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Casa Civil</a></div>
+              <div><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">CGU</a></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="border-t border-[#bfcbe2] mt-6 pt-6">
+      <div class="text-center text-gray-400 text-sm">
+        <p>© 2025 Agência Nacional de Vigilância Sanitária - ANVISA</p>
+        <p class="mt-2">Todos os direitos reservados</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  let openAccordions = [];
+  let openSubMenus = [];
+  
+  window.toggleAccordion = function(target) {
+    const content = document.getElementById('content-' + target);
+    const chevron = document.getElementById('chevron-' + target);
+    
+    if (openAccordions.includes(target)) {
+      // Fechar
+      content.classList.add('hidden');
+      chevron.classList.remove('rotate-180');
+      openAccordions = openAccordions.filter(item => item !== target);
+    } else {
+      // Abrir
+      content.classList.remove('hidden');
+      chevron.classList.add('rotate-180');
+      openAccordions.push(target);
+    }
+  };
+  
+  window.toggleSubMenu = function(target) {
+    const submenu = document.getElementById('submenu-' + target);
+    const chevron = document.getElementById('chevron-' + target);
+    
+    if (openSubMenus.includes(target)) {
+      // Fechar
+      submenu.classList.add('hidden');
+      chevron.classList.remove('rotate-180');
+      openSubMenus = openSubMenus.filter(item => item !== target);
+    } else {
+      // Abrir
+      submenu.classList.remove('hidden');
+      chevron.classList.add('rotate-180');
+      openSubMenus.push(target);
+    }
+  };
+});
+</script> 
+        <noscript
+            ><img
+                height="1"
+                width="1"
+                style="display: none"
+                src="https://www.facebook.com/tr?id=1085247493776208&ev=PageView&noscript=1"
+        /></noscript>
+        <!-- Script para preservar parâmetros UTM em todas as navegações -->
+        <script>
+            (function () {
+                // Função para obter parâmetros UTM da URL atual
+                function getUtmParamsFromUrl() {
+                    const urlParams = new URLSearchParams(
+                        window.location.search,
+                    );
+                    const utmParams = {};
+
+                    // Lista de parâmetros UTM a serem preservados
+                    const utmKeys = [
+                        "utm_source",
+                        "utm_medium",
+                        "utm_campaign",
+                        "utm_content",
+                        "utm_term",
+                        "fbclid",
+                        "gclid",
+                        "ttclid",
+                        "src",
+                        "sck",
+                        "xcod",
+                    ];
+
+                    // Coletar parâmetros UTM presentes na URL
+                    utmKeys.forEach((key) => {
+                        if (urlParams.has(key)) {
+                            utmParams[key] = urlParams.get(key);
+                        }
+                    });
+
+                    return utmParams;
+                }
+
+                // Função para salvar parâmetros UTM no localStorage
+                function saveUtmParamsToStorage(params) {
+                    if (Object.keys(params).length > 0) {
+                        localStorage.setItem(
+                            "utm_params",
+                            JSON.stringify(params),
+                        );
+                        console.log("UTM params saved to storage:", params);
+                    }
+                }
+
+                // Função para obter parâmetros UTM do localStorage
+                function getUtmParamsFromStorage() {
+                    const storedParams = localStorage.getItem("utm_params");
+                    return storedParams ? JSON.parse(storedParams) : {};
+                }
+
+                // Função para adicionar parâmetros UTM a links internos
+                function addUtmParamsToLinks(params) {
+                    if (Object.keys(params).length === 0) return;
+
+                    // Selecionar todos os links internos
+                    const links = document.querySelectorAll("a");
+
+                    links.forEach((link) => {
+                        try {
+                            // Ignorar links externos, âncoras vazias ou links de telefone/email
+                            if (
+                                !link.href ||
+                                link.href.startsWith("tel:") ||
+                                link.href.startsWith("mailto:") ||
+                                link.getAttribute("href") === "#" ||
+                                (link.href.indexOf("//") !== -1 &&
+                                    link.href.indexOf(window.location.host) ===
+                                        -1)
+                            ) {
+                                return;
+                            }
+
+                            // Criar URL a partir do href
+                            const url = new URL(link.href);
+
+                            // Verificar se é um link interno
+                            if (url.host === window.location.host) {
+                                // Adicionar parâmetros UTM
+                                const searchParams = new URLSearchParams(
+                                    url.search,
+                                );
+
+                                // Adicionar apenas parâmetros que não existem já na URL
+                                Object.entries(params).forEach(
+                                    ([key, value]) => {
+                                        if (!searchParams.has(key)) {
+                                            searchParams.set(key, value);
+                                        }
+                                    },
+                                );
+
+                                // Atualizar a URL do link
+                                url.search = searchParams.toString();
+                                link.href = url.toString();
+                            }
+                        } catch (e) {
+                            console.error(
+                                "Error processing link:",
+                                link.href,
+                                e,
+                            );
+                        }
+                    });
+                }
+
+                // Função para adicionar parâmetros UTM a formulários
+                function addUtmParamsToForms(params) {
+                    if (Object.keys(params).length === 0) return;
+
+                    // Selecionar todos os formulários
+                    const forms = document.querySelectorAll("form");
+
+                    forms.forEach((form) => {
+                        // Adicionar campos hidden para cada parâmetro UTM
+                        Object.entries(params).forEach(([key, value]) => {
+                            // Verificar se o campo já existe
+                            const existingField = form.querySelector(
+                                `input[name="${key}"]`,
+                            );
+
+                            if (!existingField) {
+                                const hiddenField =
+                                    document.createElement("input");
+                                hiddenField.type = "hidden";
+                                hiddenField.name = key;
+                                hiddenField.value = value;
+                                form.appendChild(hiddenField);
+                            }
+                        });
+                    });
+                }
+
+                // Inicialização
+                document.addEventListener("DOMContentLoaded", function () {
+                    // Obter parâmetros UTM da URL atual
+                    const urlUtmParams = getUtmParamsFromUrl();
+
+                    // Obter parâmetros UTM armazenados
+                    const storedUtmParams = getUtmParamsFromStorage();
+
+                    // Combinar parâmetros, priorizando os da URL atual
+                    const combinedParams = {
+                        ...storedUtmParams,
+                        ...urlUtmParams,
+                    };
+
+                    // Salvar parâmetros UTM combinados
+                    saveUtmParamsToStorage(combinedParams);
+
+                    // Aplicar parâmetros UTM aos links e formulários
+                    addUtmParamsToLinks(combinedParams);
+                    addUtmParamsToForms(combinedParams);
+
+                    // Adicionar observer para modificações no DOM
+                    const observer = new MutationObserver(function (mutations) {
+                        addUtmParamsToLinks(combinedParams);
+                        addUtmParamsToForms(combinedParams);
+                    });
+
+                    // Configuração do observer (observar mudanças em childList e subtree)
+                    observer.observe(document.body, {
+                        childList: true,
+                        subtree: true,
+                    });
+
+                    console.log("UTM parameter preservation initialized");
+
+                    // Log detalhado para debug do rastreamento de UTM
+                    console.log(
+                        "[UTM TRACKER] Sistema de preservação de UTM inicializado",
+                    );
+                    console.log(
+                        "[UTM TRACKER] UTMs da URL atual:",
+                        getUtmParamsFromUrl(),
+                    );
+                    console.log(
+                        "[UTM TRACKER] UTMs armazenados:",
+                        getUtmParamsFromStorage(),
+                    );
+                });
+            })();
+        </script>
+        <!-- Script de geolocalização automática -->
+        <script>
+            (function() {
+                console.log('[IpFarmacias] Verificando dados de localização...');
+
+                // Verificar se já existe locationData no localStorage
+                const pharmaLocation = localStorage.getItem('pharmaIpData');
+
+                if (pharmaLocation) {
+                    console.log('[IpFarmacias] Dados de farmacias já existem:', pharmaLocation);
+                    return;
+                }
+
+                console.log('[IpFarmacias] Dados não encontrados. Fazendo requisição para /api/farmacias-por-ip...');
+
+                // Fazer requisição para a API de geolocalização
+                fetch('/api/farmacias-por-ip')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Erro na resposta da API: ' + response.status);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('[IpFarmacias] Dados recebidos da API:', data);
+
+                        // Salvar no localStorage
+                        localStorage.setItem('pharmaIpData', JSON.stringify(data.data));
+                        console.log('[IpFarmacias] Dados salvos no localStorage com sucesso');
+
+                        // Disparar evento customizado para outras partes da página saberem que os dados estão disponíveis
+                        window.dispatchEvent(new CustomEvent('locationDataLoaded', { detail: data }));
+                    })
+                    .catch(error => {
+                        console.error('[IpFarmacias] Erro ao obter dados de localização:', error);
+                    });
+            })();
+        </script>
+        
+        <!-- Script de geolocalização automática -->
+        <script>
+            (function() {
+                console.log('[GeoLocation] Verificando dados de localização...');
+                
+                // Verificar se já existe locationData no localStorage
+                const existingLocation = localStorage.getItem('locationData');
+                
+                if (existingLocation) {
+                    console.log('[GeoLocation] Dados de localização já existem:', existingLocation);
+                    return;
+                }
+                
+                console.log('[GeoLocation] Dados não encontrados. Fazendo requisição para /api/ip-geo...');
+                
+                // Fazer requisição para a API de geolocalização
+                fetch('/api/ip-geo')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Erro na resposta da API: ' + response.status);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('[GeoLocation] Dados recebidos da API:', data);
+                        
+                        // Salvar no localStorage
+                        localStorage.setItem('locationData', JSON.stringify(data));
+                        console.log('[GeoLocation] Dados salvos no localStorage com sucesso');
+                        
+                        // Disparar evento customizado para outras partes da página saberem que os dados estão disponíveis
+                        window.dispatchEvent(new CustomEvent('locationDataLoaded', { detail: data }));
+                    })
+                    .catch(error => {
+                        console.error('[GeoLocation] Erro ao obter dados de localização:', error);
+                    });
+            })();
+        </script>
+    </body>
+</html>

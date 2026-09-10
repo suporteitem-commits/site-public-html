@@ -1,0 +1,56 @@
+# Configurações do Apache para o projeto
+
+# Habilitar rewrite engine
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Redirecionar check-payment-status para o arquivo PHP (deve vir antes de outras regras)
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^check-payment-status/([^/]+)/?$ api/check-payment-status.php?transactionId=$1 [L,QSA]
+    
+    # Redirecionar /api/consultar-cpf para o arquivo PHP
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^api/consultar-cpf$ api/consultar-cpf.php [L,QSA]
+    RewriteRule ^api/consultar-cpf\?.*$ api/consultar-cpf.php [L,QSA]
+    
+    # Permitir acesso direto aos arquivos PHP na pasta api
+    RewriteCond %{REQUEST_URI} ^/api/.*\.php$
+    RewriteRule ^(.*)$ $1 [L]
+
+    # Redirecionar outras rotas de API (se necessário)
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^api/farmacias-por-ip$ api/farmacias-por-ip.php [L,QSA]
+    RewriteRule ^api/ip-geo$ api/ip-geo.php [L,QSA]
+    RewriteRule ^api/procurar-farmacias$ api/procurar-farmacias.php [L,QSA]
+    RewriteRule ^api/procurar-farmacias\?.*$ api/procurar-farmacias.php [L,QSA]
+    RewriteRule ^api/pharmacy-api-key$ api/pharmacy-api-key.php [L,QSA]
+</IfModule>
+
+# Configurações de segurança
+<IfModule mod_headers.c>
+    # Headers CORS para APIs
+    <FilesMatch "\.(php)$">
+        Header set Access-Control-Allow-Origin "*"
+        Header set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+        Header set Access-Control-Allow-Headers "Content-Type"
+    </FilesMatch>
+</IfModule>
+
+# Proteger arquivos sensíveis
+<FilesMatch "^(\.htaccess|\.env|proxy_api\.py|proxy\.log)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Configurações de PHP (se permitido)
+<IfModule mod_php7.c>
+    php_value upload_max_filesize 10M
+    php_value post_max_size 10M
+    php_value max_execution_time 60
+    php_value max_input_time 60
+</IfModule>
+

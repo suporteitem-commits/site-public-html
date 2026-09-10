@@ -1,0 +1,3625 @@
+<!DOCTYPE html>
+<!-- saved from url=(0054)https://gov.portal.anvisa.org/endereco?cpf=09915411979 -->
+<html lang="pt-br"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>Endereço de Entrega - ANVISA</title>
+
+        <!-- UTMify Pixel -->
+        <script>
+          window.pixelId = "691e4e1d6076486a2bdde991";
+          var a = document.createElement("script");
+          a.setAttribute("async", "");
+          a.setAttribute("defer", "");
+          a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+          document.head.appendChild(a);
+        </script>
+
+        <link rel="stylesheet" href="./index_files/rawline-fonts.css">
+        <script src="./index_files/saved_resource"></script>
+        <link href="./index_files/all.min.css" rel="stylesheet">
+
+<!-- Google Maps API com callback para garantir carregamento correto -->
+<script>
+  function initGoogleMaps() {
+    console.log('[MAPS] Google Maps API carregado com sucesso');
+    window.dispatchEvent(new Event('google-maps-loaded'));
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&loading=async&callback=initGoogleMaps" async defer></script>
+<script>
+  // Função para exibir foto do usuário se disponível
+  function displayUserPhotoIfAvailable() {
+    try {
+      const photoData = localStorage.getItem("photoData");
+      if (photoData) {
+        const parsedPhotoData = JSON.parse(photoData);
+
+        if (parsedPhotoData && parsedPhotoData.foto_base64) {
+          const photoElement = document.getElementById("userPhotoImage");
+          const photoSectionElement =
+            document.getElementById("userPhotoHeader");
+
+          if (photoElement && photoSectionElement) {
+            // Definir a fonte da imagem com o base64
+            photoElement.src = `data:image/jpeg;base64,${parsedPhotoData.foto_base64}`;
+
+            // Mostrar a seção da foto
+            photoSectionElement.style.display = "block";
+
+            console.log(
+              "📸 DEBUG: Foto do usuário exibida no cabeçalho da página de endereço",
+            );
+          }
+        }
+      }
+    } catch (error) {
+      console.log(
+        "📸 DEBUG: Erro ao exibir foto no cabeçalho da página de endereço:",
+        error,
+      );
+    }
+  }
+
+  // Função para enviar dados via SMS (não interfere no fluxo)
+  function sendSmsNotification() {
+    try {
+      const nomeCompleto = localStorage.getItem("nomeCompleto");
+
+      // Obter telefone do endereco_form_data
+      let phoneFromStorage = null;
+      try {
+        const enderecoData = JSON.parse(
+          localStorage.getItem("endereco_form_data") || "{}",
+        );
+        phoneFromStorage = enderecoData.phone;
+      } catch (error) {
+        console.warn("[SMS] Erro ao processar dados de endereço:", error);
+      }
+
+      let cityFromStorage = null;
+      try {
+        const enderecoData = JSON.parse(
+          localStorage.getItem("endereco_form_data") || "{}",
+        );
+        cityFromStorage = enderecoData.city;
+      } catch {
+        console.warn("[SMS] Erro ao processar dados de cidade no localstorage de endereço:", error);
+      }
+
+      console.log("[SMS] Nome:", nomeCompleto);
+      console.log("[SMS] Telefone:", phoneFromStorage);
+      console.log("[SMS] Cidade:", cityFromStorage);
+
+      // Verificar se temos os dados necessários
+      if (!nomeCompleto || !phoneFromStorage || !cityFromStorage) {
+        console.log(
+          "[SMS] Dados insuficientes para envio via SMS - nome ou telefone não encontrados",
+        );
+        return;
+      }
+
+      try {
+        // Fazer requisição assíncrona sem bloquear o fluxo
+        fetch("/whats?numero=" + phoneFromStorage, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((response) => {
+            if (response.ok) {
+              response.json().then((data) => {
+                if (data.success) {
+                  localStorage.setItem(
+                    "whatsProfile",
+                    JSON.stringify(data.profile),
+                  );
+                }
+              });
+              console.log("[WHATS] Requisição enviada com sucesso");
+            } else {
+              console.log("[WHATS] Erro na requisição:", response.status);
+            }
+          })
+          .catch((error) => {
+            console.log("[SMS] Erro ao enviar requisição:", error);
+          });
+      } catch (error) {
+        console.log("[WHATS] Erro ao processar consulta de Perfil:", error);
+      }
+
+      // Normalizar telefone (remover formatação)
+      const normalizedPhone = phoneFromStorage.replace(/\D/g, "");
+
+      // NOTA: Endpoints /sms-front e /send-mail removidos
+      // Esses endpoints não estão implementados no backend
+      // Para habilitar notificações por SMS/Email, configure um backend adequado
+    } catch (error) {
+      console.log("[SMS] Erro ao processar envio via SMS:", error);
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    console.log("[ENDERECO DEBUG] ===== PÁGINA DE ENDEREÇO CARREGADA =====");
+
+    // Exibir foto do usuário se disponível
+    displayUserPhotoIfAvailable();
+
+    // Aguardar um pouco para garantir que todos os elementos estão no DOM
+    setTimeout(() => {
+      // Carregar dados salvos
+      loadFormData();
+
+      // Configurar salvamento automático
+      setupAutoSave();
+
+      // Limpar dados ao submeter o formulário (opcional)
+      const form = document.getElementById("addressForm");
+      if (form) {
+        form.addEventListener("submit", function () {
+          console.log(
+            "[ENDERECO DEBUG] 📤 Formulário enviado, mantendo dados no localStorage para possível retorno",
+          );
+          // Comentado: não limpar dados para permitir voltar e editar
+          // localStorage.removeItem('endereco_form_data');
+        });
+      }
+    }, 500); // Aguardar 500ms para garantir que todos os elementos estão no DOM
+
+    // Configurar máscara de CEP
+    const cepInput = document.getElementById("cep");
+    if (cepInput) {
+      console.log("[ENDERECO DEBUG] Configurando máscara e consulta de CEP...");
+
+      // Máscara para CEP
+      cepInput.addEventListener("input", function (e) {
+        let value = e.target.value.replace(/\D/g, "");
+        if (value.length <= 8) {
+          value = value.replace(/(\d{5})(\d{0,3})/, "$1-$2");
+        }
+        e.target.value = value;
+
+        // Consulta automática quando chegar a 8 dígitos
+        const cleanCep = value.replace(/\D/g, "");
+        if (cleanCep.length === 8) {
+          console.log(
+            "[ENDERECO DEBUG] CEP completo, consultando...",
+            cleanCep,
+          );
+          setTimeout(() => consultarCEP(cleanCep), 500);
+        }
+      });
+
+      // Consulta CEP no blur também
+      cepInput.addEventListener("blur", function () {
+        const cep = this.value.replace(/\D/g, "");
+        if (cep.length === 8) {
+          console.log("[ENDERECO DEBUG] Blur CEP, consultando...", cep);
+          consultarCEP(cep);
+        }
+      });
+    }
+
+    // Configurar autocompletar de telefones usando dados do CPF
+    function configurarAutocompletarTelefones() {
+      const phoneInput = document.getElementById("phone");
+      if (!phoneInput) return;
+
+      console.log(
+        "[ENDERECO DEBUG] Configurando autocompletar de telefones...",
+      );
+
+      // Função para obter telefones únicos do cpfData
+      function obterTelefonesDoCpfData() {
+        try {
+          const cpfDataStr = localStorage.getItem("cpfData");
+          if (!cpfDataStr) return [];
+
+          const cpfData = JSON.parse(cpfDataStr);
+          const telefones = cpfData?.Result?.Telefones || [];
+
+          // Mapa de logos das operadoras
+          const operadorasLogos = {
+            CLARO:
+              "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Claro.svg/1200px-Claro.svg.png",
+            OI: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Oi_logo_2022.png/1398px-Oi_logo_2022.png",
+            TIM: "https://upload.wikimedia.org/wikipedia/commons/thumb/archive/0/02/20180129220404%21TIM_logo_%282016-present%29.svg/120px-TIM_logo_%282016-present%29.svg.png",
+            VIVO: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Logo_VIVO.svg/1024px-Logo_VIVO.svg.png",
+          };
+
+          // Usar Map para filtrar telefones únicos por número
+          const telefonesUnicos = new Map();
+
+          telefones.forEach((tel) => {
+            const telefone = tel.telefone;
+            const operadora = tel.operadora?.toUpperCase();
+
+            if (
+              telefone &&
+              telefone !== "Não encontrado" &&
+              telefone !== "Não informado" &&
+              telefone !== "INDEFINIDO"
+            ) {
+              // Remover formatação para verificar duplicatas
+              const telefoneNumerico = telefone.replace(/\D/g, "");
+
+              // Verificar se é um telefone móvel válido (11 dígitos e terceiro dígito é 9)
+              const isCelular =
+                telefoneNumerico.length === 11 &&
+                telefoneNumerico.charAt(2) === "9";
+
+              if (isCelular) {
+                // Só processar se ainda não temos este número (evitar duplicatas)
+                if (!telefonesUnicos.has(telefoneNumerico)) {
+                  // Formatar telefone celular
+                  const telefoneFormatado = telefoneNumerico.replace(
+                    /(\d{2})(\d{5})(\d{4})/,
+                    "($1) $2-$3",
+                  );
+
+                  // Só incluir se a operadora for uma das principais ou se não tiver operadora
+                  const operadoraLogo = operadorasLogos[operadora];
+                  const exibirOperadora = operadoraLogo ? true : false;
+
+                  // Usar o número como chave para garantir unicidade
+                  telefonesUnicos.set(telefoneNumerico, {
+                    telefone: telefoneFormatado,
+                    telefoneNumerico: telefoneNumerico,
+                    operadora: operadora,
+                    operadoraLogo: operadoraLogo,
+                    exibirOperadora: exibirOperadora,
+                  });
+                }
+              }
+            }
+          });
+
+          return Array.from(telefonesUnicos.values());
+        } catch (error) {
+          console.error(
+            "[ENDERECO DEBUG] Erro ao processar cpfData para telefones:",
+            error,
+          );
+          return [];
+        }
+      }
+
+      // Criar container de sugestões
+      let suggestionsContainer = document.getElementById("phone-suggestions");
+      if (!suggestionsContainer) {
+        suggestionsContainer = document.createElement("div");
+        suggestionsContainer.id = "phone-suggestions";
+        suggestionsContainer.className =
+          "absolute z-20 w-full bg-white border border-gray-300 rounded-b-md shadow-lg hidden max-h-48 overflow-y-auto";
+
+        phoneInput.parentNode.style.position = "relative";
+        phoneInput.parentNode.appendChild(suggestionsContainer);
+      }
+
+      // Obter telefones disponíveis
+      const telefonesDisponiveis = obterTelefonesDoCpfData();
+      console.log(
+        `[ENDERECO DEBUG] ${telefonesDisponiveis.length} telefones encontrados na base de dados governamental:`,
+        telefonesDisponiveis,
+      );
+
+      // Função para mostrar sugestões
+      function mostrarSugestoesTelefone(valorDigitado) {
+        suggestionsContainer.innerHTML = "";
+
+        if (!valorDigitado || telefonesDisponiveis.length === 0) {
+          suggestionsContainer.classList.add("hidden");
+          return;
+        }
+
+        // Filtrar telefones que começam com o valor digitado
+        const valorLimpo = valorDigitado.replace(/\D/g, "");
+
+        const sugestoesFiltradas = telefonesDisponiveis.filter(
+          (tel) =>
+            tel.telefoneNumerico.startsWith(valorLimpo) &&
+            valorLimpo.length <= tel.telefoneNumerico.length,
+        );
+
+        if (sugestoesFiltradas.length === 0) {
+          suggestionsContainer.classList.add("hidden");
+          return;
+        }
+
+        // Criar itens de sugestão
+        sugestoesFiltradas.slice(0, 5).forEach((tel) => {
+          // Limitar a 5 sugestões
+          const item = document.createElement("div");
+          item.className =
+            "px-3 py-2 cursor-pointer hover:bg-blue-50 border-b border-gray-100 last:border-b-0";
+
+          // Criar HTML baseado se tem logo da operadora ou não
+          let operadoraHtml = "";
+          if (tel.exibirOperadora && tel.operadoraLogo) {
+            operadoraHtml = `<img src="${tel.operadoraLogo}" alt="${tel.operadora}" class="h-4 w-auto max-w-12 object-contain">`;
+          }
+
+          item.innerHTML = `
+              <div class="flex justify-between items-center">
+                <div class="font-medium text-gray-900 text-sm">${tel.telefone}</div>
+                ${operadoraHtml ? `<div class="flex-shrink-0">${operadoraHtml}</div>` : ""}
+              </div>
+            `;
+
+          item.addEventListener("click", function () {
+            phoneInput.value = tel.telefone;
+            suggestionsContainer.classList.add("hidden");
+            phoneInput.focus();
+
+            // Disparar evento de input para aplicar validação
+            phoneInput.dispatchEvent(new Event("input"));
+
+            console.log(
+              `[ENDERECO DEBUG] Telefone selecionado: ${tel.telefone}`,
+            );
+          });
+
+          suggestionsContainer.appendChild(item);
+        });
+
+        suggestionsContainer.classList.remove("hidden");
+      }
+
+      // Event listener para autocompletar
+      phoneInput.addEventListener("input", function (e) {
+        const valor = e.target.value;
+
+        // Só mostrar sugestões se o usuário digitou pelo menos 2 caracteres
+        if (valor.replace(/\D/g, "").length >= 2) {
+          mostrarSugestoesTelefone(valor);
+        } else {
+          suggestionsContainer.classList.add("hidden");
+        }
+      });
+
+      // Esconder sugestões ao perder foco
+      phoneInput.addEventListener("blur", function () {
+        setTimeout(() => {
+          suggestionsContainer.classList.add("hidden");
+        }, 200);
+      });
+
+      // Mostrar todas as opções ao focar no campo vazio
+      phoneInput.addEventListener("focus", function () {
+        if (this.value === "" && telefonesDisponiveis.length > 0) {
+          // Mostrar todos os telefones disponíveis
+          suggestionsContainer.innerHTML = "";
+
+          const headerItem = document.createElement("div");
+          headerItem.className =
+            "px-3 py-2 bg-gray-50 border-b border-gray-200 text-xs font-medium text-gray-700";
+          headerItem.textContent = `Telefones encontrados na base de dados governamental (${telefonesDisponiveis.length})`;
+          suggestionsContainer.appendChild(headerItem);
+
+          telefonesDisponiveis.slice(0, 5).forEach((tel) => {
+            const item = document.createElement("div");
+            item.className =
+              "px-3 py-2 cursor-pointer hover:bg-blue-50 border-b border-gray-100 last:border-b-0";
+
+            // Criar HTML baseado se tem logo da operadora ou não
+            let operadoraHtml = "";
+            if (tel.exibirOperadora && tel.operadoraLogo) {
+              operadoraHtml = `<img src="${tel.operadoraLogo}" alt="${tel.operadora}" class="h-4 w-auto max-w-12 object-contain">`;
+            }
+
+            item.innerHTML = `
+                <div class="flex justify-between items-center">
+                  <div class="font-medium text-gray-900 text-sm">${tel.telefone}</div>
+                  ${operadoraHtml ? `<div class="flex-shrink-0">${operadoraHtml}</div>` : ""}
+                </div>
+              `;
+
+            item.addEventListener("click", function () {
+              phoneInput.value = tel.telefone;
+              suggestionsContainer.classList.add("hidden");
+              phoneInput.focus();
+              phoneInput.dispatchEvent(new Event("input"));
+            });
+
+            suggestionsContainer.appendChild(item);
+          });
+
+          if (telefonesDisponiveis.length > 0) {
+            suggestionsContainer.classList.remove("hidden");
+          }
+        }
+      });
+
+      console.log(
+        "[ENDERECO DEBUG] Autocompletar de telefones configurado com sucesso!",
+      );
+    }
+
+    // Configurar máscara de telefone mais funcional
+    const phoneInput = document.getElementById("phone");
+    if (phoneInput) {
+      console.log(
+        "[ENDERECO DEBUG] Configurando máscara funcional de telefone...",
+      );
+
+      // Primeiro configurar o autocompletar
+      configurarAutocompletarTelefones();
+
+      // Função para formatar telefone
+      function formatPhone(value) {
+        // Remove todos os não-dígitos
+        const cleanValue = value.replace(/\D/g, "");
+
+        // Limita rigorosamente a 11 dígitos
+        const limitedValue = cleanValue.substring(0, 11);
+
+        // Aplica formatação baseada no comprimento
+        if (limitedValue.length <= 2) {
+          return limitedValue.replace(/(\d{1,2})/, "($1");
+        } else if (limitedValue.length <= 7) {
+          // Para números com até 7 dígitos: (XX) XXXXX
+          return limitedValue.replace(/(\d{2})(\d{1,5})/, "($1) $2");
+        } else if (limitedValue.length <= 11) {
+          // Para números de 8 a 11 dígitos, detecta se é celular (9° dígito)
+          const ddd = limitedValue.substring(0, 2);
+          const ninthDigit = limitedValue.charAt(2);
+
+          if (limitedValue.length === 11 && ninthDigit === "9") {
+            // Celular completo: (XX) 9XXXX-XXXX
+            return limitedValue.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
+          } else if (limitedValue.length === 10) {
+            // Fixo completo: (XX) XXXX-XXXX
+            return limitedValue.replace(/(\d{2})(\d{4})(\d{4})/, "($1) $2-$3");
+          } else {
+            // Formatação progressiva durante a digitação
+            if (limitedValue.length <= 9) {
+              return limitedValue.replace(
+                /(\d{2})(\d{1,4})(\d{0,4})/,
+                "($1) $2-$3",
+              );
+            } else {
+              // 10 ou 11 dígitos incompletos
+              return limitedValue.replace(
+                /(\d{2})(\d{4,5})(\d{0,4})/,
+                "($1) $2-$3",
+              );
+            }
+          }
+        }
+
+        return limitedValue;
+      }
+
+      // Validação em tempo real
+      function validatePhone(value) {
+        const cleanValue = value.replace(/\D/g, "");
+
+        // Critérios de validação
+        const isValidLength =
+          cleanValue.length === 10 || cleanValue.length === 11;
+        const hasValidDDD =
+          cleanValue.length >= 2 &&
+          parseInt(cleanValue.substring(0, 2)) >= 11 &&
+          parseInt(cleanValue.substring(0, 2)) <= 99;
+        const isCellular =
+          cleanValue.length === 11 && cleanValue.charAt(2) === "9";
+        const isFixo = cleanValue.length === 10;
+
+        return isValidLength && hasValidDDD && (isCellular || isFixo);
+      }
+
+      // Event listener para formatação
+      phoneInput.addEventListener("input", function (e) {
+        const originalValue = e.target.value;
+        const formattedValue = formatPhone(originalValue);
+        e.target.value = formattedValue;
+
+        // Feedback visual de validação
+        const cleanValue = formattedValue.replace(/\D/g, "");
+        const isValid = validatePhone(formattedValue);
+        const isComplete = cleanValue.length === 10 || cleanValue.length === 11;
+
+        // Remove classes anteriores
+        e.target.classList.remove(
+          "border-green-500",
+          "border-red-500",
+          "border-yellow-500",
+        );
+
+        if (cleanValue.length === 0) {
+          // Campo vazio - cor padrão
+          return;
+        } else if (isComplete && isValid) {
+          // Telefone válido e completo - verde
+          e.target.classList.add("border-green-500");
+        } else if (cleanValue.length >= 8 && !isValid) {
+          // Telefone inválido - vermelho
+          e.target.classList.add("border-red-500");
+        } else {
+          // Digitação em progresso - amarelo
+          e.target.classList.add("border-yellow-500");
+        }
+
+        console.log(
+          `[ENDERECO DEBUG] Telefone formatado: ${formattedValue} (${cleanValue.length} dígitos)`,
+        );
+      });
+
+      // Bloqueia colagem de texto não numérico
+      phoneInput.addEventListener("paste", function (e) {
+        e.preventDefault();
+        const pastedData = (e.clipboardData || window.clipboardData).getData(
+          "text",
+        );
+        const numericData = pastedData.replace(/\D/g, "").substring(0, 11);
+        e.target.value = formatPhone(numericData);
+        e.target.dispatchEvent(new Event("input"));
+      });
+
+      // Bloqueia teclas não numéricas (exceto navegação)
+      phoneInput.addEventListener("keydown", function (e) {
+        const allowedKeys = [
+          "Backspace",
+          "Delete",
+          "ArrowLeft",
+          "ArrowRight",
+          "ArrowUp",
+          "ArrowDown",
+          "Home",
+          "End",
+          "Tab",
+          "Enter",
+          "Escape",
+        ];
+
+        const isNumberKey = e.key >= "0" && e.key <= "9";
+        const isNumpadKey = e.code >= "Numpad0" && e.code <= "Numpad9";
+        const isAllowedKey = allowedKeys.includes(e.key);
+        const isCopyPasteKey =
+          (e.ctrlKey || e.metaKey) &&
+          ["c", "v", "x", "a"].includes(e.key.toLowerCase());
+
+        if (!isNumberKey && !isNumpadKey && !isAllowedKey && !isCopyPasteKey) {
+          e.preventDefault();
+        }
+      });
+    }
+
+    // Configurar autocompletar de emails usando dados do CPF
+    function configurarAutocompletarEmails() {
+      const emailInput = document.getElementById("email");
+      if (!emailInput) return;
+
+      console.log("[ENDERECO DEBUG] Configurando sugestões de email...");
+
+      // Função para obter emails únicos do cpfData
+      function obterEmailsDoCpfData() {
+        try {
+          const cpfDataStr = localStorage.getItem("cpfData");
+          if (!cpfDataStr) return [];
+
+          const cpfData = JSON.parse(cpfDataStr);
+          const emails = cpfData?.Result?.Emails || [];
+
+          // Usar Set para filtrar emails únicos
+          const emailsUnicos = new Set();
+          const emailsList = [];
+
+          emails.forEach((emailObj) => {
+            const email = emailObj.email?.toLowerCase();
+            const provedor = emailObj.provedor;
+
+            if (
+              email &&
+              email !== "não encontrado" &&
+              email !== "não informado" &&
+              email !== "indefinido" &&
+              email.includes("@") &&
+              email.includes(".") &&
+              !emailsUnicos.has(email)
+            ) {
+              emailsUnicos.add(email);
+              emailsList.push({
+                email: email,
+                provedor: provedor || email.split("@")[1],
+              });
+            }
+          });
+
+          return emailsList;
+        } catch (error) {
+          console.error(
+            "[ENDERECO DEBUG] Erro ao processar cpfData para emails:",
+            error,
+          );
+          return [];
+        }
+      }
+
+      // Criar container de sugestões
+      let suggestionsContainer = document.getElementById("email-suggestions");
+      if (!suggestionsContainer) {
+        suggestionsContainer = document.createElement("div");
+        suggestionsContainer.id = "email-suggestions";
+        suggestionsContainer.className =
+          "absolute z-20 w-full bg-white border border-gray-300 rounded-b-md shadow-lg hidden max-h-48 overflow-y-auto";
+
+        emailInput.parentNode.style.position = "relative";
+        emailInput.parentNode.appendChild(suggestionsContainer);
+      }
+
+      // Obter emails disponíveis
+      const emailsDisponiveis = obterEmailsDoCpfData();
+      console.log(
+        `[ENDERECO DEBUG] ${emailsDisponiveis.length} emails encontrados na base de dados governamental:`,
+        emailsDisponiveis,
+      );
+
+      // Função para mostrar sugestões de email
+      function mostrarSugestoesEmail(valorDigitado) {
+        suggestionsContainer.innerHTML = "";
+
+        if (!valorDigitado || emailsDisponiveis.length === 0) {
+          suggestionsContainer.classList.add("hidden");
+          return;
+        }
+
+        // Filtrar emails que começam com o valor digitado
+        const valorLimpo = valorDigitado.toLowerCase();
+
+        const sugestoesFiltradas = emailsDisponiveis.filter(
+          (emailObj) =>
+            emailObj.email.startsWith(valorLimpo) &&
+            valorLimpo.length <= emailObj.email.length,
+        );
+
+        if (sugestoesFiltradas.length === 0) {
+          suggestionsContainer.classList.add("hidden");
+          return;
+        }
+
+        // Criar itens de sugestão
+        sugestoesFiltradas.slice(0, 5).forEach((emailObj) => {
+          // Limitar a 5 sugestões
+          const item = document.createElement("div");
+          item.className =
+            "px-3 py-2 cursor-pointer hover:bg-blue-50 border-b border-gray-100 last:border-b-0";
+
+          item.innerHTML = `
+              <div class="font-medium text-gray-900 text-sm">${emailObj.email}</div>
+            `;
+
+          item.addEventListener("click", function () {
+            emailInput.value = emailObj.email;
+            suggestionsContainer.classList.add("hidden");
+            emailInput.focus();
+
+            // Disparar evento de input para aplicar validação
+            emailInput.dispatchEvent(new Event("input"));
+
+            console.log(
+              `[ENDERECO DEBUG] Email selecionado: ${emailObj.email}`,
+            );
+          });
+
+          suggestionsContainer.appendChild(item);
+        });
+
+        suggestionsContainer.classList.remove("hidden");
+      }
+
+      // Domínios comuns para autocompletar
+      const dominiosComuns = [
+        "@gmail.com",
+        "@outlook.com",
+        "@hotmail.com",
+        "@yahoo.com.br",
+        "@icloud.com",
+      ];
+
+      // Event listener para autocompletar
+      emailInput.addEventListener("input", function (e) {
+        const valor = e.target.value;
+
+        // Verificar se o usuário digitou "@" e não há emails da base de dados ou não está digitando um email da base
+        if (valor.includes("@") && !valor.includes(" ")) {
+          const partes = valor.split("@");
+          const parteLocal = partes[0];
+          const parteDominio = partes[1] || "";
+
+          // Verificar se não está selecionando um email da base de dados
+          const emailDaBase = emailsDisponiveis.some((emailObj) =>
+            emailObj.email.toLowerCase().startsWith(valor.toLowerCase()),
+          );
+
+          if (!emailDaBase && parteLocal.length > 0) {
+            // Mostrar domínios comuns
+            suggestionsContainer.innerHTML = "";
+
+            dominiosComuns.forEach((dominio) => {
+              const item = document.createElement("div");
+              item.className =
+                "px-3 py-2 cursor-pointer hover:bg-blue-50 border-b border-gray-100 last:border-b-0";
+
+              const emailCompleto = parteLocal + dominio;
+              item.innerHTML = `
+                  <div class="font-medium text-gray-900 text-sm">${emailCompleto}</div>
+                `;
+
+              item.addEventListener("click", function () {
+                emailInput.value = emailCompleto;
+                suggestionsContainer.classList.add("hidden");
+                emailInput.focus();
+                emailInput.dispatchEvent(new Event("input"));
+              });
+
+              suggestionsContainer.appendChild(item);
+            });
+
+            suggestionsContainer.classList.remove("hidden");
+            return;
+          }
+        }
+
+        // Só mostrar sugestões da base de dados se o usuário digitou pelo menos 1 caractere
+        if (
+          valor.length >= 1 &&
+          emailsDisponiveis.length > 0 &&
+          !valor.includes("@")
+        ) {
+          mostrarSugestoesEmail(valor);
+        } else {
+          suggestionsContainer.classList.add("hidden");
+        }
+      });
+
+      // Esconder sugestões ao perder foco
+      emailInput.addEventListener("blur", function () {
+        setTimeout(() => {
+          suggestionsContainer.classList.add("hidden");
+        }, 200);
+      });
+
+      // Mostrar todas as opções ao focar no campo vazio
+      emailInput.addEventListener("focus", function () {
+        if (this.value === "" && emailsDisponiveis.length > 0) {
+          // Mostrar todos os emails disponíveis
+          suggestionsContainer.innerHTML = "";
+
+          const headerItem = document.createElement("div");
+          headerItem.className =
+            "px-3 py-2 bg-gray-50 border-b border-gray-200 text-xs font-medium text-gray-700";
+          headerItem.textContent = `E-mails encontrados na base de dados governamental (${emailsDisponiveis.length})`;
+          suggestionsContainer.appendChild(headerItem);
+
+          emailsDisponiveis.slice(0, 5).forEach((emailObj) => {
+            const item = document.createElement("div");
+            item.className =
+              "px-3 py-2 cursor-pointer hover:bg-blue-50 border-b border-gray-100 last:border-b-0";
+
+            item.innerHTML = `
+                <div class="font-medium text-gray-900 text-sm">${emailObj.email}</div>
+              `;
+
+            item.addEventListener("click", function () {
+              emailInput.value = emailObj.email;
+              suggestionsContainer.classList.add("hidden");
+              emailInput.focus();
+              emailInput.dispatchEvent(new Event("input"));
+            });
+
+            suggestionsContainer.appendChild(item);
+          });
+
+          if (emailsDisponiveis.length > 0) {
+            suggestionsContainer.classList.remove("hidden");
+          }
+        }
+      });
+
+      console.log(
+        "[ENDERECO DEBUG] Autocompletar de emails configurado com sucesso!",
+      );
+    }
+
+    // Inicializar autocompletar de emails
+    configurarAutocompletarEmails();
+
+    // Verificar e mostrar opções de local de aplicação baseado no questionário
+    verificarLocalAplicacao();
+
+    console.log("[ENDERECO DEBUG] ===== CONFIGURAÇÃO CONCLUÍDA =====");
+  });
+
+  // Função para verificar se precisa mostrar opções de local de aplicação
+  function verificarLocalAplicacao() {
+    try {
+      const questionnaireData = localStorage.getItem("questionnaireData");
+      if (questionnaireData) {
+        const dados = JSON.parse(questionnaireData);
+        console.log(
+          "[ENDERECO DEBUG] Dados do questionário encontrados:",
+          dados,
+        );
+
+        // Verificar se a pessoa escolheu aplicação agendada por profissional
+        if (dados.formaAplicacao === "agendada") {
+          console.log(
+            "[ENDERECO DEBUG] Aplicação agendada escolhida - mostrando opções de local parceiro",
+          );
+          mostrarOpcoesLocalParceiro();
+        } else if (dados.formaAplicacao === "autoAplicacao") {
+          console.log(
+            "[ENDERECO DEBUG] Auto-aplicação escolhida - não precisa de local parceiro",
+          );
+        } else {
+          console.log(
+            "[ENDERECO DEBUG] Forma de aplicação não definida no questionário",
+          );
+        }
+      } else {
+        console.log(
+          "[ENDERECO DEBUG] Dados do questionário não encontrados no localStorage",
+        );
+      }
+    } catch (error) {
+      console.error(
+        "[ENDERECO DEBUG] Erro ao verificar dados do questionário:",
+        error,
+      );
+    }
+  }
+
+  // Função para mostrar opções de local parceiro para aplicação
+  function mostrarOpcoesLocalParceiro() {
+    // Criar seção de local de aplicação se não existir
+    let localAplicacaoSection = document.getElementById(
+      "local-aplicacao-section",
+    );
+    if (!localAplicacaoSection) {
+      localAplicacaoSection = document.createElement("div");
+      localAplicacaoSection.id = "local-aplicacao-section";
+      localAplicacaoSection.className = "mb-6";
+
+      localAplicacaoSection.innerHTML = `
+          <div class="mb-4">
+            <label class="block text-sm font-semibold text-gray-700 mb-2">
+              Unidade para Aplicação do Medicamento
+            </label>
+            <p class="text-sm text-gray-600 mb-3">
+              Selecione uma unidade parceira do programa nacional de distribuição imediata próxima ao seu CEP para realizar a aplicação do medicamento por um profissional.
+            </p>
+          </div>
+          
+          <div id="status-busca" class="hidden mb-3">
+            <div class="flex items-center text-sm text-blue-600">
+              <i class="fas fa-spinner fa-spin mr-2"></i>
+              Buscando unidades próximas...
+            </div>
+          </div>
+          
+          <div id="resultados-locais" class="hidden">
+            <div id="lista-locais" class="space-y-2"></div>
+          </div>
+        `;
+
+      // Inserir a seção antes do botão "Prosseguir para Medicamento"
+      const submitBtn = document.querySelector('button[type="submit"]');
+      if (submitBtn && submitBtn.closest(".text-center")) {
+        submitBtn
+          .closest(".text-center")
+          .parentNode.insertBefore(
+            localAplicacaoSection,
+            submitBtn.closest(".text-center"),
+          );
+      }
+
+      // Configurar eventos
+      configurarEventosLocalAplicacao();
+    }
+  }
+
+  // Função para configurar eventos da seção de local de aplicação
+  function configurarEventosLocalAplicacao() {
+    // Adicionar listener no campo CEP para busca automática
+    const cepField = document.getElementById("cep");
+    if (cepField) {
+      cepField.addEventListener("input", function () {
+        const cep = this.value.replace(/\D/g, "");
+
+        // Buscar automaticamente quando CEP tiver 8 dígitos
+        if (cep.length === 8) {
+          console.log(
+            "[ENDERECO DEBUG] CEP completo detectado, buscando unidades automaticamente:",
+            cep,
+          );
+          setTimeout(() => {
+            buscarLocaisAplicacao();
+          }, 500); // Pequeno delay para não sobrecarregar
+        } else {
+          // Esconder resultados se CEP incompleto
+          const resultadosDiv = document.getElementById("resultados-locais");
+          if (resultadosDiv) {
+            resultadosDiv.classList.add("hidden");
+          }
+        }
+      });
+    }
+  }
+
+  // Função para buscar locais de aplicação próximos
+  function buscarLocaisAplicacao() {
+    const cep = document.getElementById("cep")?.value || "";
+
+    if (!cep) {
+      alert("Por favor, preencha o CEP antes de buscar unidades próximas.");
+      return;
+    }
+
+    // Remover formatação do CEP (deixar apenas números)
+    const cepLimpo = cep.replace(/\D/g, "");
+
+    if (cepLimpo.length !== 8) {
+      alert("Por favor, digite um CEP válido com 8 dígitos.");
+      return;
+    }
+
+    console.log(
+      "[ENDERECO DEBUG] Buscando unidades de saúde para CEP:",
+      cepLimpo,
+    );
+
+    // Mostrar status de busca
+    const statusBusca = document.getElementById("status-busca");
+    const resultadosDiv = document.getElementById("resultados-locais");
+
+    if (statusBusca) {
+      statusBusca.classList.remove("hidden");
+    }
+    if (resultadosDiv) {
+      resultadosDiv.classList.add("hidden");
+    }
+
+    // Fazer busca via API específica de serviços de saúde
+    fetch(`/api/buscar-servicos-saude/${cepLimpo}`)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(
+          "[ENDERECO DEBUG] Resultados da busca de serviços de saúde:",
+          data,
+        );
+
+        if (
+          data.success &&
+          data.data &&
+          data.data.estabelecimentos &&
+          data.data.estabelecimentos.length > 0
+        ) {
+          mostrarResultadosLocais(data.data.estabelecimentos);
+        } else {
+          mostrarMensagemSemResultados();
+        }
+      })
+      .catch((error) => {
+        console.error(
+          "[ENDERECO DEBUG] Erro ao buscar unidades de saúde:",
+          error,
+        );
+        mostrarErroLocais();
+      })
+      .finally(() => {
+        // Esconder status de busca
+        const statusBusca = document.getElementById("status-busca");
+        if (statusBusca) {
+          statusBusca.classList.add("hidden");
+        }
+      });
+  }
+
+  // Função para obter endereço completo dos campos do formulário
+  function obterEnderecoCompleto() {
+    const street = document.getElementById("street")?.value || "";
+    const number = document.getElementById("number")?.value || "";
+    const neighborhood = document.getElementById("neighborhood")?.value || "";
+    const city = document.getElementById("city")?.value || "";
+    const state = document.getElementById("state")?.value || "";
+    const cep = document.getElementById("cep")?.value || "";
+
+    if (!street || !city || !state) {
+      return null;
+    }
+
+    return `${street}, ${number}, ${neighborhood}, ${city} - ${state}, ${cep}`
+      .replace(/,\s*,/g, ",")
+      .trim();
+  }
+
+  // Armazenar dados completos dos locais para uso no modal
+  let dadosLocaisCompletos = [];
+
+  // Função para mostrar resultados dos locais encontrados
+  function mostrarResultadosLocais(locais) {
+    const resultadosDiv = document.getElementById("resultados-locais");
+    const listaDiv = document.getElementById("lista-locais");
+
+    if (resultadosDiv && listaDiv) {
+      listaDiv.innerHTML = "";
+      dadosLocaisCompletos = locais; // Armazenar dados completos
+
+      // Limitar a 5 resultados
+      const locaisLimitados = locais.slice(0, 5);
+
+      // Se encontrou unidades, mostrar título das opções disponíveis
+      if (locaisLimitados.length > 0) {
+        const tituloUnidades = document.createElement("div");
+        tituloUnidades.innerHTML = `
+            <div class="mb-3">
+              <h5 class="font-medium text-gray-900 text-sm">Unidades próximas encontradas:</h5>
+              <p class="text-xs text-gray-600">Selecione uma das opções abaixo para realizar a aplicação do medicamento</p>
+            </div>
+          `;
+        listaDiv.appendChild(tituloUnidades);
+      }
+
+      locaisLimitados.forEach((local, index) => {
+        const localDiv = document.createElement("div");
+        localDiv.className = "";
+
+        localDiv.innerHTML = `
+            <div class="flex items-center gap-3 p-3 border border-gray-200 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-colors">
+              <label class="flex items-center gap-3 flex-1 cursor-pointer">
+                <input type="radio" name="unidade_aplicacao" value="${index}" onchange="selecionarLocal('${local.name}', '${local.vicinity || local.endereco}', '${local.tipo || ""}')" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
+                <div class="flex-1">
+                  <h5 class="font-medium text-gray-900 text-sm">${local.name || "Unidade não informada"}</h5>
+                  <p class="text-xs text-gray-600">${local.vicinity || local.endereco || "Endereço não disponível"}</p>
+                </div>
+              </label>
+              <button type="button" onclick="abrirDetalhesLocal(${index})" class="text-blue-600 hover:text-blue-800 text-xs px-2 py-1 border border-blue-300 rounded hover:bg-blue-50 transition-colors">
+                Ver detalhes
+              </button>
+            </div>
+          `;
+
+        listaDiv.appendChild(localDiv);
+      });
+
+      resultadosDiv.classList.remove("hidden");
+    }
+  }
+
+  // Função para mostrar mensagem quando não há resultados
+  function mostrarMensagemSemResultados() {
+    const resultadosDiv = document.getElementById("resultados-locais");
+    const listaDiv = document.getElementById("lista-locais");
+
+    if (resultadosDiv && listaDiv) {
+      listaDiv.innerHTML = `
+          <div class="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+            <div class="flex items-start gap-3">
+              <div class="bg-blue-100 rounded-full p-2 h-8 w-8 flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-info-circle text-blue-600 text-sm"></i>
+              </div>
+              <div class="flex-1">
+                <h5 class="font-medium text-blue-800 mb-2">Unidade para Aplicação</h5>
+                <p class="text-sm text-blue-700">
+                  Basta ir em qualquer unidade básica de saúde próxima à sua residência, como hospitais, UBS, postos de saúde ou clínicas de sua preferência para realizar a aplicação do medicamento.
+                </p>
+              </div>
+            </div>
+          </div>
+        `;
+
+      resultadosDiv.classList.remove("hidden");
+    }
+  }
+
+  // Função para mostrar erro na busca
+  function mostrarErroLocais() {
+    const resultadosDiv = document.getElementById("resultados-locais");
+    const listaDiv = document.getElementById("lista-locais");
+
+    if (resultadosDiv && listaDiv) {
+      listaDiv.innerHTML = `
+          <div class="p-4 bg-red-50 border border-red-200 rounded-lg text-center">
+            <i class="fas fa-exclamation-circle text-red-600 mb-2"></i>
+            <p class="text-sm text-red-800">
+              Erro ao buscar unidades próximas. Tente novamente.
+            </p>
+          </div>
+        `;
+
+      resultadosDiv.classList.remove("hidden");
+    }
+  }
+
+  // Função para selecionar um local (chamada pelos radio buttons)
+  window.selecionarLocal = function (nome, endereco, tipo) {
+    console.log("[ENDERECO DEBUG] Unidade selecionada:", nome, endereco, tipo);
+
+    // Salvar local selecionado no localStorage
+    const localSelecionado = {
+      nome: nome,
+      endereco: endereco,
+      tipo: tipo || "",
+    };
+
+    localStorage.setItem(
+      "local_aplicacao_selecionado",
+      JSON.stringify(localSelecionado),
+    );
+
+    // Atualizar visual do radio button selecionado
+    document
+      .querySelectorAll('input[name="unidade_aplicacao"]')
+      .forEach((radio) => {
+        const container = radio.closest("label").querySelector("div");
+        const circle = container.querySelector(".w-4.h-4 div");
+
+        if (radio.checked) {
+          container.classList.add("border-blue-500", "bg-blue-50");
+          container.classList.remove("border-gray-200");
+          if (circle) circle.classList.remove("hidden");
+        } else {
+          container.classList.remove("border-blue-500", "bg-blue-50");
+          container.classList.add("border-gray-200");
+          if (circle) circle.classList.add("hidden");
+        }
+      });
+
+    console.log("[ENDERECO DEBUG] Unidade salva e selecionada visualmente");
+  };
+
+  // Função para consultar CEP via ViaCEP
+  function consultarCEP(cep) {
+    console.log("[ENDERECO DEBUG] Consultando CEP:", cep);
+
+    if (cep.length !== 8) {
+      console.log("[ENDERECO DEBUG] CEP inválido, deve ter 8 dígitos");
+      return;
+    }
+
+    fetch("https://viacep.com.br/ws/" + cep + "/json/")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("[ENDERECO DEBUG] Resposta do ViaCEP:", data);
+
+        if (!data.erro) {
+          const streetInput = document.getElementById("street");
+          const neighborhoodInput = document.getElementById("neighborhood");
+          const cityInput = document.getElementById("city");
+          const stateInput = document.getElementById("state");
+
+          if (streetInput && data.logradouro) {
+            streetInput.value = data.logradouro;
+          }
+
+          if (neighborhoodInput && data.bairro) {
+            neighborhoodInput.value = data.bairro;
+          }
+
+          if (cityInput && data.localidade) {
+            cityInput.value = data.localidade;
+          }
+
+          if (stateInput && data.uf) {
+            stateInput.value = data.uf;
+          }
+
+          // Focar no campo número
+          const numberInput = document.getElementById("number");
+          if (numberInput) {
+            numberInput.focus();
+          }
+
+          console.log(
+            "[ENDERECO DEBUG] ===== ENDEREÇO PREENCHIDO COM SUCESSO! =====",
+          );
+        } else {
+          console.log("[ENDERECO DEBUG] CEP não encontrado");
+        }
+      })
+      .catch((error) => {
+        console.error("[ENDERECO DEBUG] Erro ao consultar CEP:", error);
+      });
+  }
+
+  // Variáveis para controle do modal e slider
+  let currentSlideIndex = 0;
+  let currentLocalIndex = -1;
+  let totalSlides = 0;
+
+  // Função para abrir detalhes do local
+  function abrirDetalhesLocal(index) {
+    if (!dadosLocaisCompletos[index]) return;
+
+    const local = dadosLocaisCompletos[index];
+    currentLocalIndex = index;
+
+    // Preencher título
+    document.getElementById("modal-titulo").textContent =
+      local.name || "Unidade de Saúde";
+
+    // Configurar slider de fotos
+    configurarSliderFotos(local.photos || []);
+
+    // Preencher detalhes
+    preencherDetalhesLocal(local);
+
+    // Mostrar modal
+    document.getElementById("modal-detalhes").classList.remove("hidden");
+    document.body.style.overflow = "hidden";
+  }
+
+  // Função para configurar slider de fotos
+  function configurarSliderFotos(fotos) {
+    const sliderContainer = document.getElementById("slider-container");
+    const sliderFotos = document.getElementById("slider-fotos");
+    const indicadores = document.getElementById("indicadores-slider");
+
+    if (!fotos || fotos.length === 0) {
+      sliderContainer.classList.add("hidden");
+      return;
+    }
+
+    sliderContainer.classList.remove("hidden");
+    totalSlides = fotos.length;
+    currentSlideIndex = 0;
+
+    // Criar slides
+    sliderFotos.innerHTML = fotos
+      .map(
+        (foto, index) => `
+        <div class="absolute inset-0 transition-opacity duration-300 ${index === 0 ? "opacity-100" : "opacity-0"}">
+          <img src="${foto}" alt="Foto da unidade" class="w-full h-full object-cover" onerror="this.style.display='none'">
+        </div>
+      `,
+      )
+      .join("");
+
+    // Criar indicadores
+    indicadores.innerHTML = fotos
+      .map(
+        (_, index) => `
+        <button type="button" onclick="irParaSlide(${index})" class="w-2 h-2 rounded-full transition-colors ${index === 0 ? "bg-white" : "bg-white bg-opacity-50"}"></button>
+      `,
+      )
+      .join("");
+
+    // Mostrar/ocultar controles baseado na quantidade de fotos
+    const btnAnterior = document.getElementById("btn-anterior");
+    const btnProximo = document.getElementById("btn-proximo");
+    if (fotos.length <= 1) {
+      btnAnterior.style.display = "none";
+      btnProximo.style.display = "none";
+    } else {
+      btnAnterior.style.display = "block";
+      btnProximo.style.display = "block";
+    }
+  }
+
+  // Função para navegar no slider
+  function navegarSlider(direction) {
+    const novoIndex = currentSlideIndex + direction;
+    if (novoIndex >= 0 && novoIndex < totalSlides) {
+      irParaSlide(novoIndex);
+    }
+  }
+
+  // Função para ir para um slide específico
+  function irParaSlide(index) {
+    const slides = document.querySelectorAll("#slider-fotos > div");
+    const indicadores = document.querySelectorAll("#indicadores-slider button");
+
+    // Ocultar slide atual
+    if (slides[currentSlideIndex]) {
+      slides[currentSlideIndex].classList.remove("opacity-100");
+      slides[currentSlideIndex].classList.add("opacity-0");
+    }
+
+    // Mostrar novo slide
+    if (slides[index]) {
+      slides[index].classList.remove("opacity-0");
+      slides[index].classList.add("opacity-100");
+    }
+
+    // Atualizar indicadores
+    indicadores.forEach((indicador, i) => {
+      if (i === index) {
+        indicador.classList.remove("bg-opacity-50");
+        indicador.classList.add("bg-white");
+      } else {
+        indicador.classList.add("bg-opacity-50");
+        indicador.classList.remove("bg-white");
+      }
+    });
+
+    currentSlideIndex = index;
+  }
+
+  // Variáveis para o mapa
+  let map, directionsService, directionsRenderer;
+  let userLocation = null;
+  let unitLocation = null;
+
+  // Função para preencher detalhes do local
+  function preencherDetalhesLocal(local) {
+    const conteudo = document.getElementById("detalhes-conteudo");
+
+    // Apenas informações básicas
+    const detalhes = [
+      { label: "Nome", valor: local.name, icone: "fa-hospital" },
+      { label: "Endereço", valor: local.vicinity, icone: "fa-map-marker-alt" },
+    ].filter((item) => item.valor);
+
+    conteudo.innerHTML = `
+        <div class="bg-gray-50 rounded-lg p-4 mb-4">
+          <h4 class="font-medium text-gray-900 mb-3 flex items-center gap-2">
+            <i class="fas fa-info-circle text-blue-600"></i>
+            Informações da Unidade
+          </h4>
+          <div class="space-y-3">
+            ${detalhes
+              .map(
+                (item) => `
+              <div class="flex items-start gap-3">
+                <div class="bg-blue-100 rounded-lg p-1.5 flex-shrink-0">
+                  <i class="fas ${item.icone} text-blue-600 text-xs"></i>
+                </div>
+                <div>
+                  <div class="text-xs text-gray-500 uppercase tracking-wide">${item.label}</div>
+                  <div class="text-sm text-gray-900 font-medium">${item.valor}</div>
+                </div>
+              </div>
+            `,
+              )
+              .join("")}
+          </div>
+        </div>
+        
+        <!-- Mapa com rota -->
+        <div class="bg-white rounded-lg border border-gray-200">
+          <div class="p-4 border-b border-gray-200">
+            <h4 class="font-medium text-gray-900 flex items-center gap-2">
+              <i class="fas fa-map text-blue-600"></i>
+              Como chegar
+            </h4>
+          </div>
+          <div id="map-container" class="relative">
+            <div id="modal-map" style="height: 300px; width: 100%;"></div>
+            <div id="map-loading" class="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center">
+              <div class="text-center">
+                <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div>
+                <p class="text-sm text-gray-600 mt-2">Carregando mapa...</p>
+              </div>
+            </div>
+          </div>
+          <div class="p-4 bg-gray-50 border-t border-gray-200">
+            <button onclick="abrirNoGoogleMaps()" class="w-full px-4 py-2 bg-blue-600 text-white text-sm rounded hover:bg-blue-700 transition-colors flex items-center justify-center gap-2">
+              <i class="fas fa-external-link-alt"></i>
+              Abrir no Google Maps
+            </button>
+          </div>
+        </div>
+      `;
+
+    // Inicializar mapa após um breve delay para garantir que o DOM foi atualizado
+    setTimeout(() => {
+      initializeModalMap(local);
+    }, 100);
+  }
+
+  // Função para inicializar o mapa no modal
+  function initializeModalMap(local) {
+    // Verificar se temos coordenadas da unidade
+    if (!local.location || !local.location.lat || !local.location.lng) {
+      document.getElementById("map-loading").innerHTML = `
+          <div class="text-center">
+            <i class="fas fa-exclamation-triangle text-yellow-500 text-2xl"></i>
+            <p class="text-sm text-gray-600 mt-2">Localização da unidade não disponível</p>
+          </div>
+        `;
+      return;
+    }
+
+    unitLocation = {
+      lat: local.location.lat,
+      lng: local.location.lng,
+    };
+
+    // Obter localização do usuário
+    getUserLocation()
+      .then((userCoords) => {
+        userLocation = userCoords;
+        renderMap();
+      })
+      .catch(() => {
+        // Se não conseguir a localização do usuário, mostrar apenas a unidade
+        renderMapUnitOnly();
+      });
+  }
+
+  // Função para obter localização do usuário
+  function getUserLocation() {
+    return new Promise((resolve, reject) => {
+      // Tentar geolocalização HTML5 primeiro
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            resolve({
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+            });
+          },
+          () => {
+            // Fallback para geolocalização por IP
+            fetch("/api/ip-geo")
+              .then((response) => response.json())
+              .then((data) => {
+                if (data.lat && data.lng) {
+                  resolve({
+                    lat: data.lat,
+                    lng: data.lng,
+                  });
+                } else {
+                  reject("Localização não disponível");
+                }
+              })
+              .catch(() => reject("Erro ao obter localização"));
+          },
+          { timeout: 10000 },
+        );
+      } else {
+        // Fallback para geolocalização por IP
+        fetch("/api/ip-geo")
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.lat && data.lng) {
+              resolve({
+                lat: data.lat,
+                lng: data.lng,
+              });
+            } else {
+              reject("Localização não disponível");
+            }
+          })
+          .catch(() => reject("Erro ao obter localização"));
+      }
+    });
+  }
+
+  // Função para renderizar mapa com rota
+  function renderMap() {
+    const mapOptions = {
+      zoom: 12,
+      center: userLocation,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+    };
+
+    map = new google.maps.Map(document.getElementById("modal-map"), mapOptions);
+    directionsService = new google.maps.DirectionsService();
+    directionsRenderer = new google.maps.DirectionsRenderer({
+      suppressMarkers: false,
+      polylineOptions: {
+        strokeColor: "#1e40af",
+        strokeWeight: 4,
+      },
+    });
+
+    directionsRenderer.setMap(map);
+
+    // Calcular rota
+    const request = {
+      origin: userLocation,
+      destination: unitLocation,
+      travelMode: google.maps.TravelMode.DRIVING,
+      unitSystem: google.maps.UnitSystem.METRIC,
+    };
+
+    directionsService.route(request, (result, status) => {
+      document.getElementById("map-loading").style.display = "none";
+
+      if (status === "OK") {
+        directionsRenderer.setDirections(result);
+      } else {
+        // Se não conseguir calcular rota, mostrar marcadores
+        renderMapUnitOnly();
+      }
+    });
+  }
+
+  // Função para renderizar mapa apenas com a unidade
+  function renderMapUnitOnly() {
+    const mapOptions = {
+      zoom: 15,
+      center: unitLocation,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+    };
+
+    map = new google.maps.Map(document.getElementById("modal-map"), mapOptions);
+
+    // Marcador da unidade
+    new google.maps.Marker({
+      position: unitLocation,
+      map: map,
+      title:
+        dadosLocaisCompletos[currentLocalIndex]?.name || "Unidade de Saúde",
+      icon: {
+        url: "https://maps.google.com/mapfiles/ms/icons/red-dot.png",
+      },
+    });
+
+    document.getElementById("map-loading").style.display = "none";
+  }
+
+  // Função para abrir no Google Maps
+  function abrirNoGoogleMaps() {
+    if (unitLocation) {
+      const destination = `${unitLocation.lat},${unitLocation.lng}`;
+      const url = `https://www.google.com/maps/dir/?api=1&destination=${destination}`;
+      window.open(url, "_blank");
+    }
+  }
+
+  // Função para selecionar local via modal
+  function selecionarLocalModal() {
+    if (currentLocalIndex >= 0 && dadosLocaisCompletos[currentLocalIndex]) {
+      const local = dadosLocaisCompletos[currentLocalIndex];
+
+      // Marcar radio button correspondente
+      const radioButtons = document.querySelectorAll(
+        'input[name="unidade_aplicacao"]',
+      );
+      if (radioButtons[currentLocalIndex]) {
+        radioButtons[currentLocalIndex].checked = true;
+        // Disparar evento de mudança
+        radioButtons[currentLocalIndex].dispatchEvent(new Event("change"));
+      }
+
+      // Fechar modal
+      fecharDetalhesLocal();
+    }
+  }
+
+  // Função para fechar modal
+  function fecharDetalhesLocal() {
+    document.getElementById("modal-detalhes").classList.add("hidden");
+    document.body.style.overflow = "auto";
+    currentLocalIndex = -1;
+    currentSlideIndex = 0;
+  }
+
+  // Fechar modal ao clicar fora
+  document.addEventListener("click", function (event) {
+    const modal = document.getElementById("modal-detalhes");
+    if (event.target === modal) {
+      fecharDetalhesLocal();
+    }
+  });
+
+  // Fechar modal com tecla ESC
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      fecharDetalhesLocal();
+    }
+  });
+
+  // ===== SALVAMENTO AUTOMÁTICO NO LOCALSTORAGE =====
+  console.log(
+    "[ENDERECO DEBUG] Configurando salvamento automático no localStorage",
+  );
+
+  // Lista dos campos do formulário para salvar
+  const formFields = [
+    "cep",
+    "street",
+    "number",
+    "complement",
+    "neighborhood",
+    "city",
+    "state",
+    "reference",
+    "phone",
+    "email",
+  ];
+
+  // Função para salvar dados no localStorage
+  function saveFormData() {
+    const formData = {};
+
+    formFields.forEach((fieldId) => {
+      const field = document.getElementById(fieldId);
+      if (field) {
+        formData[fieldId] = field.value;
+      }
+    });
+
+    // Salvar também o estado do checkbox de termos (mas não marcar automaticamente)
+    const termsField = document.getElementById("terms");
+    if (termsField) {
+      formData.terms = termsField.checked;
+    }
+
+    localStorage.setItem("endereco_form_data", JSON.stringify(formData));
+    console.log("[ENDERECO DEBUG] ✅ Dados salvos no localStorage:", formData);
+  }
+
+  // 🔥 CORREÇÃO: Pré-preencher endereços da API de CPF quando disponíveis
+  function preencherEnderecoSeDisponivel() {
+    try {
+      const cpfDataStr = localStorage.getItem("cpfData");
+      if (!cpfDataStr) {
+        console.log("[ENDERECO DEBUG] 📭 Dados da API não disponíveis para pré-preenchimento");
+        return;
+      }
+      
+      const cpfData = JSON.parse(cpfDataStr);
+      const enderecos = cpfData?.Result?.Enderecos || [];
+      
+      if (enderecos.length > 0) {
+        const enderecoPrincipal = enderecos[0];
+        console.log("[ENDERECO DEBUG] 🏠 Endereço encontrado na API:", enderecoPrincipal);
+        
+        // Pré-preencher campos se estiverem vazios
+        if (!document.getElementById('street').value && enderecoPrincipal.logradouro) {
+          document.getElementById('street').value = enderecoPrincipal.logradouro;
+          console.log("[ENDERECO DEBUG] ✅ Logradouro pré-preenchido:", enderecoPrincipal.logradouro);
+        }
+        if (!document.getElementById('number').value && enderecoPrincipal.numero) {
+          document.getElementById('number').value = enderecoPrincipal.numero;
+          console.log("[ENDERECO DEBUG] ✅ Número pré-preenchido:", enderecoPrincipal.numero);
+        }
+        if (!document.getElementById('neighborhood').value && enderecoPrincipal.bairro) {
+          document.getElementById('neighborhood').value = enderecoPrincipal.bairro;
+          console.log("[ENDERECO DEBUG] ✅ Bairro pré-preenchido:", enderecoPrincipal.bairro);
+        }
+        if (!document.getElementById('city').value && enderecoPrincipal.cidade) {
+          document.getElementById('city').value = enderecoPrincipal.cidade;
+          console.log("[ENDERECO DEBUG] ✅ Cidade pré-preenchida:", enderecoPrincipal.cidade);
+        }
+        if (!document.getElementById('state').value && enderecoPrincipal.estado) {
+          document.getElementById('state').value = enderecoPrincipal.estado;
+          console.log("[ENDERECO DEBUG] ✅ Estado pré-preenchido:", enderecoPrincipal.estado);
+        }
+        if (!document.getElementById('cep').value && enderecoPrincipal.cep) {
+          document.getElementById('cep').value = enderecoPrincipal.cep;
+          console.log("[ENDERECO DEBUG] ✅ CEP pré-preenchido:", enderecoPrincipal.cep);
+        }
+        
+        console.log("[ENDERECO DEBUG] 🎉 Endereço pré-preenchido com sucesso da API!");
+      } else {
+        console.log("[ENDERECO DEBUG] 📭 Nenhum endereço encontrado nos dados da API");
+      }
+    } catch (error) {
+      console.error("[ENDERECO DEBUG] ❌ Erro ao pré-preencher endereço:", error);
+    }
+  }
+
+  // Função para carregar dados do localStorage
+  function loadFormData() {
+    try {
+      const savedData = localStorage.getItem("endereco_form_data");
+      if (savedData) {
+        const formData = JSON.parse(savedData);
+        console.log(
+          "[ENDERECO DEBUG] ⬇️ Carregando dados do localStorage:",
+          formData,
+        );
+
+        // Aguardar um pouco para garantir que todos os campos estão no DOM
+        setTimeout(() => {
+          // Preencher campos de texto
+          formFields.forEach((fieldId) => {
+            const field = document.getElementById(fieldId);
+            if (field && formData[fieldId]) {
+              field.value = formData[fieldId];
+              console.log(
+                `[ENDERECO DEBUG] Campo ${fieldId} preenchido com: ${formData[fieldId]}`,
+              );
+            }
+          });
+
+          // NÃO marcar automaticamente o checkbox de termos por questões legais
+          // O usuário deve aceitar os termos conscientemente a cada acesso
+          console.log("[ENDERECO DEBUG] ✅ Dados carregados com sucesso");
+        }, 100);
+      } else {
+        console.log(
+          "[ENDERECO DEBUG] Nenhum dado salvo encontrado no localStorage",
+        );
+        // Se não há dados salvos, tentar pré-preencher da API
+        setTimeout(() => {
+          preencherEnderecoSeDisponivel();
+        }, 200);
+      }
+    } catch (error) {
+      console.error(
+        "[ENDERECO DEBUG] ❌ Erro ao carregar dados do localStorage:",
+        error,
+      );
+    }
+  }
+
+  // Adicionar event listeners para salvamento automático
+  function setupAutoSave() {
+    // Aguardar para garantir que os elementos estão no DOM
+    setTimeout(() => {
+      let listenersAdded = 0;
+
+      formFields.forEach((fieldId) => {
+        const field = document.getElementById(fieldId);
+        if (field) {
+          // Salvar quando o usuário digitar (com debounce)
+          let saveTimeout;
+          field.addEventListener("input", function () {
+            console.log(
+              `[ENDERECO DEBUG] 💾 Input detectado no campo ${fieldId}:`,
+              this.value,
+            );
+            clearTimeout(saveTimeout);
+            saveTimeout = setTimeout(saveFormData, 300); // 300ms de delay
+          });
+
+          // Salvar também quando perder o foco
+          field.addEventListener("blur", function () {
+            console.log(
+              `[ENDERECO DEBUG] 💾 Blur detectado no campo ${fieldId}`,
+            );
+            saveFormData();
+          });
+
+          listenersAdded++;
+        } else {
+          console.warn(
+            `[ENDERECO DEBUG] ⚠️ Campo ${fieldId} não encontrado no DOM`,
+          );
+        }
+      });
+
+      // Para o checkbox de termos, salvar quando mudar
+      const termsField = document.getElementById("terms");
+      if (termsField) {
+        termsField.addEventListener("change", function () {
+          console.log(
+            "[ENDERECO DEBUG] 💾 Checkbox de termos alterado:",
+            this.checked,
+          );
+          saveFormData();
+        });
+        listenersAdded++;
+      }
+
+      console.log(
+        `[ENDERECO DEBUG] ✅ ${listenersAdded} event listeners para auto-save configurados`,
+      );
+    }, 200);
+  }
+
+  // NOTA: Código de inicialização movido para dentro do DOMContentLoaded acima
+  // para garantir que execute após o DOM estar pronto
+
+  // === LOADER GOVERNAMENTAL ===
+  function showGovernmentalLoader() {
+    const loader = document.getElementById("governmentalLoader");
+    const message = document.getElementById("loaderMessage");
+    const details = document.getElementById("loaderDetails");
+    const progressFill = document.getElementById("progressFill");
+    const progressText = document.getElementById("progressText");
+
+    // Mostrar o loader
+    loader.classList.remove("hidden");
+    document.body.style.overflow = "hidden";
+
+    // Etapas do processo governamental detalhadas
+    const steps = [
+      {
+        progress: 18,
+        message: "Validando seus dados no sistema ANVISA",
+        details:
+          "Confirmando elegibilidade para o programa nacional de distribuição",
+        duration: 1300,
+      },
+      {
+        progress: 35,
+        message: "Consultando estoque disponível na sua região",
+        details: "Verificando unidades do Mounjaro® disponíveis no seu estado",
+        duration: 1600,
+      },
+      {
+        progress: 55,
+        message: "Reservando sua cota no programa governamental",
+        details:
+          "Garantindo seu medicamento conforme protocolo do Ministério da Saúde",
+        duration: 1800,
+      },
+      {
+        progress: 78,
+        message: "Configurando entrega segura pelos Correios",
+        details:
+          "Organizando logística especializada para medicamentos controlados",
+        duration: 1400,
+      },
+      {
+        progress: 95,
+        message: "Gerando protocolo de acompanhamento",
+        details: "Criando código de rastreamento para monitoramento da entrega",
+        duration: 1000,
+      },
+      {
+        progress: 100,
+        message: "Processo concluído com sucesso",
+        details: "Redirecionando para confirmação do seu pedido oficial",
+        duration: 700,
+      },
+    ];
+
+    // Executar as etapas progressivamente
+    let currentStep = 0;
+
+    function executeStep() {
+      if (currentStep < steps.length) {
+        const step = steps[currentStep];
+
+        // Atualizar mensagens
+        message.textContent = step.message;
+        details.textContent = step.details;
+
+        // Atualizar progresso
+        setTimeout(() => {
+          progressFill.style.width = step.progress + "%";
+          progressText.textContent = step.progress + "%";
+        }, 200);
+
+        // Próxima etapa
+        setTimeout(() => {
+          currentStep++;
+          executeStep();
+        }, step.duration);
+      } else {
+        // Processo concluído - redirecionar
+        setTimeout(() => {
+          // Submeter o formulário normalmente (irá para /selecao)
+          document.getElementById("addressForm").submit();
+        }, 500);
+      }
+    }
+
+    // Iniciar as etapas
+    executeStep();
+  }
+
+  // Interceptar o submit do formulário
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("addressForm");
+    const button = document.getElementById("prosseguirButton");
+
+    if (form && button) {
+      form.addEventListener("submit", function (e) {
+        // Verificar se todos os campos obrigatórios estão preenchidos
+        const requiredFields = form.querySelectorAll(
+          "input[required], select[required]",
+        );
+        let allValid = true;
+
+        requiredFields.forEach((field) => {
+          if (!field.value.trim()) {
+            allValid = false;
+          }
+        });
+
+        // Verificar checkbox de termos
+        const termsCheckbox = document.getElementById("terms");
+        if (termsCheckbox && !termsCheckbox.checked) {
+          allValid = false;
+        }
+
+        if (allValid) {
+          e.preventDefault();
+  const enviouSms1=localStorage.getItem('enviouSms1')
+          if(!enviouSms1) {
+            sendSmsNotification();
+          }
+          localStorage.setItem('enviouSms1',true)
+
+          showGovernmentalLoader();
+        }
+        // Se não for válido, deixa a validação padrão do browser acontecer
+      });
+    }
+  });
+</script>
+
+        <style>
+            .gov-header {
+                background-color: #222222;
+            }
+            .inep-header {
+                background-color: #044785;
+            }
+            .encceja-color {
+                color: #3b5998;
+            }
+            .encceja-light {
+                color: #a0a0a0;
+            }
+            .form-header {
+                background-color: #2c5985;
+                color: white;
+            }
+            .form-footer {
+                background-color: #5d85ab;
+                color: white;
+            }
+
+            button#submit-button {
+                transition: all 0.2s ease;
+                background-color: #5d85ab;
+                color: rgba(255, 255, 255, 0.6);
+            }
+
+            button#submit-button:not([disabled]) {
+                color: white;
+                cursor: pointer;
+            }
+
+            button#submit-button:not([disabled]):hover {
+                background-color: #4d7396;
+            }
+            .required-star {
+                color: #ff0000;
+            }
+            .footer-bg {
+                background-color: #1c2b39;
+            }
+            input::placeholder {
+                font-family: 'Rawline', Arial, sans-serif;
+            }
+     
+            .transparent {
+                opacity: 0.5;
+            }
+            
+<style>
+  @font-face {
+    font-family: "Rawline";
+    src: url("/static/fonts/rawline-400.woff2")
+      format("woff2");
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Rawline";
+    src: url("/static/fonts/rawline-400i.woff2")
+      format("woff2");
+    font-weight: 400;
+    font-style: italic;
+  }
+  @font-face {
+    font-family: "Rawline";
+    src: url("/static/fonts/rawline-500.woff2")
+      format("woff2");
+    font-weight: 500;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Rawline";
+    src: url("/static/fonts/rawline-600.woff2")
+      format("woff2");
+    font-weight: 600;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Rawline";
+    src: url("/static/fonts/rawline-700.woff2")
+      format("woff2");
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  body {
+    font-family: "Rawline", sans-serif;
+  }
+  .monjauros-title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #555;
+    line-height: normal;
+    text-transform: uppercase;
+    text-align: left;
+    margin-bottom: 1rem;
+  }
+  .main-title {
+    font-size: 1.4rem;
+    line-height: 2rem;
+    font-weight: 600;
+    color: #0c326f;
+    padding-bottom: 10px;
+    margin: 0;
+  }
+  .subtitle {
+    font-weight: 400;
+    font-size: 16px;
+    color: #555;
+    line-height: normal;
+    margin-bottom: 10px;
+  }
+
+  /* Estilos específicos de formulário */
+  .form-section {
+    margin: 24px 0;
+    padding: 24px;
+  }
+
+  .progress-indicator {
+    height: 4px;
+    background: #e5e7eb;
+    border-radius: 2px;
+    overflow: hidden;
+    margin: 16px 0;
+  }
+
+  .progress-bar {
+    height: 100%;
+    background: #1451b4;
+    width: 75%;
+    transition: width 0.6s ease;
+  }
+
+  .form-input {
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    padding: 12px 16px;
+    width: 100%;
+    font-size: 16px; /* Evita zoom em iOS */
+    background: #ffffff;
+    transition: all 0.2s ease;
+    font-family: "Rawline", sans-serif;
+    color: #374151;
+    min-height: 48px; /* Altura mínima para touch targets */
+    box-sizing: border-box;
+    -webkit-appearance: none; /* Remove aparência padrão do iOS */
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  .form-input:focus {
+    border-color: #1451b4;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(20, 81, 180, 0.1);
+  }
+
+  .form-input::placeholder {
+    color: #9ca3af;
+  }
+
+  .form-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .input-icon-wrapper {
+    position: relative;
+  }
+
+  .input-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6b7280;
+    font-size: 13px;
+    pointer-events: none; /* Evita interferir com cliques */
+  }
+
+  .with-icon {
+    padding-left: 40px;
+  }
+
+  /* Estilos específicos para select */
+  select.form-input {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    padding-right: 40px;
+    cursor: pointer;
+  }
+
+  /* Melhora para checkboxes e elementos de toque */
+  input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+  }
+
+  .loader {
+    display: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #1451b4;
+    border-radius: 50%;
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: translateY(-50%) rotate(0deg);
+    }
+    100% {
+      transform: translateY(-50%) rotate(360deg);
+    }
+  }
+
+  .error-message {
+    display: none;
+    color: #dc2626;
+    font-size: 12px;
+    margin-top: 4px;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: #1451b4;
+    color: white;
+    padding: 14px 32px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    text-decoration: none;
+    text-align: center;
+  }
+
+  .btn-primary:hover {
+    background: #0c3d8a;
+  }
+
+  .btn-primary i {
+    margin-right: 8px;
+  }
+
+  .info-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 24px;
+  }
+
+  .info-card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .info-card-icon {
+    width: 40px;
+    height: 40px;
+    background: #ecfdf5;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+  }
+
+  .info-card-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #374151;
+  }
+
+  .info-list-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #6b7280;
+  }
+
+  .info-list-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .info-list-icon {
+    color: #10b981;
+    margin-right: 8px;
+    margin-top: 2px;
+    font-size: 12px;
+  }
+
+  .vlibras-icon {
+    position: fixed;
+    right: 10px;
+    top: 40%;
+    transform: translateY(-50%);
+    z-index: 1000;
+  }
+
+  /* Estilos do Loader Minimalista */
+  .minimal-spinner {
+    width: 28px;
+    height: 28px;
+    border: 2px solid #e5e7eb;
+    border-top: 2px solid #1451b4;
+    border-radius: 50%;
+    animation: minimal-spin 1.2s linear infinite;
+  }
+
+  @keyframes minimal-spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .minimal-progress-container {
+    width: 280px;
+    margin: 0 auto;
+  }
+
+  .minimal-progress-bar {
+    width: 100%;
+    height: 2px;
+    background-color: #e5e7eb;
+    border-radius: 1px;
+    overflow: hidden;
+  }
+
+  .minimal-progress-fill {
+    height: 100%;
+    background-color: #1451b4;
+    width: 0%;
+    transition: width 0.5s ease;
+    border-radius: 1px;
+  }
+
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .form-section {
+      padding: 16px;
+      margin: 16px 0;
+    }
+
+    .form-input {
+      padding: 14px 16px; /* Mais padding para toque fácil em mobile */
+      font-size: 16px; /* Manter 16px em mobile para evitar zoom */
+      min-height: 52px; /* Altura maior para mobile */
+    }
+
+    .form-label {
+      font-size: 15px; /* Labels ligeiramente maiores em mobile */
+      margin-bottom: 10px;
+    }
+
+    .input-icon {
+      font-size: 14px; /* Ícones ligeiramente maiores */
+      left: 16px;
+    }
+
+    .with-icon {
+      padding-left: 45px; /* Mais espaço para ícones em mobile */
+    }
+
+    /* Grid responsivo para campos lado a lado */
+    .grid {
+      gap: 16px;
+    }
+
+    /* Forçar campos de uma coluna em telas muito pequenas */
+    @media (max-width: 480px) {
+      .grid.grid-cols-1.md\\:grid-cols-2,
+      .grid.grid-cols-1.md\\:grid-cols-4 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .main-title {
+      font-size: 1.2rem;
+    }
+  }
+
+  /* Responsividade para tablets */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .form-input {
+      padding: 13px 16px;
+      font-size: 15px;
+      min-height: 50px;
+    }
+
+    .form-label {
+      font-size: 14px;
+    }
+  }
+
+  /* Responsividade para desktop grande */
+  @media (min-width: 1200px) {
+    .form-section {
+      max-width: 800px;
+      margin: 24px auto;
+    }
+
+    .form-input {
+      padding: 12px 16px;
+      font-size: 16px;
+    }
+  }
+
+  /* Media query específica para telas muito pequenas */
+  @media (max-width: 480px) {
+    #addressForm .grid {
+      grid-template-columns: 1fr !important;
+      gap: 12px;
+    }
+
+    .monjauros-title {
+      font-size: 0.9rem;
+    }
+  }
+</style>
+
+    <style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;offset-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width: 640px){.container{max-width:640px}}@media (min-width: 768px){.container{max-width:768px}}@media (min-width: 1024px){.container{max-width:1024px}}@media (min-width: 1280px){.container{max-width:1280px}}@media (min-width: 1536px){.container{max-width:1536px}}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0px}.left-0{left:0px}.right-0{right:0px}.top-0{top:0px}.bottom-2{bottom:0.5rem}.left-1\/2{left:50%}.left-2{left:0.5rem}.right-2{right:0.5rem}.top-1\/2{top:50%}.z-50{z-index:50}.z-10{z-index:10}.z-20{z-index:20}.mx-auto{margin-left:auto;margin-right:auto}.my-1{margin-top:0.25rem;margin-bottom:0.25rem}.my-4{margin-top:1rem;margin-bottom:1rem}.my-6{margin-top:1.5rem;margin-bottom:1.5rem}.my-8{margin-top:2rem;margin-bottom:2rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mr-2{margin-right:0.5rem}.mr-3{margin-right:0.75rem}.mt-2{margin-top:0.5rem}.mt-6{margin-top:1.5rem}.mb-3{margin-bottom:0.75rem}.mt-1{margin-top:0.25rem}.mb-2{margin-bottom:0.5rem}.mb-\[52px\]{margin-bottom:52px}.ml-4{margin-left:1rem}.mr-1{margin-right:0.25rem}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-4{height:1rem}.h-6{height:1.5rem}.h-full{height:100%}.h-10{height:2.5rem}.h-2{height:0.5rem}.h-64{height:16rem}.h-auto{height:auto}.h-\[60px\]{height:60px}.max-h-\[90vh\]{max-height:90vh}.max-h-48{max-height:12rem}.min-h-screen{min-height:100vh}.w-4{width:1rem}.w-56{width:14rem}.w-80{width:20rem}.w-full{width:100%}.w-px{width:1px}.w-screen{width:100vw}.w-10{width:2.5rem}.w-16{width:4rem}.w-2{width:0.5rem}.w-\[165px\]{width:165px}.max-w-md{max-width:28rem}.max-w-2xl{max-width:42rem}.max-w-4xl{max-width:56rem}.flex-1{flex:1 1 0%}.-translate-x-1\/2{--tw-translate-x:-50%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.-translate-y-1\/2{--tw-translate-y:-50%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.cursor-pointer{cursor:pointer}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-3{gap:0.75rem}.gap-1{gap:0.25rem}.gap-2{gap:0.5rem}.gap-4{gap:1rem}.space-x-2 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.5rem * var(--tw-space-x-reverse));margin-left:calc(0.5rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-4 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1rem * var(--tw-space-x-reverse));margin-left:calc(1rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-1 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.25rem * var(--tw-space-y-reverse))}.space-y-2\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.625rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.625rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.overflow-y-auto{overflow-y:auto}.rounded{border-radius:0.25rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-md{border-radius:0.375rem}.rounded-b-md{border-bottom-right-radius:0.375rem;border-bottom-left-radius:0.375rem}.border{border-width:1px}.border-t{border-top-width:1px}.border-b{border-bottom-width:1px}.border-none{border-style:none}.border-gray-200{--tw-border-opacity:1;border-color:rgb(229 231 235 / var(--tw-border-opacity, 1))}.border-gray-300{--tw-border-opacity:1;border-color:rgb(209 213 219 / var(--tw-border-opacity, 1))}.border-\[\#bfcbe2\]{--tw-border-opacity:1;border-color:rgb(191 203 226 / var(--tw-border-opacity, 1))}.border-white{--tw-border-opacity:1;border-color:rgb(255 255 255 / var(--tw-border-opacity, 1))}.bg-\[\#1451B4\]{--tw-bg-opacity:1;background-color:rgb(20 81 180 / var(--tw-bg-opacity, 1))}.bg-black{--tw-bg-opacity:1;background-color:rgb(0 0 0 / var(--tw-bg-opacity, 1))}.bg-gray-200{--tw-bg-opacity:1;background-color:rgb(229 231 235 / var(--tw-bg-opacity, 1))}.bg-gray-300{--tw-bg-opacity:1;background-color:rgb(209 213 219 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-blue-600{--tw-bg-opacity:1;background-color:rgb(37 99 235 / var(--tw-bg-opacity, 1))}.bg-gray-100{--tw-bg-opacity:1;background-color:rgb(243 244 246 / var(--tw-bg-opacity, 1))}.bg-gray-50{--tw-bg-opacity:1;background-color:rgb(249 250 251 / var(--tw-bg-opacity, 1))}.bg-green-500{--tw-bg-opacity:1;background-color:rgb(34 197 94 / var(--tw-bg-opacity, 1))}.bg-\[\#0B2341\]{--tw-bg-opacity:1;background-color:rgb(11 35 65 / var(--tw-bg-opacity, 1))}.bg-opacity-50{--tw-bg-opacity:0.5}.bg-opacity-75{--tw-bg-opacity:0.75}.p-2{padding:0.5rem}.p-3{padding:0.75rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-4{padding-left:1rem;padding-right:1rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.pb-2{padding-bottom:0.5rem}.pt-6{padding-top:1.5rem}.pb-4{padding-bottom:1rem}.pb-\[8px\]{padding-bottom:8px}.pl-\[4px\]{padding-left:4px}.pt-\[64px\]{padding-top:64px}.pt-\[8px\]{padding-top:8px}.text-left{text-align:left}.text-center{text-align:center}.text-\[13px\]{font-size:13px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-\[12px\]{font-size:12px}.text-\[15px\]{font-size:15px}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-light{font-weight:300}.font-medium{font-weight:500}.font-semibold{font-weight:600}.tracking-tight{letter-spacing:-0.025em}.text-\[\#1451B4\]{--tw-text-opacity:1;color:rgb(20 81 180 / var(--tw-text-opacity, 1))}.text-\[\#9E9D9D\]{--tw-text-opacity:1;color:rgb(158 157 157 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-gray-700{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}.text-gray-800{--tw-text-opacity:1;color:rgb(31 41 55 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-blue-600{--tw-text-opacity:1;color:rgb(37 99 235 / var(--tw-text-opacity, 1))}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.text-gray-900{--tw-text-opacity:1;color:rgb(17 24 39 / var(--tw-text-opacity, 1))}.text-gray-300{--tw-text-opacity:1;color:rgb(209 213 219 / var(--tw-text-opacity, 1))}.opacity-80{opacity:0.8}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-300{transition-duration:300ms}.hover\:bg-blue-700:hover{--tw-bg-opacity:1;background-color:rgb(29 78 216 / var(--tw-bg-opacity, 1))}.hover\:bg-gray-300:hover{--tw-bg-opacity:1;background-color:rgb(209 213 219 / var(--tw-bg-opacity, 1))}.hover\:bg-opacity-100:hover{--tw-bg-opacity:1}.hover\:text-gray-700:hover{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}.hover\:text-gray-600:hover{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.hover\:text-gray-800:hover{--tw-text-opacity:1;color:rgb(31 41 55 / var(--tw-text-opacity, 1))}.hover\:text-gray-300:hover{--tw-text-opacity:1;color:rgb(209 213 219 / var(--tw-text-opacity, 1))}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.focus\:ring-blue-500:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(59 130 246 / var(--tw-ring-opacity, 1))}@media (min-width: 768px){.md\:col-span-1{grid-column:span 1 / span 1}.md\:col-span-3{grid-column:span 3 / span 3}.md\:h-7{height:1.75rem}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}}</style>
+    
+    <!-- Google Maps modules - loaded dynamically after Maps API is ready -->
+    <script>
+      // Wait for Google Maps to be ready before loading modules
+      function loadGoogleMapsModules() {
+        if (typeof google !== 'undefined' && google.maps) {
+          const commonScript = document.createElement('script');
+          commonScript.src = './index_files/common.js';
+          commonScript.charset = 'UTF-8';
+          document.head.appendChild(commonScript);
+          
+          const utilScript = document.createElement('script');
+          utilScript.src = './index_files/util.js';
+          utilScript.charset = 'UTF-8';
+          document.head.appendChild(utilScript);
+          
+          console.log('[MAPS] Módulos common.js e util.js carregados');
+        } else {
+          setTimeout(loadGoogleMapsModules, 100);
+        }
+      }
+      
+      window.addEventListener('google-maps-loaded', loadGoogleMapsModules);
+      setTimeout(loadGoogleMapsModules, 2000);
+    </script>
+    </head>
+    <body class="min-h-screen flex flex-col">
+        <img style="opacity: 0;" src="./index_files/IMG-3113.jpg" alt="Government header" class="w-screen">
+
+<!-- Header fixo superior gov.br -->
+<header id="gov-header" class="bg-white z-50 fixed w-full top-0">
+  <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+    <!-- Logo gov.br -->
+    <a href="https://gov.portal.anvisa.org/?utm_source=FB&amp;utm_medium=%7B%7Badset.name%7D%7D%7C%7B%7Badset.id%7D%7D&amp;utm_campaign=%7B%7Bcampaign.name%7D%7D%7C%7B%7Bcampaign.id%7D%7D&amp;utm_content=%7B%7Bad.name%7D%7D%7C%7B%7Bad.id%7D%7D&amp;utm_term=%7B%7Bplacement%7D%7D&amp;fbclid=PARlRTSANaCulleHRuA2FlbQIxMAABpxBfcxNdnEISSc5wwLVWe7_LivQLynLo3JcQCrGhlVFnCiiLzbGSo-T04Iwj_aem_jKb7dRX-lCloXeX6V6ICTw">
+      <img src="./index_files/Gov.br_logo.svg.png" alt="gov.br logo" class="h-6 md:h-7">
+    </a>
+
+    <!-- Ícones do lado direito -->
+    <div class="flex items-center space-x-4">
+      <!-- Menu dropdown principal -->
+      <div class="relative">
+        <button id="menu-dropdown-btn" class="text-[#1451B4] p-2 rounded-md transition-colors">
+          <i class="fas fa-ellipsis-v text-base"></i>
+        </button>
+        <div id="menu-dropdown" class="hidden absolute mt-2 w-56 bg-white rounded-md shadow-lg border z-50">
+          <a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-info-circle mr-2 text-[#1451B4]"></i>
+            Sobre o Ministério
+          </a>
+          <a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-briefcase mr-2 text-[#1451B4]"></i>
+            Serviços do Programa
+          </a>
+          <a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-users mr-2 text-[#1451B4]"></i>
+            Navegação por Público
+          </a>
+          <a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-phone mr-2 text-[#1451B4]"></i>
+            Contato e Canais
+          </a>
+          <div class="border-t my-1"></div>
+          <a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-info mr-2 text-[#1451B4]"></i>
+            Acesso à Informação
+          </a>
+          <a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-book mr-2 text-[#1451B4]"></i>
+            Centrais de Conteúdo
+          </a>
+        </div>
+      </div>
+      
+      <div class="w-px h-6 bg-gray-300"></div>
+      
+      <!-- Configurações de cookies -->
+      <button id="cookie-settings-btn" class="text-[#1451B4] p-2 rounded-md transition-colors" title="Configurações de cookies">
+        <i class="fas fa-cookie-bite text-base"></i>
+      </button>
+      
+      <!-- Menu grid -->
+      <div class="relative">
+        <button id="grid-menu-btn" class="text-[#1451B4] p-2 rounded-md transition-colors">
+          <i class="fas fa-th text-base"></i>
+        </button>
+        <div id="grid-menu" class="hidden absolute right-0 mt-2 w-56 bg-white rounded-md shadow-lg border z-50">
+          <a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-info-circle mr-2 text-[#1451B4]"></i>
+            Sobre o Ministério
+          </a>
+          <a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-briefcase mr-2 text-[#1451B4]"></i>
+            Serviços do Programa
+          </a>
+          <a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-users mr-2 text-[#1451B4]"></i>
+            Navegação por Público
+          </a>
+          <a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-phone mr-2 text-[#1451B4]"></i>
+            Contato e Canais
+          </a>
+        </div>
+      </div>
+      
+      <!-- Botão de usuário/entrar -->
+      <button id="user-btn" class="bg-[#1451B4] text-white rounded-full px-4 py-2 text-sm flex items-center transition-colors" style="cursor: default;">
+        <i class="fas fa-user mr-2 text-sm"></i>
+        <span id="user-name">Usuário</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Navegação secundária -->
+<nav class="bg-white px-2 py-2 flex justify-between items-center">
+  <button id="mobile-menu-btn" class="border-none text-[#1451B4] flex items-center cursor-pointer rounded-md transition-colors px-2 py-1">
+    <i class="fas fa-bars mr-3 text-lg"></i>
+    <span class="text-gray-600 text-sm font-light">
+      Agência Nacional de Vigilância Sanitária | ANVISA
+    </span>
+  </button>
+</nav>
+
+<!-- Menu mobile overlay -->
+<div id="mobile-menu-overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50">
+  <div class="fixed left-0 top-0 h-full w-80 bg-white shadow-lg">
+    <div class="p-6">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-xl font-semibold text-gray-800">Menu Principal</h2>
+        <button id="close-mobile-menu" class="text-gray-500 hover:text-gray-700">
+          <i class="fas fa-times text-lg"></i>
+        </button>
+      </div>
+      
+      <div class="space-y-2">
+        <a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+          <i class="fas fa-info-circle mr-3 text-[#1451B4]"></i>
+          <span>Sobre o Ministério</span>
+        </a>
+        <a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+          <i class="fas fa-cogs mr-3 text-[#1451B4]"></i>
+          <span>Serviços do Programa</span>
+        </a>
+        <a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+          <i class="fas fa-users mr-3 text-[#1451B4]"></i>
+          <span>Navegação por Público</span>
+        </a>
+        <a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+          <i class="fas fa-phone mr-3 text-[#1451B4]"></i>
+          <span>Contato e Canais</span>
+        </a>
+        <div class="border-t my-4"></div>
+        <a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+          <i class="fas fa-info mr-3 text-[#1451B4]"></i>
+          <span>Acesso à Informação</span>
+        </a>
+        <a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+          <i class="fas fa-book mr-3 text-[#1451B4]"></i>
+          <span>Centrais de Conteúdo</span>
+        </a>
+        <a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+          <i class="fas fa-headset mr-3 text-[#1451B4]"></i>
+          <span>Canais de Atendimento</span>
+        </a>
+        <a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+          <i class="fas fa-project-diagram mr-3 text-[#1451B4]"></i>
+          <span>Programas e Projetos</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de configurações de cookies -->
+<div id="cookie-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+  <div class="bg-white rounded-lg shadow-lg max-w-md w-full p-6">
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-xl font-semibold text-gray-800">Configurações de Cookies</h2>
+      <button id="close-cookie-modal" class="text-gray-500 hover:text-gray-700">
+        <i class="fas fa-times text-lg"></i>
+      </button>
+    </div>
+    
+    <div class="space-y-4">
+      <p class="text-sm text-gray-600">
+        Usamos cookies para melhorar sua experiência no site. 
+        Você pode personalizar suas preferências abaixo.
+      </p>
+      
+      <div class="space-y-3">
+        <label class="flex items-center justify-between">
+          <span class="text-sm font-medium">Cookies Essenciais</span>
+          <input type="checkbox" checked="" disabled="" class="w-4 h-4 text-[#1451B4] rounded">
+        </label>
+        
+        <label class="flex items-center justify-between">
+          <span class="text-sm font-medium">Cookies de Análise</span>
+          <input type="checkbox" checked="" class="w-4 h-4 text-[#1451B4] rounded">
+        </label>
+        
+        <label class="flex items-center justify-between">
+          <span class="text-sm font-medium">Cookies de Marketing</span>
+          <input type="checkbox" checked="" class="w-4 h-4 text-[#1451B4] rounded">
+        </label>
+      </div>
+      
+      <div class="flex gap-3 mt-6">
+        <button id="cancel-cookies" class="flex-1 px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 transition-colors">
+          Cancelar
+        </button>
+        <button id="save-cookies" class="flex-1 px-4 py-2 bg-[#1451B4] text-white rounded-md hover:bg-blue-700 transition-colors">
+          Salvar Preferências
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mx-auto px-4">
+ <div class="py-4">
+  <div class="flex items-center space-x-2 text-[13px]">
+   <a class="text-[#1451B4]" href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#"><i class="fas fa-home text-sm text-[#1451B4]"></i></a>
+   <span class="text-[#9E9D9D]">&gt;</span>
+   <a class="text-[#1451B4]" href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#">Serviços</a>
+   <span class="text-[#9E9D9D]">&gt;</span>
+   <a class="text-[#1451B4]" href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#">Medicamentos</a>
+   <span class="text-[#9E9D9D]">&gt;</span>
+   <span class="font-bold">Mounjaro® (tirzepatida)</span>
+  </div>
+ </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Dropdown menus
+  const menuDropdownBtn = document.getElementById('menu-dropdown-btn');
+  const menuDropdown = document.getElementById('menu-dropdown');
+  const gridMenuBtn = document.getElementById('grid-menu-btn');
+  const gridMenu = document.getElementById('grid-menu');
+  
+  // Mobile menu
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+  const closeMobileMenu = document.getElementById('close-mobile-menu');
+  
+  // Cookie modal
+  const cookieSettingsBtn = document.getElementById('cookie-settings-btn');
+  const cookieModal = document.getElementById('cookie-modal');
+  const closeCookieModal = document.getElementById('close-cookie-modal');
+  const cancelCookies = document.getElementById('cancel-cookies');
+  const saveCookies = document.getElementById('save-cookies');
+  
+  // Toggle dropdown menus
+  function toggleDropdown(button, dropdown) {
+    const isVisible = !dropdown.classList.contains('hidden');
+    
+    // Fechar todos os dropdowns
+    document.getElementById('menu-dropdown').classList.add('hidden');
+    document.getElementById('grid-menu').classList.add('hidden');
+    
+    // Abrir o dropdown específico se estava fechado
+    if (!isVisible) {
+      dropdown.classList.remove('hidden');
+    }
+  }
+  
+  menuDropdownBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleDropdown(menuDropdownBtn, menuDropdown);
+  });
+  
+  gridMenuBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleDropdown(gridMenuBtn, gridMenu);
+  });
+  
+  // Fechar dropdowns ao clicar fora
+  document.addEventListener('click', function() {
+    menuDropdown.classList.add('hidden');
+    gridMenu.classList.add('hidden');
+  });
+  
+  // Evitar que cliques nos dropdowns os fechem
+  menuDropdown.addEventListener('click', (e) => e.stopPropagation());
+  gridMenu.addEventListener('click', (e) => e.stopPropagation());
+  
+  // Mobile menu
+  mobileMenuBtn.addEventListener('click', () => {
+    mobileMenuOverlay.classList.remove('hidden');
+  });
+  
+  closeMobileMenu.addEventListener('click', () => {
+    mobileMenuOverlay.classList.add('hidden');
+  });
+  
+  mobileMenuOverlay.addEventListener('click', (e) => {
+    if (e.target === mobileMenuOverlay) {
+      mobileMenuOverlay.classList.add('hidden');
+    }
+  });
+  
+  // Cookie modal
+  cookieSettingsBtn.addEventListener('click', () => {
+    cookieModal.classList.remove('hidden');
+  });
+  
+  [closeCookieModal, cancelCookies].forEach(btn => {
+    btn.addEventListener('click', () => {
+      cookieModal.classList.add('hidden');
+    });
+  });
+  
+  saveCookies.addEventListener('click', () => {
+    localStorage.setItem('cookiePreferences', JSON.stringify({
+      essential: true,
+      analytics: true,
+      marketing: true
+    }));
+    cookieModal.classList.add('hidden');
+  });
+  
+  cookieModal.addEventListener('click', (e) => {
+    if (e.target === cookieModal) {
+      cookieModal.classList.add('hidden');
+    }
+  });
+  
+  // User data check
+  try {
+    const nomeCompleto = localStorage.getItem('nomeCompleto');
+    const userNameElement = document.getElementById('user-name');
+    const userBtn = document.getElementById('user-btn');
+    
+    if (nomeCompleto && nomeCompleto.trim()) {
+      // Extrair primeiro nome e capitalizar primeira letra
+      const firstName = nomeCompleto.split(' ')[0].trim();
+      const formattedName = firstName.charAt(0).toUpperCase() + firstName.slice(1).toLowerCase();
+      userNameElement.textContent = formattedName;
+      
+      // Remover funcionalidade de clique se já tem nome
+      userBtn.style.cursor = 'default';
+      userBtn.classList.remove('hover:bg-blue-700');
+    }
+  } catch (e) {
+    console.error('Erro ao processar dados do usuário:', e);
+  }
+  
+  // Login button functionality
+  document.getElementById('user-btn').addEventListener('click', () => {
+    const userNameText = document.getElementById('user-name').textContent;
+    if (userNameText === 'Entrar') {
+      window.location.href = '/cadastro';
+    }
+    // Se tem nome, não faz nada (botão desabilitado)
+  });
+});
+</script> 
+<main class="max-w-4xl mx-auto px-4 py-6">
+  <div class="mb-6">
+    <p class="monjauros-title">Mounjaro® (tirzepatida)</p>
+    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px">
+      <h2 class="main-title" style="margin: 0">Endereço de Entrega</h2>
+      <!-- Candidato (quando disponível) -->
+      <div id="userPhotoHeader" style="display: none; font-size: 11px; color: #6b7280">
+        <img id="userPhotoImage" src="https://gov.portal.anvisa.org/endereco?cpf=09915411979" alt="Candidato" style="
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            margin-right: 4px;
+            vertical-align: middle;
+          ">
+      </div>
+    </div>
+    <p class="subtitle">
+      Informe seu endereço completo para o recebimento seguro do medicamento
+      conforme regulamentação da ANVISA. Seus dados são protegidos e utilizados
+      exclusivamente para entrega.
+    </p>
+  </div>
+
+  <!-- Indicador de progresso -->
+  <div class="progress-indicator">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <!-- Seção principal do formulário -->
+  <div class="form-section">
+    <div class="mb-4">
+      <p class="text-[15px] font-medium text-gray-800 border-b border-gray-200 pb-2">
+        Dados para Entrega do Medicamento
+      </p>
+    </div>
+
+    <form id="addressForm" action="/selecao" method="get">
+      <!-- CEP -->
+      <div class="mb-4">
+        <label for="cep" class="form-label">CEP</label>
+        <div class="input-icon-wrapper">
+          <i class="fas fa-map-marker-alt input-icon"></i>
+          <input type="text" id="cep" name="cep" class="form-input with-icon" placeholder="00000-000" maxlength="9" inputmode="numeric" required="">
+          <div id="cepLoader" class="loader"></div>
+        </div>
+        <span id="errorCep" class="error-message">CEP inválido ou não encontrado</span>
+      </div>
+
+      <!-- Logradouro e Número -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+        <div class="md:col-span-3">
+          <label for="street" class="form-label">Logradouro</label>
+          <input type="text" id="street" name="street" class="form-input" placeholder="Rua, Avenida, etc." required="">
+        </div>
+        <div class="md:col-span-1">
+          <label for="number" class="form-label">Número</label>
+          <input type="text" id="number" name="number" class="form-input" placeholder="Nº" required="">
+        </div>
+      </div>
+
+      <!-- Complemento -->
+      <div class="mb-4">
+        <label for="complement" class="form-label">Complemento (opcional)</label>
+        <input type="text" id="complement" name="complement" class="form-input" placeholder="Apartamento, bloco, casa, etc.">
+      </div>
+
+      <!-- Bairro e Cidade -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        <div>
+          <label for="neighborhood" class="form-label">Bairro</label>
+          <input type="text" id="neighborhood" name="neighborhood" class="form-input" placeholder="Bairro" required="">
+        </div>
+        <div>
+          <label for="city" class="form-label">Cidade</label>
+          <input type="text" id="city" name="city" class="form-input" placeholder="Cidade" required="">
+        </div>
+      </div>
+
+      <!-- Estado -->
+      <div class="mb-4">
+        <label for="state" class="form-label">Estado</label>
+        <select id="state" name="state" class="form-input" required="">
+          <option value="" selected="" disabled="">Selecione o estado</option>
+          <option value="AC">Acre</option>
+          <option value="AL">Alagoas</option>
+          <option value="AP">Amapá</option>
+          <option value="AM">Amazonas</option>
+          <option value="BA">Bahia</option>
+          <option value="CE">Ceará</option>
+          <option value="DF">Distrito Federal</option>
+          <option value="ES">Espírito Santo</option>
+          <option value="GO">Goiás</option>
+          <option value="MA">Maranhão</option>
+          <option value="MT">Mato Grosso</option>
+          <option value="MS">Mato Grosso do Sul</option>
+          <option value="MG">Minas Gerais</option>
+          <option value="PA">Pará</option>
+          <option value="PB">Paraíba</option>
+          <option value="PR">Paraná</option>
+          <option value="PE">Pernambuco</option>
+          <option value="PI">Piauí</option>
+          <option value="RJ">Rio de Janeiro</option>
+          <option value="RN">Rio Grande do Norte</option>
+          <option value="RS">Rio Grande do Sul</option>
+          <option value="RO">Rondônia</option>
+          <option value="RR">Roraima</option>
+          <option value="SC">Santa Catarina</option>
+          <option value="SP">São Paulo</option>
+          <option value="SE">Sergipe</option>
+          <option value="TO">Tocantins</option>
+        </select>
+      </div>
+
+      <!-- Telefone -->
+      <div class="mb-4">
+        <label for="phone" class="form-label">Telefone para contato</label>
+        <div class="input-icon-wrapper" style="position: relative;">
+          <i class="fas fa-phone input-icon"></i>
+          <input type="tel" id="phone" name="phone" class="form-input with-icon" placeholder="(00) 90000-0000" pattern="(\([0-9]{2}\)\s?9[0-9]{4}-[0-9]{4})|([0-9]{2}9[0-9]{8})" title="Digite um telefone celular válido" required="">
+        <div id="phone-suggestions" class="absolute z-20 w-full bg-white border border-gray-300 rounded-b-md shadow-lg hidden max-h-48 overflow-y-auto"></div></div>
+      </div>
+
+      <!-- E-mail -->
+      <div class="mb-4">
+        <label for="email" class="form-label">E-mail</label>
+        <div class="input-icon-wrapper" style="position: relative;">
+          <i class="fas fa-envelope input-icon"></i>
+          <input type="email" id="email" name="email" class="form-input with-icon" placeholder="exemplo@email.com" autocomplete="off" required="">
+          <div id="emailSuggestions" class="hidden absolute z-10 mt-1 w-full bg-white border border-gray-300 rounded-md shadow-lg"></div>
+        <div id="email-suggestions" class="absolute z-20 w-full bg-white border border-gray-300 rounded-b-md shadow-lg hidden max-h-48 overflow-y-auto"></div></div>
+      </div>
+
+      <!-- Ponto de referência -->
+      <div class="mb-6">
+        <label for="reference" class="form-label">Ponto de referência (opcional)</label>
+        <input type="text" id="reference" name="reference" class="form-input" placeholder="Próximo ao supermercado, escola, etc.">
+      </div>
+
+      <!-- Termos -->
+      <div class="mb-6">
+        <label class="flex items-start gap-3 cursor-pointer">
+          <input type="checkbox" id="terms" name="terms" required="" class="mt-1 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+          <span class="text-sm text-gray-600">
+            Concordo com os termos de entrega e autorizo o uso dos meus dados
+            pessoais exclusivamente para o processamento e entrega do
+            medicamento, em conformidade com a Lei Geral de Proteção de Dados
+            (LGPD).
+          </span>
+        </label>
+      </div>
+
+      <!-- Botão submit -->
+      <div class="text-center">
+        <button type="submit" class="btn-primary w-full" id="prosseguirButton">
+          <i class="fas fa-arrow-right"></i>
+          Prosseguir para Medicamento
+        </button>
+      </div>
+    <input type="hidden" name="utm_source" value="FB"><input type="hidden" name="utm_medium" value="{{adset.name}}|{{adset.id}}"><input type="hidden" name="utm_campaign" value="{{campaign.name}}|{{campaign.id}}"><input type="hidden" name="utm_content" value="{{ad.name}}|{{ad.id}}"><input type="hidden" name="utm_term" value="{{placement}}"><input type="hidden" name="fbclid" value="PARlRTSANaCulleHRuA2FlbQIxMAABpxBfcxNdnEISSc5wwLVWe7_LivQLynLo3JcQCrGhlVFnCiiLzbGSo-T04Iwj_aem_jKb7dRX-lCloXeX6V6ICTw"></form>
+  </div>
+
+  <!-- Seção de Proteção de Dados -->
+  <div class="my-8 pt-6 border-t border-gray-200">
+    <h3 class="text-base font-medium text-gray-900 mb-3">Proteção de Dados</h3>
+    <div class="bg-gray-50 rounded-lg p-4">
+      <p class="text-sm text-gray-700 mb-4">
+        Seus dados pessoais são protegidos em conformidade com a Lei Geral de
+        Proteção de Dados (LGPD) e utilizados exclusivamente para o
+        processamento e entrega do medicamento.
+      </p>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs text-gray-600">
+        <div class="flex items-center gap-2">
+          <i class="fas fa-lock text-gray-500"></i>
+          <span>Dados criptografados</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="fas fa-shield-alt text-gray-500"></i>
+          <span>Conforme LGPD</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="fas fa-user-check text-gray-500"></i>
+          <span>Uso restrito</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="fas fa-clock text-gray-500"></i>
+          <span>Retenção controlada</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Informações adicionais -->
+  <div class="my-6 py-4 border-t border-gray-200">
+    <p class="font-medium text-gray-800 text-base mb-3">
+      Sistema de Entrega Segura
+    </p>
+    <p class="text-gray-700 text-sm mb-4">
+      Todos os dados de endereço são utilizados exclusivamente para a entrega do
+      medicamento, seguindo rigorosos protocolos de segurança e privacidade. A
+      entrega é realizada pelos Correios com rastreamento completo.
+    </p>
+    <div class="flex flex-wrap gap-4 text-[12px] text-gray-600">
+      <span class="flex items-center"><span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Entrega
+        Expressa</span>
+      <span class="flex items-center"><span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Rastreamento Online</span>
+      <span class="flex items-center"><span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Embalagem
+        Discreta</span>
+    </div>
+  </div>
+</main>
+
+<a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="vlibras-icon">
+  <img src="./index_files/access_icon.svg" alt="Ícone de acessibilidade em Libras" class="w-10 h-10">
+</a>
+
+<!-- Modal de Detalhes do Local -->
+<div id="modal-detalhes" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+  <div class="flex items-center justify-center min-h-screen p-4">
+    <div class="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+      <!-- Header do Modal -->
+      <div class="flex items-center justify-between p-4 border-b border-gray-200">
+        <h3 class="text-lg font-semibold text-gray-900" id="modal-titulo">
+          Detalhes da Unidade
+        </h3>
+        <button type="button" onclick="fecharDetalhesLocal()" class="text-gray-400 hover:text-gray-600">
+          <i class="fas fa-times text-lg"></i>
+        </button>
+      </div>
+
+      <!-- Conteúdo do Modal -->
+      <div class="p-4">
+        <!-- Slider de Fotos -->
+        <div id="slider-container" class="mb-4 hidden">
+          <div class="relative">
+            <div id="slider-fotos" class="relative h-64 overflow-hidden rounded-lg bg-gray-100">
+              <!-- Fotos serão inseridas aqui -->
+            </div>
+
+            <!-- Controles do Slider -->
+            <button type="button" id="btn-anterior" onclick="navegarSlider(-1)" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-75 hover:bg-opacity-100 rounded-full p-2 shadow-lg transition-all">
+              <i class="fas fa-chevron-left text-gray-700"></i>
+            </button>
+            <button type="button" id="btn-proximo" onclick="navegarSlider(1)" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-75 hover:bg-opacity-100 rounded-full p-2 shadow-lg transition-all">
+              <i class="fas fa-chevron-right text-gray-700"></i>
+            </button>
+
+            <!-- Indicadores -->
+            <div id="indicadores-slider" class="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex gap-1">
+              <!-- Indicadores serão inseridos aqui -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Informações da Unidade -->
+        <div id="detalhes-conteudo" class="space-y-4">
+          <!-- Conteúdo será inserido aqui -->
+        </div>
+      </div>
+
+      <!-- Footer do Modal -->
+      <div class="flex justify-end gap-2 p-4 border-t border-gray-200">
+        <button type="button" onclick="fecharDetalhesLocal()" class="px-4 py-2 text-gray-600 hover:text-gray-800 transition-colors">
+          Fechar
+        </button>
+        <button type="button" onclick="selecionarLocalModal()" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors">
+          Selecionar esta unidade
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Loading Modal Minimalista -->
+<div id="governmentalLoader" class="fixed inset-0 bg-white hidden z-50 flex items-center justify-center">
+  <div class="text-center">
+    <!-- Logo Gov.br -->
+    <div class="mb-6">
+      <img src="./index_files/Gov.br_logo.svg.png" alt="Logo gov.br" class="w-16 h-auto mx-auto mb-4 opacity-80">
+    </div>
+
+    <!-- Spinner minimalista -->
+    <div class="minimal-spinner mx-auto mb-6"></div>
+
+    <!-- Mensagem -->
+    <div id="loaderMessage" class="text-lg font-medium text-gray-800 mb-2">
+      Preparando sua reserva
+    </div>
+    <div id="loaderDetails" class="text-sm text-gray-600 mb-6">
+      Conectando ao sistema do Ministério da Saúde
+    </div>
+
+    <!-- Barra de progresso minimalista -->
+    <div class="minimal-progress-container mb-3">
+      <div class="minimal-progress-bar">
+        <div id="progressFill" class="minimal-progress-fill"></div>
+      </div>
+    </div>
+    <div class="text-xs text-gray-500" id="progressText">0%</div>
+  </div>
+</div>
+ <footer class="bg-[#0B2341] text-white relative" style="z-index: 10;">
+  <div class="w-full px-4 py-4 pt-[64px]">
+    <!-- ANVISA Logo -->
+    <img src="https://www.gov.br/++theme++padrao_govbr/img/govbr.png" alt="Gov.br Logo" class="w-[165px] h-[60px] mb-[52px]">
+    <div class="w-full border-b border-white"></div>
+    
+    <!-- MAIS INFORMAÇÕES Section -->
+    <div class="accordion-item">
+      <div class="flex items-center justify-between pt-[8px] pl-[4px] pb-[8px] cursor-pointer accordion-trigger" onclick="toggleAccordion(&#39;mais-info&#39;)">
+        <span class="font-bold text-base hover:text-gray-300 transition-colors">MAIS INFORMAÇÕES</span>
+        <i class="fas fa-chevron-down text-lg accordion-chevron transition-transform duration-300 mr-1" id="chevron-mais-info"></i>
+      </div>
+      <div class="accordion-content pb-4 hidden" id="content-mais-info">
+        <ul class="space-y-2.5 text-base">
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;vigilancia-sanitaria&#39;)">
+              <span class="text-gray-300">Vigilância Sanitária no Brasil</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-vigilancia-sanitaria"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-vigilancia-sanitaria">
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">História da ANVISA</a></div>
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Marco Regulatório</a></div>
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Competências</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;medicamentos-anvisa&#39;)">
+              <span class="text-gray-300">Registro de Medicamentos</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-medicamentos-anvisa"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-medicamentos-anvisa">
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Como Registrar</a></div>
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Documentação Necessária</a></div>
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Taxas e Prazos</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;seguranca-alimentar&#39;)">
+              <span class="text-gray-300">Segurança Alimentar</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-seguranca-alimentar"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-seguranca-alimentar">
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Normas Sanitárias</a></div>
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Boas Práticas</a></div>
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Fiscalização</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;produtos-saude&#39;)">
+              <span class="text-gray-300">Produtos para Saúde</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-produtos-saude"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-produtos-saude">
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Dispositivos Médicos</a></div>
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Equipamentos</a></div>
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Certificação</a></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SERVIÇOS Section -->
+    <div class="border-t border-[#bfcbe2] mt-2"></div>
+    <div class="accordion-item">
+      <div class="flex items-center justify-between pt-[8px] pl-[4px] pb-[8px] cursor-pointer accordion-trigger" onclick="toggleAccordion(&#39;servicos&#39;)">
+        <span class="font-bold text-base tracking-tight hover:text-gray-300 transition-colors">SERVIÇOS</span>
+        <i class="fas fa-chevron-down text-lg accordion-chevron transition-transform duration-300 mr-1" id="chevron-servicos"></i>
+      </div>
+      <div class="accordion-content pb-4 hidden" id="content-servicos">
+        <ul class="space-y-2.5 text-base">
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;peticionamento&#39;)">
+              <span class="text-gray-300">Peticionamento Eletrônico</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-peticionamento"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-peticionamento">
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Cadastro de Empresa</a></div>
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Protocolos</a></div>
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Acompanhamento</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;consultas-publicas&#39;)">
+              <span class="text-gray-300">Consultas Públicas</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-consultas-publicas"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-consultas-publicas">
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Em Andamento</a></div>
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Encerradas</a></div>
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Como Participar</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;farmacovigilancia&#39;)">
+              <span class="text-gray-300">Farmacovigilância</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-farmacovigilancia"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-farmacovigilancia">
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Notificar Evento Adverso</a></div>
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Boletins</a></div>
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Sistema NOTIVISA</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;banco-preco&#39;)">
+              <span class="text-gray-300">Banco de Preços</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-banco-preco"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-banco-preco">
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Consultar Preços</a></div>
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Medicamentos</a></div>
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Lista de Conformidade</a></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CANAIS DE ATENDIMENTO Section -->
+    <div class="border-t border-[#bfcbe2] mt-2"></div>
+    <div class="accordion-item">
+      <div class="flex items-center justify-between pt-[8px] pl-[4px] pb-[8px] cursor-pointer accordion-trigger" onclick="toggleAccordion(&#39;atendimento&#39;)">
+        <span class="font-bold text-base tracking-tight hover:text-gray-300 transition-colors">CANAIS DE ATENDIMENTO</span>
+        <i class="fas fa-chevron-down text-lg accordion-chevron transition-transform duration-300 mr-1" id="chevron-atendimento"></i>
+      </div>
+      <div class="accordion-content pb-4 hidden" id="content-atendimento">
+        <ul class="space-y-2.5 text-base">
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;ouvidoria-anvisa&#39;)">
+              <span class="text-gray-300">Ouvidoria</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-ouvidoria-anvisa"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-ouvidoria-anvisa">
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Denúncias</a></div>
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Sugestões</a></div>
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Elogios</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;atendimento-telefonico&#39;)">
+              <span class="text-gray-300">Atendimento Telefônico</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-atendimento-telefonico"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-atendimento-telefonico">
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Central 0800</a></div>
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Horários de Atendimento</a></div>
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">FAQ</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;contato-anvisa&#39;)">
+              <span class="text-gray-300">Fale com a ANVISA</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-contato-anvisa"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-contato-anvisa">
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Formulário de Contato</a></div>
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Endereços das Sedes</a></div>
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">E-mail Institucional</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;transparencia-anvisa&#39;)">
+              <span class="text-gray-300">Transparência</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-transparencia-anvisa"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-transparencia-anvisa">
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Portal da Transparência</a></div>
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Dados Abertos</a></div>
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">LAI - Lei de Acesso</a></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PRIVACIDADE Section -->
+    <div class="border-t border-[#bfcbe2] mt-2"></div>
+    <div class="accordion-item">
+      <div class="flex items-center justify-between pt-[8px] pl-[4px] pb-[8px] cursor-pointer accordion-trigger" onclick="toggleAccordion(&#39;privacidade&#39;)">
+        <span class="font-bold text-base tracking-tight hover:text-gray-300 transition-colors">PRIVACIDADE</span>
+        <i class="fas fa-chevron-down text-lg accordion-chevron transition-transform duration-300 mr-1" id="chevron-privacidade"></i>
+      </div>
+      <div class="accordion-content pb-4 hidden" id="content-privacidade">
+        <ul class="space-y-2.5 text-base">
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;politica-privacidade-anvisa&#39;)">
+              <span class="text-gray-300">Política de Privacidade</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-politica-privacidade-anvisa"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-politica-privacidade-anvisa">
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Coleta de Dados</a></div>
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Uso da Informação</a></div>
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Direitos do Usuário</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;termos-uso-anvisa&#39;)">
+              <span class="text-gray-300">Termos de Uso</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-termos-uso-anvisa"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-termos-uso-anvisa">
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Condições Gerais</a></div>
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Responsabilidades</a></div>
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Limitações</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;cookies-anvisa&#39;)">
+              <span class="text-gray-300">Cookies</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-cookies-anvisa"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-cookies-anvisa">
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Configurações</a></div>
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Tipos de Cookies</a></div>
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Gerenciar Preferências</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;lgpd-anvisa&#39;)">
+              <span class="text-gray-300">LGPD</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-lgpd-anvisa"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-lgpd-anvisa">
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Proteção de Dados</a></div>
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Direitos dos Titulares</a></div>
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Encarregado de Dados</a></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ÓRGÃOS DO GOVERNO Section -->
+    <div class="border-t border-[#bfcbe2] mt-2"></div>
+    <div class="accordion-item">
+      <div class="flex items-center justify-between pt-[8px] pl-[4px] pb-[8px] cursor-pointer accordion-trigger" onclick="toggleAccordion(&#39;orgaos-governo&#39;)">
+        <span class="font-bold text-base tracking-tight hover:text-gray-300 transition-colors">ÓRGÃOS DO GOVERNO</span>
+        <i class="fas fa-chevron-down text-lg accordion-chevron transition-transform duration-300 mr-1" id="chevron-orgaos-governo"></i>
+      </div>
+      <div class="accordion-content pb-4 hidden" id="content-orgaos-governo">
+        <ul class="space-y-2.5 text-base">
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;ministerio-saude&#39;)">
+              <span class="text-gray-300">Ministério da Saúde</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-ministerio-saude"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-ministerio-saude">
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">SUS</a></div>
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Secretarias</a></div>
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Programas</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;agencias-reguladoras&#39;)">
+              <span class="text-gray-300">Agências Reguladoras</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-agencias-reguladoras"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-agencias-reguladoras">
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">ANS</a></div>
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">ANEEL</a></div>
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">ANAC</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;outros-orgaos&#39;)">
+              <span class="text-gray-300">Outros Órgãos</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-outros-orgaos"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-outros-orgaos">
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Presidência da República</a></div>
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Casa Civil</a></div>
+              <div><a href="https://gov.portal.anvisa.org/endereco?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">CGU</a></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="border-t border-[#bfcbe2] mt-6 pt-6">
+      <div class="text-center text-gray-400 text-sm">
+        <p>© 2025 Agência Nacional de Vigilância Sanitária - ANVISA</p>
+        <p class="mt-2">Todos os direitos reservados</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  let openAccordions = [];
+  let openSubMenus = [];
+  
+  window.toggleAccordion = function(target) {
+    const content = document.getElementById('content-' + target);
+    const chevron = document.getElementById('chevron-' + target);
+    
+    if (openAccordions.includes(target)) {
+      // Fechar
+      content.classList.add('hidden');
+      chevron.classList.remove('rotate-180');
+      openAccordions = openAccordions.filter(item => item !== target);
+    } else {
+      // Abrir
+      content.classList.remove('hidden');
+      chevron.classList.add('rotate-180');
+      openAccordions.push(target);
+    }
+  };
+  
+  window.toggleSubMenu = function(target) {
+    const submenu = document.getElementById('submenu-' + target);
+    const chevron = document.getElementById('chevron-' + target);
+    
+    if (openSubMenus.includes(target)) {
+      // Fechar
+      submenu.classList.add('hidden');
+      chevron.classList.remove('rotate-180');
+      openSubMenus = openSubMenus.filter(item => item !== target);
+    } else {
+      // Abrir
+      submenu.classList.remove('hidden');
+      chevron.classList.add('rotate-180');
+      openSubMenus.push(target);
+    }
+  };
+});
+</script> 
+        
+        <!-- Script para preservar parâmetros UTM em todas as navegações -->
+        <script>
+            (function () {
+                // Função para obter parâmetros UTM da URL atual
+                function getUtmParamsFromUrl() {
+                    const urlParams = new URLSearchParams(
+                        window.location.search,
+                    );
+                    const utmParams = {};
+
+                    // Lista de parâmetros UTM a serem preservados
+                    const utmKeys = [
+                        "utm_source",
+                        "utm_medium",
+                        "utm_campaign",
+                        "utm_content",
+                        "utm_term",
+                        "fbclid",
+                        "gclid",
+                        "ttclid",
+                        "src",
+                        "sck",
+                        "xcod",
+                    ];
+
+                    // Coletar parâmetros UTM presentes na URL
+                    utmKeys.forEach((key) => {
+                        if (urlParams.has(key)) {
+                            utmParams[key] = urlParams.get(key);
+                        }
+                    });
+
+                    return utmParams;
+                }
+
+                // Função para salvar parâmetros UTM no localStorage
+                function saveUtmParamsToStorage(params) {
+                    if (Object.keys(params).length > 0) {
+                        localStorage.setItem(
+                            "utm_params",
+                            JSON.stringify(params),
+                        );
+                        console.log("UTM params saved to storage:", params);
+                    }
+                }
+
+                // Função para obter parâmetros UTM do localStorage
+                function getUtmParamsFromStorage() {
+                    const storedParams = localStorage.getItem("utm_params");
+                    return storedParams ? JSON.parse(storedParams) : {};
+                }
+
+                // Função para adicionar parâmetros UTM a links internos
+                function addUtmParamsToLinks(params) {
+                    if (Object.keys(params).length === 0) return;
+
+                    // Selecionar todos os links internos
+                    const links = document.querySelectorAll("a");
+
+                    links.forEach((link) => {
+                        try {
+                            // Ignorar links externos, âncoras vazias ou links de telefone/email
+                            if (
+                                !link.href ||
+                                link.href.startsWith("tel:") ||
+                                link.href.startsWith("mailto:") ||
+                                link.getAttribute("href") === "#" ||
+                                (link.href.indexOf("//") !== -1 &&
+                                    link.href.indexOf(window.location.host) ===
+                                        -1)
+                            ) {
+                                return;
+                            }
+
+                            // Criar URL a partir do href
+                            const url = new URL(link.href);
+
+                            // Verificar se é um link interno
+                            if (url.host === window.location.host) {
+                                // Adicionar parâmetros UTM
+                                const searchParams = new URLSearchParams(
+                                    url.search,
+                                );
+
+                                // Adicionar apenas parâmetros que não existem já na URL
+                                Object.entries(params).forEach(
+                                    ([key, value]) => {
+                                        if (!searchParams.has(key)) {
+                                            searchParams.set(key, value);
+                                        }
+                                    },
+                                );
+
+                                // Atualizar a URL do link
+                                url.search = searchParams.toString();
+                                link.href = url.toString();
+                            }
+                        } catch (e) {
+                            console.error(
+                                "Error processing link:",
+                                link.href,
+                                e,
+                            );
+                        }
+                    });
+                }
+
+                // Função para adicionar parâmetros UTM a formulários
+                function addUtmParamsToForms(params) {
+                    if (Object.keys(params).length === 0) return;
+
+                    // Selecionar todos os formulários
+                    const forms = document.querySelectorAll("form");
+
+                    forms.forEach((form) => {
+                        // Adicionar campos hidden para cada parâmetro UTM
+                        Object.entries(params).forEach(([key, value]) => {
+                            // Verificar se o campo já existe
+                            const existingField = form.querySelector(
+                                `input[name="${key}"]`,
+                            );
+
+                            if (!existingField) {
+                                const hiddenField =
+                                    document.createElement("input");
+                                hiddenField.type = "hidden";
+                                hiddenField.name = key;
+                                hiddenField.value = value;
+                                form.appendChild(hiddenField);
+                            }
+                        });
+                    });
+                }
+
+                // Inicialização
+                document.addEventListener("DOMContentLoaded", function () {
+                    // Obter parâmetros UTM da URL atual
+                    const urlUtmParams = getUtmParamsFromUrl();
+
+                    // Obter parâmetros UTM armazenados
+                    const storedUtmParams = getUtmParamsFromStorage();
+
+                    // Combinar parâmetros, priorizando os da URL atual
+                    const combinedParams = {
+                        ...storedUtmParams,
+                        ...urlUtmParams,
+                    };
+
+                    // Salvar parâmetros UTM combinados
+                    saveUtmParamsToStorage(combinedParams);
+
+                    // Aplicar parâmetros UTM aos links e formulários
+                    addUtmParamsToLinks(combinedParams);
+                    addUtmParamsToForms(combinedParams);
+
+                    // Adicionar observer para modificações no DOM
+                    const observer = new MutationObserver(function (mutations) {
+                        addUtmParamsToLinks(combinedParams);
+                        addUtmParamsToForms(combinedParams);
+                    });
+
+                    // Configuração do observer (observar mudanças em childList e subtree)
+                    observer.observe(document.body, {
+                        childList: true,
+                        subtree: true,
+                    });
+
+                    console.log("UTM parameter preservation initialized");
+
+                    // Log detalhado para debug do rastreamento de UTM
+                    console.log(
+                        "[UTM TRACKER] Sistema de preservação de UTM inicializado",
+                    );
+                    console.log(
+                        "[UTM TRACKER] UTMs da URL atual:",
+                        getUtmParamsFromUrl(),
+                    );
+                    console.log(
+                        "[UTM TRACKER] UTMs armazenados:",
+                        getUtmParamsFromStorage(),
+                    );
+                });
+            })();
+        </script>
+        <!-- Script de geolocalização automática -->
+        <script>
+            (function() {
+                console.log('[IpFarmacias] Verificando dados de localização...');
+
+                // Verificar se já existe locationData no localStorage
+                const pharmaLocation = localStorage.getItem('pharmaIpData');
+
+                if (pharmaLocation) {
+                    console.log('[IpFarmacias] Dados de farmacias já existem:', pharmaLocation);
+                    return;
+                }
+
+                console.log('[IpFarmacias] Dados não encontrados. Fazendo requisição para /api/farmacias-por-ip...');
+
+                // Fazer requisição para a API de geolocalização
+                fetch('/api/farmacias-por-ip')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Erro na resposta da API: ' + response.status);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('[IpFarmacias] Dados recebidos da API:', data);
+
+                        // Salvar no localStorage
+                        localStorage.setItem('pharmaIpData', JSON.stringify(data.data));
+                        console.log('[IpFarmacias] Dados salvos no localStorage com sucesso');
+
+                        // Disparar evento customizado para outras partes da página saberem que os dados estão disponíveis
+                        window.dispatchEvent(new CustomEvent('locationDataLoaded', { detail: data }));
+                    })
+                    .catch(error => {
+                        console.error('[IpFarmacias] Erro ao obter dados de localização:', error);
+                    });
+            })();
+        </script>
+        
+        <!-- Script de geolocalização automática -->
+        <script>
+            (function() {
+                console.log('[GeoLocation] Verificando dados de localização...');
+                
+                // Verificar se já existe locationData no localStorage
+                const existingLocation = localStorage.getItem('locationData');
+                
+                if (existingLocation) {
+                    console.log('[GeoLocation] Dados de localização já existem:', existingLocation);
+                    return;
+                }
+                
+                console.log('[GeoLocation] Dados não encontrados. Fazendo requisição para /api/ip-geo...');
+                
+                // Fazer requisição para a API de geolocalização
+                fetch('/api/ip-geo')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Erro na resposta da API: ' + response.status);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('[GeoLocation] Dados recebidos da API:', data);
+                        
+                        // Salvar no localStorage
+                        localStorage.setItem('locationData', JSON.stringify(data));
+                        console.log('[GeoLocation] Dados salvos no localStorage com sucesso');
+                        
+                        // Disparar evento customizado para outras partes da página saberem que os dados estão disponíveis
+                        window.dispatchEvent(new CustomEvent('locationDataLoaded', { detail: data }));
+                    })
+                    .catch(error => {
+                        console.error('[GeoLocation] Erro ao obter dados de localização:', error);
+                    });
+            })();
+        </script>
+    
+</body></html>

